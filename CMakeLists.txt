@@ -9,6 +9,8 @@ set (CMAKE_INCLUDE_CURRENT_DIR ON)
 set (CMAKE_CXX_STANDARD 11)
 set (CMAKE_AUTOMOC ON)
 
+set (LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR})
+
 find_package (Qt5Widgets REQUIRED)
 find_package (Qt5Gui)
 find_package (Qt5Core)
