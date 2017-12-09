@@ -1,7 +1,15 @@
-#ifndef OM_BUTTON_H
+﻿#ifndef OM_BUTTON_H
 #define OM_BUTTON_H
 
-class OmButton{
+#include <QPushButton>
+
+class OmButton : public QPushButton {
+  Q_OBJECT
+ public:
+  explicit OmButton(QWidget* parent = nullptr);
+  OmButton(const QString& button_text, QWidget* parent = nullptr);
+
+  ~OmButton();
 };
 
-#endif // OM_BUTTON_H
+#endif  // OM_BUTTON_H
