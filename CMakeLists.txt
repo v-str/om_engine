@@ -17,7 +17,7 @@ include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake/ccache.cmake")
 include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake/compiler_flags.cmake")
 include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake/recursive_directory_function.cmake")
 
-include_directories (sources tests)
+include_directories (sources tests tests/testing_framework)
 add_subdirectory (om_engine_library)
 
 header_directories (OM_ENGINE_HEADERS)
