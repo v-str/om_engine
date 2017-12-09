@@ -24,10 +24,14 @@ add_subdirectory (om_engine_library)
 header_directories (OM_ENGINE_HEADERS)
 include_directories ("${OM_ENGINE_HEADERS}")
 
+include_directories ("${CMAKE_CURRENT_SOURCE_DIR}/third_party")
+
 file (GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
 file (GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
 
-set (TXT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/to_do_list")
+set (TXT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/third_party/to_do_list"
+               "${CMAKE_CURRENT_SOURCE_DIR}/third_party/documentation"
+               "${CMAKE_CURRENT_SOURCE_DIR}/third_party/code_style")
 
 add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES} ${TXT_FILES})
 target_link_libraries (${PROJECT_NAME} om_engine_library)
