@@ -13,12 +13,10 @@ class OmButton : public QPushButton {
   OmButton(const QString& button_text, QWidget* parent = nullptr);
   ~OmButton();
 
-  void SetOffsetSide(unsigned int offset_side);
+  void SetOffsetSide(const OmEngine::Side& side);
 
  private:
-  enum OffsetSide { kNone = 0, kLeft = 1, kRight = 2, kUp = 4, kDown = 8 };
-
-  unsigned int offset_side_ = 0;
+  OmEngine::Side offset_side_;
 };
 }
 
