@@ -3,6 +3,8 @@
 
 #include <QPushButton>
 
+#include <om_utility.h>
+
 namespace OmEngine {
 class OmButton : public QPushButton {
   Q_OBJECT
