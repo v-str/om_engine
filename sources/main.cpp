@@ -1,13 +1,22 @@
-﻿#define DOCTEST_CONFIG_IMPLEMENT
-#include "doctest.h"
+﻿#include <QApplication>
 
-#include <QApplication>
+#include <QWidget>
+
+#include <om_button.h>
 
 int main(int argc, char** argv) {
-  doctest::Context context;
   QApplication app(argc, argv);
-  context.applyCommandLine(argc, argv);
-  int result_of_tests = context.run();
 
-  return result_of_tests;
+  QWidget widget;
+  widget.setGeometry(600, 400, 600, 400);
+
+  OmWidgets::OmButton* button_ = new OmWidgets::OmButton(&widget);
+  button_->setText("OmButton");
+  button_->setGeometry(50, 25, 100, 30);
+  button_->SetOffsetSide(OmUtility::kRight | OmUtility::kUp);
+  button_->SetOffsetDistance(OmUtility::OffsetDistance(5, 5));
+
+  widget.show();
+
+  return app.exec();
 }

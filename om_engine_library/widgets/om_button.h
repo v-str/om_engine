@@ -5,7 +5,7 @@
 
 #include <om_utility.h>
 
-namespace OmUtility {
+namespace OmWidgets {
 class OmButton : public QPushButton {
   Q_OBJECT
  public:
@@ -13,7 +13,7 @@ class OmButton : public QPushButton {
   OmButton(const QString& button_text, QWidget* parent = nullptr);
   ~OmButton();
 
-  void SetOffsetSide(const OmUtility::Side& side);
+  void SetOffsetSide(unsigned int offset_side);
   void SetOffsetDistance(const OmUtility::OffsetDistance& offset_distance);
 
  protected:
@@ -21,7 +21,7 @@ class OmButton : public QPushButton {
   void leaveEvent(QEvent*);
 
  private:
-  OmUtility::Side offset_side_;
+  unsigned int offset_side_;
   OmUtility::OffsetDistance offset_distance_;
 };
 }
