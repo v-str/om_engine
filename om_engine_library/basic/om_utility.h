@@ -1,7 +1,7 @@
 ﻿#ifndef OM_UTILITY_H
 #define OM_UTILITY_H
 
-namespace OmEngine {
+namespace OmUtility {
 enum Side { kLeft = 1, kRight = 2, kUp = 4, kDown = 8 };
 
 struct OffsetDistance {
