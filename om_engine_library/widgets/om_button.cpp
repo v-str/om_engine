@@ -10,3 +10,7 @@ OmButton::OmButton(const QString& button_text, QWidget* parent)
 OmButton::~OmButton() {}
 
 void OmButton::SetOffsetSide(const Side& side) { offset_side_ = side; }
+
+void OmButton::SetOffsetDistance(const OffsetDistance& offset_distance) {
+  offset_distance_ = offset_distance;
+}

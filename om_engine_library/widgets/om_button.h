@@ -14,9 +14,11 @@ class OmButton : public QPushButton {
   ~OmButton();
 
   void SetOffsetSide(const OmEngine::Side& side);
+  void SetOffsetDistance(const OmEngine::OffsetDistance& offset_distance);
 
  private:
   OmEngine::Side offset_side_;
+  OmEngine::OffsetDistance offset_distance_;
 };
 }
 
