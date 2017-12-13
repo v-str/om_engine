@@ -1,0 +1,6 @@
+﻿#ifndef ANIMATION_GEOMETRY_SETTER_H
+#define ANIMATION_GEOMETRY_SETTER_H
+
+class AnimationGeometrySetter {};
+
+#endif  // ANIMATION_GEOMETRY_SETTER_H
