@@ -19,12 +19,16 @@ class WidgetAnimator : public QObject {
   explicit WidgetAnimator(QWidget* widget = nullptr);
   ~WidgetAnimator();
 
-  void SetAnimation(unsigned int animation_duration_msec,
-                    om_utility::WidgetAnimationType widget_animation_type,
+  void SetAnimation(om_utility::WidgetAnimationType widget_animation_type,
                     const QEasingCurve& curve,
-                    unsigned int animation_direction = 4);
+                    unsigned int animation_duration_msec = 500,
+                    unsigned int animation_direction = om_utility::Side::kDown);
 
  private:
+  QPropertyAnimation* property_animation_ = nullptr;
+  om_utility::WidgetAnimationType widget_animation_type_;
+  unsigned int animation_duration_msec_ = 0;
+  unsigned int animation_direction_ = 0;
 };
 }
 
