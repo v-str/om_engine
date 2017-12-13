@@ -3,10 +3,14 @@
 
 #include <QObject>
 
+#include <om_utility.h>
+
 class QPropertyAnimation;
 class QWidget;
 class QEasingCurve;
 class QRect;
+
+using namespace om_utility;
 
 namespace om_animation {
 class WidgetAnimator : public QObject {
@@ -16,6 +20,7 @@ class WidgetAnimator : public QObject {
   ~WidgetAnimator();
 
   void SetAnimation(unsigned int animation_duration_msec,
+                    om_utility::WidgetAnimationType widget_animation_type,
                     const QEasingCurve& curve,
                     unsigned int animation_direction = 4);
 

@@ -1,8 +1,10 @@
 ﻿#ifndef OM_UTILITY_H
 #define OM_UTILITY_H
 
-namespace om_utiliy {
+namespace om_utility {
 enum Side { kLeft = 1, kRight = 2, kUp = 4, kDown = 8 };
+
+enum WidgetAnimationType { kOpen, kClose };
 
 struct OffsetDistance {
   OffsetDistance(unsigned int offset_by_x = 0, unsigned int offset_by_y = 0);
