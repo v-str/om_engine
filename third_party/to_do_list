@@ -1,3 +1,6 @@
 ﻿+ 1. Initiate repo
 + 2. Create OmButton
-- 3. Add variable for widget animation state determination
+- 3. Add variable for widget animation state determination:
+    3.1 Is widget closed?
+    3.2 Is widget opened?
+    Exclude repeated animation of opening/closing (static variable?)
