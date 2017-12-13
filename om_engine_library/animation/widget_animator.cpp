@@ -1,9 +1,6 @@
 ﻿#include <widget_animator.h>
 
-#include <QEasingCurve>
-#include <QPropertyAnimation>
 #include <QTimer>
-#include <QWidget>
 
 #include <animation_geometry_setter.h>
 
@@ -23,9 +20,14 @@ void om_animation::WidgetAnimator::SetAnimation(
   animation_direction_ = animation_direction;
 }
 
-void om_animation::WidgetAnimator::Close(const QRect& widget_geometry) {
+void om_animation::WidgetAnimator::SetCurrentGeometry(
+    const QRect& widget_geometry) {
+  widget_geometry_ = widget_geometry;
+}
+
+void om_animation::WidgetAnimator::Close() {
   animation_geometry_ = AnimationGeometrySetter::GetAnimationForClosing(
-      animation_direction_, widget_geometry);
+      animation_direction_, widget_geometry_);
   animation_->setStartValue(animation_geometry_.first);
   animation_->setEndValue(animation_geometry_.second);
   QTimer::singleShot(0, this, SLOT(StartAnimationProcess()));
@@ -33,9 +35,9 @@ void om_animation::WidgetAnimator::Close(const QRect& widget_geometry) {
                      SLOT(EndAnimationProcess()));
 }
 
-void om_animation::WidgetAnimator::Open(const QRect& widget_geometry) {
+void om_animation::WidgetAnimator::Open() {
   animation_geometry_ = AnimationGeometrySetter::GetAnimationForOpening(
-      animation_direction_, widget_geometry);
+      animation_direction_, widget_geometry_);
   animation_->setStartValue(animation_geometry_.first);
   animation_->setEndValue(animation_geometry_.second);
   QTimer::singleShot(animation_duration_msec_, this,

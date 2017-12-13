@@ -1,15 +1,17 @@
 ﻿#ifndef WIDGET_ANIMATOR_H
 #define WIDGET_ANIMATOR_H
 
+#include <QEasingCurve>
 #include <QObject>
 #include <QPair>
+#include <QPropertyAnimation>
 #include <QRect>
+#include <QWidget>
 
 #include <om_utility.h>
 
 class QPropertyAnimation;
 class QWidget;
-class QEasingCurve;
 
 using namespace om_utility;
 
@@ -21,12 +23,15 @@ class WidgetAnimator : public QObject {
   ~WidgetAnimator();
 
   void SetAnimation(om_utility::WidgetAnimationType widget_animation_type,
-                    const QEasingCurve& curve,
+                    const QEasingCurve& curve = QEasingCurve::OutCirc,
                     unsigned int animation_duration_msec = 500,
                     unsigned int animation_direction = om_utility::Side::kDown);
+
+  void SetCurrentGeometry(const QRect& widget_geometry);
+
  public slots:
-  void Close(const QRect& widget_geometry);
-  void Open(const QRect& widget_geometry);
+  void Close();
+  void Open();
 
  signals:
   void AnimationComplete();
@@ -41,6 +46,8 @@ class WidgetAnimator : public QObject {
   QPair<QRect, QRect> animation_geometry_;
   unsigned int animation_duration_msec_ = 0;
   unsigned int animation_direction_ = 0;
+
+  QRect widget_geometry_;
 };
 }
 
