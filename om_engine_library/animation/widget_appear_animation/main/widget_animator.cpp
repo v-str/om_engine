@@ -11,11 +11,9 @@ WidgetAnimator::WidgetAnimator(QWidget* widget)
 
 WidgetAnimator::~WidgetAnimator() {}
 
-void WidgetAnimator::SetAnimation(WidgetAnimationType animation_type,
-                                  const QEasingCurve& curve,
+void WidgetAnimator::SetAnimation(const QEasingCurve& curve,
                                   unsigned int animation_duration_msec,
                                   unsigned int animation_direction) {
-  animation_type_ = animation_type;
   animation_->setEasingCurve(curve);
   animation_->setDuration(animation_duration_msec);
   animation_direction_ = animation_direction;
@@ -27,13 +25,13 @@ void WidgetAnimator::SetCurrentGeometry(const QRect& widget_geometry) {
 
 void WidgetAnimator::Close() {
   animation_geometry_ = AnimationGeometrySetter::GetGeometryFor(
-      animation_type_, animation_direction_, widget_geometry_);
+      WidgetAnimationType::kClose, animation_direction_, widget_geometry_);
   RunAnimation(0, animation_duration_msec_);
 }
 
 void WidgetAnimator::Open() {
   animation_geometry_ = AnimationGeometrySetter::GetGeometryFor(
-      animation_type_, animation_direction_, widget_geometry_);
+      WidgetAnimationType::kOpen, animation_direction_, widget_geometry_);
   RunAnimation(animation_duration_msec_, animation_duration_msec_);
 }
 

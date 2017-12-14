@@ -4,8 +4,7 @@ TestWidget::TestWidget(QWidget* parent)
     : QWidget(parent),
       test_frame_(new QFrame(this)),
       test_label_(new QLabel("om engine library", test_frame_)),
-      close_animator_(new WidgetAnimator(test_frame_)),
-      open_animator_(new WidgetAnimator(test_frame_)),
+      animator_(new WidgetAnimator(test_frame_)),
       button_open_(new OmButton("Open!", this)),
       button_close_(new OmButton("Close!", this)) {
   SetAppearance();
@@ -69,18 +68,13 @@ void TestWidget::SetWidgets() {
 }
 
 void TestWidget::SetAnimation() {
-  close_animator_->SetAnimation(om_utility::WidgetAnimationType::kClose,
-                                QEasingCurve::OutCirc, 500, om_utility::kLeft);
-  close_animator_->SetCurrentGeometry(test_frame_->geometry());
-
-  open_animator_->SetAnimation(om_utility::WidgetAnimationType::kOpen,
-                               QEasingCurve::OutCirc, 500, om_utility::kRight);
-  open_animator_->SetCurrentGeometry(test_frame_->geometry());
+  animator_->SetAnimation(QEasingCurve::OutCirc, 500, om_utility::kLeft);
+  animator_->SetCurrentGeometry(test_frame_->geometry());
 }
 
 void TestWidget::SetConnections() {
-  QObject::connect(button_close_, SIGNAL(clicked(bool)), close_animator_,
+  QObject::connect(button_close_, SIGNAL(clicked(bool)), animator_,
                    SLOT(Close()));
-  QObject::connect(button_open_, SIGNAL(clicked(bool)), open_animator_,
+  QObject::connect(button_open_, SIGNAL(clicked(bool)), animator_,
                    SLOT(Open()));
 }

@@ -22,8 +22,7 @@ class WidgetAnimator : public QObject {
   explicit WidgetAnimator(QWidget* widget = nullptr);
   ~WidgetAnimator();
 
-  void SetAnimation(om_utility::WidgetAnimationType animation_type,
-                    const QEasingCurve& curve = QEasingCurve::OutCirc,
+  void SetAnimation(const QEasingCurve& curve = QEasingCurve::OutCirc,
                     unsigned int animation_duration_msec = 500,
                     unsigned int animation_direction = om_utility::Side::kDown);
 
@@ -45,7 +44,6 @@ class WidgetAnimator : public QObject {
                     unsigned int duration_end_msec);
 
   QPropertyAnimation* animation_ = nullptr;
-  om_utility::WidgetAnimationType animation_type_;
   QPair<QRect, QRect> animation_geometry_;
   unsigned int animation_duration_msec_ = 0;
   unsigned int animation_direction_ = 0;

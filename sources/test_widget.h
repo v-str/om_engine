@@ -28,8 +28,7 @@ class TestWidget : public QWidget {
   OmButton* button_open_ = nullptr;
   OmButton* button_close_ = nullptr;
 
-  WidgetAnimator* close_animator_ = nullptr;
-  WidgetAnimator* open_animator_ = nullptr;
+  WidgetAnimator* animator_ = nullptr;
 };
 
 #endif  // TEST_WIDGET_H
