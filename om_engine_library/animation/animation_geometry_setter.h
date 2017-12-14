@@ -7,9 +7,9 @@
 namespace om_animation {
 class AnimationGeometrySetter {
  public:
-  static QPair<QRect, QRect> GetAnimationForClosing(
+  static QPair<QRect, QRect> GetGeometryForClosing(
       unsigned int animation_direction, const QRect& widget_geometry);
-  static QPair<QRect, QRect> GetAnimationForOpening(
+  static QPair<QRect, QRect> GetGeometryForOpening(
       unsigned int animation_direction, const QRect& widget_geometry);
 
  private:

@@ -26,13 +26,13 @@ void om_animation::WidgetAnimator::SetCurrentGeometry(
 }
 
 void om_animation::WidgetAnimator::Close() {
-  animation_geometry_ = AnimationGeometrySetter::GetAnimationForClosing(
+  animation_geometry_ = AnimationGeometrySetter::GetGeometryForClosing(
       animation_direction_, widget_geometry_);
   RunAnimation(0, animation_duration_msec_);
 }
 
 void om_animation::WidgetAnimator::Open() {
-  animation_geometry_ = AnimationGeometrySetter::GetAnimationForOpening(
+  animation_geometry_ = AnimationGeometrySetter::GetGeometryForOpening(
       animation_direction_, widget_geometry_);
   RunAnimation(animation_duration_msec_, animation_duration_msec_);
 }
