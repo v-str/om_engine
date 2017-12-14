@@ -4,7 +4,7 @@ TestWidget::TestWidget(QWidget* parent)
     : QWidget(parent),
       test_frame_(new QFrame(this)),
       test_label_(new QLabel("om engine library", test_frame_)),
-      animator_(new WidgetAnimator(test_frame_)),
+      animator_(new WidgetAnimator(test_frame_, true)),
       button_open_(new OmButton("Open!", this)),
       button_close_(new OmButton("Close!", this)) {
   SetAppearance();
@@ -73,8 +73,6 @@ void TestWidget::SetAnimation() {
 }
 
 void TestWidget::SetConnections() {
-  QObject::connect(button_close_, SIGNAL(clicked(bool)), animator_,
-                   SLOT(Close()));
-  QObject::connect(button_open_, SIGNAL(clicked(bool)), animator_,
-                   SLOT(Open()));
+  connect(button_close_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
+  connect(button_open_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
 }

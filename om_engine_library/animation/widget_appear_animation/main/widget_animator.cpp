@@ -6,8 +6,10 @@
 
 using namespace om_animation;
 
-WidgetAnimator::WidgetAnimator(QWidget* widget)
-    : QObject(), animation_(new QPropertyAnimation(widget, "geometry", this)) {}
+WidgetAnimator::WidgetAnimator(QWidget* widget, bool is_widget_open)
+    : QObject(),
+      animation_(new QPropertyAnimation(widget, "geometry", this)),
+      is_widget_open_(is_widget_open) {}
 
 WidgetAnimator::~WidgetAnimator() {}
 
@@ -26,15 +28,25 @@ void WidgetAnimator::SetCurrentGeometry(const QRect& widget_geometry) {
 }
 
 void WidgetAnimator::Close() {
-  animation_geometry_ = AnimationGeometrySetter::GetGeometryFor(
-      WidgetAnimationType::kClose, direction_close_in_to_, widget_geometry_);
-  RunAnimation(0, animation_duration_msec_);
+  if (is_widget_open_) {
+    animation_geometry_ = AnimationGeometrySetter::GetGeometryFor(
+        WidgetAnimationType::kClose, direction_close_in_to_, widget_geometry_);
+    RunAnimation(0, animation_duration_msec_);
+    is_widget_open_ = false;
+  } else {
+    emit AnimationIncomplete();
+  }
 }
 
 void WidgetAnimator::Open() {
-  animation_geometry_ = AnimationGeometrySetter::GetGeometryFor(
-      WidgetAnimationType::kOpen, direction_open_to_, widget_geometry_);
-  RunAnimation(animation_duration_msec_, animation_duration_msec_);
+  if (!is_widget_open_) {
+    animation_geometry_ = AnimationGeometrySetter::GetGeometryFor(
+        WidgetAnimationType::kOpen, direction_open_to_, widget_geometry_);
+    RunAnimation(animation_duration_msec_, animation_duration_msec_);
+    is_widget_open_ = true;
+  } else {
+    emit AnimationIncomplete();
+  }
 }
 
 void WidgetAnimator::StartAnimationProcess() { animation_->start(); }

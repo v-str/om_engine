@@ -19,7 +19,7 @@ namespace om_animation {
 class WidgetAnimator : public QObject {
   Q_OBJECT
  public:
-  explicit WidgetAnimator(QWidget* widget = nullptr);
+  WidgetAnimator(QWidget* widget = nullptr, bool is_widget_open = true);
   ~WidgetAnimator();
 
   void SetAnimation(const QEasingCurve& curve = QEasingCurve::OutCirc,
@@ -35,6 +35,7 @@ class WidgetAnimator : public QObject {
 
  signals:
   void AnimationComplete();
+  void AnimationIncomplete();
 
  protected slots:
   void StartAnimationProcess();
@@ -51,6 +52,8 @@ class WidgetAnimator : public QObject {
   unsigned int direction_close_in_to_ = 0;
 
   QRect widget_geometry_;
+
+  bool is_widget_open_;
 };
 }
 
