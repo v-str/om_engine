@@ -46,14 +46,15 @@ int main(int argc, char** argv) {
       "}");
 
   om_animation::WidgetAnimator close_widget_animator(animation_frame);
-  close_widget_animator.SetAnimation(om_utility::WidgetAnimationType::kClose);
+  close_widget_animator.SetAnimation(om_utility::WidgetAnimationType::kClose,
+                                     QEasingCurve::OutCirc, 500,
+                                     om_utility::kLeft | om_utility::kDown);
   close_widget_animator.SetCurrentGeometry(animation_frame->geometry());
 
   om_animation::WidgetAnimator open_widget_animator(animation_frame);
   open_widget_animator.SetAnimation(om_utility::WidgetAnimationType::kOpen,
                                     QEasingCurve::OutCirc, 500,
-                                    om_utility::kUp);
-
+                                    om_utility::kRight | om_utility::kUp);
   open_widget_animator.SetCurrentGeometry(animation_frame->geometry());
 
   QObject::connect(button_close, SIGNAL(clicked(bool)), &close_widget_animator,

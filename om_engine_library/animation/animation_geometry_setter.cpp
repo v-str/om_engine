@@ -48,16 +48,18 @@ void AnimationGeometrySetter::SetAnimationGeometryForClosing(
 
 void AnimationGeometrySetter::SetAnimationGeometryForOpening(
     unsigned int animation_direction, const QRect& widget_geometry) {
+  geometry_pair_.second = widget_geometry;
+
   int x = widget_geometry.x();
   int y = widget_geometry.y();
   int width = widget_geometry.width();
   int height = widget_geometry.height();
 
-  if (animation_direction & Side::kDown) {
-    height = 0;
-  }
   if (animation_direction & Side::kUp) {
     y += height;
+    height = 0;
+  }
+  if (animation_direction & Side::kDown) {
     height = 0;
   }
   if (animation_direction & Side::kLeft) {
@@ -69,5 +71,4 @@ void AnimationGeometrySetter::SetAnimationGeometryForOpening(
   }
 
   geometry_pair_.first = (QRect(x, y, width, height));
-  geometry_pair_.second = widget_geometry;
 }
