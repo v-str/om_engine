@@ -2,6 +2,8 @@
 
 #include <QDebug>
 
+static unsigned int kCount = 0;
+
 TestWidget::TestWidget(QWidget* parent)
     : QWidget(parent),
       test_frame_(new QFrame(this)),
@@ -18,13 +20,14 @@ TestWidget::TestWidget(QWidget* parent)
 TestWidget::~TestWidget() {}
 
 void TestWidget::MultipleClickCathed() {
-  qDebug() << "Multiple click on the same button!";
+  qDebug() << "Multiple click on the same button!" << kCount;
+  ++kCount;
 }
 
 void TestWidget::SetAppearance() {
   setStyleSheet(
       "QWidget {"
-      "background: black;"
+      "background: #202020;"
       "}");
 
   test_frame_->setStyleSheet(

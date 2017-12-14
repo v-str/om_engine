@@ -45,17 +45,17 @@ class WidgetAnimator : public QObject {
   void RunAnimation(WidgetAnimationType type,
                     unsigned int animation_direction,
                     unsigned int duration_start_msec,
-                    unsigned int duration_end_msec,
-                    bool is_widget_open);
+                    unsigned int duration_end_msec);
+
+  void ChangeWidgetState();
 
   QPropertyAnimation* animation_ = nullptr;
   QPair<QRect, QRect> animation_geometry_;
+  QRect widget_geometry_;
+
   unsigned int animation_duration_msec_ = 0;
   unsigned int direction_open_to_ = 0;
   unsigned int direction_close_in_to_ = 0;
-
-  QRect widget_geometry_;
-
   bool is_widget_open_;
 };
 }
