@@ -13,6 +13,9 @@ class GeometryPairConfigurator {
       om_utility::WidgetAnimationType type,
       unsigned int animation_direction,
       const QRect& widget_geometry);
+
+ private:
+  static QPair<QRect, QRect> geometry_pair_;
 };
 }
 #endif  // GEOMETRY_PAIR_CONFIGURATOR_H
