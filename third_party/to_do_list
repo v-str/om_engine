@@ -4,4 +4,4 @@
     3.1 Is widget closed?
     3.2 Is widget opened?
     Exclude repeated animation of opening/closing (static variable?)
-- 4. Refactor WidgetAnimator and AnimationGeometrySetter
++ 4. Refactor WidgetAnimator and AnimationGeometrySetter

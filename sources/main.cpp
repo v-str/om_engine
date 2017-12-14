@@ -34,6 +34,7 @@ int main(int argc, char** argv) {
   animation_frame->setStyleSheet(
       "QFrame{"
       "background: black;"
+      "border-radius: 5px;"
       "}");
 
   QLabel* label = new QLabel("Animation Test", animation_frame);
