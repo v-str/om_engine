@@ -1,5 +1,7 @@
 ﻿#include <test_widget.h>
 
+#include <QDebug>
+
 TestWidget::TestWidget(QWidget* parent)
     : QWidget(parent),
       test_frame_(new QFrame(this)),
@@ -14,6 +16,10 @@ TestWidget::TestWidget(QWidget* parent)
 }
 
 TestWidget::~TestWidget() {}
+
+void TestWidget::MultipleClickCathed() {
+  qDebug() << "Multiple click on the same button!";
+}
 
 void TestWidget::SetAppearance() {
   setStyleSheet(
@@ -75,4 +81,7 @@ void TestWidget::SetAnimation() {
 void TestWidget::SetConnections() {
   connect(button_close_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
   connect(button_open_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
+
+  connect(animator_, SIGNAL(AnimationIncomplete()),
+          SLOT(MultipleClickCathed()));
 }

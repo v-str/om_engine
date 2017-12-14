@@ -17,6 +17,9 @@ class TestWidget : public QWidget {
   explicit TestWidget(QWidget* parent = nullptr);
   ~TestWidget();
 
+ private slots:
+  void MultipleClickCathed();
+
  private:
   void SetAppearance();
   void SetWidgets();
