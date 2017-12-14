@@ -13,6 +13,9 @@ class AnimationGeometrySetter {
       om_utility::WidgetAnimationType animation_type,
       unsigned int animation_direction,
       const QRect& widget_geometry);
+
+ private:
+  static QRect widget_geometry_;
 };
 }
 

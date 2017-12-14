@@ -5,6 +5,8 @@
 using namespace om_animation;
 using namespace om_utility;
 
+QRect AnimationGeometrySetter::widget_geometry_;
+
 QPair<QRect, QRect> AnimationGeometrySetter::GetGeometryFor(
     WidgetAnimationType animation_type,
     unsigned int animation_direction,

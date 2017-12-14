@@ -1,0 +1,6 @@
+﻿#ifndef CLOSE_CONFIGURATION_GEOMETRY_H
+#define CLOSE_CONFIGURATION_GEOMETRY_H
+
+class CloseConfigurationGeometry {};
+
+#endif  // CLOSE_CONFIGURATION_GEOMETRY_H

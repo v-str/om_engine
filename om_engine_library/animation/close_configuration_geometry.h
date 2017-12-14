@@ -1,0 +1,6 @@
+﻿#ifndef OPEN_CONFIGURATION_GEOMETRY_H
+#define OPEN_CONFIGURATION_GEOMETRY_H
+
+class OpenConfigurationGeometry {};
+
+#endif  // OPEN_CONFIGURATION_GEOMETRY_H
