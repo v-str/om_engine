@@ -11,6 +11,8 @@ QPair<QRect, QRect> OpenConfigurationGeometry::GetGeometryConfiguration(
 
   open_geometry_pair.second = widget_geometry;
 
+  InitializeParameters(x_, y_, width_, height_, widget_geometry);
+
   if (animation_direction & Side::kUp) {
     y_ += height_;
     height_ = 0;

@@ -11,6 +11,9 @@ om_animation::CloseConfigurationGeometry::GetGeometryConfiguration(
   QPair<QRect, QRect> close_geometry_pair;
 
   close_geometry_pair.first = widget_geometry;
+
+  InitializeParameters(x_, y_, width_, height_, widget_geometry);
+
   if (animation_direction & Side::kUp) {
     height_ = 0;
   }
