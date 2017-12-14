@@ -1,6 +1,6 @@
-﻿#ifndef CLOSE_CONFIGURATION_GEOMETRY_H
-#define CLOSE_CONFIGURATION_GEOMETRY_H
+﻿#ifndef OPEN_CONFIGURATION_GEOMETRY_H
+#define OPEN_CONFIGURATION_GEOMETRY_H
 
-class CloseConfigurationGeometry {};
+class OpenConfigurationGeometry {};
 
-#endif  // CLOSE_CONFIGURATION_GEOMETRY_H
+#endif  // OPEN_CONFIGURATION_GEOMETRY_H

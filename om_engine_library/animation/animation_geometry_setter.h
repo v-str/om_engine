@@ -15,7 +15,7 @@ class AnimationGeometrySetter {
       const QRect& widget_geometry);
 
  private:
-  static QRect widget_geometry_;
+  static QPair<QRect, QRect> geometry_pair_;
 };
 }
 
