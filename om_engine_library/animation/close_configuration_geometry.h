@@ -7,8 +7,7 @@ namespace om_animation {
 class CloseConfigurationGeometry : public ConfigurationGeometry {
  public:
   QPair<QRect, QRect> GetGeometryConfiguration(
-      om_utility::Side animation_direction,
-      const QRect& widget_geometry) override;
+      unsigned int animation_direction, const QRect& widget_geometry) override;
 
  private:
   unsigned int x_ = 0;

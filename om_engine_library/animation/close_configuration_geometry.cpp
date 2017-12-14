@@ -1,11 +1,13 @@
 ﻿#include <close_configuration_geometry.h>
 
+#include <om_utility.h>
+
 using namespace om_animation;
 using namespace om_utility;
 
 QPair<QRect, QRect>
 om_animation::CloseConfigurationGeometry::GetGeometryConfiguration(
-    om_utility::Side animation_direction, const QRect& widget_geometry) {
+    unsigned int animation_direction, const QRect& widget_geometry) {
   QPair<QRect, QRect> close_geometry_pair;
 
   close_geometry_pair.first = widget_geometry;

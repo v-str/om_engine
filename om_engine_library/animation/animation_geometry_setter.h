@@ -6,6 +6,9 @@
 
 #include <om_utility.h>
 
+#include <close_configuration_geometry.h>
+#include <open_configuration_geometry.h>
+
 namespace om_animation {
 class AnimationGeometrySetter {
  public:
@@ -15,7 +18,8 @@ class AnimationGeometrySetter {
       const QRect& widget_geometry);
 
  private:
-  static QPair<QRect, QRect> geometry_pair_;
+  static OpenConfigurationGeometry kOpenConfigurationGeometry;
+  static CloseConfigurationGeometry kCloseConfigurationGeometry;
 };
 }
 
