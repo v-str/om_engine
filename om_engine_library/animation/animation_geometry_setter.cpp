@@ -7,6 +7,14 @@ using namespace om_utility;
 
 QPair<QRect, QRect> AnimationGeometrySetter::geometry_pair_;
 
+QPair<QRect, QRect> AnimationGeometrySetter::GetGeometryFor(
+    AnimationGeometrySetter::AnimationType animation_type,
+    unsigned int animation_direction,
+    const QRect& widget_geometry) {
+  // return GeometryPairConfigurator(animation_type,
+  //  animation_direction, widget_geometry);
+}
+
 QPair<QRect, QRect> AnimationGeometrySetter::GetGeometryForClosing(
     unsigned int animation_direction, const QRect& widget_geometry) {
   SetAnimationGeometryForClosing(animation_direction, widget_geometry);
