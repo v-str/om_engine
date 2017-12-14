@@ -68,7 +68,7 @@ void TestWidget::SetWidgets() {
 }
 
 void TestWidget::SetAnimation() {
-  animator_->SetAnimation(QEasingCurve::OutCirc, 500, om_utility::kLeft);
+  animator_->SetAnimation(QEasingCurve::OutCirc, 500);
   animator_->SetCurrentGeometry(test_frame_->geometry());
 }
 

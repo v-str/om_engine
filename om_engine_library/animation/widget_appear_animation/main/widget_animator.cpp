@@ -13,10 +13,12 @@ WidgetAnimator::~WidgetAnimator() {}
 
 void WidgetAnimator::SetAnimation(const QEasingCurve& curve,
                                   unsigned int animation_duration_msec,
-                                  unsigned int animation_direction) {
+                                  unsigned int open_to,
+                                  unsigned int close_in_to) {
   animation_->setEasingCurve(curve);
   animation_->setDuration(animation_duration_msec);
-  animation_direction_ = animation_direction;
+  direction_open_to_ = open_to;
+  direction_close_in_to_ = close_in_to;
 }
 
 void WidgetAnimator::SetCurrentGeometry(const QRect& widget_geometry) {
@@ -25,13 +27,13 @@ void WidgetAnimator::SetCurrentGeometry(const QRect& widget_geometry) {
 
 void WidgetAnimator::Close() {
   animation_geometry_ = AnimationGeometrySetter::GetGeometryFor(
-      WidgetAnimationType::kClose, animation_direction_, widget_geometry_);
+      WidgetAnimationType::kClose, direction_close_in_to_, widget_geometry_);
   RunAnimation(0, animation_duration_msec_);
 }
 
 void WidgetAnimator::Open() {
   animation_geometry_ = AnimationGeometrySetter::GetGeometryFor(
-      WidgetAnimationType::kOpen, animation_direction_, widget_geometry_);
+      WidgetAnimationType::kOpen, direction_open_to_, widget_geometry_);
   RunAnimation(animation_duration_msec_, animation_duration_msec_);
 }
 

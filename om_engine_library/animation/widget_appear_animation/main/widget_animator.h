@@ -24,7 +24,8 @@ class WidgetAnimator : public QObject {
 
   void SetAnimation(const QEasingCurve& curve = QEasingCurve::OutCirc,
                     unsigned int animation_duration_msec = 500,
-                    unsigned int animation_direction = om_utility::Side::kDown);
+                    unsigned int open_to = om_utility::Side::kUp,
+                    unsigned int close_in_to = om_utility::Side::kDown);
 
   void SetCurrentGeometry(const QRect& widget_geometry);
 
@@ -46,7 +47,8 @@ class WidgetAnimator : public QObject {
   QPropertyAnimation* animation_ = nullptr;
   QPair<QRect, QRect> animation_geometry_;
   unsigned int animation_duration_msec_ = 0;
-  unsigned int animation_direction_ = 0;
+  unsigned int direction_open_to_ = 0;
+  unsigned int direction_close_in_to_ = 0;
 
   QRect widget_geometry_;
 };
