@@ -29,10 +29,8 @@ void WidgetAnimator::SetCurrentGeometry(const QRect& widget_geometry) {
 
 void WidgetAnimator::Close() {
   if (is_widget_open_) {
-    animation_geometry_ = AnimationGeometrySetter::GetGeometryFor(
-        WidgetAnimationType::kClose, direction_close_in_to_, widget_geometry_);
-    RunAnimation(0, animation_duration_msec_);
-    is_widget_open_ = false;
+    RunAnimation(kClose, direction_close_in_to_, 0, animation_duration_msec_,
+                 false);
   } else {
     emit AnimationIncomplete();
   }
@@ -40,10 +38,8 @@ void WidgetAnimator::Close() {
 
 void WidgetAnimator::Open() {
   if (!is_widget_open_) {
-    animation_geometry_ = AnimationGeometrySetter::GetGeometryFor(
-        WidgetAnimationType::kOpen, direction_open_to_, widget_geometry_);
-    RunAnimation(animation_duration_msec_, animation_duration_msec_);
-    is_widget_open_ = true;
+    RunAnimation(kOpen, direction_open_to_, animation_duration_msec_,
+                 animation_duration_msec_, true);
   } else {
     emit AnimationIncomplete();
   }
@@ -53,10 +49,16 @@ void WidgetAnimator::StartAnimationProcess() { animation_->start(); }
 
 void WidgetAnimator::EndAnimationProcess() { emit AnimationComplete(); }
 
-void WidgetAnimator::RunAnimation(unsigned int duration_start_msec,
-                                  unsigned int duration_end_msec) {
+void WidgetAnimator::RunAnimation(WidgetAnimationType type,
+                                  unsigned int animation_direction,
+                                  unsigned int duration_start_msec,
+                                  unsigned int duration_end_msec,
+                                  bool is_widget_open) {
+  animation_geometry_ = AnimationGeometrySetter::GetGeometryFor(
+      type, animation_direction, widget_geometry_);
   animation_->setStartValue(animation_geometry_.first);
   animation_->setEndValue(animation_geometry_.second);
   QTimer::singleShot(duration_start_msec, this, SLOT(StartAnimationProcess()));
   QTimer::singleShot(duration_end_msec, this, SLOT(EndAnimationProcess()));
+  is_widget_open_ = is_widget_open;
 }
