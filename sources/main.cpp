@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
       "border-radius: 5px;"
       "}");
 
-  QLabel* label = new QLabel("Animation Test", animation_frame);
+  QLabel* label = new QLabel("om_engine library", animation_frame);
   label->setGeometry(20, 20, 520, 210);
   label->setAlignment(Qt::AlignCenter);
   label->setStyleSheet(
@@ -49,13 +49,13 @@ int main(int argc, char** argv) {
   om_animation::WidgetAnimator close_widget_animator(animation_frame);
   close_widget_animator.SetAnimation(om_utility::WidgetAnimationType::kClose,
                                      QEasingCurve::OutCirc, 500,
-                                     om_utility::kLeft | om_utility::kDown);
+                                     om_utility::kLeft);
   close_widget_animator.SetCurrentGeometry(animation_frame->geometry());
 
   om_animation::WidgetAnimator open_widget_animator(animation_frame);
   open_widget_animator.SetAnimation(om_utility::WidgetAnimationType::kOpen,
                                     QEasingCurve::OutCirc, 500,
-                                    om_utility::kRight | om_utility::kUp);
+                                    om_utility::kRight);
   open_widget_animator.SetCurrentGeometry(animation_frame->geometry());
 
   QObject::connect(button_close, SIGNAL(clicked(bool)), &close_widget_animator,
