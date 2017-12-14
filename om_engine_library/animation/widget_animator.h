@@ -41,6 +41,9 @@ class WidgetAnimator : public QObject {
   void EndAnimationProcess();
 
  private:
+  void RunAnimation(unsigned int duration_start_msec,
+                    unsigned int duration_end_msec);
+
   QPropertyAnimation* animation_ = nullptr;
   om_utility::WidgetAnimationType widget_animation_type_;
   QPair<QRect, QRect> animation_geometry_;

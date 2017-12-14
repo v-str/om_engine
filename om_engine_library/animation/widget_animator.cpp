@@ -28,22 +28,15 @@ void om_animation::WidgetAnimator::SetCurrentGeometry(
 void om_animation::WidgetAnimator::Close() {
   animation_geometry_ = AnimationGeometrySetter::GetAnimationForClosing(
       animation_direction_, widget_geometry_);
-  animation_->setStartValue(animation_geometry_.first);
-  animation_->setEndValue(animation_geometry_.second);
-  QTimer::singleShot(0, this, SLOT(StartAnimationProcess()));
-  QTimer::singleShot(animation_duration_msec_, this,
-                     SLOT(EndAnimationProcess()));
+
+  RunAnimation(0, animation_duration_msec_);
 }
 
 void om_animation::WidgetAnimator::Open() {
   animation_geometry_ = AnimationGeometrySetter::GetAnimationForOpening(
       animation_direction_, widget_geometry_);
-  animation_->setStartValue(animation_geometry_.first);
-  animation_->setEndValue(animation_geometry_.second);
-  QTimer::singleShot(animation_duration_msec_, this,
-                     SLOT(StartAnimationProcess()));
-  QTimer::singleShot(animation_duration_msec_, this,
-                     SLOT(EndAnimationProcess()));
+
+  RunAnimation(animation_duration_msec_, animation_duration_msec_);
 }
 
 void om_animation::WidgetAnimator::StartAnimationProcess() {
@@ -52,4 +45,12 @@ void om_animation::WidgetAnimator::StartAnimationProcess() {
 
 void om_animation::WidgetAnimator::EndAnimationProcess() {
   emit AnimationComplete();
+}
+
+void om_animation::WidgetAnimator::RunAnimation(
+    unsigned int duration_start_msec, unsigned int duration_end_msec) {
+  animation_->setStartValue(animation_geometry_.first);
+  animation_->setEndValue(animation_geometry_.second);
+  QTimer::singleShot(duration_start_msec, this, SLOT(StartAnimationProcess()));
+  QTimer::singleShot(duration_end_msec, this, SLOT(EndAnimationProcess()));
 }
