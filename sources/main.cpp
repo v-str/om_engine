@@ -5,12 +5,12 @@
 #include <QObject>
 #include <QWidget>
 
-#include <test_widget.h>
+#include <main_test_widget.h>
 
 int main(int argc, char** argv) {
   QApplication app(argc, argv);
 
-  TestWidget widget;
+  MainTestWidget widget;
   widget.show();
 
   return app.exec();

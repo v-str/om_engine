@@ -1,10 +1,10 @@
-﻿#include <test_widget.h>
+﻿#include <main_test_widget.h>
 
 #include <QDebug>
 
 static unsigned int kCount = 0;
 
-TestWidget::TestWidget(QWidget* parent)
+MainTestWidget::MainTestWidget(QWidget* parent)
     : QWidget(parent),
       test_frame_(new QFrame(this)),
       test_label_(new QLabel("om engine library", test_frame_)),
@@ -17,14 +17,14 @@ TestWidget::TestWidget(QWidget* parent)
   SetConnections();
 }
 
-TestWidget::~TestWidget() {}
+MainTestWidget::~MainTestWidget() {}
 
-void TestWidget::MultipleClickCathed() {
+void MainTestWidget::MultipleClickCathed() {
   qDebug() << "Multiple click on the same button!" << kCount;
   ++kCount;
 }
 
-void TestWidget::SetAppearance() {
+void MainTestWidget::SetAppearance() {
   setStyleSheet(
       "QWidget {"
       "background: #202020;"
@@ -57,7 +57,7 @@ void TestWidget::SetAppearance() {
       "}");
 }
 
-void TestWidget::SetWidgets() {
+void MainTestWidget::SetWidgets() {
   resize(600, 400);
 
   test_frame_->setGeometry(50, 50, 500, 300);
@@ -76,12 +76,12 @@ void TestWidget::SetWidgets() {
                                om_utility::Side::kDown);
 }
 
-void TestWidget::SetAnimation() {
+void MainTestWidget::SetAnimation() {
   animator_->SetAnimation(QEasingCurve::OutCirc, 500);
   animator_->SetCurrentGeometry(test_frame_->geometry());
 }
 
-void TestWidget::SetConnections() {
+void MainTestWidget::SetConnections() {
   connect(button_close_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
   connect(button_open_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
 

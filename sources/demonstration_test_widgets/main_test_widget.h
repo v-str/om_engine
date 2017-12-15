@@ -1,5 +1,5 @@
-﻿#ifndef TEST_WIDGET_H
-#define TEST_WIDGET_H
+﻿#ifndef SINGLE_TEST_WIDGET_H
+#define SINGLE_TEST_WIDGET_H
 
 #include <QFrame>
 #include <QLabel>
@@ -11,11 +11,11 @@
 using namespace om_widgets;
 using namespace om_animation;
 
-class TestWidget : public QWidget {
+class MainTestWidget : public QWidget {
   Q_OBJECT
  public:
-  explicit TestWidget(QWidget* parent = nullptr);
-  ~TestWidget();
+  explicit MainTestWidget(QWidget* parent = nullptr);
+  ~MainTestWidget();
 
  private slots:
   void MultipleClickCathed();
@@ -34,4 +34,4 @@ class TestWidget : public QWidget {
   WidgetAnimator* animator_ = nullptr;
 };
 
-#endif  // TEST_WIDGET_H
+#endif  // SINGLE_TEST_WIDGET_H
