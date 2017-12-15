@@ -5,5 +5,5 @@
     3.2 Is widget opened?
     Exclude repeated animation of opening/closing (static variable?)
 + 4. Refactor WidgetAnimator and AnimationGeometrySetter
-- 5. Perform multiple widget animation test in separate class
++ 5. Perform multiple widget animation test in separate class
 - 6. Add text animation (aka running string)
