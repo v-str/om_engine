@@ -6,8 +6,7 @@ static unsigned int kCount = 0;
 
 MainTestWidget::MainTestWidget(QWidget* parent)
     : QWidget(parent),
-      test_frame_(new QFrame(this)),
-      test_label_(new QLabel("om engine library", test_frame_)),
+      test_frame_(new TestFrame(this)),
       animator_(new WidgetAnimator(test_frame_, true)),
       button_open_(new OmButton("Open!", this)),
       button_close_(new OmButton("Close!", this)) {
@@ -49,12 +48,6 @@ void MainTestWidget::SetAppearance() {
       "border: 2px solid green;"
       "border-radius: 5px;"
       "}");
-
-  test_label_->setStyleSheet(
-      "QLabel{"
-      "border: 1px solid green;"
-      "color: green;"
-      "}");
 }
 
 void MainTestWidget::SetWidgets() {
@@ -64,9 +57,6 @@ void MainTestWidget::SetWidgets() {
 
   button_open_->setGeometry(50, 10, 100, 20);
   button_close_->setGeometry(160, 10, 100, 20);
-
-  test_label_->setGeometry(10, 10, 480, 280);
-  test_label_->setAlignment(Qt::AlignCenter);
 
   button_open_->SetOffsetDistance(om_utility::OffsetDistance(2, 2));
   button_open_->SetOffsetSide(om_utility::Side::kRight |

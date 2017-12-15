@@ -2,11 +2,12 @@
 #define SINGLE_TEST_WIDGET_H
 
 #include <QFrame>
-#include <QLabel>
 #include <QWidget>
 
 #include <om_button.h>
 #include <widget_animator.h>
+
+#include <test_frame.h>
 
 using namespace om_widgets;
 using namespace om_animation;
@@ -26,8 +27,7 @@ class MainTestWidget : public QWidget {
   void SetAnimation();
   void SetConnections();
 
-  QFrame* test_frame_ = nullptr;
-  QLabel* test_label_ = nullptr;
+  TestFrame* test_frame_ = nullptr;
   OmButton* button_open_ = nullptr;
   OmButton* button_close_ = nullptr;
 
