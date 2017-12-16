@@ -7,3 +7,8 @@
 + 4. Refactor WidgetAnimator and AnimationGeometrySetter
 + 5. Perform multiple widget animation test in separate class
 - 6. Add text animation (aka running string)
+    6.1 Develop api of text animation class:
+    6.1.1 Add opportunity animate text from simple method and public slot
+    6.1.2 Maybe need some boolean methods for animated/not animated
+    text state, like:
+    bool IsTextAnimated() const;
