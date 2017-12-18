@@ -5,7 +5,7 @@
 #include <QLabel>
 
 #include <om_button.h>
-#include <text_postponer.h>
+#include <text_animator.h>
 #include <widget_animator.h>
 
 using namespace om_widgets;
@@ -34,7 +34,7 @@ class TestFrame : public QFrame {
   QLabel* test_label_ = nullptr;
   WidgetAnimator* animator_ = nullptr;
 
-  TextPostponer* text_postponer_ = nullptr;
+  TextAnimator* text_animator_ = nullptr;
 };
 
 #endif  // TEST_FRAME_H

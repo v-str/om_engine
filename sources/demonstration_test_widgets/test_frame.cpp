@@ -7,7 +7,7 @@ TestFrame::TestFrame(QWidget* parent)
       open_button_(new OmButton("open", this)),
       close_button_(new OmButton("close", this)),
       display_text_button_(new OmButton("display text", this)),
-      text_postponer_(new TextPostponer(this, 100)) {
+      text_animator_(new TextAnimator(this, 100)) {
   SetTestFrame();
   SetWidgets();
   SetLabel();
@@ -17,9 +17,7 @@ TestFrame::TestFrame(QWidget* parent)
 
 TestFrame::~TestFrame() {}
 
-void TestFrame::DisplayText() {
-  text_postponer_->RunTextPosponing(test_label_);
-}
+void TestFrame::DisplayText() { text_animator_->RunTextAnimation(test_label_); }
 
 void TestFrame::SetTestFrame() {
   resize(500, 300);
@@ -32,7 +30,7 @@ void TestFrame::SetTestFrame() {
 }
 
 void TestFrame::SetWidgets() {
-  text_postponer_->SetPostponeText("OM ENGINE LIBRARY");
+  text_animator_->SetAnimationText("OM ENGINE LIBRARY");
 
   open_button_->setGeometry(30, 30, 100, 20);
   open_button_->setStyleSheet(
