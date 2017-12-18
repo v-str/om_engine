@@ -1,12 +1,12 @@
-﻿#ifndef WRITABLE_WIDGET_FINDER_H
-#define WRITABLE_WIDGET_FINDER_H
+﻿#ifndef WRITABLE_WIDGET_MATCHER_H
+#define WRITABLE_WIDGET_MATCHER_H
 
 #include <QString>
 #include <QVector>
 
 #include <QDebug>
 
-class WritableWidgetFinder {
+class WritableWidgetMatcher {
  public:
   static QVector<QString> WritableWidgets();
   static void SetWritableWidgets(const QVector<QString>& WritableWidgets);
@@ -17,22 +17,22 @@ class WritableWidgetFinder {
   static bool is_conversion_acceptable_;
 };
 
-#endif  // WRITABLE_WIDGET_FINDER_H
+#endif  // WRITABLE_WIDGET_MATCHER_H
 
-QVector<QString> WritableWidgetFinder::writable_widgets_ = {
+QVector<QString> WritableWidgetMatcher::writable_widgets_ = {
     "QLabel", "QPushButton", "QLineEdit"};
 
-bool WritableWidgetFinder::is_conversion_acceptable_ = false;
+bool WritableWidgetMatcher::is_conversion_acceptable_ = false;
 
-QVector<QString> WritableWidgetFinder::WritableWidgets() {
+QVector<QString> WritableWidgetMatcher::WritableWidgets() {
   return writable_widgets_;
 }
 
-void WritableWidgetFinder::SetWritableWidgets(
+void WritableWidgetMatcher::SetWritableWidgets(
     const QVector<QString>& writable_widgets) {
   writable_widgets_ = writable_widgets;
 }
 
-bool WritableWidgetFinder::IsWidgetWrirable(const QString& widget_name) {
+bool WritableWidgetMatcher::IsWidgetWrirable(const QString& widget_name) {
   return is_conversion_acceptable_ = writable_widgets_.contains(widget_name);
 }

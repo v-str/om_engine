@@ -4,15 +4,13 @@
 
 #include <QDebug>
 
-#include <writable_widget_finder.h>
+#include <writable_widget_matcher.h>
 
 TextAnimator::TextAnimator(QObject* parent, unsigned int animation_delay)
     : QObject(parent),
       animation_delay_(animation_delay),
       timer_(new QTimer(parent)) {
   connect(timer_, SIGNAL(timeout()), SLOT(AnimateText()));
-
-  qDebug() << this->metaObject()->className();
 }
 
 TextAnimator::~TextAnimator() {}
