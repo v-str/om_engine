@@ -28,12 +28,12 @@ void TextPostponer::Run() {
   postpone_label_->setText(current_text_);
   ++symbol_count_;
   if (IsStringEnd()) {
-    timer_->stop();
     Reset();
   }
 }
 
 void TextPostponer::Reset() {
+  timer_->stop();
   current_text_.clear();
   symbol_count_ = 0;
 }
