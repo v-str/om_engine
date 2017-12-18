@@ -22,16 +22,12 @@ class TextPostponer : public QObject {
 
  private:
   void Reset();
-  void SetCurrentText();
-
   bool IsStringEnd() const;
 
   QTimer* timer_ = nullptr;
   QLabel* postpone_label_ = nullptr;
-
   QString postpone_text_;
   QString current_text_;
-
   unsigned int interval_postpone_msec_;
   unsigned int symbol_count_ = 0;
 };

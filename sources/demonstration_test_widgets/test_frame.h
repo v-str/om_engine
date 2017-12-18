@@ -5,6 +5,7 @@
 #include <QLabel>
 
 #include <om_button.h>
+#include <text_postponer.h>
 #include <widget_animator.h>
 
 using namespace om_widgets;
@@ -16,6 +17,9 @@ class TestFrame : public QFrame {
   explicit TestFrame(QWidget* parent = nullptr);
   ~TestFrame();
 
+ private slots:
+  void DisplayText();
+
  private:
   void SetTestFrame();
   void SetWidgets();
@@ -25,10 +29,12 @@ class TestFrame : public QFrame {
 
   OmButton* open_button_ = nullptr;
   OmButton* close_button_ = nullptr;
+  OmButton* display_text_button_ = nullptr;
 
   QLabel* test_label_ = nullptr;
-
   WidgetAnimator* animator_ = nullptr;
+
+  TextPostponer* text_postponer_ = nullptr;
 };
 
 #endif  // TEST_FRAME_H
