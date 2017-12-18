@@ -4,6 +4,8 @@
 
 #include <QDebug>
 
+#include <writable_widget_finder.h>
+
 TextAnimator::TextAnimator(QObject* parent, unsigned int animation_delay)
     : QObject(parent),
       animation_delay_(animation_delay),
