@@ -39,5 +39,5 @@ void TextPostponer::Reset() {
 }
 
 bool TextPostponer::IsStringEnd() const {
-  return symbol_count_ == (postpone_text_.size() - 1);
+  return symbol_count_ == postpone_text_.size();
 }
