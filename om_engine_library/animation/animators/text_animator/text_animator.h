@@ -22,8 +22,8 @@ class TextAnimator : public QObject {
   void SetAnimationDelay(unsigned int animation_delay);
   void SetAnimationText(const QString& animation_text);
 
-  template <typename T>
-  void RunAnimation(T* widget);
+  template <typename Widget>
+  void RunAnimation(Widget* widget);
 
  private slots:
   void AnimateText();
@@ -47,11 +47,11 @@ void om_animation::TextAnimator::RunAnimation(Widget* widget) {
   if (WritableMatcher::IsWidgetWritable(widget->metaObject()->className())) {
     writable_widget_ = new WritableWidget<Widget>(widget);
     timer_->start(animation_delay_);
-
   } else {
     throw std::logic_error(
         "incompatible type for text animation, add type to "
         "WritableMatcher class");
   }
 }
+
 #endif  // TEXT_ANIMATOR_H
