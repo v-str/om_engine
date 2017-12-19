@@ -4,6 +4,7 @@
 #include <QString>
 
 class AbstractWritableWidget {
+ public:
   ~AbstractWritableWidget() {}
   virtual void SetText(const QString& text) = 0;
 };
