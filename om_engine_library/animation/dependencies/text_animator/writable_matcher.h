@@ -13,7 +13,6 @@ class WritableMatcher {
 
  private:
   static QVector<QString> writable_widgets_;
-  static bool is_conversion_acceptable_;
 };
 }
 
