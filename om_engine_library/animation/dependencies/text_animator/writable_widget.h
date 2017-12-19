@@ -3,6 +3,7 @@
 
 #include <QString>
 
+namespace om_animation {
 class AbstractWritableWidget {
  public:
   ~AbstractWritableWidget() {}
@@ -22,5 +23,6 @@ class WritableWidget : public AbstractWritableWidget {
  private:
   Widget* writable_widget_ = nullptr;
 };
+}
 
 #endif  // WRITABLE_WIDGET_H

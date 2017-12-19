@@ -11,6 +11,7 @@
 #include <writable_matcher.h>
 #include <writable_widget.h>
 
+namespace om_animation {
 class TextAnimator : public QObject {
   Q_OBJECT
  public:
@@ -39,9 +40,10 @@ class TextAnimator : public QObject {
   unsigned int animation_delay_;
   unsigned int symbol_count_ = 0;
 };
+}
 
 template <typename Widget>
-void TextAnimator::RunAnimation(Widget* widget) {
+void om_animation::TextAnimator::RunAnimation(Widget* widget) {
   if (WritableMatcher::IsWidgetWritable(widget->metaObject()->className())) {
     writable_widget_ = new WritableWidget<Widget>(widget);
     timer_->start(animation_delay_);

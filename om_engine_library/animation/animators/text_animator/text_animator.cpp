@@ -1,5 +1,7 @@
 ﻿#include <text_animator.h>
 
+using namespace om_animation;
+
 TextAnimator::TextAnimator(QObject* parent, unsigned int animation_delay)
     : QObject(parent),
       animation_delay_(animation_delay),

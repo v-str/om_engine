@@ -4,8 +4,7 @@
 #include <QString>
 #include <QVector>
 
-#include <QDebug>
-
+namespace om_animation {
 class WritableMatcher {
  public:
   static QVector<QString> WritableWidgets();
@@ -18,5 +17,6 @@ class WritableMatcher {
   static bool is_conversion_acceptable_;
   static QString current_type_;
 };
+}
 
 #endif  // WRITABLE_MATCHER_H

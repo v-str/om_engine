@@ -1,5 +1,7 @@
 ﻿#include <writable_matcher.h>
 
+using namespace om_animation;
+
 QVector<QString> WritableMatcher::writable_widgets_ = {
     "QLabel", "QPushButton", "QLineEdit", "om_widgets::OmButton"};
 bool WritableMatcher::is_conversion_acceptable_ = false;
