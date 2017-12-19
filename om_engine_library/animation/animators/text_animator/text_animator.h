@@ -8,7 +8,7 @@
 #include <QString>
 #include <QTimer>
 
-#include <writable_widget_matcher.h>
+#include <writable_matcher.h>
 
 class TextAnimator : public QObject {
   Q_OBJECT
@@ -31,9 +31,6 @@ class TextAnimator : public QObject {
  private:
   void Reset();
   bool IsStringEnd() const;
-  bool IsStringNotEnd() const {
-    return symbol_count_ != animation_text_.size();
-  }
 
   QTimer* timer_ = nullptr;
   QString animation_text_;
@@ -65,15 +62,14 @@ class TextAnimator : public QObject {
 
 template <typename T>
 void TextAnimator::RunAnimation(T* widget) {
-  if (WritableWidgetMatcher::IsWidgetWritable(
-          widget->metaObject()->className())) {
+  if (WritableMatcher::IsWidgetWritable(widget->metaObject()->className())) {
     writable_widget_ = new QtWritableWidget<T>(widget);
     timer_->start(animation_delay_);
 
   } else {
     throw std::logic_error(
         "incompatible type for text animation, add type to "
-        "WritableWidgetMatcher");
+        "WritableMatcher class");
   }
 }
 #endif  // TEXT_ANIMATOR_H

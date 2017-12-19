@@ -1,12 +1,12 @@
-﻿#ifndef WRITABLE_WIDGET_MATCHER_H
-#define WRITABLE_WIDGET_MATCHER_H
+﻿#ifndef WRITABLE_MATCHER_H
+#define WRITABLE_MATCHER_H
 
 #include <QString>
 #include <QVector>
 
 #include <QDebug>
 
-class WritableWidgetMatcher {
+class WritableMatcher {
  public:
   static QVector<QString> WritableWidgets();
   static void SetWritableWidgets(const QVector<QString>& writable_widgets);
@@ -19,4 +19,4 @@ class WritableWidgetMatcher {
   static QString current_type_;
 };
 
-#endif  // WRITABLE_WIDGET_MATCHER_H
+#endif  // WRITABLE_MATCHER_H
