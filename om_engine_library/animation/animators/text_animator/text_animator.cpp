@@ -1,11 +1,5 @@
 ﻿#include <text_animator.h>
 
-#include <QMetaObject>
-
-#include <QDebug>
-
-#include <writable_widget_matcher.h>
-
 TextAnimator::TextAnimator(QObject* parent, unsigned int animation_delay)
     : QObject(parent),
       animation_delay_(animation_delay),
@@ -13,12 +7,7 @@ TextAnimator::TextAnimator(QObject* parent, unsigned int animation_delay)
   connect(timer_, SIGNAL(timeout()), SLOT(AnimateText()));
 }
 
-TextAnimator::~TextAnimator() {}
-
-void TextAnimator::RunTextAnimation(QLabel* animation_widget) {
-  animation_widget_ = animation_widget;
-  timer_->start(animation_delay_);
-}
+TextAnimator::~TextAnimator() { delete writable_widget_; }
 
 void TextAnimator::SetAnimationDelay(unsigned int animation_delay) {
   animation_delay_ = animation_delay;
@@ -30,7 +19,7 @@ void TextAnimator::SetAnimationText(const QString& animation_text) {
 
 void TextAnimator::AnimateText() {
   current_text_ += animation_text_[symbol_count_];
-  animation_widget_->setText(current_text_);
+  writable_widget_->SetText(current_text_);
   ++symbol_count_;
   if (IsStringEnd()) {
     Reset();

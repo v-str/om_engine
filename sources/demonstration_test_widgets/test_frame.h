@@ -19,6 +19,12 @@ class TestFrame : public QFrame {
 
  private slots:
   void DisplayText();
+  void AnimateOpenButton();
+  void AnimateCloseButton();
+
+ signals:
+  void DisplayOpenButtonText();
+  void DisplayCloseButtonText();
 
  private:
   void SetTestFrame();
@@ -34,7 +40,9 @@ class TestFrame : public QFrame {
   QLabel* test_label_ = nullptr;
   WidgetAnimator* animator_ = nullptr;
 
-  TextAnimator* text_animator_ = nullptr;
+  TextAnimator* text_animator1_ = nullptr;
+  TextAnimator* text_animator2_ = nullptr;
+  TextAnimator* text_animator3_ = nullptr;
 };
 
 #endif  // TEST_FRAME_H

@@ -4,20 +4,48 @@ TestFrame::TestFrame(QWidget* parent)
     : QFrame(parent),
       test_label_(new QLabel(this)),
       animator_(new WidgetAnimator(test_label_, true)),
-      open_button_(new OmButton("open", this)),
-      close_button_(new OmButton("close", this)),
-      display_text_button_(new OmButton("display text", this)),
-      text_animator_(new TextAnimator(this, 100)) {
+      open_button_(new OmButton(this)),
+      close_button_(new OmButton(this)),
+      display_text_button_(new OmButton("display text", this)) {
   SetTestFrame();
   SetWidgets();
   SetLabel();
   SetAnimation();
   SetConnections();
+
+  text_animator1_ = new TextAnimator(this);
+  text_animator2_ = new TextAnimator(this);
+  text_animator3_ = new TextAnimator(this);
 }
 
-TestFrame::~TestFrame() {}
+TestFrame::~TestFrame() {
+  delete text_animator1_;
+  delete text_animator2_;
+  delete text_animator3_;
+}
 
-void TestFrame::DisplayText() { text_animator_->RunTextAnimation(test_label_); }
+void TestFrame::DisplayText() {
+  text_animator1_->SetAnimationDelay(50);
+
+  text_animator1_->SetAnimationText("Ordinary Mind is greeting you . . .");
+  text_animator1_->RunAnimation(test_label_);
+
+  emit DisplayOpenButtonText();
+}
+
+void TestFrame::AnimateOpenButton() {
+  text_animator2_->SetAnimationDelay(100);
+  text_animator2_->SetAnimationText("Open it");
+  text_animator2_->RunAnimation(open_button_);
+
+  emit DisplayCloseButtonText();
+}
+
+void TestFrame::AnimateCloseButton() {
+  text_animator3_->SetAnimationDelay(100);
+  text_animator3_->SetAnimationText("Close it");
+  text_animator3_->RunAnimation(close_button_);
+}
 
 void TestFrame::SetTestFrame() {
   resize(500, 300);
@@ -30,8 +58,6 @@ void TestFrame::SetTestFrame() {
 }
 
 void TestFrame::SetWidgets() {
-  text_animator_->SetAnimationText("OM ENGINE LIBRARY");
-
   open_button_->setGeometry(30, 30, 100, 20);
   open_button_->setStyleSheet(
       "QPushButton{"
@@ -87,4 +113,6 @@ void TestFrame::SetConnections() {
   connect(close_button_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
   connect(open_button_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
   connect(display_text_button_, SIGNAL(clicked(bool)), SLOT(DisplayText()));
+  connect(this, SIGNAL(DisplayOpenButtonText()), SLOT(AnimateOpenButton()));
+  connect(this, SIGNAL(DisplayCloseButtonText()), SLOT(AnimateCloseButton()));
 }
