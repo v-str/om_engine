@@ -34,5 +34,5 @@ void WritableWidgetMatcher::SetWritableWidgets(
 }
 
 bool WritableWidgetMatcher::IsWidgetWrirable(const QString& widget_name) {
-  return is_conversion_acceptable_ = writable_widgets_.contains(widget_name);
+  return is_conversion_acceptable_ == writable_widgets_.contains(widget_name);
 }
