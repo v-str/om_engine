@@ -4,47 +4,22 @@ TestFrame::TestFrame(QWidget* parent)
     : QFrame(parent),
       test_label_(new QLabel(this)),
       animator_(new WidgetAnimator(test_label_, true)),
-      open_button_(new OmButton(this)),
-      close_button_(new OmButton(this)),
-      display_text_button_(new OmButton("display text", this)) {
+      open_button_(new OmButton("Open frame", this)),
+      close_button_(new OmButton("Close frame", this)),
+      display_text_button_(new OmButton("Display text", this)),
+      text_animator1_(new TextAnimator(this, 25)) {
   SetTestFrame();
   SetWidgets();
   SetLabel();
   SetAnimation();
   SetConnections();
-
-  text_animator1_ = new TextAnimator(this);
-  text_animator2_ = new TextAnimator(this);
-  text_animator3_ = new TextAnimator(this);
 }
 
-TestFrame::~TestFrame() {
-  delete text_animator1_;
-  delete text_animator2_;
-  delete text_animator3_;
-}
+TestFrame::~TestFrame() { delete text_animator1_; }
 
 void TestFrame::DisplayText() {
-  text_animator1_->SetAnimationDelay(50);
-
   text_animator1_->SetAnimationText("Ordinary Mind is greeting you . . .");
   text_animator1_->RunAnimation(test_label_);
-
-  emit DisplayOpenButtonText();
-}
-
-void TestFrame::AnimateOpenButton() {
-  text_animator2_->SetAnimationDelay(100);
-  text_animator2_->SetAnimationText("Open it");
-  text_animator2_->RunAnimation(open_button_);
-
-  emit DisplayCloseButtonText();
-}
-
-void TestFrame::AnimateCloseButton() {
-  text_animator3_->SetAnimationDelay(100);
-  text_animator3_->SetAnimationText("Close it");
-  text_animator3_->RunAnimation(close_button_);
 }
 
 void TestFrame::SetTestFrame() {
@@ -113,6 +88,4 @@ void TestFrame::SetConnections() {
   connect(close_button_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
   connect(open_button_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
   connect(display_text_button_, SIGNAL(clicked(bool)), SLOT(DisplayText()));
-  connect(this, SIGNAL(DisplayOpenButtonText()), SLOT(AnimateOpenButton()));
-  connect(this, SIGNAL(DisplayCloseButtonText()), SLOT(AnimateCloseButton()));
 }
