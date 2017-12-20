@@ -37,7 +37,3 @@ void TextAnimator::Reset() {
 bool TextAnimator::IsStringEnd() const {
   return symbol_count_ == animation_text_.size();
 }
-
-bool TextAnimator::IsWritableWidgetInitialized() const {
-  return writable_widget_ != nullptr;
-}

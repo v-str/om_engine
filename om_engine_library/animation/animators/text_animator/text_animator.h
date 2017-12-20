@@ -31,7 +31,6 @@ class TextAnimator : public QObject {
  private:
   void Reset();
   bool IsStringEnd() const;
-  bool IsWritableWidgetInitialized() const;
 
   AbstractWritableWidget* writable_widget_ = nullptr;
 
@@ -41,15 +40,16 @@ class TextAnimator : public QObject {
   unsigned int animation_delay_;
   unsigned int symbol_count_ = 0;
 };
-}
+}  // namespace om_animation
 
 template <typename Widget>
 void om_animation::TextAnimator::RunAnimation(Widget* widget) {
   if (WritableMatcher::IsWidgetWritable(widget->metaObject()->className())) {
-    if (!IsWritableWidgetInitialized()) {
-      writable_widget_ = new WritableWidget<Widget>(widget);
-      timer_->start(animation_delay_);
+    if (writable_widget_) {
+      delete writable_widget_;
     }
+    writable_widget_ = new WritableWidget<Widget>(widget);
+    timer_->start(animation_delay_);
   } else {
     throw std::logic_error(
         "incompatible type for text animation, add type to "
