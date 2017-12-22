@@ -1,5 +1,7 @@
 ﻿#include <test_frame.h>
 
+#include <QFont>
+
 #include <test_message.h>
 
 TestFrame::TestFrame(QWidget* parent)
@@ -34,8 +36,8 @@ void TestFrame::SetTestFrame() {
   resize(500, 300);
   setStyleSheet(
       "QWidget {"
-      "background: black;"
-      "border: 2px solid green;"
+      "background: transparent;"
+      "border: 2px solid #00FFFF;"
       "border-radius: 5px;"
       "}");
 }
@@ -44,8 +46,9 @@ void TestFrame::SetWidgets() {
   open_button_->setGeometry(30, 10, 95, 30);
   open_button_->setStyleSheet(
       "QPushButton{"
-      "background-color: grey;"
-      "border: 2px solid green;"
+      "background-color: transparent;"
+      "color: #00FFFF;"
+      "border: 2px solid #00FFFF;"
       "border-radius: 5px;"
       "}");
   open_button_->SetOffsetDistance(om_utility::OffsetDistance(2, 2));
@@ -55,8 +58,9 @@ void TestFrame::SetWidgets() {
   close_button_->setGeometry(135, 10, 95, 30);
   close_button_->setStyleSheet(
       "QPushButton{"
-      "background-color: grey;"
-      "border: 2px solid green;"
+      "background-color: transparent;"
+      "color: #00FFFF;"
+      "border: 2px solid #00FFFF;"
       "border-radius: 5px;"
       "}");
   close_button_->SetOffsetDistance(om_utility::OffsetDistance(2, 2));
@@ -66,8 +70,9 @@ void TestFrame::SetWidgets() {
   display_text_button_->setGeometry(240, 10, 95, 30);
   display_text_button_->setStyleSheet(
       "QPushButton{"
-      "background-color: grey;"
-      "border: 2px solid green;"
+      "background-color: transparent;"
+      "color: #00FFFF;"
+      "border: 2px solid #00FFFF;"
       "border-radius: 5px;"
       "}");
   display_text_button_->SetOffsetDistance(om_utility::OffsetDistance(2, 2));
@@ -82,9 +87,14 @@ void TestFrame::SetWidgets() {
 void TestFrame::SetLabel() {
   test_label_->setStyleSheet(
       "QLabel{"
-      "border: 1px solid green;"
-      "color: green;"
+      "border: 2px solid #00FFFF;"
+      "color: #0000CC;"
       "}");
+
+  QFont font = test_label_->font();
+  font.setPointSize(20);
+
+  test_label_->setFont(font);
 }
 
 void TestFrame::SetAnimation() {

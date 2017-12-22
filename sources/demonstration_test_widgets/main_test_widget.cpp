@@ -2,6 +2,9 @@
 
 #include <QDebug>
 
+#include <QPalette>
+#include <QPixmap>
+
 static unsigned int kCount = 0;
 
 MainTestWidget::MainTestWidget(QWidget* parent)
@@ -24,28 +27,37 @@ void MainTestWidget::MultipleClickCathed() {
 }
 
 void MainTestWidget::SetAppearance() {
-  setStyleSheet(
-      "QWidget {"
-      "background: #202020;"
-      "}");
+  QPixmap background("://resources/abstract_technology_background.jpg");
+  QPalette palette;
+  palette.setBrush(QPalette::Background, background);
+  this->setPalette(palette);
+
+  //  setStyleSheet(
+  //      "QWidget {"
+  //      "background-image:
+  //      url(:/resources/abstract_technology_background.jpg);"
+  //      "}");
 
   test_frame_->setStyleSheet(
       "QFrame{"
-      "background: black;"
-      "border: 2px solid green;"
+      "background: transparent;"
+      "color: #00FFFF;"
+      "border: 2px solid #00FFFF;"
       "border-radius: 5px;"
       "}");
 
   button_close_->setStyleSheet(
       "QPushButton{"
-      "background-color: grey;"
-      "border: 2px solid green;"
+      "background-color: transparent;"
+      "color: #00FFFF;"
+      "border: 2px solid #00FFFF;"
       "border-radius: 5px;"
       "}");
   button_open_->setStyleSheet(
       "QPushButton{"
-      "background-color: grey;"
-      "border: 2px solid green;"
+      "background-color: transparent;"
+      "color: #00FFFF;"
+      "border: 2px solid #00FFFF;"
       "border-radius: 5px;"
       "}");
 }

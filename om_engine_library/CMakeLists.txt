@@ -9,5 +9,7 @@ include_directories ("${LIB_HEADERS}")
 
 file (GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
 
-add_library (om_engine_library STATIC ${SOURCES} ${RESOURCES})
+qt5_add_resources (RESOURCES om_engine_resources.qrc)
+
+add_library (om_engine_library STATIC ${SOURCES} ${RESOURCES} ${RESOURCES})
 qt5_use_modules (om_engine_library Widgets)
