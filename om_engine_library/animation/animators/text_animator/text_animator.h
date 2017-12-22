@@ -28,6 +28,9 @@ class TextAnimator : public QObject {
  private slots:
   void AnimateText();
 
+ signals:
+  void TextAnimationComplete();
+
  private:
   void Reset();
   bool IsStringEnd() const;

@@ -1,5 +1,7 @@
 ﻿#include <test_frame.h>
 
+#include <QDebug>
+
 TestFrame::TestFrame(QWidget* parent)
     : QFrame(parent),
       test_label_(new QLabel(this)),
@@ -20,6 +22,10 @@ TestFrame::~TestFrame() { delete text_animator1_; }
 void TestFrame::DisplayText() {
   text_animator1_->SetAnimationText("Ordinary Mind is greeting you . . .");
   text_animator1_->RunAnimation(test_label_);
+}
+
+void TestFrame::IsAnimationComplete() {
+  qDebug() << "Text animation of text label complete . . . ";
 }
 
 void TestFrame::SetTestFrame() {
@@ -88,4 +94,6 @@ void TestFrame::SetConnections() {
   connect(close_button_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
   connect(open_button_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
   connect(display_text_button_, SIGNAL(clicked(bool)), SLOT(DisplayText()));
+  connect(text_animator1_, SIGNAL(TextAnimationComplete()),
+          SLOT(IsAnimationComplete()));
 }

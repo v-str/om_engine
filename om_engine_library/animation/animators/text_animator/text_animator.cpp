@@ -24,6 +24,7 @@ void TextAnimator::AnimateText() {
   writable_widget_->SetText(current_text_);
   ++symbol_count_;
   if (IsStringEnd()) {
+    emit TextAnimationComplete();
     Reset();
   }
 }

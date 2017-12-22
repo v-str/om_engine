@@ -19,6 +19,7 @@ class TestFrame : public QFrame {
 
  private slots:
   void DisplayText();
+  void IsAnimationComplete();
 
  private:
   void SetTestFrame();
