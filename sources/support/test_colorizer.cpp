@@ -1,7 +1,9 @@
 ﻿#include <test_colorizer.h>
 
-void TestColorizer::ColorizeButtons(QPushButton* button,
-                                    const QRect& current_geometry) {
+#include <om_button.h>
+
+void TestColorizer::ColorizeButton(QPushButton* button,
+                                   const QRect& current_geometry) {
   button->setStyleSheet(
       "QPushButton{"
       "background-color: rgba(0, 0, 0, 50%);"
@@ -14,6 +16,10 @@ void TestColorizer::ColorizeButtons(QPushButton* button,
       "color: red; }");
   button->setWindowOpacity(0.5);
   button->setGeometry(current_geometry);
+  qobject_cast<om_widgets::OmButton*>(button)->SetOffsetDistance(
+      om_utility::OffsetDistance(2, 2));
+  qobject_cast<om_widgets::OmButton*>(button)->SetOffsetSide(
+      om_utility::Side::kRight | om_utility::Side::kDown);
 }
 
 void TestColorizer::ColorizeFrame(QFrame* frame,

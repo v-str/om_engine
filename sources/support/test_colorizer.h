@@ -8,8 +8,8 @@
 
 class TestColorizer {
  public:
-  static void ColorizeButtons(QPushButton* button,
-                              const QRect& current_geometry);
+  static void ColorizeButton(QPushButton* button,
+                             const QRect& current_geometry);
   static void ColorizeFrame(QFrame* frame, const QRect& current_geometry);
   static void ColorizeLabel(QLabel* label, const QRect& geometry);
 };

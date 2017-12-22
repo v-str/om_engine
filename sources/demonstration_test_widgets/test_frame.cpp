@@ -2,6 +2,7 @@
 
 #include <QFont>
 
+#include <test_colorizer.h>
 #include <test_message.h>
 
 TestFrame::TestFrame(QWidget* parent)
@@ -33,80 +34,20 @@ void TestFrame::IsAnimationComplete() {
 }
 
 void TestFrame::SetTestFrame() {
+  TestColorizer::ColorizeFrame(this, QRect(0, 0, 0, 0));
   resize(500, 300);
-  setStyleSheet(
-      "QWidget {"
-      "background: transparent;"
-      "border: 2px solid #000000;"
-      "border-radius: 5px;"
-      "}");
 }
 
 void TestFrame::SetWidgets() {
-  open_button_->setGeometry(30, 10, 95, 30);
-  open_button_->setStyleSheet(
-      "QPushButton{"
-      "background-color: rgba(0, 0, 0, 50%);"
-      "color: #00FFFF;"
-      "border: 2px solid #00FFFF;"
-      "border-radius: 5px;"
-      "}"
-      "QPushButton:hover:pressed { "
-      "border: 2px solid red;"
-      "color: red; }");
-
-  open_button_->SetOffsetDistance(om_utility::OffsetDistance(2, 2));
-  open_button_->SetOffsetSide(om_utility::Side::kRight |
-                              om_utility::Side::kDown);
-
-  close_button_->setGeometry(135, 10, 95, 30);
-  close_button_->setStyleSheet(
-      "QPushButton{"
-      "background-color: rgba(0, 0, 0, 50%);"
-      "color: #00FFFF;"
-      "border: 2px solid #00FFFF;"
-      "border-radius: 5px;"
-      "}"
-      "QPushButton:hover:pressed { "
-      "border: 2px solid red;"
-      "color: red; }");
-
-  close_button_->SetOffsetDistance(om_utility::OffsetDistance(2, 2));
-  close_button_->SetOffsetSide(om_utility::Side::kRight |
-                               om_utility::Side::kDown);
-
-  display_text_button_->setGeometry(240, 10, 95, 30);
-  display_text_button_->setStyleSheet(
-      "QPushButton{"
-      "background-color: rgba(0, 0, 0, 50%);"
-      "color: #00FFFF;"
-      "border: 2px solid #00FFFF;"
-      "border-radius: 5px;"
-      "}"
-      "QPushButton:hover:pressed { "
-      "border: 2px solid red;"
-      "color: red; }");
-
-  display_text_button_->SetOffsetDistance(om_utility::OffsetDistance(2, 2));
-  display_text_button_->SetOffsetSide(om_utility::Side::kRight |
-                                      om_utility::Side::kDown);
-
-  test_label_->setGeometry(30, 100, 500, 190);
-  test_label_->setAlignment(Qt::AlignCenter);
-  test_label_->setWordWrap(true);
+  TestColorizer::ColorizeButton(open_button_, QRect(30, 10, 95, 30));
+  TestColorizer::ColorizeButton(close_button_, QRect(135, 10, 95, 30));
+  TestColorizer::ColorizeButton(display_text_button_, QRect(240, 10, 95, 30));
 }
 
 void TestFrame::SetLabel() {
-  test_label_->setStyleSheet(
-      "QLabel{"
-      "background-color: rgba(0, 0, 0, 50%);"
-      "border: 2px solid #00FFFF;"
-      "color: #00FFFF;"
-      "}");
-
+  TestColorizer::ColorizeLabel(test_label_, QRect(30, 100, 500, 190));
   QFont font = test_label_->font();
   font.setPointSize(20);
-
   test_label_->setFont(font);
 }
 
