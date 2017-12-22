@@ -25,7 +25,9 @@ void TestFrame::DisplayText() {
 }
 
 void TestFrame::IsAnimationComplete() {
-  TestMessage::WriteTestMessage("Text animation of test label complete . . . ");
+  TestMessage::WriteTestMessage(
+      "Text animation test of test label "
+      "complete . . . ");
 }
 
 void TestFrame::SetTestFrame() {

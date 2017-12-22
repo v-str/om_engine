@@ -5,7 +5,7 @@
 
 class TestMessage {
  public:
-  static void WriteTestMessage(const QString& text);
+  static void WriteTestMessage(const QString& what_you_test_description);
 
  private:
   static unsigned int kCount;
