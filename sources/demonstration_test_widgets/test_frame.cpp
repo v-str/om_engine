@@ -9,7 +9,7 @@ TestFrame::TestFrame(QWidget* parent)
       open_button_(new OmButton("Open frame", this)),
       close_button_(new OmButton("Close frame", this)),
       display_text_button_(new OmButton("Display text", this)),
-      text_animator1_(new TextAnimator(this, 25)) {
+      text_animator1_(new TextAnimator(this, 30)) {
   SetTestFrame();
   SetWidgets();
   SetLabel();
@@ -41,7 +41,7 @@ void TestFrame::SetTestFrame() {
 }
 
 void TestFrame::SetWidgets() {
-  open_button_->setGeometry(30, 30, 100, 20);
+  open_button_->setGeometry(30, 10, 95, 30);
   open_button_->setStyleSheet(
       "QPushButton{"
       "background-color: grey;"
@@ -52,7 +52,7 @@ void TestFrame::SetWidgets() {
   open_button_->SetOffsetSide(om_utility::Side::kRight |
                               om_utility::Side::kDown);
 
-  close_button_->setGeometry(140, 30, 100, 20);
+  close_button_->setGeometry(135, 10, 95, 30);
   close_button_->setStyleSheet(
       "QPushButton{"
       "background-color: grey;"
@@ -63,7 +63,7 @@ void TestFrame::SetWidgets() {
   close_button_->SetOffsetSide(om_utility::Side::kRight |
                                om_utility::Side::kDown);
 
-  display_text_button_->setGeometry(250, 30, 100, 20);
+  display_text_button_->setGeometry(240, 10, 95, 30);
   display_text_button_->setStyleSheet(
       "QPushButton{"
       "background-color: grey;"
@@ -74,7 +74,7 @@ void TestFrame::SetWidgets() {
   display_text_button_->SetOffsetSide(om_utility::Side::kRight |
                                       om_utility::Side::kDown);
 
-  test_label_->setGeometry(30, 100, 440, 150);
+  test_label_->setGeometry(30, 100, 500, 190);
   test_label_->setAlignment(Qt::AlignCenter);
   test_label_->setWordWrap(true);
 }

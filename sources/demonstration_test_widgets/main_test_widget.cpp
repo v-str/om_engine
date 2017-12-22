@@ -8,8 +8,8 @@ MainTestWidget::MainTestWidget(QWidget* parent)
     : QWidget(parent),
       test_frame_(new TestFrame(this)),
       animator_(new WidgetAnimator(test_frame_, true)),
-      button_open_(new OmButton("Open!", this)),
-      button_close_(new OmButton("Close!", this)) {
+      button_open_(new OmButton("Open", this)),
+      button_close_(new OmButton("Close", this)) {
   SetAppearance();
   SetWidgets();
   SetAnimation();
@@ -53,10 +53,10 @@ void MainTestWidget::SetAppearance() {
 void MainTestWidget::SetWidgets() {
   resize(600, 400);
 
-  test_frame_->setGeometry(50, 50, 500, 300);
+  test_frame_->setGeometry(20, 70, 560, 320);
 
-  button_open_->setGeometry(50, 10, 100, 20);
-  button_close_->setGeometry(160, 10, 100, 20);
+  button_open_->setGeometry(20, 10, 70, 30);
+  button_close_->setGeometry(100, 10, 70, 30);
 
   button_open_->SetOffsetDistance(om_utility::OffsetDistance(2, 2));
   button_open_->SetOffsetSide(om_utility::Side::kRight |
