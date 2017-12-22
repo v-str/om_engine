@@ -19,14 +19,14 @@ TestFrame::TestFrame(QWidget* parent)
 
 TestFrame::~TestFrame() { delete text_animator1_; }
 
-void TestFrame::DisplayText() {
+void TestFrame::DisplayTextByPublicMethod() {
   text_animator1_->SetAnimationText("Ordinary Mind is greeting you . . .");
   text_animator1_->RunAnimation(test_label_);
 }
 
 void TestFrame::IsAnimationComplete() {
   TestMessage::WriteTestMessage(
-      "Text animation test of test label "
+      "test_label_ text animation test by method "
       "complete . . . ");
 }
 
@@ -95,7 +95,8 @@ void TestFrame::SetAnimation() {
 void TestFrame::SetConnections() {
   connect(close_button_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
   connect(open_button_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
-  connect(display_text_button_, SIGNAL(clicked(bool)), SLOT(DisplayText()));
+  connect(display_text_button_, SIGNAL(clicked(bool)),
+          SLOT(DisplayTextByPublicMethod()));
   connect(text_animator1_, SIGNAL(TextAnimationComplete()),
           SLOT(IsAnimationComplete()));
 }
