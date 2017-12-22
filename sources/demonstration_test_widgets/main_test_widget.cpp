@@ -32,12 +32,6 @@ void MainTestWidget::SetAppearance() {
   palette.setBrush(QPalette::Background, background);
   this->setPalette(palette);
 
-  //  setStyleSheet(
-  //      "QWidget {"
-  //      "background-image:
-  //      url(:/resources/abstract_technology_background.jpg);"
-  //      "}");
-
   test_frame_->setStyleSheet(
       "QFrame{"
       "background: rgba(0, 0, 0, 50%);"
