@@ -1,6 +1,6 @@
 ﻿#include <test_frame.h>
 
-#include <QDebug>
+#include <test_message.h>
 
 TestFrame::TestFrame(QWidget* parent)
     : QFrame(parent),
@@ -25,7 +25,7 @@ void TestFrame::DisplayText() {
 }
 
 void TestFrame::IsAnimationComplete() {
-  qDebug() << "Text animation of text label complete . . . ";
+  TestMessage::WriteTestMessage("Text animation of test label complete . . . ");
 }
 
 void TestFrame::SetTestFrame() {
