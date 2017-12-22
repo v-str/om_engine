@@ -40,26 +40,36 @@ void MainTestWidget::SetAppearance() {
 
   test_frame_->setStyleSheet(
       "QFrame{"
-      "background: transparent;"
+      "background: rgba(0, 0, 0, 50%);"
       "color: #00FFFF;"
       "border: 2px solid #00FFFF;"
       "border-radius: 5px;"
       "}");
+  test_frame_->setWindowOpacity(0.5);
 
   button_close_->setStyleSheet(
       "QPushButton{"
-      "background-color: transparent;"
+      "background-color: rgba(0, 0, 0, 50%);"
       "color: #00FFFF;"
       "border: 2px solid #00FFFF;"
       "border-radius: 5px;"
-      "}");
+      "}"
+      "QPushButton:hover:pressed { "
+      "border: 2px solid red;"
+      "color: red; }");
+  button_close_->setWindowOpacity(0.5);
+
   button_open_->setStyleSheet(
       "QPushButton{"
-      "background-color: transparent;"
+      "background-color: rgba(0, 0, 0, 50%);"
       "color: #00FFFF;"
       "border: 2px solid #00FFFF;"
       "border-radius: 5px;"
-      "}");
+      "}"
+      "QPushButton:hover:pressed { "
+      "border: 2px solid red;"
+      "color: red; }");
+  button_open_->setWindowOpacity(0.1);
 }
 
 void MainTestWidget::SetWidgets() {
