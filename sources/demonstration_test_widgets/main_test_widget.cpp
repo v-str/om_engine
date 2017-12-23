@@ -38,10 +38,7 @@ void MainTestWidget::SetAppearance() {
   TestWidgetSetter::ColorizeButton(button_open_, QRect(20, 10, 70, 30));
 }
 
-void MainTestWidget::SetWidgets() {
-  resize(600, 400);
-  test_frame_->close();
-}
+void MainTestWidget::SetWidgets() { resize(600, 400); }
 
 void MainTestWidget::SetAnimation() {
   animator_->SetAnimation(QEasingCurve::OutCirc, 500);
@@ -50,8 +47,6 @@ void MainTestWidget::SetAnimation() {
 
 void MainTestWidget::SetConnections() {
   connect(button_close_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
-  // connect(animator_, SIGNAL(AnimationComplete()), test_frame_,
-  // SLOT(close()));
   connect(button_open_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
   connect(animator_, SIGNAL(AnimationComplete()), test_frame_, SLOT(show()));
   connect(animator_, SIGNAL(AnimationIncomplete()),

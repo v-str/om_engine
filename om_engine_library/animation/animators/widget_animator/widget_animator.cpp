@@ -11,8 +11,9 @@ using namespace om_animation;
 WidgetAnimator::WidgetAnimator(QWidget* widget, bool is_widget_open)
     : QObject(),
       animation_(new QPropertyAnimation(widget, "geometry", this)),
-      widget_(widget),
-      is_widget_open_(is_widget_open) {}
+      is_widget_open_(is_widget_open) {
+  if (!is_widget_open_) widget->close();
+}
 
 WidgetAnimator::~WidgetAnimator() {}
 
@@ -65,9 +66,5 @@ void WidgetAnimator::RunAnimation(WidgetAnimationType type,
 }
 
 void WidgetAnimator::ChangeWidgetState() {
-  if (is_widget_open_) {
-    is_widget_open_ = false;
-  } else {
-    is_widget_open_ = true;
-  }
+  is_widget_open_ ? is_widget_open_ = false : is_widget_open_ = true;
 }
