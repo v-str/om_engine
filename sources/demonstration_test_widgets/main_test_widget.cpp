@@ -1,9 +1,10 @@
 ﻿#include <main_test_widget.h>
 
 #include <QDebug>
-
 #include <QPalette>
 #include <QPixmap>
+
+#include <test_widget_setter.h>
 
 static unsigned int kCount = 0;
 
@@ -32,55 +33,12 @@ void MainTestWidget::SetAppearance() {
   palette.setBrush(QPalette::Background, background);
   this->setPalette(palette);
 
-  test_frame_->setStyleSheet(
-      "QFrame{"
-      "background: rgba(0, 0, 0, 50%);"
-      "color: #00FFFF;"
-      "border: 2px solid #00FFFF;"
-      "border-radius: 5px;"
-      "}");
-  test_frame_->setWindowOpacity(0.5);
-
-  button_close_->setStyleSheet(
-      "QPushButton{"
-      "background-color: rgba(0, 0, 0, 50%);"
-      "color: #00FFFF;"
-      "border: 2px solid #00FFFF;"
-      "border-radius: 5px;"
-      "}"
-      "QPushButton:hover:pressed { "
-      "border: 2px solid red;"
-      "color: red; }");
-  button_close_->setWindowOpacity(0.5);
-
-  button_open_->setStyleSheet(
-      "QPushButton{"
-      "background-color: rgba(0, 0, 0, 50%);"
-      "color: #00FFFF;"
-      "border: 2px solid #00FFFF;"
-      "border-radius: 5px;"
-      "}"
-      "QPushButton:hover:pressed { "
-      "border: 2px solid red;"
-      "color: red; }");
-  button_open_->setWindowOpacity(0.1);
+  TestWidgetSetter::ColorizeFrame(test_frame_, QRect(20, 70, 560, 320));
+  TestWidgetSetter::ColorizeButton(button_close_, QRect(100, 10, 70, 30));
+  TestWidgetSetter::ColorizeButton(button_open_, QRect(20, 10, 70, 30));
 }
 
-void MainTestWidget::SetWidgets() {
-  resize(600, 400);
-
-  test_frame_->setGeometry(20, 70, 560, 320);
-
-  button_open_->setGeometry(20, 10, 70, 30);
-  button_close_->setGeometry(100, 10, 70, 30);
-
-  button_open_->SetOffsetDistance(om_utility::OffsetDistance(2, 2));
-  button_open_->SetOffsetSide(om_utility::Side::kRight |
-                              om_utility::Side::kDown);
-  button_close_->SetOffsetDistance(om_utility::OffsetDistance(2, 2));
-  button_close_->SetOffsetSide(om_utility::Side::kRight |
-                               om_utility::Side::kDown);
-}
+void MainTestWidget::SetWidgets() { resize(600, 400); }
 
 void MainTestWidget::SetAnimation() {
   animator_->SetAnimation(QEasingCurve::OutCirc, 500);
@@ -90,7 +48,6 @@ void MainTestWidget::SetAnimation() {
 void MainTestWidget::SetConnections() {
   connect(button_close_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
   connect(button_open_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
-
   connect(animator_, SIGNAL(AnimationIncomplete()),
           SLOT(MultipleClickCathed()));
 }
