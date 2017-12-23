@@ -2,8 +2,8 @@
 
 #include <QFont>
 
-#include <test_colorizer.h>
 #include <test_message.h>
+#include <test_widget_setter.h>
 
 TestFrame::TestFrame(QWidget* parent)
     : QFrame(parent),
@@ -34,18 +34,19 @@ void TestFrame::IsAnimationComplete() {
 }
 
 void TestFrame::SetTestFrame() {
-  TestColorizer::ColorizeFrame(this, QRect(0, 0, 0, 0));
+  TestWidgetSetter::ColorizeFrame(this, QRect(0, 0, 0, 0));
   resize(500, 300);
 }
 
 void TestFrame::SetWidgets() {
-  TestColorizer::ColorizeButton(open_button_, QRect(30, 10, 95, 30));
-  TestColorizer::ColorizeButton(close_button_, QRect(135, 10, 95, 30));
-  TestColorizer::ColorizeButton(display_text_button_, QRect(240, 10, 95, 30));
+  TestWidgetSetter::ColorizeButton(open_button_, QRect(30, 10, 95, 30));
+  TestWidgetSetter::ColorizeButton(close_button_, QRect(135, 10, 95, 30));
+  TestWidgetSetter::ColorizeButton(display_text_button_,
+                                   QRect(240, 10, 95, 30));
 }
 
 void TestFrame::SetLabel() {
-  TestColorizer::ColorizeLabel(test_label_, QRect(30, 100, 500, 190));
+  TestWidgetSetter::ColorizeLabel(test_label_, QRect(30, 100, 500, 190));
   QFont font = test_label_->font();
   font.setPointSize(20);
   test_label_->setFont(font);

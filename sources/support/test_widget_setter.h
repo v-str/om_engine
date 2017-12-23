@@ -1,12 +1,12 @@
-﻿#ifndef TEST_COLORIZER_H
-#define TEST_COLORIZER_H
+﻿#ifndef TEST_WIDGET_SETTER_H
+#define TEST_WIDGET_SETTER_H
 
 #include <QFrame>
 #include <QLabel>
 #include <QPushButton>
 #include <QRect>
 
-class TestColorizer {
+class TestWidgetSetter {
  public:
   static void ColorizeButton(QPushButton* button,
                              const QRect& current_geometry);
@@ -14,4 +14,4 @@ class TestColorizer {
   static void ColorizeLabel(QLabel* label, const QRect& geometry);
 };
 
-#endif  // TEST_COLORIZER_H
+#endif  // TEST_WIDGET_SETTER_H

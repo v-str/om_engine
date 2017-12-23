@@ -1,8 +1,8 @@
-﻿#include <test_colorizer.h>
+﻿#include <test_widget_setter.h>
 
 #include <om_button.h>
 
-void TestColorizer::ColorizeButton(QPushButton* button,
+void TestWidgetSetter::ColorizeButton(QPushButton* button,
                                    const QRect& current_geometry) {
   button->setStyleSheet(
       "QPushButton{"
@@ -22,7 +22,7 @@ void TestColorizer::ColorizeButton(QPushButton* button,
       om_utility::Side::kRight | om_utility::Side::kDown);
 }
 
-void TestColorizer::ColorizeFrame(QFrame* frame,
+void TestWidgetSetter::ColorizeFrame(QFrame* frame,
                                   const QRect& current_geometry) {
   frame->setStyleSheet(
       "QFrame{"
@@ -35,7 +35,7 @@ void TestColorizer::ColorizeFrame(QFrame* frame,
   frame->setGeometry(current_geometry);
 }
 
-void TestColorizer::ColorizeLabel(QLabel* label, const QRect& geometry) {
+void TestWidgetSetter::ColorizeLabel(QLabel* label, const QRect& geometry) {
   label->setStyleSheet(
       "QLabel{"
       "background-color: rgba(0, 0, 0, 50%);"
