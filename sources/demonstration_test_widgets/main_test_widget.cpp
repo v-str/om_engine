@@ -1,12 +1,10 @@
 ﻿#include <main_test_widget.h>
 
-#include <QDebug>
 #include <QPalette>
 #include <QPixmap>
 
+#include <test_message.h>
 #include <test_widget_setter.h>
-
-static unsigned int kCount = 0;
 
 MainTestWidget::MainTestWidget(QWidget* parent)
     : QWidget(parent),
@@ -23,8 +21,8 @@ MainTestWidget::MainTestWidget(QWidget* parent)
 MainTestWidget::~MainTestWidget() {}
 
 void MainTestWidget::MultipleClickCathed() {
-  qDebug() << "Multiple click on the same button!" << kCount;
-  ++kCount;
+  TestMessage::WriteTestMessage(
+      "Repetitive click on the same button was caught");
 }
 
 void MainTestWidget::SetAppearance() {

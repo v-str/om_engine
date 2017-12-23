@@ -4,8 +4,6 @@
 
 #include <animation_geometry_setter.h>
 
-#include <QDebug>
-
 using namespace om_animation;
 
 WidgetAnimator::WidgetAnimator(QWidget* widget, bool is_widget_open)
