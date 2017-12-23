@@ -29,11 +29,13 @@ include_directories ("${CMAKE_CURRENT_SOURCE_DIR}/third_party")
 file (GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
 file (GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
 
+qt5_add_resources (RESOURCES om_engine_resources.qrc)
+
 set (TXT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/third_party/to_do_list"
                "${CMAKE_CURRENT_SOURCE_DIR}/third_party/documentation"
                "${CMAKE_CURRENT_SOURCE_DIR}/third_party/code_style")
 
-add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES} ${TXT_FILES})
+add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES} ${RESOURCES} ${TXT_FILES})
 target_link_libraries (${PROJECT_NAME} om_engine_library)
 
 add_test (${PROJECT_NAME} ${PROJECT_NAME})
