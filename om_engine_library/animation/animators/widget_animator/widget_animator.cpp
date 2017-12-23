@@ -4,11 +4,14 @@
 
 #include <animation_geometry_setter.h>
 
+#include <QDebug>
+
 using namespace om_animation;
 
 WidgetAnimator::WidgetAnimator(QWidget* widget, bool is_widget_open)
     : QObject(),
       animation_(new QPropertyAnimation(widget, "geometry", this)),
+      widget_(widget),
       is_widget_open_(is_widget_open) {}
 
 WidgetAnimator::~WidgetAnimator() {}

@@ -57,6 +57,8 @@ class WidgetAnimator : public QObject {
   unsigned int direction_open_to_ = 0;
   unsigned int direction_close_in_to_ = 0;
   bool is_widget_open_;
+
+  QWidget* widget_ = nullptr;
 };
 }
 
