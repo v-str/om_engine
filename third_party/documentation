@@ -17,7 +17,6 @@ composing or scaling.
 
 
 2. Animation -
-fill the description
-tell about action related with closed widget state,
+fill the description, tell about action when widget open/closed from constructor,
 and what to do for perfom animation properly
 

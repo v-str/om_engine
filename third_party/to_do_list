@@ -12,4 +12,4 @@
      text state, like:
      bool IsTextAnimated() const;
 +    6.2 Embrace text animator in namespace
-- 7. How to make animation properly while widget is closed?
++ 7. How to make animation properly while widget is closed?
