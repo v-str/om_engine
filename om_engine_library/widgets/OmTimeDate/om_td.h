@@ -1,5 +1,5 @@
-﻿// widget for time and date
-//
+﻿/*OmTd - om time and date widget for time and date
+contain couple of QLabel objects and few custom class to animate them*/
 
 #ifndef OM_TD_H
 #define OM_TD_H
