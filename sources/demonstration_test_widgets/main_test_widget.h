@@ -5,9 +5,8 @@
 #include <QWidget>
 
 #include <om_button.h>
-#include <widget_animator.h>
-
 #include <test_frame.h>
+#include <widget_animator.h>
 
 using namespace om_widgets;
 using namespace om_animation;
@@ -30,7 +29,6 @@ class MainTestWidget : public QWidget {
   TestFrame* test_frame_ = nullptr;
   OmButton* button_open_ = nullptr;
   OmButton* button_close_ = nullptr;
-
   WidgetAnimator* animator_ = nullptr;
 };
 
