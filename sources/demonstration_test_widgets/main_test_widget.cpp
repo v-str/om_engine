@@ -11,7 +11,9 @@ MainTestWidget::MainTestWidget(QWidget* parent)
       test_frame_(new TestFrame(this)),
       animator_(new WidgetAnimator(test_frame_, false)),
       button_open_(new OmButton("Open", this)),
-      button_close_(new OmButton("Close", this)) {
+      button_close_(new OmButton("Close", this)),
+      time_label_(new OmTimeLabel(this)),
+      date_label_(new OmDateLabel(this)) {
   SetAppearance();
   SetWidgets();
   SetAnimation();
@@ -32,8 +34,10 @@ void MainTestWidget::SetAppearance() {
   this->setPalette(palette);
 
   TestWidgetSetter::ColorizeFrame(test_frame_, QRect(20, 70, 560, 320));
-  TestWidgetSetter::ColorizeButton(button_close_, QRect(100, 10, 70, 30));
   TestWidgetSetter::ColorizeButton(button_open_, QRect(20, 10, 70, 30));
+  TestWidgetSetter::ColorizeButton(button_close_, QRect(100, 10, 70, 30));
+  TestWidgetSetter::ColorizeLabel(time_label_, QRect(365, 10, 100, 30));
+  TestWidgetSetter::ColorizeLabel(date_label_, QRect(480, 10, 100, 30));
 }
 
 void MainTestWidget::SetWidgets() { resize(600, 400); }

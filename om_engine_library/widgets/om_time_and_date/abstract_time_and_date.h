@@ -9,7 +9,7 @@ namespace om_widgets {
 class AbstractTimeAndDate : public QLabel {
   Q_OBJECT
  public:
-  AbstractTimeAndDate(QLabel* parent = nullptr);
+  AbstractTimeAndDate(QWidget* parent = nullptr);
   ~AbstractTimeAndDate() {}
 
   virtual void Update() = 0;

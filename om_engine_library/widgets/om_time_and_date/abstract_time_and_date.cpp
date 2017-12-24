@@ -1,6 +1,6 @@
 ﻿#include <abstract_time_and_date.h>
 
-om_widgets::AbstractTimeAndDate::AbstractTimeAndDate(QLabel* parent)
+om_widgets::AbstractTimeAndDate::AbstractTimeAndDate(QWidget* parent)
     : QLabel(parent) {
   setAlignment(Qt::AlignCenter);
 }

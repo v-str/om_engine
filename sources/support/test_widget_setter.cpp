@@ -3,7 +3,7 @@
 #include <om_button.h>
 
 void TestWidgetSetter::ColorizeButton(QPushButton* button,
-                                   const QRect& current_geometry) {
+                                      const QRect& current_geometry) {
   button->setStyleSheet(
       "QPushButton{"
       "background-color: rgba(0, 0, 0, 50%);"
@@ -23,7 +23,7 @@ void TestWidgetSetter::ColorizeButton(QPushButton* button,
 }
 
 void TestWidgetSetter::ColorizeFrame(QFrame* frame,
-                                  const QRect& current_geometry) {
+                                     const QRect& current_geometry) {
   frame->setStyleSheet(
       "QFrame{"
       "background: rgba(0, 0, 0, 50%);"
@@ -40,6 +40,7 @@ void TestWidgetSetter::ColorizeLabel(QLabel* label, const QRect& geometry) {
       "QLabel{"
       "background-color: rgba(0, 0, 0, 50%);"
       "border: 2px solid #00FFFF;"
+      "border-radius: 5px;"
       "color: #00FFFF;"
       "}");
   label->setGeometry(geometry);

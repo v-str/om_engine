@@ -8,7 +8,7 @@ namespace om_widgets {
 class OmDateLabel : public AbstractTimeAndDate {
   Q_OBJECT
  public:
-  OmDateLabel(QLabel* parent = nullptr);
+  OmDateLabel(QWidget* parent = nullptr);
   ~OmDateLabel();
 
   void Update() override;
