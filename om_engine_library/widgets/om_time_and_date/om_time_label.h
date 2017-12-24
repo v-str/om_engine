@@ -5,6 +5,7 @@
 
 namespace om_widgets {
 class OmTimeLabel : public AbstractTimeAndDate {
+  Q_OBJECT
  public:
   OmTimeLabel(QLabel* parent = nullptr);
   ~OmTimeLabel();

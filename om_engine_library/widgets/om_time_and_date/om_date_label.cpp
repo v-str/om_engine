@@ -6,6 +6,7 @@ using namespace om_widgets;
 using namespace om_utility;
 
 OmDateLabel::OmDateLabel(QLabel* parent) : AbstractTimeAndDate(parent) {
+  Update();
   InitializeTimer(this);
 }
 

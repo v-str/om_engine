@@ -7,11 +7,15 @@
 namespace om_widgets {
 
 class AbstractTimeAndDate : public QLabel {
+  Q_OBJECT
  public:
   AbstractTimeAndDate(QLabel* parent = nullptr);
   ~AbstractTimeAndDate() {}
 
   virtual void Update() = 0;
+
+ protected slots:
+  void RunUpdate();
 
  protected:
   unsigned int TimerTick();
