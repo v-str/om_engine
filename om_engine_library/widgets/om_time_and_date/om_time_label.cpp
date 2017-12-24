@@ -1,9 +1,14 @@
 ﻿#include <om_time_label.h>
 
-using namespace om_widgets;
+#include <om_utility.h>
 
-OmTimeLabel::OmTimeLabel(QLabel* parent) : AbstractTimeAndDate(parent) {}
+using namespace om_widgets;
+using namespace om_utility;
+
+OmTimeLabel::OmTimeLabel(QLabel* parent) : AbstractTimeAndDate(parent) {
+  InitializeTimer(this);
+}
 
 OmTimeLabel::~OmTimeLabel() {}
 
-void OmTimeLabel::Update() {}
+void OmTimeLabel::Update() { om_utility::TimeDateChanger::ChangeTime(this); }
