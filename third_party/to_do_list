@@ -13,5 +13,5 @@
      bool IsTextAnimated() const;
 +    6.2 Embrace text animator in namespace
 + 7. How to make animation properly while widget is closed?
-- 8. Remove non-forward declaration includes in headers
-- 9. Develop time and date classes
++ 8. Remove non-forward declaration includes in headers
++ 9. Develop time and date classes
