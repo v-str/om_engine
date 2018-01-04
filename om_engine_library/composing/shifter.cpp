@@ -2,6 +2,8 @@
 
 using namespace om_composing;
 
+void Shifter::ComputeShifting(const QPoint &shift_point) {}
+
 void Shifter::MakeShiftConversion(const ConversionMaker &shift_conversion) {
   shift_conversion_ = shift_conversion;
 }
@@ -14,6 +16,4 @@ void Shifter::SetDeltaSize(const DeltaSize &delta_size) {
   delta_size_ = delta_size;
 }
 
-int Shifter::XPos() const { return x_pos_; }
-
-int Shifter::YPos() const { return y_pos_; }
+QPoint Shifter::GetShiftPoint() const { return shift_point_; }
