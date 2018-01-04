@@ -6,6 +6,7 @@ namespace om_composing {
 class CorrectConversionMaker {
  public:
   CorrectConversionMaker();
+  CorrectConversionMaker(float x_axis_value, float y_axis_value);
 
  private:
   static constexpr float kMinValue = 0.0;
