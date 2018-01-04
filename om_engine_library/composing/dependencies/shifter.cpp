@@ -25,7 +25,7 @@ void Shifter::ComputeShifting(const QRect &shift_position) {
   shift_point_ = QPoint(x,y);
 }
 
-void Shifter::MakeShiftConversion(const ConversionMaker &shift_conversion) {
+void Shifter::SetShiftConversion(const ConversionMaker &shift_conversion) {
   shift_conversion_ = shift_conversion;
 }
 

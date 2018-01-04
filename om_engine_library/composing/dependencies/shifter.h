@@ -13,7 +13,7 @@ class Shifter {
  public:
   void ComputeShifting(const QRect& shift_position);
 
-  void MakeShiftConversion(const ConversionMaker& shift_conversion);
+  void SetShiftConversion(const ConversionMaker& shift_conversion);
   void SetShiftSide(unsigned int shift_side);
   void SetDeltaSize(const DeltaSize& delta_size);
 
