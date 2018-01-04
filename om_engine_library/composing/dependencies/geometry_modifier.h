@@ -21,11 +21,11 @@ class GeometryModifier {
 
   void ModifyTo(unsigned int modified_side) { modified_side_ = modified_side; }
 
- private:
+ protected:
   ConversionMaker modification_converstion_;
   DeltaSize delta_size_;
 
-  unsigned int modified_side_;
+  unsigned int modified_side_ = 0;
 };
 }
 

@@ -6,24 +6,16 @@
 
 #include <conversion_maker.h>
 #include <delta_size.h>
+#include <geometry_modifier.h>
 
 namespace om_composing {
 
-class Shifter {
+class Shifter : public GeometryModifier {
  public:
-  void ComputeShifting(const QRect& shift_position);
-
-  void SetShiftConversion(const ConversionMaker& shift_conversion);
-  void SetShiftSide(unsigned int shift_side);
-  void SetDeltaSize(const DeltaSize& delta_size);
-
+  void ComputeModification(const QRect& initial_position) override;
   QPoint GetShiftPoint() const;
 
  private:
-  ConversionMaker shift_conversion_;
-  DeltaSize delta_size_;
-
-  unsigned int shift_side_ = 0;
 
   QPoint shift_point_;
 };
