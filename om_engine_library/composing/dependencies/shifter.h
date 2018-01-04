@@ -2,7 +2,6 @@
 #define SHIFTER_H
 
 #include <QPoint>
-#include <QRect>
 
 #include <geometry_modifier.h>
 
@@ -14,7 +13,6 @@ class Shifter : public GeometryModifier {
   QPoint GetShiftPoint() const;
 
  private:
-
   QPoint shift_point_;
 };
 }
