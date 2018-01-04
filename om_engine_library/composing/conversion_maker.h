@@ -1,12 +1,12 @@
-#ifndef CORRECT_CONVERSION_MAKER_H
-#define CORRECT_CONVERSION_MAKER_H
+#ifndef CONVERSION_MAKER_H
+#define CONVERSION_MAKER_H
 
 namespace om_composing {
 
-class CorrectConversionMaker {
+class ConversionMaker {
  public:
-  CorrectConversionMaker();
-  CorrectConversionMaker(float x_axis_value, float y_axis_value);
+  ConversionMaker();
+  ConversionMaker(float x_axis_value, float y_axis_value);
 
   void SetConversionByX(float x_axis_value);
   void SetConversionByY(float y_axis_value);
@@ -25,4 +25,4 @@ class CorrectConversionMaker {
 };
 }
 
-#endif  // CORRECT_CONVERSION_MAKER_H
+#endif  // CONVERSION_MAKER_H
