@@ -4,8 +4,6 @@
 #include <QPoint>
 #include <QRect>
 
-#include <conversion_maker.h>
-#include <delta_size.h>
 #include <geometry_modifier.h>
 
 namespace om_composing {
