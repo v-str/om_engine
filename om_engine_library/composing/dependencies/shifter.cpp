@@ -5,9 +5,9 @@
 using namespace om_utility;
 using namespace om_composing;
 
-void Shifter::ComputeShifting(const QPoint &shift_point) {
-  int x = shift_point.x();
-  int y = shift_point.y();
+void Shifter::ComputeShifting(const QRect &shift_position) {
+  int x = shift_position.x();
+  int y = shift_position.y();
 
   if (shift_side_ & Side::kLeft) {
     x -= shift_conversion_.X() * delta_size_.Width();

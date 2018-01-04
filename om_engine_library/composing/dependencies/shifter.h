@@ -2,6 +2,7 @@
 #define SHIFTER_H
 
 #include <QPoint>
+#include <QRect>
 
 #include <conversion_maker.h>
 #include <delta_size.h>
@@ -10,7 +11,7 @@ namespace om_composing {
 
 class Shifter {
  public:
-  void ComputeShifting(const QPoint& shift_point);
+  void ComputeShifting(const QRect& shift_position);
 
   void MakeShiftConversion(const ConversionMaker& shift_conversion);
   void SetShiftSide(unsigned int shift_side);
