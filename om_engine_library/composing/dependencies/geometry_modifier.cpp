@@ -2,7 +2,7 @@
 
 using namespace om_composing;
 
-void GeometryModifier::SetModificationConversion(
+void GeometryModifier::SetModificationFactor(
     const ModificationFactor &modification_converstion) {
   modification_converstion_ = modification_converstion;
 }

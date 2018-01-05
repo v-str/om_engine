@@ -1,18 +1,25 @@
 ﻿#ifndef GEOMETRY_COMPOSER_H
 #define GEOMETRY_COMPOSER_H
 
+#include <memory>
+
 #include <geometry_modifier.h>
 #include <om_utility.h>
 
 namespace om_composing {
 
+using namespace om_utility;
+
 class GeometryComposer {
  public:
-
+  GeometryComposer(const ModificationFactor& modification_factor,
+                   TransformationType type = kShifting);
 
  private:
-  GeometryModifier* shifter_ = nullptr;
-  GeometryModifier* stretcher_ = nullptr;
+  void InitializeShifter();
+
+  std::unique_ptr<GeometryModifier> shifter_;
+  std::unique_ptr<GeometryModifier> stretcher_;
 };
 }
 
