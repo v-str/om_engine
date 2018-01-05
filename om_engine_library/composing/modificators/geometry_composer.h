@@ -15,8 +15,6 @@ class GeometryComposer {
                    Side modify_to = kRight,
                    TransformationType type = kShifting);
 
-  void SetDeltaSize(const DeltaSize& delta_size);
-
  private:
   void InitializeShifter();
   void InitializeStretcher();

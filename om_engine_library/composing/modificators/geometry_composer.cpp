@@ -26,15 +26,6 @@ GeometryComposer::GeometryComposer(
   }
 }
 
-void GeometryComposer::SetDeltaSize(const DeltaSize &delta_size) {
-  if (shifter_ != nullptr) {
-    shifter_->SetDeltaSize(delta_size);
-  }
-  if (stretcher_ != nullptr) {
-    stretcher_->SetDeltaSize(delta_size);
-  }
-}
-
 void GeometryComposer::InitializeShifter() {
   shifter_ = std::move(std::unique_ptr<GeometryModifier>(new Shifter));
 }
