@@ -12,8 +12,10 @@ using namespace om_utility;
 class GeometryComposer {
  public:
   GeometryComposer(const ModificationFactor& modification_factor,
-                   Side modify_to=kRight,
+                   Side modify_to = kRight,
                    TransformationType type = kShifting);
+
+  void SetDeltaSize(const DeltaSize& delta_size);
 
  private:
   void InitializeShifter();
