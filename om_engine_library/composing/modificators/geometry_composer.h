@@ -17,6 +17,7 @@ class GeometryComposer {
 
  private:
   void InitializeShifter();
+  void InitializeStretcher();
 
   std::unique_ptr<GeometryModifier> shifter_;
   std::unique_ptr<GeometryModifier> stretcher_;

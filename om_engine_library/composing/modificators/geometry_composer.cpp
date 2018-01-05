@@ -12,6 +12,10 @@ GeometryComposer::GeometryComposer(
       InitializeShifter();
       shifter_->SetModificationFactor(modification_factor);
       break;
+
+    case kStretching:
+      InitializeStretcher();
+      stretcher_->SetModificationFactor(modification_factor);
     default:
       break;
   }
@@ -19,4 +23,8 @@ GeometryComposer::GeometryComposer(
 
 void GeometryComposer::InitializeShifter() {
   shifter_ = std::move(std::unique_ptr<GeometryModifier>(new Shifter));
+}
+
+void GeometryComposer::InitializeStretcher() {
+  stretcher_ = std::move(std::unique_ptr<GeometryModifier>(new Stretcher));
 }
