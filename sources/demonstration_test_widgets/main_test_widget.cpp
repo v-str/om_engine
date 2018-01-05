@@ -3,6 +3,7 @@
 #include <QPalette>
 #include <QPixmap>
 
+#include <initial_geometry.h>
 #include <test_message.h>
 #include <test_widget_setter.h>
 
@@ -44,7 +45,7 @@ void MainTestWidget::SetAppearance() {
   TestWidgetSetter::ColorizeLabel(date_label_, QRect(480, 10, 100, 30));
 }
 
-void MainTestWidget::SetWidgets() { resize(600, 400); }
+void MainTestWidget::SetWidgets() { setGeometry(MainWidgetGeometry()); }
 
 void MainTestWidget::SetAnimation() {
   animator_->SetAnimation(QEasingCurve::OutCirc, 500);
