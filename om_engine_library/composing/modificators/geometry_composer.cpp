@@ -10,26 +10,19 @@ GeometryComposer::GeometryComposer(
     TransformationType type) {
   switch (type) {
     case kShifting:
-      InitializeShifter();
-      shifter_->SetModificationFactor(modification_factor);
-      shifter_->ModifyTo(modify_to);
+      geometry_modifier_ =
+          std::move(std::unique_ptr<GeometryModifier>(new Shifter));
       break;
 
     case kStretching:
-      InitializeStretcher();
-      stretcher_->SetModificationFactor(modification_factor);
-      stretcher_->ModifyTo(modify_to);
+      geometry_modifier_ =
+          std::move(std::unique_ptr<GeometryModifier>(new Stretcher));
       break;
 
     default:
       break;
   }
-}
 
-void GeometryComposer::InitializeShifter() {
-  shifter_ = std::move(std::unique_ptr<GeometryModifier>(new Shifter));
-}
-
-void GeometryComposer::InitializeStretcher() {
-  stretcher_ = std::move(std::unique_ptr<GeometryModifier>(new Stretcher));
+  geometry_modifier_->SetModificationFactor(modification_factor);
+  geometry_modifier_->ModifyTo(modify_to);
 }

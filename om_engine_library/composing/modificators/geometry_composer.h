@@ -16,11 +16,7 @@ class GeometryComposer {
                    TransformationType type = kShifting);
 
  private:
-  void InitializeShifter();
-  void InitializeStretcher();
-
-  std::unique_ptr<GeometryModifier> shifter_;
-  std::unique_ptr<GeometryModifier> stretcher_;
+  std::unique_ptr<GeometryModifier> geometry_modifier_;
 };
 }
 
