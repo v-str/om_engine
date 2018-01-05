@@ -3,6 +3,9 @@
 
 #include <memory>
 
+#include <QRect>
+#include <QWidget>
+
 #include <geometry_modifier.h>
 #include <om_utility.h>
 
@@ -15,10 +18,14 @@ class GeometryComposer {
                    Side modify_to = kRight,
                    TransformationType type = kShifting);
 
+  void ComposeGeometry(const QRect& initial_widget_geometry, QWidget* widget);
+
   void SetDeltaSize(const DeltaSize& delta_size);
 
  private:
   std::unique_ptr<GeometryModifier> geometry_modifier_;
+
+  QRect modified_geometry_;
 };
 }
 

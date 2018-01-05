@@ -27,6 +27,12 @@ GeometryComposer::GeometryComposer(
   geometry_modifier_->ModifyTo(modify_to);
 }
 
+void GeometryComposer::ComposeGeometry(const QRect &initial_widget_geometry,
+                                  QWidget *widget) {
+  geometry_modifier_->ComputeModification(initial_widget_geometry);
+  widget->setGeometry(geometry_modifier_->GetModifiedRect());
+}
+
 void GeometryComposer::SetDeltaSize(const DeltaSize &delta_size) {
   geometry_modifier_->SetDeltaSize(delta_size);
 }
