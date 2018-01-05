@@ -16,3 +16,4 @@
 + 8.    Remove non-forward declaration includes in headers
 + 9.    Develop time and date classes
 - 10.   Develop GeometryComposer class
+- 11.   Notify users about C++11/14 standard usage

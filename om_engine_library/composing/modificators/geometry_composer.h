@@ -7,7 +7,6 @@
 #include <om_utility.h>
 
 namespace om_composing {
-
 using namespace om_utility;
 
 class GeometryComposer {
