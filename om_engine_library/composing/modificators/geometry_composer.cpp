@@ -26,3 +26,7 @@ GeometryComposer::GeometryComposer(
   geometry_modifier_->SetModificationFactor(modification_factor);
   geometry_modifier_->ModifyTo(modify_to);
 }
+
+void GeometryComposer::SetDeltaSize(const DeltaSize &delta_size) {
+  geometry_modifier_->SetDeltaSize(delta_size);
+}
