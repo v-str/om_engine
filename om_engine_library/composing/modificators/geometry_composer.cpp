@@ -6,16 +6,21 @@
 using namespace om_composing;
 
 GeometryComposer::GeometryComposer(
-    const ModificationFactor &modification_factor, TransformationType type) {
+    const ModificationFactor &modification_factor, Side modify_to,
+    TransformationType type) {
   switch (type) {
     case kShifting:
       InitializeShifter();
       shifter_->SetModificationFactor(modification_factor);
+      shifter_->ModifyTo(modify_to);
       break;
 
     case kStretching:
       InitializeStretcher();
       stretcher_->SetModificationFactor(modification_factor);
+      stretcher_->ModifyTo(modify_to);
+      break;
+
     default:
       break;
   }

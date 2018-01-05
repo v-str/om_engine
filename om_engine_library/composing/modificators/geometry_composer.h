@@ -13,6 +13,7 @@ using namespace om_utility;
 class GeometryComposer {
  public:
   GeometryComposer(const ModificationFactor& modification_factor,
+                   Side modify_to=kRight,
                    TransformationType type = kShifting);
 
  private:
