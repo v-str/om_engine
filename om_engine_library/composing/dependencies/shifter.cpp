@@ -22,7 +22,8 @@ void Shifter::ComputeModification(const QRect &initial_position) {
     y += modification_converstion_.Y() * delta_size_.Height();
   }
 
-  shift_point_ = QPoint(x, y);
+  shifted_rect_ =
+      QRect(x, y, initial_position.width(), initial_position.height());
 }
 
-QPoint Shifter::GetShiftPoint() const { return shift_point_; }
+QRect Shifter::GetModifiedRect() const { return shifted_rect_; }

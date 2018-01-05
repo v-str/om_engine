@@ -8,8 +8,7 @@ namespace om_composing {
 class Stretcher : public GeometryModifier {
  public:
   void ComputeModification(const QRect &initial_position) override;
-
-  QRect GetStretchedRect() const;
+  QRect GetModifiedRect() const override;
 
  private:
   QRect stretched_rect_;

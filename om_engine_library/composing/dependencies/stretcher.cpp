@@ -29,4 +29,4 @@ void Stretcher::ComputeModification(const QRect &initial_position) {
   stretched_rect_ = QRect(x_pos, y_pos, width, height);
 }
 
-QRect Stretcher::GetStretchedRect() const { return stretched_rect_; }
+QRect Stretcher::GetModifiedRect() const { return stretched_rect_; }

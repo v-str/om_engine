@@ -3,14 +3,15 @@
 
 #include <QRect>
 
-#include <modification_factor.h>
 #include <delta_size.h>
+#include <modification_factor.h>
 
 namespace om_composing {
 
 class GeometryModifier {
  public:
   virtual void ComputeModification(const QRect& initial_position) = 0;
+  virtual QRect GetModifiedRect() const = 0;
 
   void SetModificationFactor(
       const ModificationFactor& modification_converstion);

@@ -10,10 +10,10 @@ namespace om_composing {
 class Shifter : public GeometryModifier {
  public:
   void ComputeModification(const QRect& initial_position) override;
-  QPoint GetShiftPoint() const;
+  QRect GetModifiedRect() const override;
 
  private:
-  QPoint shift_point_;
+  QRect shifted_rect_;
 };
 }
 
