@@ -13,13 +13,11 @@ class GeometryModifier {
   virtual void ComputeModification(const QRect& initial_position) = 0;
 
   void SetModificationConversion(
-      const ConversionMaker& modification_converstion) {
-    modification_converstion_ = modification_converstion;
-  }
+      const ConversionMaker& modification_converstion);
 
-  void SetDeltaSize(const DeltaSize& delta_size) { delta_size_ = delta_size; }
+  void SetDeltaSize(const DeltaSize& delta_size);
 
-  void ModifyTo(unsigned int modified_side) { modified_side_ = modified_side; }
+  void ModifyTo(unsigned int modified_side);
 
  protected:
   ConversionMaker modification_converstion_;
