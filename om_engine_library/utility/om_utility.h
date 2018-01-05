@@ -8,6 +8,8 @@ enum Side { kLeft = 1, kRight = 2, kUp = 4, kDown = 8 };
 
 enum WidgetAnimationType { kOpen, kClose };
 
+enum TransformationType { kShifting, kStretching, kScaling };
+
 struct OffsetDistance {
   OffsetDistance(unsigned int offset_by_x = 0, unsigned int offset_by_y = 0);
 

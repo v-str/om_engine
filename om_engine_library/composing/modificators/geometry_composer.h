@@ -1,7 +1,19 @@
-#ifndef GEOMETRY_COMPOSER_H
+﻿#ifndef GEOMETRY_COMPOSER_H
 #define GEOMETRY_COMPOSER_H
 
-class GeometryComposer{
-};
+#include <geometry_modifier.h>
+#include <om_utility.h>
 
-#endif // GEOMETRY_COMPOSER_H
+namespace om_composing {
+
+class GeometryComposer {
+ public:
+
+
+ private:
+  GeometryModifier* shifter_ = nullptr;
+  GeometryModifier* stretcher_ = nullptr;
+};
+}
+
+#endif  // GEOMETRY_COMPOSER_H
