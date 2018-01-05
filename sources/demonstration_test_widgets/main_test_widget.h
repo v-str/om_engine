@@ -19,6 +19,9 @@ class MainTestWidget : public QWidget {
   explicit MainTestWidget(QWidget* parent = nullptr);
   ~MainTestWidget();
 
+ protected:
+  void resizeEvent(QResizeEvent*);
+
  private slots:
   void MultipleClickCathed();
 

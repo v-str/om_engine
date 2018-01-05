@@ -22,6 +22,11 @@ MainTestWidget::MainTestWidget(QWidget* parent)
 
 MainTestWidget::~MainTestWidget() {}
 
+void MainTestWidget::resizeEvent(QResizeEvent *)
+{
+
+}
+
 void MainTestWidget::MultipleClickCathed() {
   TestMessage::WriteTestMessage(
       "Repetitive click on the same button was caught");

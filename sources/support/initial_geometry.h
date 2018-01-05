@@ -1,0 +1,4 @@
+#ifndef INITIAL_GEOMETRY_H
+#define INITIAL_GEOMETRY_H
+
+#endif // INITIAL_GEOMETRY_H
