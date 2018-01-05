@@ -5,6 +5,8 @@
 #include <test_message.h>
 #include <test_widget_setter.h>
 
+using namespace demo_code;
+
 TestFrame::TestFrame(QWidget* parent)
     : QFrame(parent),
       test_label_(new QLabel(this)),

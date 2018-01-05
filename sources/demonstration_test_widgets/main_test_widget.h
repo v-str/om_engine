@@ -10,6 +10,8 @@
 #include <test_frame.h>
 #include <widget_animator.h>
 
+namespace demo_code {
+
 using namespace om_widgets;
 using namespace om_animation;
 
@@ -38,5 +40,6 @@ class MainTestWidget : public QWidget {
   OmTimeLabel* time_label_ = nullptr;
   OmDateLabel* date_label_ = nullptr;
 };
+}
 
 #endif  // SINGLE_TEST_WIDGET_H

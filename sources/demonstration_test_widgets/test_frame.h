@@ -8,6 +8,8 @@
 #include <text_animator.h>
 #include <widget_animator.h>
 
+namespace demo_code {
+
 using namespace om_widgets;
 using namespace om_animation;
 
@@ -35,5 +37,6 @@ class TestFrame : public QFrame {
   WidgetAnimator* animator_ = nullptr;
   TextAnimator* text_animator1_ = nullptr;
 };
+}
 
 #endif  // TEST_FRAME_H

@@ -3,6 +3,8 @@
 
 #include <QString>
 
+namespace demo_code {
+
 class TestMessage {
  public:
   static void WriteTestMessage(const QString& what_you_test_description);
@@ -10,5 +12,6 @@ class TestMessage {
  private:
   static unsigned int kCount;
 };
+}
 
 #endif  // TEST_MESSAGE_H

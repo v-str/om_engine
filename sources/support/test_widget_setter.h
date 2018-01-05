@@ -6,6 +6,8 @@
 #include <QPushButton>
 #include <QRect>
 
+namespace demo_code {
+
 class TestWidgetSetter {
  public:
   static void ColorizeButton(QPushButton* button,
@@ -13,5 +15,6 @@ class TestWidgetSetter {
   static void ColorizeFrame(QFrame* frame, const QRect& current_geometry);
   static void ColorizeLabel(QLabel* label, const QRect& geometry);
 };
+}
 
 #endif  // TEST_WIDGET_SETTER_H

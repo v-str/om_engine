@@ -6,6 +6,8 @@
 #include <test_message.h>
 #include <test_widget_setter.h>
 
+using namespace demo_code;
+
 MainTestWidget::MainTestWidget(QWidget* parent)
     : QWidget(parent),
       test_frame_(new TestFrame(this)),
@@ -22,10 +24,7 @@ MainTestWidget::MainTestWidget(QWidget* parent)
 
 MainTestWidget::~MainTestWidget() {}
 
-void MainTestWidget::resizeEvent(QResizeEvent *)
-{
-
-}
+void MainTestWidget::resizeEvent(QResizeEvent*) {}
 
 void MainTestWidget::MultipleClickCathed() {
   TestMessage::WriteTestMessage(

@@ -2,6 +2,8 @@
 
 #include <om_button.h>
 
+using namespace demo_code;
+
 void TestWidgetSetter::ColorizeButton(QPushButton* button,
                                       const QRect& current_geometry) {
   button->setStyleSheet(
