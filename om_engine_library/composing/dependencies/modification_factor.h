@@ -1,12 +1,12 @@
-#ifndef CONVERSION_MAKER_H
-#define CONVERSION_MAKER_H
+﻿#ifndef MODIFICATION_FACTOR_H
+#define MODIFICATION_FACTOR_H
 
 namespace om_composing {
 
-class ConversionMaker {
+class ModificationFactor {
  public:
-  ConversionMaker();
-  ConversionMaker(float x_axis_value, float y_axis_value);
+  ModificationFactor();
+  ModificationFactor(float x_axis_value, float y_axis_value);
 
   void SetConversionByX(float x_axis_value);
   void SetConversionByY(float y_axis_value);
@@ -25,4 +25,4 @@ class ConversionMaker {
 };
 }
 
-#endif  // CONVERSION_MAKER_H
+#endif  // MODIFICATION_FACTOR_H

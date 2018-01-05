@@ -3,7 +3,7 @@
 
 #include <QRect>
 
-#include <conversion_maker.h>
+#include <modification_factor.h>
 #include <delta_size.h>
 
 namespace om_composing {
@@ -13,14 +13,14 @@ class GeometryModifier {
   virtual void ComputeModification(const QRect& initial_position) = 0;
 
   void SetModificationConversion(
-      const ConversionMaker& modification_converstion);
+      const ModificationFactor& modification_converstion);
 
   void SetDeltaSize(const DeltaSize& delta_size);
 
   void ModifyTo(unsigned int modified_side);
 
  protected:
-  ConversionMaker modification_converstion_;
+  ModificationFactor modification_converstion_;
   DeltaSize delta_size_;
 
   unsigned int modified_side_ = 0;
