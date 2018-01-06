@@ -14,7 +14,7 @@ using namespace om_widgets;
 
 class TestWidgetSetter {
  public:
-  static void ColorizeButton(OmButton* button,
+  static void CustomizeButton(OmButton* button,
                              const QRect& current_geometry);
   static void ColorizeFrame(QFrame* frame, const QRect& current_geometry);
   static void ColorizeLabel(QLabel* label, const QRect& geometry);

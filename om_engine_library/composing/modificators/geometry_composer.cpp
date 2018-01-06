@@ -28,7 +28,7 @@ GeometryComposer::GeometryComposer(
 }
 
 void GeometryComposer::ComposeGeometry(const QRect &initial_widget_geometry,
-                                  QWidget *widget) {
+                                       QWidget *widget) {
   geometry_modifier_->ComputeModification(initial_widget_geometry);
   widget->setGeometry(geometry_modifier_->GetModifiedRect());
 }

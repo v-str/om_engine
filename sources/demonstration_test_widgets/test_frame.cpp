@@ -41,9 +41,9 @@ void TestFrame::SetTestFrame() {
 }
 
 void TestFrame::SetWidgets() {
-  TestWidgetSetter::ColorizeButton(open_button_, QRect(30, 10, 95, 30));
-  TestWidgetSetter::ColorizeButton(close_button_, QRect(135, 10, 95, 30));
-  TestWidgetSetter::ColorizeButton(display_text_button_,
+  TestWidgetSetter::CustomizeButton(open_button_, QRect(30, 10, 95, 30));
+  TestWidgetSetter::CustomizeButton(close_button_, QRect(135, 10, 95, 30));
+  TestWidgetSetter::CustomizeButton(display_text_button_,
                                    QRect(240, 10, 95, 30));
 }
 

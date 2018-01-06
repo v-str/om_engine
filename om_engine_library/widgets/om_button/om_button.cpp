@@ -22,7 +22,7 @@ void om_widgets::OmButton::SetGeometryComposer(
     const ModificationFactor& modification_factor, Side modify_to,
     TransformationType type) {
   geometry_composer_ = std::move(std::unique_ptr<GeometryComposer>(
-      new GeometryComposer(modification_factor, modify_to)));
+      new GeometryComposer(modification_factor, modify_to, type)));
 }
 
 void OmButton::SetDeltaSize(const DeltaSize& delta_size) {

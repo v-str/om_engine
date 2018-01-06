@@ -6,7 +6,7 @@
 using namespace demo_code;
 using namespace om_utility;
 
-void TestWidgetSetter::ColorizeButton(OmButton* button,
+void TestWidgetSetter::CustomizeButton(OmButton* button,
                                       const QRect& current_geometry) {
   button->setStyleSheet(
       "QPushButton{"
@@ -23,7 +23,8 @@ void TestWidgetSetter::ColorizeButton(OmButton* button,
   button->SetOffsetDistance(OffsetDistance(2, 2));
   button->SetOffsetSide(Side::kRight | Side::kDown);
 
-  button->SetGeometryComposer(ModificationFactor(0.3, 0.0), Side::kRight);
+  button->SetGeometryComposer(ModificationFactor(0.3, 0.0), kRight,
+                              kStretching);
 }
 
 void TestWidgetSetter::ColorizeFrame(QFrame* frame,
