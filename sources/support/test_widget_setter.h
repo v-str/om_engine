@@ -6,11 +6,15 @@
 #include <QPushButton>
 #include <QRect>
 
+#include <om_button.h>
+
 namespace demo_code {
+
+using namespace om_widgets;
 
 class TestWidgetSetter {
  public:
-  static void ColorizeButton(QPushButton* button,
+  static void ColorizeButton(OmButton* button,
                              const QRect& current_geometry);
   static void ColorizeFrame(QFrame* frame, const QRect& current_geometry);
   static void ColorizeLabel(QLabel* label, const QRect& geometry);

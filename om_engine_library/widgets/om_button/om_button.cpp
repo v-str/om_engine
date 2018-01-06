@@ -1,5 +1,7 @@
 ﻿#include <om_button.h>
 
+using namespace om_widgets;
+
 om_widgets::OmButton::OmButton(QWidget* parent) : QPushButton(parent) {}
 
 om_widgets::OmButton::OmButton(const QString& button_text, QWidget* parent)
@@ -14,6 +16,21 @@ void om_widgets::OmButton::SetOffsetSide(unsigned int offset_side) {
 void om_widgets::OmButton::SetOffsetDistance(
     const om_utility::OffsetDistance& offset_distance) {
   offset_distance_ = offset_distance;
+}
+
+void om_widgets::OmButton::SetGeometryComposer(
+    const ModificationFactor& modification_factor, Side modify_to,
+    TransformationType type) {
+  geometry_composer_ = std::move(std::unique_ptr<GeometryComposer>(
+      new GeometryComposer(modification_factor, modify_to)));
+}
+
+void OmButton::SetDeltaSize(const DeltaSize& delta_size) {
+  geometry_composer_->SetDeltaSize(delta_size);
+}
+
+void OmButton::ComposeGeometry(const QRect& initial_widget_geometry) {
+  geometry_composer_->ComposeGeometry(initial_widget_geometry, this);
 }
 
 void om_widgets::OmButton::enterEvent(QEvent*) {

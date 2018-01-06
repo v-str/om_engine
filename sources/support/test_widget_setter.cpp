@@ -1,10 +1,12 @@
 ﻿#include <test_widget_setter.h>
 
-#include <om_button.h>
+#include <modification_factor.h>
+#include <om_utility.h>
 
 using namespace demo_code;
+using namespace om_utility;
 
-void TestWidgetSetter::ColorizeButton(QPushButton* button,
+void TestWidgetSetter::ColorizeButton(OmButton* button,
                                       const QRect& current_geometry) {
   button->setStyleSheet(
       "QPushButton{"
@@ -18,10 +20,10 @@ void TestWidgetSetter::ColorizeButton(QPushButton* button,
       "color: red; }");
   button->setWindowOpacity(0.5);
   button->setGeometry(current_geometry);
-  qobject_cast<om_widgets::OmButton*>(button)->SetOffsetDistance(
-      om_utility::OffsetDistance(2, 2));
-  qobject_cast<om_widgets::OmButton*>(button)->SetOffsetSide(
-      om_utility::Side::kRight | om_utility::Side::kDown);
+  button->SetOffsetDistance(OffsetDistance(2, 2));
+  button->SetOffsetSide(Side::kRight | Side::kDown);
+
+  button->SetGeometryComposer(ModificationFactor(0.3, 0.0), Side::kRight);
 }
 
 void TestWidgetSetter::ColorizeFrame(QFrame* frame,

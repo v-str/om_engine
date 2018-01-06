@@ -25,7 +25,13 @@ MainTestWidget::MainTestWidget(QWidget* parent)
 
 MainTestWidget::~MainTestWidget() {}
 
-void MainTestWidget::resizeEvent(QResizeEvent*) {}
+void MainTestWidget::resizeEvent(QResizeEvent*) {
+    button_close_->SetDeltaSize(DeltaSize(
+           width() - MainWidgetGeometry().width(),
+           height() - MainWidgetGeometry().height()));
+
+    button_close_->ComposeGeometry(QRect(100, 10, 70, 30));
+}
 
 void MainTestWidget::MultipleClickCathed() {
   TestMessage::WriteTestMessage(
