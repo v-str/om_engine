@@ -9,11 +9,13 @@
 #include <om_time_label.h>
 #include <test_frame.h>
 #include <widget_animator.h>
+#include <delta_size.h>
 
 namespace demo_code {
 
 using namespace om_widgets;
 using namespace om_animation;
+using namespace om_composing;
 
 class MainTestWidget : public QWidget {
   Q_OBJECT
@@ -32,6 +34,7 @@ class MainTestWidget : public QWidget {
   void SetWidgets();
   void SetAnimation();
   void SetConnections();
+  void SetDeltaSize();
 
   TestFrame* test_frame_ = nullptr;
   OmButton* button_open_ = nullptr;
@@ -39,6 +42,8 @@ class MainTestWidget : public QWidget {
   WidgetAnimator* animator_ = nullptr;
   OmTimeLabel* time_label_ = nullptr;
   OmDateLabel* date_label_ = nullptr;
+
+  DeltaSize delta_size_;
 };
 }
 

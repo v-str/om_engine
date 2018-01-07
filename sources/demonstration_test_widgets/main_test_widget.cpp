@@ -59,3 +59,8 @@ void MainTestWidget::SetConnections() {
   connect(animator_, SIGNAL(AnimationIncomplete()),
           SLOT(MultipleClickCathed()));
 }
+
+void MainTestWidget::SetDeltaSize() {
+  delta_size_.SetWidth(width() - MainWidgetGeometry().width());
+  delta_size_.SetHeight(height() - MainWidgetGeometry().height());
+}

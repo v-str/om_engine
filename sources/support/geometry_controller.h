@@ -10,6 +10,9 @@ using namespace om_utility;
 
 class GeometryController {
  public:
+  static void ComposeGeometry(const QRect& initial_widget_geometry, QWidget* widget);
+  static void ScaleGeometry(const QRect& initial_widget_geometry, QWidget* widget);
+
   static void SetDeltaSize(const DeltaSize& delta_size);
 
  private:
