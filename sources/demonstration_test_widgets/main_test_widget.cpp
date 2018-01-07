@@ -38,14 +38,14 @@ void MainTestWidget::SetAppearance() {
   palette.setBrush(QPalette::Background, background);
   this->setPalette(palette);
 
-  TestWidgetSetter::ColorizeFrame(test_frame_, QRect(20, 70, 560, 320));
+  TestWidgetSetter::CustomizeFrame(test_frame_, QRect(20, 70, 560, 320));
   TestWidgetSetter::CustomizeButton(button_open_, QRect(20, 10, 70, 30));
   TestWidgetSetter::CustomizeButton(button_close_, QRect(100, 10, 70, 30));
-  TestWidgetSetter::ColorizeLabel(time_label_, QRect(365, 10, 100, 30));
-  TestWidgetSetter::ColorizeLabel(date_label_, QRect(480, 10, 100, 30));
+  TestWidgetSetter::CustomizeLabel(time_label_, QRect(365, 10, 100, 30));
+  TestWidgetSetter::CustomizeLabel(date_label_, QRect(480, 10, 100, 30));
 }
 
-void MainTestWidget::SetWidgets() { setGeometry(MainWidgetGeometry()); }
+void MainTestWidget::SetWidgets() { setGeometry(MainWidget()); }
 
 void MainTestWidget::SetAnimation() {
   animator_->SetAnimation(QEasingCurve::OutCirc, 500);

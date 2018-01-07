@@ -2,4 +2,4 @@
 
 using namespace demo_code;
 
-QRect demo_code::MainWidgetGeometry() { return QRect(100, 100, 600, 400); }
+QRect demo_code::MainWidget() { return QRect(100, 100, 600, 400); }

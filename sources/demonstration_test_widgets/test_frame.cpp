@@ -36,7 +36,7 @@ void TestFrame::IsAnimationComplete() {
 }
 
 void TestFrame::SetTestFrame() {
-  TestWidgetSetter::ColorizeFrame(this, QRect(0, 0, 0, 0));
+  TestWidgetSetter::CustomizeFrame(this, QRect(0, 0, 0, 0));
   resize(500, 300);
 }
 
@@ -48,7 +48,7 @@ void TestFrame::SetWidgets() {
 }
 
 void TestFrame::SetLabel() {
-  TestWidgetSetter::ColorizeLabel(test_label_, QRect(30, 100, 500, 190));
+  TestWidgetSetter::CustomizeLabel(test_label_, QRect(30, 100, 500, 190));
   QFont font = test_label_->font();
   font.setPointSize(20);
   test_label_->setFont(font);

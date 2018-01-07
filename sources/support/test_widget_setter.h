@@ -16,8 +16,8 @@ class TestWidgetSetter {
  public:
   static void CustomizeButton(OmButton* button,
                              const QRect& current_geometry);
-  static void ColorizeFrame(QFrame* frame, const QRect& current_geometry);
-  static void ColorizeLabel(QLabel* label, const QRect& geometry);
+  static void CustomizeFrame(QFrame* frame, const QRect& current_geometry);
+  static void CustomizeLabel(QLabel* label, const QRect& geometry);
 };
 }
 

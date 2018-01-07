@@ -5,7 +5,10 @@
 
 namespace demo_code {
 
-QRect MainWidgetGeometry();
+QRect MainWidget();
+
+
+
 }
 
 #endif  // TEST_GEOMETRIES_H

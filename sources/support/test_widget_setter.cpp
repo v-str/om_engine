@@ -24,7 +24,7 @@ void TestWidgetSetter::CustomizeButton(OmButton* button,
   button->SetOffsetSide(Side::kRight | Side::kDown);
 }
 
-void TestWidgetSetter::ColorizeFrame(QFrame* frame,
+void TestWidgetSetter::CustomizeFrame(QFrame* frame,
                                      const QRect& current_geometry) {
   frame->setStyleSheet(
       "QFrame{"
@@ -37,7 +37,7 @@ void TestWidgetSetter::ColorizeFrame(QFrame* frame,
   frame->setGeometry(current_geometry);
 }
 
-void TestWidgetSetter::ColorizeLabel(QLabel* label, const QRect& geometry) {
+void TestWidgetSetter::CustomizeLabel(QLabel* label, const QRect& geometry) {
   label->setStyleSheet(
       "QLabel{"
       "background-color: rgba(0, 0, 0, 50%);"
