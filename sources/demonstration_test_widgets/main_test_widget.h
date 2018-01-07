@@ -4,12 +4,13 @@
 #include <QFrame>
 #include <QWidget>
 
+#include <delta_size.h>
+#include <geometry_controller.h>
 #include <om_button.h>
 #include <om_date_label.h>
 #include <om_time_label.h>
 #include <test_frame.h>
 #include <widget_animator.h>
-#include <delta_size.h>
 
 namespace demo_code {
 
@@ -34,7 +35,7 @@ class MainTestWidget : public QWidget {
   void SetWidgets();
   void SetAnimation();
   void SetConnections();
-  void SetDeltaSize();
+  DeltaSize SetDeltaSize();
 
   TestFrame* test_frame_ = nullptr;
   OmButton* button_open_ = nullptr;
@@ -44,6 +45,7 @@ class MainTestWidget : public QWidget {
   OmDateLabel* date_label_ = nullptr;
 
   DeltaSize delta_size_;
+  GeometryController geometry_controller_;
 };
 }
 

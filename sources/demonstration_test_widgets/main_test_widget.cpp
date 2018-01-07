@@ -23,7 +23,9 @@ MainTestWidget::MainTestWidget(QWidget* parent)
   SetConnections();
 }
 
-MainTestWidget::~MainTestWidget() {}
+MainTestWidget::~MainTestWidget() {
+  geometry_controller_.SetDeltaSize(SetDeltaSize());
+}
 
 void MainTestWidget::resizeEvent(QResizeEvent*) {}
 
@@ -60,7 +62,7 @@ void MainTestWidget::SetConnections() {
           SLOT(MultipleClickCathed()));
 }
 
-void MainTestWidget::SetDeltaSize() {
-  delta_size_.SetWidth(width() - MainWidgetGeometry().width());
-  delta_size_.SetHeight(height() - MainWidgetGeometry().height());
+DeltaSize MainTestWidget::SetDeltaSize() {
+  return DeltaSize(width() - MainWidgetGeometry().width(),
+                   height() - MainWidgetGeometry().height());
 }
