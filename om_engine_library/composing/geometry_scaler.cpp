@@ -22,13 +22,9 @@ GeometryScaler::GeometryScaler(
 void GeometryScaler::ScaleGeometry(const QRect &initial_widget_geometry,
                                    QWidget *widget) {
   shifter_->ComputeModification(initial_widget_geometry);
-  QRect after_shifting_rect = shifter_->GetModifiedRect();
-
   stretcher_->ComputeModification(initial_widget_geometry);
-  QRect after_stretching_rect = stretcher_->GetModifiedRect();
-
-  widget->setGeometry(
-      om_utility::AddRects(after_shifting_rect, after_stretching_rect));
+  widget->setGeometry(om_utility::AddRects(shifter_->GetModifiedRect(),
+                                           stretcher_->GetModifiedRect()));
 }
 
 void GeometryScaler::SetDeltaSize(const DeltaSize &delta_size) {
