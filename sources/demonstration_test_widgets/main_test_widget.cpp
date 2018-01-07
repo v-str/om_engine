@@ -38,17 +38,17 @@ void MainTestWidget::SetAppearance() {
   palette.setBrush(QPalette::Background, background);
   this->setPalette(palette);
 
-  TestWidgetSetter::CustomizeFrame(test_frame_, QRect(20, 70, 560, 320));
-  TestWidgetSetter::CustomizeButton(button_open_, QRect(20, 10, 70, 30));
-  TestWidgetSetter::CustomizeButton(button_close_, QRect(100, 10, 70, 30));
-  TestWidgetSetter::CustomizeLabel(time_label_, QRect(365, 10, 100, 30));
-  TestWidgetSetter::CustomizeLabel(date_label_, QRect(480, 10, 100, 30));
+  TestWidgetSetter::CustomizeFrame(test_frame_, TestFrameGeometry());
+  TestWidgetSetter::CustomizeButton(button_open_, OpenButtonGeometry());
+  TestWidgetSetter::CustomizeButton(button_close_, CloseButtonGeometry());
+  TestWidgetSetter::CustomizeLabel(time_label_, TimeLabelGeometry());
+  TestWidgetSetter::CustomizeLabel(date_label_, DateLabelGeometry());
 }
 
-void MainTestWidget::SetWidgets() { setGeometry(MainWidget()); }
+void MainTestWidget::SetWidgets() { setGeometry(MainWidgetGeometry()); }
 
 void MainTestWidget::SetAnimation() {
-  animator_->SetAnimation(QEasingCurve::OutCirc, 500);
+  animator_->SetAnimation(QEasingCurve::OutCirc);
   animator_->SetCurrentGeometry(test_frame_->geometry());
 }
 

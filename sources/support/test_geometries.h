@@ -5,10 +5,12 @@
 
 namespace demo_code {
 
-QRect MainWidget();
-
-
-
+QRect MainWidgetGeometry();
+QRect TestFrameGeometry();
+QRect OpenButtonGeometry();
+QRect CloseButtonGeometry();
+QRect TimeLabelGeometry();
+QRect DateLabelGeometry();
 }
 
 #endif  // TEST_GEOMETRIES_H
