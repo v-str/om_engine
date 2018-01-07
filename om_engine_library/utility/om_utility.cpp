@@ -24,14 +24,3 @@ void om_utility::TimeDateChanger::ChangeTime(QLabel* time_label) {
 void om_utility::TimeDateChanger::ChangeDate(QLabel* date_label) {
   date_label->setText(QDate::currentDate().toString("dd.MM.yy"));
 }
-
-QRect om_utility::AddRects(const QRect& rect1, const QRect& rect2) {
-  QRect temp_rect;
-
-  temp_rect.setX(rect1.x() + rect2.x());
-  temp_rect.setY(rect1.y() + rect2.y());
-  temp_rect.setWidth(rect1.width() + rect2.width());
-  temp_rect.setHeight(rect1.height() + rect2.height());
-
-  return temp_rect;
-}

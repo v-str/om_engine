@@ -26,8 +26,6 @@ struct TimeDateChanger {
   static void ChangeTime(QLabel* time_label);
   static void ChangeDate(QLabel* date_label);
 };
-
-QRect AddRects(const QRect& rect1, const QRect& rect2);
 }
 
 #endif  // OM_UTILITY_H

@@ -23,6 +23,9 @@ class GeometryScaler {
   void SetDeltaSize(const DeltaSize& delta_size);
 
  private:
+  QRect AddRects(const QRect& shifted_geometry,
+                 const QRect& stretched_geometry);
+
   std::unique_ptr<GeometryModifier> shifter_;
   std::unique_ptr<GeometryModifier> stretcher_;
 };
