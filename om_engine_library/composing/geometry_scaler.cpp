@@ -17,3 +17,19 @@ GeometryScaler::GeometryScaler(
   stretcher_->SetModificationFactor(modification_stretch_factor);
   stretcher_->ModifyTo(stretch_to);
 }
+
+void GeometryScaler::ScaleGeometry(const QRect &initial_widget_geometry,
+                                   QWidget *widget) {
+  shifter_->ComputeModification(initial_widget_geometry);
+  QRect after_shifting_rect = shifter_->GetModifiedRect();
+
+  stretcher_->ComputeModification(initial_widget_geometry);
+  QRect after_stretching_rect = stretcher_->GetModifiedRect();
+
+  widget->setGeometry(modified_geometry_);
+}
+
+void GeometryScaler::SetDeltaSize(const DeltaSize &delta_size) {
+  shifter_->SetDeltaSize(delta_size);
+  stretcher_->SetDeltaSize(delta_size);
+}

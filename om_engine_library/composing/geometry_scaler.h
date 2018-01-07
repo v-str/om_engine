@@ -16,12 +16,17 @@ class GeometryScaler {
  public:
   GeometryScaler(const ModificationFactor& modification_shift_factor,
                  const ModificationFactor& modification_stretch_factor,
-                 Side shift_to = kRight,
-                 Side stretch_to = kRight);
+                 Side shift_to = kRight, Side stretch_to = kRight);
+
+  void ScaleGeometry(const QRect& initial_widget_geometry, QWidget* widget);
+
+  void SetDeltaSize(const DeltaSize& delta_size);
 
  private:
   std::unique_ptr<GeometryModifier> shifter_;
   std::unique_ptr<GeometryModifier> stretcher_;
+
+  QRect modified_geometry_;
 };
 }
 
