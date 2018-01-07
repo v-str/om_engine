@@ -3,7 +3,7 @@
 #include <QPalette>
 #include <QPixmap>
 
-#include <initial_geometry.h>
+#include <test_geometries.h>
 #include <test_message.h>
 #include <test_widget_setter.h>
 
