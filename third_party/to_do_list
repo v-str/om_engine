@@ -20,3 +20,4 @@
 + 12.   Run GeometryComposer, modify is needed
 - 13.   Add scaling transformation type to GeometryComposer
 - 14.   Develop base class for all widgets in OmEngine
+- 15.   Compose all existing widgets via GeometryController
