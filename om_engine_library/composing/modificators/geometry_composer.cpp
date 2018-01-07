@@ -6,7 +6,7 @@
 using namespace om_composing;
 
 GeometryComposer::GeometryComposer(
-    const ModificationFactor &modification_factor, Side modify_to,
+    const ModificationFactor &modification_factor, unsigned int side_to_modify,
     TransformationType type) {
   switch (type) {
     case kShifting:
@@ -24,7 +24,7 @@ GeometryComposer::GeometryComposer(
   }
 
   geometry_modifier_->SetModificationFactor(modification_factor);
-  geometry_modifier_->ModifyTo(modify_to);
+  geometry_modifier_->ModifyTo(side_to_modify);
 }
 
 void GeometryComposer::ComposeGeometry(const QRect &initial_widget_geometry,

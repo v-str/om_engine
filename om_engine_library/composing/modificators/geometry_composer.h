@@ -15,7 +15,7 @@ using namespace om_utility;
 class GeometryComposer {
  public:
   GeometryComposer(const ModificationFactor& modification_factor,
-                   Side modify_to = kRight,
+                   unsigned int side_to_modify = kRight,
                    TransformationType type = kShifting);
 
   void ComposeGeometry(const QRect& initial_widget_geometry, QWidget* widget);

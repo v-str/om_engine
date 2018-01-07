@@ -24,14 +24,13 @@ MainTestWidget::MainTestWidget(QWidget* parent)
   SetConnections();
 }
 
-MainTestWidget::~MainTestWidget() {
-
-}
+MainTestWidget::~MainTestWidget() {}
 
 void MainTestWidget::resizeEvent(QResizeEvent*) {
-    GeometryController::SetDeltaSize(GetDeltaSize());
-    GeometryController::ComposeGeometry(OpenButtonGeometry(), button_open_);
-    GeometryController::ComposeGeometry(CloseButtonGeometry(), button_close_);
+  GeometryController::SetDeltaSize(GetDeltaSize());
+  GeometryController::ShiftGeometry(TimeLabelGeometry(), time_label_);
+  GeometryController::ShiftGeometry(DateLabelGeometry(), date_label_);
+  GeometryController::StretchGeometry(TestFrameGeometry(), test_frame_);
 }
 
 void MainTestWidget::MultipleClickCathed() {

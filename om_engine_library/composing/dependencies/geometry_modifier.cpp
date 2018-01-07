@@ -3,8 +3,8 @@
 using namespace om_composing;
 
 void GeometryModifier::SetModificationFactor(
-    const ModificationFactor &modification_converstion) {
-  modification_converstion_ = modification_converstion;
+    const ModificationFactor &modification_factor) {
+  modification_factor_ = modification_factor;
 }
 
 void GeometryModifier::SetDeltaSize(const DeltaSize &delta_size) {
