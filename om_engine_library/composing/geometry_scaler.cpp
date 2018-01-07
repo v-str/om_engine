@@ -1,5 +1,6 @@
 ﻿#include <geometry_scaler.h>
 
+#include <om_utility.h>
 #include <shifter.h>
 #include <stretcher.h>
 
@@ -26,7 +27,8 @@ void GeometryScaler::ScaleGeometry(const QRect &initial_widget_geometry,
   stretcher_->ComputeModification(initial_widget_geometry);
   QRect after_stretching_rect = stretcher_->GetModifiedRect();
 
-  widget->setGeometry(modified_geometry_);
+  widget->setGeometry(
+      om_utility::AddRects(after_shifting_rect, after_stretching_rect));
 }
 
 void GeometryScaler::SetDeltaSize(const DeltaSize &delta_size) {

@@ -25,8 +25,6 @@ class GeometryScaler {
  private:
   std::unique_ptr<GeometryModifier> shifter_;
   std::unique_ptr<GeometryModifier> stretcher_;
-
-  QRect modified_geometry_;
 };
 }
 

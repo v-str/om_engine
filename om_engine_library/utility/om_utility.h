@@ -2,6 +2,7 @@
 #define OM_UTILITY_H
 
 class QLabel;
+class QRect;
 
 namespace om_utility {
 enum Side { kLeft = 1, kRight = 2, kUp = 4, kDown = 8 };
@@ -25,6 +26,8 @@ struct TimeDateChanger {
   static void ChangeTime(QLabel* time_label);
   static void ChangeDate(QLabel* date_label);
 };
+
+QRect AddRects(const QRect& rect1, const QRect& rect2);
 }
 
 #endif  // OM_UTILITY_H
