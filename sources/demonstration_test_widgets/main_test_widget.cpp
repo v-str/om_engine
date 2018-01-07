@@ -3,6 +3,7 @@
 #include <QPalette>
 #include <QPixmap>
 
+#include <geometry_controller.h>
 #include <test_geometries.h>
 #include <test_message.h>
 #include <test_widget_setter.h>
@@ -24,7 +25,9 @@ MainTestWidget::MainTestWidget(QWidget* parent)
 }
 
 MainTestWidget::~MainTestWidget() {
-  geometry_controller_.SetDeltaSize(SetDeltaSize());
+  GeometryController::SetDeltaSize(SetDeltaSize());
+  GeometryController::ComposeGeometry(OpenButtonGeometry(), button_open_);
+  GeometryController::ComposeGeometry(CloseButtonGeometry(), button_close_);
 }
 
 void MainTestWidget::resizeEvent(QResizeEvent*) {}

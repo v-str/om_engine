@@ -5,7 +5,6 @@
 #include <QWidget>
 
 #include <delta_size.h>
-#include <geometry_controller.h>
 #include <om_button.h>
 #include <om_date_label.h>
 #include <om_time_label.h>
@@ -45,7 +44,6 @@ class MainTestWidget : public QWidget {
   OmDateLabel* date_label_ = nullptr;
 
   DeltaSize delta_size_;
-  GeometryController geometry_controller_;
 };
 }
 
