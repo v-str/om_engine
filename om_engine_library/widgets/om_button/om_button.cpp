@@ -18,21 +18,6 @@ void om_widgets::OmButton::SetOffsetDistance(
   offset_distance_ = offset_distance;
 }
 
-void om_widgets::OmButton::SetGeometryComposer(
-    const ModificationFactor& modification_factor, Side modify_to,
-    TransformationType type) {
-  geometry_composer_ = std::move(std::unique_ptr<GeometryComposer>(
-      new GeometryComposer(modification_factor, modify_to, type)));
-}
-
-void OmButton::SetDeltaSize(const DeltaSize& delta_size) {
-  geometry_composer_->SetDeltaSize(delta_size);
-}
-
-void OmButton::ComposeGeometry(const QRect& initial_widget_geometry) {
-  geometry_composer_->ComposeGeometry(initial_widget_geometry, this);
-}
-
 void om_widgets::OmButton::enterEvent(QEvent*) {
   int x_pos = x();
   int y_pos = y();
