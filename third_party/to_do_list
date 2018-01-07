@@ -21,3 +21,4 @@
 - 13.   Add scaling transformation type to GeometryComposer
 - 14.   Develop base class for all widgets in OmEngine
 - 15.   Compose all existing widgets via GeometryController
+- 16.   Solve problem related with animation and composing

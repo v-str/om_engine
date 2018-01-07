@@ -31,11 +31,18 @@ void MainTestWidget::resizeEvent(QResizeEvent*) {
   GeometryController::ShiftGeometry(TimeLabelGeometry(), time_label_);
   GeometryController::ShiftGeometry(DateLabelGeometry(), date_label_);
   GeometryController::StretchGeometry(TestFrameGeometry(), test_frame_);
+
+  emit TestFrameGeometryChanged(test_frame_->geometry());
 }
 
 void MainTestWidget::MultipleClickCathed() {
   TestMessage::WriteTestMessage(
       "Repetitive click on the same button was caught");
+}
+
+void MainTestWidget::ResetAnimationForTestGeometry(
+    const QRect& current_geometry) {
+  animator_->SetCurrentGeometry(current_geometry);
 }
 
 void MainTestWidget::SetAppearance() {
@@ -64,6 +71,8 @@ void MainTestWidget::SetConnections() {
   connect(animator_, SIGNAL(AnimationComplete()), test_frame_, SLOT(show()));
   connect(animator_, SIGNAL(AnimationIncomplete()),
           SLOT(MultipleClickCathed()));
+  connect(this, SIGNAL(TestFrameGeometryChanged(QRect)),
+          SLOT(ResetAnimationForTestGeometry(QRect)));
 }
 
 DeltaSize MainTestWidget::GetDeltaSize() {
