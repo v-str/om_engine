@@ -34,7 +34,7 @@ class MainTestWidget : public QWidget {
   void SetWidgets();
   void SetAnimation();
   void SetConnections();
-  DeltaSize SetDeltaSize();
+  DeltaSize GetDeltaSize();
 
   TestFrame* test_frame_ = nullptr;
   OmButton* button_open_ = nullptr;

@@ -25,12 +25,14 @@ MainTestWidget::MainTestWidget(QWidget* parent)
 }
 
 MainTestWidget::~MainTestWidget() {
-  GeometryController::SetDeltaSize(SetDeltaSize());
-  GeometryController::ComposeGeometry(OpenButtonGeometry(), button_open_);
-  GeometryController::ComposeGeometry(CloseButtonGeometry(), button_close_);
+
 }
 
-void MainTestWidget::resizeEvent(QResizeEvent*) {}
+void MainTestWidget::resizeEvent(QResizeEvent*) {
+    GeometryController::SetDeltaSize(GetDeltaSize());
+    GeometryController::ComposeGeometry(OpenButtonGeometry(), button_open_);
+    GeometryController::ComposeGeometry(CloseButtonGeometry(), button_close_);
+}
 
 void MainTestWidget::MultipleClickCathed() {
   TestMessage::WriteTestMessage(
@@ -65,7 +67,7 @@ void MainTestWidget::SetConnections() {
           SLOT(MultipleClickCathed()));
 }
 
-DeltaSize MainTestWidget::SetDeltaSize() {
+DeltaSize MainTestWidget::GetDeltaSize() {
   return DeltaSize(width() - MainWidgetGeometry().width(),
                    height() - MainWidgetGeometry().height());
 }
