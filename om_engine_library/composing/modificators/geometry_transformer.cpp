@@ -36,4 +36,6 @@ GeometryTransformer::GeometryTransformer(
   scaler_ = std::move(std::unique_ptr<GeometryModifier>(
       new Scaler(modification_shift_factor, modification_stretch_factor,
                  shift_to, stretch_to)));
+
+
 }

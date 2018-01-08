@@ -1,24 +1,44 @@
 ﻿+ 1.    Initiate repo
+
 + 2.    Create OmButton
+
 + 3.    Add variable for widget animation state determination:
         3.1 Is widget closed?
         3.2 Is widget opened?
         Exclude repeated animation of opening/closing (static variable?)
+
 + 4.    Refactor WidgetAnimator and AnimationGeometrySetter
+
 + 5.    Perform multiple widget animation test in separate class
+
 + 6.    Add text animation (aka running string)
         6.1 Develop api of text animation class:
         6.1.1 Maybe need some boolean methods for animated/not animated
         text state, like:
         bool IsTextAnimated() const;
         6.2 Embrace text animator in namespace
+
 + 7.    How to make animation properly while widget is closed?
+
 + 8.    Remove non-forward declaration includes in headers
+
 + 9.    Develop time and date classes
+
 - 10.   Develop GeometryComposer class
+
 - 11.   Notify users about C++11/14 standard usage
+
 + 12.   Run GeometryComposer, modify is needed
+
 - 13.   Add scaling transformation type to GeometryComposer
+
 - 14.   Develop base class for all widgets in OmEngine
+
 - 15.   Compose all existing widgets via GeometryController
+
 - 16.   Solve problem related with animation and composing
+
+- 17.   Remade all composers, or re-develop them again
+        1) using abstract factory pattern
+        2) add methods as set modification factors for
+        further usage
