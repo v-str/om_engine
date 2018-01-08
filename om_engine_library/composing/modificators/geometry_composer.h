@@ -24,8 +24,6 @@ class GeometryComposer {
 
  private:
   std::unique_ptr<GeometryModifier> geometry_modifier_;
-
-  QRect modified_geometry_;
 };
 }
 

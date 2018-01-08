@@ -43,8 +43,9 @@ class TextAnimator : public QObject {
   unsigned int animation_delay_;
   unsigned int symbol_count_ = 0;
 };
-}  // namespace om_animation
+}
 
+// type erasure idiom
 template <typename Widget>
 void om_animation::TextAnimator::RunAnimation(Widget* widget) {
   if (WritableMatcher::IsWidgetWritable(widget->metaObject()->className())) {
