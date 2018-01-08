@@ -5,7 +5,7 @@
 
 namespace om_composing {
 
-class Stretcher : public GeometryModifier {
+class Stretcher : virtual public GeometryModifier {
  public:
   void ComputeModification(const QRect &initial_position) override;
   QRect GetModifiedRect() const override;

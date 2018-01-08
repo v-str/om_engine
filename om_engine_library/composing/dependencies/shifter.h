@@ -7,7 +7,7 @@
 
 namespace om_composing {
 
-class Shifter : public GeometryModifier {
+class Shifter : virtual public GeometryModifier {
  public:
   void ComputeModification(const QRect& initial_position) override;
   QRect GetModifiedRect() const override;
