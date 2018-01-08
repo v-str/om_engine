@@ -12,10 +12,9 @@ class GeometryModifier {
  public:
   virtual void ComputeModification(const QRect& initial_position) = 0;
   virtual QRect GetModifiedRect() const = 0;
+  virtual void SetDeltaSize(const DeltaSize& delta_size);
 
-  void SetModificationFactor(
-      const ModificationFactor& modification_factor);
-  void SetDeltaSize(const DeltaSize& delta_size);
+  void SetModificationFactor(const ModificationFactor& modification_factor);
   void ModifyTo(unsigned int modified_side);
 
  protected:
