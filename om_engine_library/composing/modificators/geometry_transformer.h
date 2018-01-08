@@ -23,6 +23,8 @@ class GeometryTransformer {
                       Side shift_to = kRight, Side stretch_to = kRight);
 
  private:
+  std::unique_ptr<GeometryModifier> composer_;
+  std::unique_ptr<GeometryModifier> scaler_;
 };
 }
 
