@@ -10,7 +10,6 @@ class AbstractClock : public QLabel {
   Q_OBJECT
  public:
   AbstractClock(QWidget* parent = nullptr);
-  ~AbstractClock() {}
 
   virtual void Update() = 0;
 

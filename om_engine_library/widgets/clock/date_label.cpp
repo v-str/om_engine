@@ -10,6 +10,4 @@ OmDateLabel::OmDateLabel(QWidget* parent) : AbstractClock(parent) {
   InitializeTimer(this);
 }
 
-OmDateLabel::~OmDateLabel() {}
-
 void OmDateLabel::Update() { om_utility::TimeDateChanger::ChangeDate(this); }

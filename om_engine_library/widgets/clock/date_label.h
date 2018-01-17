@@ -9,11 +9,11 @@ class OmDateLabel : public AbstractClock {
   Q_OBJECT
  public:
   OmDateLabel(QWidget* parent = nullptr);
-  ~OmDateLabel();
 
   void Update() override;
 
  private:
 };
 }
+
 #endif  // DATE_LABEL_H

@@ -8,7 +8,6 @@ class TimeLabel : public AbstractClock {
   Q_OBJECT
  public:
   TimeLabel(QWidget* parent = nullptr);
-  ~TimeLabel();
 
   void Update() override;
 

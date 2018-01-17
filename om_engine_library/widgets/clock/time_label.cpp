@@ -10,6 +10,4 @@ TimeLabel::TimeLabel(QWidget* parent) : AbstractClock(parent) {
   InitializeTimer(this);
 }
 
-TimeLabel::~TimeLabel() {}
-
 void TimeLabel::Update() { om_utility::TimeDateChanger::ChangeTime(this); }
