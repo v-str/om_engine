@@ -1,11 +1,11 @@
 ﻿#ifndef OM_DATE_LABEL_H
 #define OM_DATE_LABEL_H
 
-#include <abstract_time_and_date.h>
+#include <abstract_clock.h>
 
 namespace om_widgets {
 
-class OmDateLabel : public AbstractTimeAndDate {
+class OmDateLabel : public AbstractClock {
   Q_OBJECT
  public:
   OmDateLabel(QWidget* parent = nullptr);

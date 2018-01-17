@@ -1,16 +1,16 @@
-﻿#ifndef ABSTRACT_TIME_AND_DATE_H
-#define ABSTRACT_TIME_AND_DATE_H
+﻿#ifndef ABSTRACT_CLOCK_H
+#define ABSTRACT_CLOCK_H
 
 #include <QLabel>
 #include <QTimer>
 
 namespace om_widgets {
 
-class AbstractTimeAndDate : public QLabel {
+class AbstractClock : public QLabel {
   Q_OBJECT
  public:
-  AbstractTimeAndDate(QWidget* parent = nullptr);
-  ~AbstractTimeAndDate() {}
+  AbstractClock(QWidget* parent = nullptr);
+  ~AbstractClock() {}
 
   virtual void Update() = 0;
 
@@ -28,4 +28,4 @@ class AbstractTimeAndDate : public QLabel {
 };
 }
 
-#endif  // ABSTRACT_TIME_AND_DATE_H
+#endif  // ABSTRACT_CLOCK_H

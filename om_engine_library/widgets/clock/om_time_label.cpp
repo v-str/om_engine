@@ -5,7 +5,7 @@
 using namespace om_widgets;
 using namespace om_utility;
 
-OmTimeLabel::OmTimeLabel(QWidget* parent) : AbstractTimeAndDate(parent) {
+OmTimeLabel::OmTimeLabel(QWidget* parent) : AbstractClock(parent) {
   Update();
   InitializeTimer(this);
 }
