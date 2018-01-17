@@ -1,5 +1,5 @@
-﻿#ifndef OM_DATE_LABEL_H
-#define OM_DATE_LABEL_H
+﻿#ifndef DATE_LABEL_H
+#define DATE_LABEL_H
 
 #include <abstract_clock.h>
 
@@ -16,4 +16,4 @@ class OmDateLabel : public AbstractClock {
  private:
 };
 }
-#endif  // OM_DATE_LABEL_H
+#endif  // DATE_LABEL_H
