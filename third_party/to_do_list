@@ -42,3 +42,8 @@
         1) using abstract factory pattern
         2) add methods as set modification factors for
         further usage
+
+- 18.   Merge two method in ClickButton
+        1) SetOffsetSide
+        2) SetOffsetDistance
+        into one SetOffsetParameters(side, distance_px)
