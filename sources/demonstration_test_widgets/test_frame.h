@@ -4,7 +4,7 @@
 #include <QFrame>
 #include <QLabel>
 
-#include <om_button.h>
+#include <click_button.h>
 #include <text_animator.h>
 #include <widget_animator.h>
 
@@ -30,9 +30,9 @@ class TestFrame : public QFrame {
   void SetAnimation();
   void SetConnections();
 
-  OmButton* open_button_ = nullptr;
-  OmButton* close_button_ = nullptr;
-  OmButton* display_text_button_ = nullptr;
+  ClickButton* open_button_ = nullptr;
+  ClickButton* close_button_ = nullptr;
+  ClickButton* display_text_button_ = nullptr;
   QLabel* test_label_ = nullptr;
   WidgetAnimator* animator_ = nullptr;
   TextAnimator* text_animator1_ = nullptr;

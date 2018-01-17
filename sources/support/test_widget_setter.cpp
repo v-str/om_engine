@@ -6,7 +6,7 @@
 using namespace demo_code;
 using namespace om_utility;
 
-void TestWidgetSetter::CustomizeButton(OmButton* button,
+void TestWidgetSetter::CustomizeButton(ClickButton* button,
                                        const QRect& current_geometry) {
   button->setStyleSheet(
       "QPushButton{"

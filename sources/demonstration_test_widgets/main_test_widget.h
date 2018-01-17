@@ -5,7 +5,7 @@
 #include <QWidget>
 
 #include <delta_size.h>
-#include <om_button.h>
+#include <click_button.h>
 #include <date_label.h>
 #include <time_label.h>
 #include <test_frame.h>
@@ -41,8 +41,8 @@ class MainTestWidget : public QWidget {
   DeltaSize GetDeltaSize();
 
   TestFrame* test_frame_ = nullptr;
-  OmButton* button_open_ = nullptr;
-  OmButton* button_close_ = nullptr;
+  ClickButton* button_open_ = nullptr;
+  ClickButton* button_close_ = nullptr;
   WidgetAnimator* animator_ = nullptr;
   TimeLabel* time_label_ = nullptr;
   OmDateLabel* date_label_ = nullptr;

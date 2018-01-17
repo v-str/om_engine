@@ -1,5 +1,5 @@
-﻿#ifndef OM_BUTTON_H
-#define OM_BUTTON_H
+﻿#ifndef CLICK_BUTTON_H
+#define CLICK_BUTTON_H
 
 #include <QPushButton>
 
@@ -9,12 +9,12 @@ namespace om_widgets {
 
 using namespace om_utility;
 
-class OmButton : public QPushButton {
+class ClickButton : public QPushButton {
   Q_OBJECT
  public:
-  explicit OmButton(QWidget* parent = nullptr);
-  OmButton(const QString& button_text, QWidget* parent = nullptr);
-  ~OmButton();
+  explicit ClickButton(QWidget* parent = nullptr);
+  ClickButton(const QString& button_text, QWidget* parent = nullptr);
+  ~ClickButton();
 
   void SetOffsetSide(unsigned int offset_side);
   void SetOffsetDistance(const om_utility::OffsetDistance& offset_distance);
@@ -29,4 +29,4 @@ class OmButton : public QPushButton {
 };
 }
 
-#endif  // OM_BUTTON_H
+#endif  // CLICK_BUTTON_H

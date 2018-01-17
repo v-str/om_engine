@@ -1,24 +1,24 @@
-﻿#include <om_button.h>
+﻿#include <click_button.h>
 
 using namespace om_widgets;
 using namespace om_utility;
 
-OmButton::OmButton(QWidget* parent) : QPushButton(parent) {}
+ClickButton::ClickButton(QWidget* parent) : QPushButton(parent) {}
 
-OmButton::OmButton(const QString& button_text, QWidget* parent)
+ClickButton::ClickButton(const QString& button_text, QWidget* parent)
     : QPushButton(button_text, parent) {}
 
-OmButton::~OmButton() {}
+ClickButton::~ClickButton() {}
 
-void OmButton::SetOffsetSide(unsigned int offset_side) {
+void ClickButton::SetOffsetSide(unsigned int offset_side) {
   offset_side_ = offset_side;
 }
 
-void OmButton::SetOffsetDistance(const OffsetDistance& offset_distance) {
+void ClickButton::SetOffsetDistance(const OffsetDistance& offset_distance) {
   offset_distance_ = offset_distance;
 }
 
-void OmButton::enterEvent(QEvent*) {
+void ClickButton::enterEvent(QEvent*) {
   int x_pos = x();
   int y_pos = y();
   if (offset_side_ & kLeft) {
@@ -36,7 +36,7 @@ void OmButton::enterEvent(QEvent*) {
   move(x_pos, y_pos);
 }
 
-void OmButton::leaveEvent(QEvent*) {
+void ClickButton::leaveEvent(QEvent*) {
   int x_pos = x();
   int y_pos = y();
   if (offset_side_ & kLeft) {

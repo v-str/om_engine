@@ -6,7 +6,7 @@
 #include <QPushButton>
 #include <QRect>
 
-#include <om_button.h>
+#include <click_button.h>
 
 namespace demo_code {
 
@@ -14,7 +14,7 @@ using namespace om_widgets;
 
 class TestWidgetSetter {
  public:
-  static void CustomizeButton(OmButton* button,
+  static void CustomizeButton(ClickButton* button,
                              const QRect& current_geometry);
   static void CustomizeFrame(QFrame* frame, const QRect& current_geometry);
   static void CustomizeLabel(QLabel* label, const QRect& geometry);

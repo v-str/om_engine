@@ -14,8 +14,8 @@ MainTestWidget::MainTestWidget(QWidget* parent)
     : QWidget(parent),
       test_frame_(new TestFrame(this)),
       animator_(new WidgetAnimator(test_frame_, false)),
-      button_open_(new OmButton("Open", this)),
-      button_close_(new OmButton("Close", this)),
+      button_open_(new ClickButton("Open", this)),
+      button_close_(new ClickButton("Close", this)),
       time_label_(new TimeLabel(this)),
       date_label_(new OmDateLabel(this)) {
   SetAppearance();

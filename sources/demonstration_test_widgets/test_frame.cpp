@@ -11,9 +11,9 @@ TestFrame::TestFrame(QWidget* parent)
     : QFrame(parent),
       test_label_(new QLabel(this)),
       animator_(new WidgetAnimator(test_label_, true)),
-      open_button_(new OmButton("Open frame", this)),
-      close_button_(new OmButton("Close frame", this)),
-      display_text_button_(new OmButton("Display text", this)),
+      open_button_(new ClickButton("Open frame", this)),
+      close_button_(new ClickButton("Close frame", this)),
+      display_text_button_(new ClickButton("Display text", this)),
       text_animator1_(new TextAnimator(this, 30)) {
   SetTestFrame();
   SetWidgets();
