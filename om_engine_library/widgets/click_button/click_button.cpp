@@ -10,12 +10,10 @@ ClickButton::ClickButton(const QString& button_text, QWidget* parent)
 
 ClickButton::~ClickButton() {}
 
-void ClickButton::SetOffsetSide(unsigned int offset_side) {
-  offset_side_ = offset_side;
-}
-
-void ClickButton::SetOffsetDistance(const OffsetDistance& offset_distance) {
+void ClickButton::SetOffsetParameters(const OffsetDistance& offset_distance,
+                                      unsigned int offset_side) {
   offset_distance_ = offset_distance;
+  offset_side_ = offset_side;
 }
 
 void ClickButton::enterEvent(QEvent*) {

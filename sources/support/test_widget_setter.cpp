@@ -20,12 +20,11 @@ void TestWidgetSetter::CustomizeButton(ClickButton* button,
       "color: red; }");
   button->setWindowOpacity(0.5);
   button->setGeometry(current_geometry);
-  button->SetOffsetDistance(OffsetDistance(2, 2));
-  button->SetOffsetSide(Side::kRight | Side::kDown);
+  button->SetOffsetParameters(OffsetDistance(2, 2), Side::kRight | Side::kDown);
 }
 
 void TestWidgetSetter::CustomizeFrame(QFrame* frame,
-                                     const QRect& current_geometry) {
+                                      const QRect& current_geometry) {
   frame->setStyleSheet(
       "QFrame{"
       "background: rgba(0, 0, 0, 50%);"
