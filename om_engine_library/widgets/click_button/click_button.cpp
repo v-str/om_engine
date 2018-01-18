@@ -8,6 +8,14 @@ ClickButton::ClickButton(QWidget* parent) : QPushButton(parent) {}
 ClickButton::ClickButton(const QString& button_text, QWidget* parent)
     : QPushButton(button_text, parent) {}
 
+ClickButton::ClickButton(const QString& button_text,
+                         const OffsetDistance& offset_distance,
+                         unsigned int offset_side, QWidget* parent)
+    : QPushButton(parent) {
+  setText(button_text);
+  SetOffsetParameters(offset_distance, offset_side);
+}
+
 ClickButton::~ClickButton() {}
 
 void ClickButton::SetOffsetParameters(const OffsetDistance& offset_distance,

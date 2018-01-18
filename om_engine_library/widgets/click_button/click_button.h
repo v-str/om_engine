@@ -14,6 +14,9 @@ class ClickButton : public QPushButton {
  public:
   explicit ClickButton(QWidget* parent = nullptr);
   ClickButton(const QString& button_text, QWidget* parent = nullptr);
+  ClickButton(const QString& button_text, const OffsetDistance& offset_distance,
+              unsigned int offset_side, QWidget* parent = nullptr);
+
   ~ClickButton();
 
   void SetOffsetParameters(const OffsetDistance& offset_distance,
