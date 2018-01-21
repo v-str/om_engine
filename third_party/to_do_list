@@ -36,7 +36,7 @@
 
 - 15.   Compose all existing widgets via GeometryController
 
-- 16.   Solve problem related with animation and composing
++ 16.   Solve problem related with animation and composing
 
 - 17.   Remade all composers, or re-develop them again
         1) using abstract factory pattern
