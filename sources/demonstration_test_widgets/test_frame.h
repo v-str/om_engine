@@ -20,7 +20,7 @@ class TestFrame : public QFrame {
   ~TestFrame();
 
  private slots:
-  void DisplayTextByPublicMethod();
+  void DisplayText();
   void IsAnimationComplete();
 
  private:

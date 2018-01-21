@@ -3,7 +3,6 @@
 #include <QPalette>
 #include <QPixmap>
 
-#include <geometry_controller.h>
 #include <test_geometries.h>
 #include <test_message.h>
 #include <test_widget_setter.h>
@@ -26,14 +25,7 @@ MainTestWidget::MainTestWidget(QWidget* parent)
 
 MainTestWidget::~MainTestWidget() {}
 
-void MainTestWidget::resizeEvent(QResizeEvent*) {
-  GeometryController::SetDeltaSize(GetDeltaSize());
-  GeometryController::ShiftGeometry(TimeLabelGeometry(), time_label_);
-  GeometryController::ShiftGeometry(DateLabelGeometry(), date_label_);
-  GeometryController::StretchGeometry(TestFrameGeometry(), test_frame_);
-
-  emit TestFrameGeometryChanged(test_frame_->geometry());
-}
+void MainTestWidget::resizeEvent(QResizeEvent*) {}
 
 void MainTestWidget::MultipleClickCathed() {
   TestMessage::WriteTestMessage(
@@ -71,8 +63,6 @@ void MainTestWidget::SetConnections() {
   connect(animator_, SIGNAL(AnimationComplete()), test_frame_, SLOT(show()));
   connect(animator_, SIGNAL(AnimationIncomplete()),
           SLOT(MultipleClickCathed()));
-  connect(this, SIGNAL(TestFrameGeometryChanged(QRect)),
-          SLOT(ResetAnimationForTestGeometry(QRect)));
 }
 
 DeltaSize MainTestWidget::GetDeltaSize() {

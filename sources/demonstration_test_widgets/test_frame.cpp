@@ -24,7 +24,7 @@ TestFrame::TestFrame(QWidget* parent)
 
 TestFrame::~TestFrame() { delete text_animator1_; }
 
-void TestFrame::DisplayTextByPublicMethod() {
+void TestFrame::DisplayText() {
   text_animator1_->SetAnimationText("Ordinary Mind is greeting you . . .");
   text_animator1_->RunAnimation(test_label_);
 }
@@ -44,7 +44,7 @@ void TestFrame::SetWidgets() {
   TestWidgetSetter::CustomizeButton(open_button_, QRect(30, 10, 95, 30));
   TestWidgetSetter::CustomizeButton(close_button_, QRect(135, 10, 95, 30));
   TestWidgetSetter::CustomizeButton(display_text_button_,
-                                   QRect(240, 10, 95, 30));
+                                    QRect(240, 10, 95, 30));
 }
 
 void TestFrame::SetLabel() {
@@ -62,8 +62,7 @@ void TestFrame::SetAnimation() {
 void TestFrame::SetConnections() {
   connect(close_button_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
   connect(open_button_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
-  connect(display_text_button_, SIGNAL(clicked(bool)),
-          SLOT(DisplayTextByPublicMethod()));
+  connect(display_text_button_, SIGNAL(clicked(bool)), SLOT(DisplayText()));
   connect(text_animator1_, SIGNAL(TextAnimationComplete()),
           SLOT(IsAnimationComplete()));
 }
