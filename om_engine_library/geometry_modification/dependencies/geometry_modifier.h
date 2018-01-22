@@ -6,7 +6,7 @@
 #include <delta_size.h>
 #include <modification_factor.h>
 
-namespace om_composing {
+namespace geometry_modification {
 
 class GeometryModifier {
  public:

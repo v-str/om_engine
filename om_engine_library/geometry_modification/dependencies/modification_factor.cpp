@@ -1,6 +1,6 @@
 ﻿#include <modification_factor.h>
 
-using namespace om_composing;
+using namespace geometry_modification;
 
 ModificationFactor::ModificationFactor()
     : x_axis_value_(0.0), y_axis_value_(0.0) {}

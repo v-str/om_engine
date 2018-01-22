@@ -9,7 +9,7 @@
 class QRect;
 class QWidget;
 
-namespace om_composing {
+namespace geometry_modification {
 using namespace om_utility;
 
 class GeometryTransformer {

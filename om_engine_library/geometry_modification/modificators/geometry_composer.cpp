@@ -3,7 +3,7 @@
 #include <shifter.h>
 #include <stretcher.h>
 
-using namespace om_composing;
+using namespace geometry_modification;
 
 GeometryComposer::GeometryComposer(
     const ModificationFactor &modification_factor, unsigned int side_to_modify,

@@ -1,7 +1,7 @@
-#ifndef DELTA_SIZE_H
+﻿#ifndef DELTA_SIZE_H
 #define DELTA_SIZE_H
 
-namespace om_composing {
+namespace geometry_modification {
 
 class DeltaSize {
  public:

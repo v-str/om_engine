@@ -9,7 +9,7 @@
 #include <geometry_modifier.h>
 #include <om_utility.h>
 
-namespace om_composing {
+namespace geometry_modification {
 using namespace om_utility;
 
 class GeometryComposer {

@@ -7,7 +7,7 @@
 #include <shifter.h>
 #include <stretcher.h>
 
-using namespace om_composing;
+using namespace geometry_modification;
 
 GeometryTransformer::GeometryTransformer(
     const ModificationFactor &modification_factor, unsigned int side_to_modify,

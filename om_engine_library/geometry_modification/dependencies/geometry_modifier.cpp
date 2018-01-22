@@ -1,6 +1,6 @@
 ﻿#include <geometry_modifier.h>
 
-using namespace om_composing;
+using namespace geometry_modification;
 
 void GeometryModifier::SetModificationFactor(
     const ModificationFactor &modification_factor) {

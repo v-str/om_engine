@@ -1,6 +1,6 @@
-#include <delta_size.h>
+﻿#include <delta_size.h>
 
-using namespace om_composing;
+using namespace geometry_modification;
 
 DeltaSize::DeltaSize() {}
 

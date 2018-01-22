@@ -5,7 +5,7 @@
 
 #include <geometry_modifier.h>
 
-namespace om_composing {
+namespace geometry_modification {
 
 class Shifter : virtual public GeometryModifier {
  public:

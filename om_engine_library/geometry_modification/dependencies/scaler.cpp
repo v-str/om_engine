@@ -3,7 +3,7 @@
 #include <QRect>
 
 using namespace om_utility;
-using namespace om_composing;
+using namespace geometry_modification;
 
 Scaler::Scaler() {
   Shifter::SetModificationFactor(ModificationFactor(0.0, 0.0));

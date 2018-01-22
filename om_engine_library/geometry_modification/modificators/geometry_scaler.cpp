@@ -3,7 +3,7 @@
 #include <shifter.h>
 #include <stretcher.h>
 
-using namespace om_composing;
+using namespace geometry_modification;
 
 GeometryScaler::GeometryScaler(
     const ModificationFactor &modification_shift_factor,

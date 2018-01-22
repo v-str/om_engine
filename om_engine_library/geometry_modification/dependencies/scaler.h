@@ -7,7 +7,7 @@
 
 class QRect;
 
-namespace om_composing {
+namespace geometry_modification {
 
 class Scaler : public Shifter, public Stretcher {
  public:

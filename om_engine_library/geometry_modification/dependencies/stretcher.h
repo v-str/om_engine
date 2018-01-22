@@ -3,7 +3,7 @@
 
 #include <geometry_modifier.h>
 
-namespace om_composing {
+namespace geometry_modification {
 
 class Stretcher : virtual public GeometryModifier {
  public:

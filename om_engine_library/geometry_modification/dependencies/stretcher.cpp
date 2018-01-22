@@ -3,7 +3,7 @@
 #include <om_utility.h>
 
 using namespace om_utility;
-using namespace om_composing;
+using namespace geometry_modification;
 
 void Stretcher::ComputeModification(const QRect &initial_position) {
   int x_pos = initial_position.x();

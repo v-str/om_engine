@@ -1,7 +1,7 @@
 ﻿#ifndef MODIFICATION_FACTOR_H
 #define MODIFICATION_FACTOR_H
 
-namespace om_composing {
+namespace geometry_modification {
 
 class ModificationFactor {
  public:
