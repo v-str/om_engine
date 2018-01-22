@@ -43,3 +43,9 @@ void Scaler::SetModificationFactor(
   Shifter::SetModificationFactor(factor_for_shift);
   Stretcher::SetModificationFactor(factor_for_stretch);
 }
+
+void Scaler::ModifyTo(unsigned int side_for_shift,
+                      unsigned int side_for_stretch) {
+  Shifter::ModifyTo(side_for_shift);
+  Stretcher::ModifyTo(side_for_stretch);
+}

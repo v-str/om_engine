@@ -1,8 +1,6 @@
 ﻿#ifndef SCALER_H
 #define SCALER_H
 
-#include <memory>
-
 #include <om_utility.h>
 #include <shifter.h>
 #include <stretcher.h>
@@ -25,10 +23,7 @@ class Scaler : public Shifter, public Stretcher {
 
   void SetModificationFactor(const ModificationFactor& factor_for_shift,
                              const ModificationFactor& factor_for_stretch);
-
- private:
-  std::unique_ptr<Shifter> shifter_;
-  std::unique_ptr<Stretcher> stretcher_;
+  void ModifyTo(unsigned int side_for_shift, unsigned int side_for_stretch);
 };
 }
 
