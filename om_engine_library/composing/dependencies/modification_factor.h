@@ -15,7 +15,7 @@ class ModificationFactor {
   float Y() const;
 
  private:
-  float CheckValue(float axis_value) const;
+  float CheckValueForCorrectness(float axis_value) const;
 
   static constexpr float kMinValue = 0.0;
   static constexpr float kMaxValue = 3.0;
