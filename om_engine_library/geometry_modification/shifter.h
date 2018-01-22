@@ -7,7 +7,7 @@
 
 namespace geometry_modification {
 
-class Shifter : virtual public GeometryModifier {
+class Shifter : public GeometryModifier {
  public:
   void ComputeModification(const QRect& initial_position) override;
   QRect GetModifiedRect() const override;

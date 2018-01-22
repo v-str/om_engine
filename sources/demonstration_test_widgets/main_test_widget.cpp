@@ -60,7 +60,7 @@ void MainTestWidget::SetAnimation() {
 void MainTestWidget::SetConnections() {
   connect(button_close_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
   connect(button_open_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
-  connect(animator_, SIGNAL(AnimationComplete()), test_frame_, SLOT(show()));
+    connect(animator_, SIGNAL(AnimationComplete()), test_frame_, SLOT(show()));
   connect(animator_, SIGNAL(AnimationIncomplete()),
           SLOT(MultipleClickCathed()));
 }

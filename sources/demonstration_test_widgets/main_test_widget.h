@@ -4,11 +4,11 @@
 #include <QFrame>
 #include <QWidget>
 
-#include <delta_size.h>
 #include <click_button.h>
 #include <date_label.h>
-#include <time_label.h>
+#include <delta_size.h>
 #include <test_frame.h>
+#include <time_label.h>
 #include <widget_animator.h>
 
 namespace demo_code {
@@ -31,7 +31,7 @@ class MainTestWidget : public QWidget {
 
  private slots:
   void MultipleClickCathed();
-  void ResetAnimationForTestGeometry(const QRect &current_geometry);
+  void ResetAnimationForTestGeometry(const QRect& current_geometry);
 
  private:
   void SetAppearance();

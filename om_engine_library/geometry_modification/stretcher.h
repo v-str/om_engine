@@ -5,7 +5,7 @@
 
 namespace geometry_modification {
 
-class Stretcher : virtual public GeometryModifier {
+class Stretcher : public GeometryModifier {
  public:
   void ComputeModification(const QRect &initial_position) override;
   QRect GetModifiedRect() const override;

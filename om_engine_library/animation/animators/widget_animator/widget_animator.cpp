@@ -10,7 +10,9 @@ WidgetAnimator::WidgetAnimator(QWidget* widget, bool is_widget_open)
     : QObject(),
       animation_(new QPropertyAnimation(widget, "geometry", this)),
       is_widget_open_(is_widget_open) {
-  if (!is_widget_open_) widget->close();
+  if (!is_widget_open_) {
+    widget->close();
+  }
 }
 
 WidgetAnimator::~WidgetAnimator() {}
