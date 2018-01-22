@@ -1,0 +1,6 @@
+﻿#ifndef GEOMETRY_MODIFIER_FACTORY_H
+#define GEOMETRY_MODIFIER_FACTORY_H
+
+class GeometryModifierFactory {};
+
+#endif  // GEOMETRY_MODIFIER_FACTORY_H
