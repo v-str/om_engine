@@ -14,6 +14,7 @@ using namespace om_utility;
 
 class Scaler : public Shifter, public Stretcher {
  public:
+  Scaler();
   Scaler(const ModificationFactor& modification_shift_factor,
          const ModificationFactor& modification_stretch_factor,
          Side shift_to = kRight, Side stretch_to = kRight);
@@ -22,7 +23,7 @@ class Scaler : public Shifter, public Stretcher {
 
   QRect GetModifiedRect() const override;
 
-  void SetDeltaSize(const DeltaSize &delta_size) override;
+  void SetDeltaSize(const DeltaSize& delta_size) override;
 
  private:
   std::unique_ptr<Shifter> shifter_;

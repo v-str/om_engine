@@ -4,6 +4,13 @@
 
 using namespace om_composing;
 
+Scaler::Scaler() {
+  Shifter::SetModificationFactor(ModificationFactor(0.0, 0.0));
+  Shifter::ModifyTo(kLeft);
+  Stretcher::SetModificationFactor(ModificationFactor(0.0, 0.0));
+  Stretcher::ModifyTo(kLeft);
+}
+
 Scaler::Scaler(const ModificationFactor &modification_shift_factor,
                const ModificationFactor &modification_stretch_factor,
                Side shift_to, Side stretch_to) {
