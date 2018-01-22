@@ -2,6 +2,7 @@
 
 #include <QRect>
 
+using namespace om_utility;
 using namespace om_composing;
 
 Scaler::Scaler() {

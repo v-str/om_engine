@@ -8,14 +8,14 @@
 class QRect;
 
 namespace om_composing {
-using namespace om_utility;
 
 class Scaler : public Shifter, public Stretcher {
  public:
   Scaler();
   Scaler(const ModificationFactor& modification_shift_factor,
          const ModificationFactor& modification_stretch_factor,
-         Side shift_to = kRight, Side stretch_to = kRight);
+         om_utility::Side shift_to = om_utility::kRight,
+         om_utility::Side stretch_to = om_utility::kRight);
 
   void ComputeModification(const QRect& initial_position) override;
   QRect GetModifiedRect() const override;
