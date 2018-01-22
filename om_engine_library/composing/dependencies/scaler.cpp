@@ -36,3 +36,10 @@ void Scaler::SetDeltaSize(const DeltaSize &delta_size) {
   Shifter::SetDeltaSize(delta_size);
   Stretcher::SetDeltaSize(delta_size);
 }
+
+void Scaler::SetModificationFactor(
+    const ModificationFactor &factor_for_shift,
+    const ModificationFactor &factor_for_stretch) {
+  Shifter::SetModificationFactor(factor_for_shift);
+  Stretcher::SetModificationFactor(factor_for_stretch);
+}

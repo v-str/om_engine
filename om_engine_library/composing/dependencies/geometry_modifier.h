@@ -14,8 +14,9 @@ class GeometryModifier {
   virtual QRect GetModifiedRect() const = 0;
   virtual void SetDeltaSize(const DeltaSize& delta_size);
 
-  void SetModificationFactor(const ModificationFactor& modification_factor);
-  void ModifyTo(unsigned int modified_side);
+  virtual void SetModificationFactor(
+      const ModificationFactor& modification_factor);
+  virtual void ModifyTo(unsigned int modified_side);
 
  protected:
   ModificationFactor modification_factor_;
