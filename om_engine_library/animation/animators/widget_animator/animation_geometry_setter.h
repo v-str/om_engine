@@ -1,15 +1,16 @@
 ﻿#ifndef ANIMATION_GEOMETRY_SETTER_H
 #define ANIMATION_GEOMETRY_SETTER_H
 
+#include <memory>
+
 #include <QPair>
 #include <QRect>
 
 #include <om_utility.h>
 
-#include <close_configuration_geometry.h>
-#include <open_configuration_geometry.h>
-
 namespace om_animation {
+class ConfigurationGeometry;
+
 class AnimationGeometrySetter {
  public:
   static QPair<QRect, QRect> GetGeometryFor(
@@ -18,8 +19,8 @@ class AnimationGeometrySetter {
       unsigned int animation_direction);
 
  private:
-  static OpenConfigurationGeometry kOpenConfigurationGeometry;
-  static CloseConfigurationGeometry kCloseConfigurationGeometry;
+  static std::unique_ptr<ConfigurationGeometry> kOpenConfigurationGeometry;
+  static std::unique_ptr<ConfigurationGeometry> kCloseConfigurationGeometry;
 };
 }
 

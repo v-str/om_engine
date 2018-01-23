@@ -6,6 +6,9 @@
 namespace om_animation {
 class CloseConfigurationGeometry : public ConfigurationGeometry {
  public:
+  CloseConfigurationGeometry();
+~CloseConfigurationGeometry();
+
   QPair<QRect, QRect> GetGeometryConfiguration(
       unsigned int animation_direction, const QRect& widget_geometry) override;
 

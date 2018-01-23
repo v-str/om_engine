@@ -5,6 +5,11 @@
 using namespace om_animation;
 using namespace om_utility;
 
+OpenConfigurationGeometry::OpenConfigurationGeometry()
+    : ConfigurationGeometry() {}
+
+OpenConfigurationGeometry::~OpenConfigurationGeometry() {}
+
 QPair<QRect, QRect> OpenConfigurationGeometry::GetGeometryConfiguration(
     unsigned int animation_direction, const QRect& widget_geometry) {
   QPair<QRect, QRect> open_geometry_pair;

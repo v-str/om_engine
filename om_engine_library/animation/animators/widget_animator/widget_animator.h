@@ -4,7 +4,6 @@
 #include <QEasingCurve>
 #include <QObject>
 #include <QPair>
-#include <QPropertyAnimation>
 #include <QRect>
 #include <QWidget>
 
@@ -42,14 +41,14 @@ class WidgetAnimator : public QObject {
   void EndAnimationProcess();
 
  private:
-  void RunAnimation(WidgetAnimationType type,
-                    unsigned int animation_direction,
+  void RunAnimation(WidgetAnimationType type, unsigned int animation_direction,
                     unsigned int duration_start_msec,
                     unsigned int duration_end_msec);
 
   void ChangeWidgetState();
 
   QPropertyAnimation* animation_ = nullptr;
+
   QPair<QRect, QRect> animation_geometry_;
   QRect widget_geometry_;
 

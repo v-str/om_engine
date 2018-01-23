@@ -1,5 +1,6 @@
 ﻿#include <widget_animator.h>
 
+#include <QPropertyAnimation>
 #include <QTimer>
 
 #include <animation_geometry_setter.h>

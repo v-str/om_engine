@@ -7,13 +7,14 @@
 namespace om_animation {
 class ConfigurationGeometry {
  public:
+  ConfigurationGeometry();
+  virtual ~ConfigurationGeometry();
+
   virtual QPair<QRect, QRect> GetGeometryConfiguration(
       unsigned int animation_direction, const QRect& widget_geometry) = 0;
 
-  void InitializeParameters(unsigned int& x,
-                            unsigned int& y,
-                            unsigned int& width,
-                            unsigned int& height,
+  void InitializeParameters(unsigned int& x, unsigned int& y,
+                            unsigned int& width, unsigned int& height,
                             const QRect& widget_geometry);
 };
 }
