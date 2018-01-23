@@ -1,5 +1,5 @@
-﻿#ifndef BASE_WIDGET_H
-#define BASE_WIDGET_H
+﻿#ifndef BASE_FRAME_H
+#define BASE_FRAME_H
 
 #include <memory>
 
@@ -7,11 +7,11 @@ class WidgetAnimator;
 
 namespace om_widgets {
 
-class BaseWidget {
+class BaseFrame {
  public:
  private:
   std::unique_ptr<WidgetAnimator> animator_;
 };
 }
 
-#endif  // BASE_WIDGET_H
+#endif  // BASE_FRAME_H
