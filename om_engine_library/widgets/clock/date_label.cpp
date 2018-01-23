@@ -1,9 +1,8 @@
 ﻿#include <date_label.h>
 
-#include <om_utility.h>
+#include <QDate>
 
 using namespace om_widgets;
-using namespace om_utility;
 
 DateLabel::DateLabel(QWidget* parent) : AbstractClock(parent) {
   Update();
@@ -12,4 +11,4 @@ DateLabel::DateLabel(QWidget* parent) : AbstractClock(parent) {
 
 DateLabel::~DateLabel() {}
 
-void DateLabel::Update() { TimeDateChanger::ChangeDate(this); }
+void DateLabel::Update() { setText(QDate::currentDate().toString("dd.MM.yy")); }

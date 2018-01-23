@@ -1,9 +1,8 @@
 ﻿#include <time_label.h>
 
-#include <om_utility.h>
+#include <QTime>
 
 using namespace om_widgets;
-using namespace om_utility;
 
 TimeLabel::TimeLabel(QWidget* parent) : AbstractClock(parent) {
   Update();
@@ -12,4 +11,4 @@ TimeLabel::TimeLabel(QWidget* parent) : AbstractClock(parent) {
 
 TimeLabel::~TimeLabel() {}
 
-void TimeLabel::Update() { TimeDateChanger::ChangeTime(this); }
+void TimeLabel::Update() { setText(QTime::currentTime().toString("hh:mm:ss")); }
