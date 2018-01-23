@@ -13,9 +13,9 @@ namespace om_animation {
 class AnimationGeometrySetter {
  public:
   static QPair<QRect, QRect> GetGeometryFor(
+      const QRect& widget_geometry,
       om_utility::WidgetAnimationType animation_type,
-      unsigned int animation_direction,
-      const QRect& widget_geometry);
+      unsigned int animation_direction);
 
  private:
   static OpenConfigurationGeometry kOpenConfigurationGeometry;

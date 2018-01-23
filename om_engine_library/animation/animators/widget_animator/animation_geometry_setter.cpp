@@ -7,9 +7,8 @@ OpenConfigurationGeometry AnimationGeometrySetter::kOpenConfigurationGeometry;
 CloseConfigurationGeometry AnimationGeometrySetter::kCloseConfigurationGeometry;
 
 QPair<QRect, QRect> AnimationGeometrySetter::GetGeometryFor(
-    WidgetAnimationType animation_type,
-    unsigned int animation_direction,
-    const QRect& widget_geometry) {
+    const QRect& widget_geometry, WidgetAnimationType animation_type,
+    unsigned int animation_direction) {
   if (animation_type == kOpen) {
     return kOpenConfigurationGeometry.GetGeometryConfiguration(
         animation_direction, widget_geometry);

@@ -57,7 +57,7 @@ void WidgetAnimator::RunAnimation(WidgetAnimationType type,
                                   unsigned int duration_start_msec,
                                   unsigned int duration_end_msec) {
   animation_geometry_ = AnimationGeometrySetter::GetGeometryFor(
-      type, animation_direction, widget_geometry_);
+      widget_geometry_, type, animation_direction);
   animation_->setStartValue(animation_geometry_.first);
   animation_->setEndValue(animation_geometry_.second);
   QTimer::singleShot(duration_start_msec, this, SLOT(StartAnimationProcess()));
