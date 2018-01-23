@@ -5,9 +5,11 @@
 using namespace om_widgets;
 using namespace om_utility;
 
-OmDateLabel::OmDateLabel(QWidget* parent) : AbstractClock(parent) {
+DateLabel::DateLabel(QWidget* parent) : AbstractClock(parent) {
   Update();
   InitializeTimer(this);
 }
 
-void OmDateLabel::Update() { TimeDateChanger::ChangeDate(this); }
+DateLabel::~DateLabel() {}
+
+void DateLabel::Update() { TimeDateChanger::ChangeDate(this); }

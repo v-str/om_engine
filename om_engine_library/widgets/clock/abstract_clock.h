@@ -2,7 +2,8 @@
 #define ABSTRACT_CLOCK_H
 
 #include <QLabel>
-#include <QTimer>
+
+class QTimer;
 
 namespace om_widgets {
 
@@ -10,7 +11,7 @@ class AbstractClock : public QLabel {
   Q_OBJECT
  public:
   AbstractClock(QWidget* parent = nullptr);
-
+  ~AbstractClock();
   virtual void Update() = 0;
 
  protected slots:
@@ -23,7 +24,7 @@ class AbstractClock : public QLabel {
  private:
   QTimer* timer_ = nullptr;
 
-  static const unsigned int kTimerTick = 1000;
+  static constexpr unsigned int kOneSecondTick = 1000;
 };
 }
 

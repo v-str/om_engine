@@ -3,9 +3,11 @@
 #include <QPalette>
 #include <QPixmap>
 
+#include <date_label.h>
 #include <test_geometries.h>
 #include <test_message.h>
 #include <test_widget_setter.h>
+#include <time_label.h>
 
 using namespace demo_code;
 
@@ -16,7 +18,7 @@ MainTestWidget::MainTestWidget(QWidget* parent)
       button_open_(new ClickButton("Open", this)),
       button_close_(new ClickButton("Close", this)),
       time_label_(new TimeLabel(this)),
-      date_label_(new OmDateLabel(this)) {
+      date_label_(new DateLabel(this)) {
   SetAppearance();
   SetWidgets();
   SetAnimation();
@@ -60,7 +62,7 @@ void MainTestWidget::SetAnimation() {
 void MainTestWidget::SetConnections() {
   connect(button_close_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
   connect(button_open_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
-    connect(animator_, SIGNAL(AnimationComplete()), test_frame_, SLOT(show()));
+  connect(animator_, SIGNAL(AnimationComplete()), test_frame_, SLOT(show()));
   connect(animator_, SIGNAL(AnimationIncomplete()),
           SLOT(MultipleClickCathed()));
 }

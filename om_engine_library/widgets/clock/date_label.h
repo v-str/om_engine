@@ -5,14 +5,13 @@
 
 namespace om_widgets {
 
-class OmDateLabel : public AbstractClock {
+class DateLabel : public AbstractClock {
   Q_OBJECT
  public:
-  OmDateLabel(QWidget* parent = nullptr);
+  DateLabel(QWidget* parent = nullptr);
+  ~DateLabel();
 
   void Update() override;
-
- private:
 };
 }
 

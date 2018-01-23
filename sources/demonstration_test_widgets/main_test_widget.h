@@ -5,11 +5,10 @@
 #include <QWidget>
 
 #include <click_button.h>
-#include <date_label.h>
 #include <delta_size.h>
 #include <test_frame.h>
-#include <time_label.h>
 #include <widget_animator.h>
+#include <abstract_clock.h>
 
 namespace demo_code {
 
@@ -44,8 +43,8 @@ class MainTestWidget : public QWidget {
   ClickButton* button_open_ = nullptr;
   ClickButton* button_close_ = nullptr;
   WidgetAnimator* animator_ = nullptr;
-  TimeLabel* time_label_ = nullptr;
-  OmDateLabel* date_label_ = nullptr;
+  AbstractClock* time_label_ = nullptr;
+  AbstractClock* date_label_ = nullptr;
 
   DeltaSize delta_size_;
 };
