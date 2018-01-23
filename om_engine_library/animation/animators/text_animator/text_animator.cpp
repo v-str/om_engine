@@ -9,7 +9,11 @@ TextAnimator::TextAnimator(QObject* parent, unsigned int animation_delay)
   connect(timer_, SIGNAL(timeout()), SLOT(AnimateText()));
 }
 
-TextAnimator::~TextAnimator() { delete writable_widget_; }
+TextAnimator::~TextAnimator() {
+  if (writable_widget_) {
+    delete writable_widget_;
+  }
+}
 
 void TextAnimator::SetAnimationDelay(unsigned int animation_delay) {
   animation_delay_ = animation_delay;
