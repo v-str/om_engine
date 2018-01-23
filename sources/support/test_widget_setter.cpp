@@ -1,10 +1,12 @@
 ﻿#include <test_widget_setter.h>
 
 #include <modification_factor.h>
-#include <om_utility.h>
+#include <offset_distance.h>
+#include <widgets_utility.h>
 
 using namespace demo_code;
-using namespace om_utility;
+using namespace om_widgets;
+using namespace widgets_utility;
 
 void TestWidgetSetter::CustomizeButton(ClickButton* button,
                                        const QRect& current_geometry) {

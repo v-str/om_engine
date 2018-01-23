@@ -11,17 +11,6 @@ enum WidgetAnimationType { kOpen, kClose };
 
 enum TransformationType { kShifting, kStretching, kScaling };
 
-struct OffsetDistance {
-  OffsetDistance(unsigned int offset_by_x = 0, unsigned int offset_by_y = 0);
-
-  unsigned int OffSetDistanceX() const;
-  unsigned int OffSetDistanceY() const;
-
- private:
-  unsigned int offset_by_x_;
-  unsigned int offset_by_y_;
-};
-
 struct TimeDateChanger {
   static void ChangeTime(QLabel* time_label);
   static void ChangeDate(QLabel* date_label);

@@ -3,11 +3,9 @@
 
 #include <QPushButton>
 
-#include <om_utility.h>
+#include <offset_distance.h>
 
 namespace om_widgets {
-
-using namespace om_utility;
 
 class ClickButton : public QPushButton {
   Q_OBJECT
