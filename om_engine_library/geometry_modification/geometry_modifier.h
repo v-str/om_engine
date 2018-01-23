@@ -10,10 +10,13 @@ namespace geometry_modification {
 
 class GeometryModifier {
  public:
+  GeometryModifier();
+  virtual ~GeometryModifier();
+
   virtual void ComputeModification(const QRect& initial_position) = 0;
   virtual QRect GetModifiedRect() const = 0;
-  virtual void SetDeltaSize(const DeltaSize& delta_size);
 
+  virtual void SetDeltaSize(const DeltaSize& delta_size);
   virtual void SetModificationFactor(
       const ModificationFactor& modification_factor);
   virtual void ModifyTo(unsigned int modified_side);

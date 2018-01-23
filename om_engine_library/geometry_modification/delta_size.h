@@ -7,6 +7,7 @@ class DeltaSize {
  public:
   DeltaSize();
   DeltaSize(int width, int height);
+  ~DeltaSize();
 
   void SetDeltaSize(const DeltaSize& delta_size);
 

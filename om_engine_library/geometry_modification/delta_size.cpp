@@ -6,6 +6,8 @@ DeltaSize::DeltaSize() {}
 
 DeltaSize::DeltaSize(int width, int height) : width_(width), height_(height) {}
 
+DeltaSize::~DeltaSize() {}
+
 void DeltaSize::SetDeltaSize(const DeltaSize& delta_size) {
   width_ = delta_size.Width();
   height_ = delta_size.Height();

@@ -5,6 +5,10 @@
 using namespace om_utility;
 using namespace geometry_modification;
 
+Shifter::Shifter() : GeometryModifier() {}
+
+Shifter::~Shifter() {}
+
 void Shifter::ComputeModification(const QRect &initial_position) {
   int x = initial_position.x();
   int y = initial_position.y();

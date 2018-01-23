@@ -4,11 +4,11 @@
 #include <QFrame>
 #include <QWidget>
 
+#include <abstract_clock.h>
 #include <click_button.h>
 #include <delta_size.h>
 #include <test_frame.h>
 #include <widget_animator.h>
-#include <abstract_clock.h>
 
 namespace demo_code {
 

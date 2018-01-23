@@ -5,6 +5,10 @@
 using namespace om_utility;
 using namespace geometry_modification;
 
+Stretcher::Stretcher() {}
+
+Stretcher::~Stretcher() {}
+
 void Stretcher::ComputeModification(const QRect &initial_position) {
   int x_pos = initial_position.x();
   int y_pos = initial_position.y();

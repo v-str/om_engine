@@ -7,6 +7,10 @@ void GeometryModifier::SetModificationFactor(
   modification_factor_ = modification_factor;
 }
 
+GeometryModifier::GeometryModifier() {}
+
+GeometryModifier::~GeometryModifier() {}
+
 void GeometryModifier::SetDeltaSize(const DeltaSize &delta_size) {
   delta_size_ = delta_size;
 }

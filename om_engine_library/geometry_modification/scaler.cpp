@@ -1,12 +1,13 @@
 ﻿#include <scaler.h>
 
+#include <geometry_modifier.h>
+#include <shifter.h>
+#include <stretcher.h>
+
 using namespace om_utility;
 using namespace geometry_modification;
 
-Scaler::Scaler() {
-  shifter_ = std::make_unique<Shifter>();
-  stretcher_ = std::make_unique<Stretcher>();
-
+Scaler::Scaler() : shifter_(new Shifter), stretcher_(new Stretcher) {
   shifter_->SetModificationFactor(ModificationFactor(0.0, 0.0));
   shifter_->ModifyTo(kLeft);
   stretcher_->SetModificationFactor(ModificationFactor(0.0, 0.0));
@@ -22,6 +23,8 @@ Scaler::Scaler(const ModificationFactor &modification_shift_factor,
   stretcher_->SetModificationFactor(modification_stretch_factor);
   stretcher_->ModifyTo(stretch_to);
 }
+
+Scaler::~Scaler() {}
 
 void Scaler::ComputeModification(const QRect &initial_position) {
   shifter_->ComputeModification(initial_position);
