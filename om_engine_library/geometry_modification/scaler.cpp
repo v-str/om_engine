@@ -1,7 +1,5 @@
 ﻿#include <scaler.h>
 
-#include <QRect>
-
 using namespace om_utility;
 using namespace geometry_modification;
 

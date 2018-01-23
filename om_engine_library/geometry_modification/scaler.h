@@ -3,12 +3,11 @@
 
 #include <memory>
 
-#include <om_utility.h>
+#include <QRect>
 
+#include <om_utility.h>
 #include <shifter.h>
 #include <stretcher.h>
-
-class QRect;
 
 namespace geometry_modification {
 
