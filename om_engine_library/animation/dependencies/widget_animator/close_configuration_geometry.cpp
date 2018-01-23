@@ -1,9 +1,8 @@
 ﻿#include <close_configuration_geometry.h>
 
-#include <om_utility.h>
+#include <animation_utility.h>
 
 using namespace om_animation;
-using namespace om_utility;
 
 CloseConfigurationGeometry::CloseConfigurationGeometry()
     : ConfigurationGeometry() {}

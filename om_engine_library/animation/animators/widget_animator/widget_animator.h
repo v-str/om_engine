@@ -7,12 +7,10 @@
 #include <QRect>
 #include <QWidget>
 
-#include <om_utility.h>
+#include <animation_utility.h>
 
 class QPropertyAnimation;
 class QWidget;
-
-using namespace om_utility;
 
 namespace om_animation {
 class WidgetAnimator : public QObject {
@@ -23,8 +21,8 @@ class WidgetAnimator : public QObject {
 
   void SetAnimation(const QEasingCurve& curve = QEasingCurve::OutCirc,
                     unsigned int animation_duration_msec = 500,
-                    unsigned int open_to = om_utility::Side::kUp,
-                    unsigned int close_in_to = om_utility::Side::kDown);
+                    unsigned int open_to = Side::kUp,
+                    unsigned int close_in_to = Side::kDown);
 
   void SetCurrentGeometry(const QRect& widget_geometry);
 

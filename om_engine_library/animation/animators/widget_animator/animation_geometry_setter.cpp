@@ -4,7 +4,6 @@
 #include <open_configuration_geometry.h>
 
 using namespace om_animation;
-using namespace om_utility;
 
 std::unique_ptr<ConfigurationGeometry>
     AnimationGeometrySetter::kOpenConfigurationGeometry = std::move(

@@ -6,17 +6,16 @@
 #include <QPair>
 #include <QRect>
 
-#include <om_utility.h>
+#include <animation_utility.h>
 
 namespace om_animation {
 class ConfigurationGeometry;
 
 class AnimationGeometrySetter {
  public:
-  static QPair<QRect, QRect> GetGeometryFor(
-      const QRect& widget_geometry,
-      om_utility::WidgetAnimationType animation_type,
-      unsigned int animation_direction);
+  static QPair<QRect, QRect> GetGeometryFor(const QRect& widget_geometry,
+                                            WidgetAnimationType animation_type,
+                                            unsigned int animation_direction);
 
  private:
   static std::unique_ptr<ConfigurationGeometry> kOpenConfigurationGeometry;
