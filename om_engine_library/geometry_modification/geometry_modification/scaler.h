@@ -5,7 +5,7 @@
 
 #include <QRect>
 
-#include <om_utility.h>
+#include <geometry_utility.h>
 
 namespace geometry_modification {
 class GeometryModifier;
@@ -16,8 +16,8 @@ class Scaler {
  public:
   Scaler();
   Scaler(const ModificationFactor &modification_shift_factor,
-         const ModificationFactor &modification_stretch_factor,
-         om_utility::Side shift_to, om_utility::Side stretch_to);
+         const ModificationFactor &modification_stretch_factor, Side shift_to,
+         Side stretch_to);
   ~Scaler();
 
   void SetDeltaSize(const DeltaSize &delta_size);

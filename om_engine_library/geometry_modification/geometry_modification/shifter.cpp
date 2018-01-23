@@ -1,8 +1,5 @@
 ﻿#include <shifter.h>
 
-#include <om_utility.h>
-
-using namespace om_utility;
 using namespace geometry_modification;
 
 Shifter::Shifter() : GeometryModifier() {}

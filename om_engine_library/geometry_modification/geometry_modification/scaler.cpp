@@ -4,7 +4,6 @@
 #include <shifter.h>
 #include <stretcher.h>
 
-using namespace om_utility;
 using namespace geometry_modification;
 
 Scaler::Scaler() : shifter_(new Shifter), stretcher_(new Stretcher) {
