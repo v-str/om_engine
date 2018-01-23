@@ -16,10 +16,10 @@ Scaler::Scaler() : shifter_(new Shifter), stretcher_(new Stretcher) {
 
 Scaler::Scaler(const ModificationFactor &modification_shift_factor,
                const ModificationFactor &modification_stretch_factor,
-               Side shift_to, Side stretch_to) {
+               Side shift_to, Side stretch_to)
+    : shifter_(new Shifter), stretcher_(new Stretcher) {
   shifter_->SetModificationFactor(modification_shift_factor);
   shifter_->ModifyTo(shift_to);
-
   stretcher_->SetModificationFactor(modification_stretch_factor);
   stretcher_->ModifyTo(stretch_to);
 }
@@ -42,15 +42,27 @@ void Scaler::SetDeltaSize(const DeltaSize &delta_size) {
   stretcher_->SetDeltaSize(delta_size);
 }
 
-void Scaler::SetModificationFactor(
-    const ModificationFactor &factor_for_shift,
-    const ModificationFactor &factor_for_stretch) {
+void Scaler::SetScalingFactor(const ModificationFactor &factor_for_shift,
+                              const ModificationFactor &factor_for_stretch) {
   shifter_->SetModificationFactor(factor_for_shift);
   stretcher_->SetModificationFactor(factor_for_stretch);
 }
 
-void Scaler::ModifyTo(unsigned int side_for_shift,
-                      unsigned int side_for_stretch) {
-  shifter_->ModifyTo(side_for_shift);
-  stretcher_->ModifyTo(side_for_stretch);
+void Scaler::SetShiftFactor(const ModificationFactor &factor_for_shift) {
+  shifter_->SetModificationFactor(factor_for_shift);
+}
+
+void Scaler::SetStretchFactor(const ModificationFactor &factor_for_stretch) {
+  stretcher_->SetModificationFactor(factor_for_stretch);
+}
+
+void Scaler::ScaleTo(unsigned int shift_to, unsigned int stretch_to) {
+  shifter_->ModifyTo(shift_to);
+  stretcher_->ModifyTo(stretch_to);
+}
+
+void Scaler::ShiftTo(unsigned int shift_to) { shifter_->ModifyTo(shift_to); }
+
+void Scaler::StretchTo(unsigned int stretch_to) {
+  stretcher_->ModifyTo(stretch_to);
 }
