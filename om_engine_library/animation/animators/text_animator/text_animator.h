@@ -15,7 +15,7 @@ namespace om_animation {
 class TextAnimator : public QObject {
   Q_OBJECT
  public:
-  explicit TextAnimator(QObject* parent = nullptr,
+  TextAnimator(QObject* parent = nullptr,
                         unsigned int animation_delay = 10);
   ~TextAnimator();
 
