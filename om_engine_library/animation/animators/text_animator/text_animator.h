@@ -50,7 +50,9 @@ class TextAnimator : public QObject {
 template <typename Widget>
 void om_animation::TextAnimator::RunAnimation(Widget* widget) {
   if (WritableMatcher::IsWidgetWritable(widget->metaObject()->className())) {
-    writable_widget_.reset(new WritableWidget<Widget>(widget));
+    if (writable_widget_.isNull()) {
+      writable_widget_.reset(new WritableWidget<Widget>(widget));
+    }
     timer_->start(animation_delay_msec_);
   } else {
     throw std::logic_error(
