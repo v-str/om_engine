@@ -5,6 +5,7 @@
 
 #include <QMetaObject>
 #include <QObject>
+#include <QScopedPointer>
 #include <QString>
 #include <QTimer>
 
@@ -15,8 +16,7 @@ namespace om_animation {
 class TextAnimator : public QObject {
   Q_OBJECT
  public:
-  TextAnimator(QObject* parent = nullptr,
-                        unsigned int animation_delay = 10);
+  TextAnimator(QObject* parent = nullptr, unsigned int animation_delay = 10);
   ~TextAnimator();
 
   void SetAnimationDelay(unsigned int animation_delay);
@@ -35,9 +35,9 @@ class TextAnimator : public QObject {
   void Reset();
   bool IsStringEnd() const;
 
-  AbstractWritableWidget* writable_widget_ = nullptr;
-
   QTimer* timer_ = nullptr;
+
+  QScopedPointer<AbstractWritableWidget> writable_widget_;
   QString animation_text_;
   QString current_text_;
   unsigned int animation_delay_;
@@ -49,10 +49,7 @@ class TextAnimator : public QObject {
 template <typename Widget>
 void om_animation::TextAnimator::RunAnimation(Widget* widget) {
   if (WritableMatcher::IsWidgetWritable(widget->metaObject()->className())) {
-    if (writable_widget_) {
-      delete writable_widget_;
-    }
-    writable_widget_ = new WritableWidget<Widget>(widget);
+    writable_widget_.reset(new WritableWidget<Widget>(widget));
     timer_->start(animation_delay_);
   } else {
     throw std::logic_error(
