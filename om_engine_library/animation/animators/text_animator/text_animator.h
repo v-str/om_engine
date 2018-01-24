@@ -16,10 +16,11 @@ namespace om_animation {
 class TextAnimator : public QObject {
   Q_OBJECT
  public:
-  TextAnimator(QObject* parent = nullptr, unsigned int animation_delay = 10);
+  TextAnimator(QObject* parent = nullptr,
+               unsigned int animation_delay_msec = 10);
   ~TextAnimator();
 
-  void SetAnimationDelay(unsigned int animation_delay);
+  void SetAnimationDelay(unsigned int animation_delay_msec);
   void SetAnimationText(const QString& animation_text);
 
   template <typename Widget>
@@ -40,7 +41,7 @@ class TextAnimator : public QObject {
   QScopedPointer<AbstractWritableWidget> writable_widget_;
   QString animation_text_;
   QString current_text_;
-  unsigned int animation_delay_;
+  unsigned int animation_delay_msec_;
   unsigned int symbol_count_ = 0;
 };
 }
@@ -50,7 +51,7 @@ template <typename Widget>
 void om_animation::TextAnimator::RunAnimation(Widget* widget) {
   if (WritableMatcher::IsWidgetWritable(widget->metaObject()->className())) {
     writable_widget_.reset(new WritableWidget<Widget>(widget));
-    timer_->start(animation_delay_);
+    timer_->start(animation_delay_msec_);
   } else {
     throw std::logic_error(
         "incompatible type for text animation, add type to "

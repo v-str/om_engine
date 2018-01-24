@@ -2,17 +2,17 @@
 
 using namespace om_animation;
 
-TextAnimator::TextAnimator(QObject* parent, unsigned int animation_delay)
+TextAnimator::TextAnimator(QObject* parent, unsigned int animation_delay_msec)
     : QObject(parent),
-      animation_delay_(animation_delay),
+      animation_delay_msec_(animation_delay_msec),
       timer_(new QTimer(parent)) {
   connect(timer_, SIGNAL(timeout()), SLOT(AnimateText()));
 }
 
 TextAnimator::~TextAnimator() {}
 
-void TextAnimator::SetAnimationDelay(unsigned int animation_delay) {
-  animation_delay_ = animation_delay;
+void TextAnimator::SetAnimationDelay(unsigned int animation_delay_msec) {
+  animation_delay_msec_ = animation_delay_msec;
 }
 
 void TextAnimator::SetAnimationText(const QString& animation_text) {
