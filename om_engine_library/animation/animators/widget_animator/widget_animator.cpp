@@ -32,6 +32,8 @@ void WidgetAnimator::SetCurrentGeometry(const QRect& widget_geometry) {
   widget_geometry_ = widget_geometry;
 }
 
+bool WidgetAnimator::IsWidgetOpen() const { return is_widget_open_; }
+
 void WidgetAnimator::Close() {
   if (is_widget_open_) {
     RunAnimation(kClose, direction_close_in_to_, 0, animation_duration_msec_);

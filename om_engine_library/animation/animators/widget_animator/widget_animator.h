@@ -26,6 +26,8 @@ class WidgetAnimator : public QObject {
 
   void SetCurrentGeometry(const QRect& widget_geometry);
 
+  bool IsWidgetOpen() const;
+
  public slots:
   void Close();
   void Open();
