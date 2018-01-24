@@ -11,6 +11,8 @@
 namespace om_animation {
 class ConfigurationGeometry;
 
+typedef std::unique_ptr<ConfigurationGeometry> Geometry;
+
 class AnimationGeometrySetter {
  public:
   static QPair<QRect, QRect> GetGeometryFor(const QRect& widget_geometry,
@@ -18,8 +20,8 @@ class AnimationGeometrySetter {
                                             unsigned int animation_direction);
 
  private:
-  static std::unique_ptr<ConfigurationGeometry> kOpenConfigurationGeometry;
-  static std::unique_ptr<ConfigurationGeometry> kCloseConfigurationGeometry;
+  static Geometry kOpenGeometry;
+  static Geometry kCloseGeometry;
 };
 }
 

@@ -5,23 +5,21 @@
 
 using namespace om_animation;
 
-std::unique_ptr<ConfigurationGeometry>
-    AnimationGeometrySetter::kOpenConfigurationGeometry = std::move(
-        std::unique_ptr<ConfigurationGeometry>(new OpenConfigurationGeometry));
+Geometry AnimationGeometrySetter::kOpenGeometry =
+    std::move(Geometry(new OpenConfigurationGeometry));
 
-std::unique_ptr<ConfigurationGeometry>
-    AnimationGeometrySetter::kCloseConfigurationGeometry = std::move(
-        std::unique_ptr<ConfigurationGeometry>(new CloseConfigurationGeometry));
+Geometry AnimationGeometrySetter::kCloseGeometry =
+    std::move(Geometry(new CloseConfigurationGeometry));
 
 QPair<QRect, QRect> AnimationGeometrySetter::GetGeometryFor(
     const QRect& widget_geometry, WidgetAnimationType animation_type,
     unsigned int animation_direction) {
   if (animation_type == kOpen) {
-    return kOpenConfigurationGeometry->GetGeometryConfiguration(
-        animation_direction, widget_geometry);
+    return kOpenGeometry->GetGeometryConfiguration(animation_direction,
+                                                   widget_geometry);
   }
   if (animation_type == kClose) {
-    return kCloseConfigurationGeometry->GetGeometryConfiguration(
-        animation_direction, widget_geometry);
+    return kCloseGeometry->GetGeometryConfiguration(animation_direction,
+                                                    widget_geometry);
   }
 }
