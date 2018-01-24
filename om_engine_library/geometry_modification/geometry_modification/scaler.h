@@ -21,6 +21,8 @@ class Scaler {
   ~Scaler();
 
   void SetDeltaSize(const DeltaSize &delta_size);
+  void SetDeltaSize(DeltaSize &&delta_size);
+
   void SetScalingFactor(const ModificationFactor &factor_for_shift,
                         const ModificationFactor &factor_for_stretch);
   void SetShiftFactor(const ModificationFactor &factor_for_shift);

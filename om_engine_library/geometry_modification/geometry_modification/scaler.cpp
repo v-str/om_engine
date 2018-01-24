@@ -41,6 +41,11 @@ void Scaler::SetDeltaSize(const DeltaSize &delta_size) {
   stretcher_->SetDeltaSize(delta_size);
 }
 
+void Scaler::SetDeltaSize(DeltaSize &&delta_size) {
+  shifter_->SetDeltaSize(std::move(delta_size));
+  stretcher_->SetDeltaSize(std::move(delta_size));
+}
+
 void Scaler::SetScalingFactor(const ModificationFactor &factor_for_shift,
                               const ModificationFactor &factor_for_stretch) {
   shifter_->SetModificationFactor(factor_for_shift);
