@@ -24,10 +24,7 @@ TestFrame::TestFrame(QWidget* parent)
 
 TestFrame::~TestFrame() { delete text_animator1_; }
 
-void TestFrame::DisplayText() {
-  text_animator1_->ResetAnimation();
-  text_animator1_->RunAnimation(test_label_);
-}
+void TestFrame::DisplayText() { text_animator1_->RunAnimation(test_label_); }
 
 void TestFrame::IsAnimationComplete() {
   TestMessage::WriteTestMessage(

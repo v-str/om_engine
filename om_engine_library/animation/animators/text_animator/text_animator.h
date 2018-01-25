@@ -25,15 +25,15 @@ class TextAnimator : public QObject {
 
   template <typename Widget>
   void RunAnimation(Widget* widget);
-  void ResetAnimation();
-
- private slots:
-  void AnimateText();
 
  signals:
   void TextAnimationComplete();
 
+ private slots:
+  void AnimateText();
+
  private:
+  void ResetAnimation();
   bool IsStringEnd() const;
 
   QTimer* timer_ = nullptr;
@@ -49,7 +49,8 @@ class TextAnimator : public QObject {
 // type erasure idiom
 template <typename Widget>
 void om_animation::TextAnimator::RunAnimation(Widget* widget) {
-  if (writable_widget_.get() == nullptr) {
+  ResetAnimation();
+  if (!writable_widget_.get()) {
     writable_widget_ = std::move(std::unique_ptr<AbstractWritableWidget>(
         new WritableWidget<Widget>(widget)));
   }
