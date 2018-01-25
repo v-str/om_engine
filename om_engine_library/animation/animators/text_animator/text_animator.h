@@ -49,11 +49,11 @@ class TextAnimator : public QObject {
 // type erasure idiom
 template <typename Widget>
 void om_animation::TextAnimator::RunAnimation(Widget* widget) {
+  if (writable_widget_.get() == nullptr) {
+    writable_widget_ = std::move(std::unique_ptr<AbstractWritableWidget>(
+        new WritableWidget<Widget>(widget)));
+  }
   if (WritableMatcher::IsWidgetWritable(widget->metaObject()->className())) {
-    if (writable_widget_.get() == nullptr) {
-      writable_widget_ = std::move(std::unique_ptr<AbstractWritableWidget>(
-          new WritableWidget<Widget>(widget)));
-    }
     timer_->start(animation_delay_msec_);
   } else {
     throw std::logic_error(
