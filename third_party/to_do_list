@@ -52,3 +52,5 @@
 
 - 19.   Prepare scaler and animator for including in base frame class:
         - ensure all constructors availability
+
+- 20.   Include FontSizeGenerator library into OmEngine
