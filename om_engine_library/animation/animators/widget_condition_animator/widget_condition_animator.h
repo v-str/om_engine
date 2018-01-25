@@ -17,7 +17,8 @@ namespace om_animation {
 class WidgetConditionAnimator : public QObject {
   Q_OBJECT
  public:
-  WidgetConditionAnimator(QWidget* widget = nullptr, bool is_widget_open = true);
+  WidgetConditionAnimator(QWidget* widget = nullptr,
+                          bool is_widget_open = true);
   ~WidgetConditionAnimator();
 
   void SetAnimation(const QEasingCurve& curve = QEasingCurve::OutCirc,
@@ -42,6 +43,12 @@ class WidgetConditionAnimator : public QObject {
   void EndAnimationProcess();
 
  private:
+  WidgetConditionAnimator() = delete;
+  WidgetConditionAnimator(const WidgetConditionAnimator&) = delete;
+  WidgetConditionAnimator(WidgetConditionAnimator&&) = delete;
+  WidgetConditionAnimator& operator=(const WidgetConditionAnimator&) = delete;
+  WidgetConditionAnimator& operator=(WidgetConditionAnimator&&) = delete;
+
   void RunAnimation(WidgetAnimationType type, unsigned int animation_direction,
                     unsigned int duration_start_msec,
                     unsigned int duration_end_msec);
