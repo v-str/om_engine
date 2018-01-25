@@ -1,3 +1,3 @@
 ﻿#include <base_frame.h>
 
-#include <widget_animator.h>
+#include <condition_animator.h>

@@ -1,5 +1,5 @@
-﻿#ifndef WIDGET_ANIMATOR_H
-#define WIDGET_ANIMATOR_H
+﻿#ifndef CONDITION_ANIMATOR_H
+#define CONDITION_ANIMATOR_H
 
 #include <QEasingCurve>
 #include <QObject>
@@ -13,11 +13,11 @@ class QPropertyAnimation;
 class QWidget;
 
 namespace om_animation {
-class WidgetAnimator : public QObject {
+class ConditionAnimator : public QObject {
   Q_OBJECT
  public:
-  WidgetAnimator(QWidget* widget = nullptr, bool is_widget_open = true);
-  ~WidgetAnimator();
+  ConditionAnimator(QWidget* widget = nullptr, bool is_widget_open = true);
+  ~ConditionAnimator();
 
   void SetAnimation(const QEasingCurve& curve = QEasingCurve::OutCirc,
                     unsigned int animation_duration_msec = 500,
@@ -59,4 +59,4 @@ class WidgetAnimator : public QObject {
 };
 }
 
-#endif  // WIDGET_ANIMATOR_H
+#endif  // CONDITION_ANIMATOR_H
