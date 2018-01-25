@@ -62,10 +62,12 @@ void Scaler::SetScalingFactor(const ModificationFactor &factor_for_shift,
 }
 
 void Scaler::SetShiftFactor(const ModificationFactor &factor_for_shift) {
+  stretcher_->SetModificationFactor(ModificationFactor(0.0, 0.0));
   shifter_->SetModificationFactor(factor_for_shift);
 }
 
 void Scaler::SetStretchFactor(const ModificationFactor &factor_for_stretch) {
+  shifter_->SetModificationFactor(ModificationFactor(0.0, 0.0));
   stretcher_->SetModificationFactor(factor_for_stretch);
 }
 
