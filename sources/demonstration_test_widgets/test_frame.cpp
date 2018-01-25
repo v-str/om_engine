@@ -10,7 +10,7 @@ using namespace demo_code;
 TestFrame::TestFrame(QWidget* parent)
     : QFrame(parent),
       test_label_(new QLabel(this)),
-      animator_(new ConditionAnimator(test_label_, true)),
+      animator_(new WidgetConditionAnimator(test_label_, true)),
       open_button_(new ClickButton("Open frame", this)),
       close_button_(new ClickButton("Close frame", this)),
       display_text_button_(new ClickButton("Display text", this)),
