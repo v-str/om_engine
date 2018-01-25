@@ -23,6 +23,17 @@ Scaler::Scaler(const ModificationFactor &modification_shift_factor,
   stretcher_->ModifyTo(stretch_to);
 }
 
+Scaler::Scaler(Scaler &&scaler) {
+  shifter_ = std::move(scaler.shifter_);
+  stretcher_ = std::move(scaler.stretcher_);
+}
+
+Scaler &Scaler::operator=(Scaler &&scaler) {
+  shifter_ = std::move(scaler.shifter_);
+  stretcher_ = std::move(scaler.stretcher_);
+  return *this;
+}
+
 void Scaler::ComputeModification(const QRect &initial_position) {
   shifter_->ComputeModification(initial_position);
   stretcher_->ComputeModification(initial_position);

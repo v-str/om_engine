@@ -6,9 +6,9 @@
 
 #include <abstract_clock.h>
 #include <click_button.h>
+#include <condition_animator.h>
 #include <delta_size.h>
 #include <test_frame.h>
-#include <condition_animator.h>
 
 namespace demo_code {
 

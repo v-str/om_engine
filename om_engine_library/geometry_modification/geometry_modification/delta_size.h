@@ -5,9 +5,9 @@ namespace geometry_modification {
 
 class DeltaSize {
  public:
-  DeltaSize();
+  DeltaSize() = default;
   DeltaSize(int width, int height);
-  ~DeltaSize();
+  ~DeltaSize() = default;
 
   void SetDeltaSize(const DeltaSize& delta_size);
 

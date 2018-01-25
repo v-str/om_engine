@@ -10,8 +10,8 @@ namespace geometry_modification {
 
 class GeometryModifier {
  public:
-  GeometryModifier();
-  virtual ~GeometryModifier();
+  GeometryModifier() = default;
+  virtual ~GeometryModifier() = default;
 
   virtual void ComputeModification(const QRect& initial_position) = 0;
   virtual QRect GetModifiedRect() const = 0;

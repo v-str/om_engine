@@ -5,10 +5,10 @@
 
 #include <QRect>
 
+#include <geometry_modifier.h>
 #include <geometry_utility.h>
 
 namespace geometry_modification {
-class GeometryModifier;
 class ModificationFactor;
 class DeltaSize;
 
@@ -18,6 +18,9 @@ class Scaler {
   Scaler(const ModificationFactor &modification_shift_factor,
          const ModificationFactor &modification_stretch_factor, Side shift_to,
          Side stretch_to);
+
+  Scaler(Scaler &&scaler);
+  Scaler &operator=(Scaler &&scaler);
 
   ~Scaler() = default;
 
