@@ -1,5 +1,5 @@
-﻿#ifndef SINGLE_TEST_WIDGET_H
-#define SINGLE_TEST_WIDGET_H
+﻿#ifndef MAIN_TEST_WIDGET_H
+#define MAIN_TEST_WIDGET_H
 
 #include <QFrame>
 #include <QWidget>
@@ -50,4 +50,4 @@ class MainTestWidget : public QWidget {
 };
 }
 
-#endif  // SINGLE_TEST_WIDGET_H
+#endif  // MAIN_TEST_WIDGET_H
