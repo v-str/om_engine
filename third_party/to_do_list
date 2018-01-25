@@ -50,4 +50,5 @@
         2) SetOffsetDistance
         into one SetOffsetParameters(side, distance_px)
 
-- 19.   Replace all unique pointer on scoped pointers
+- 19.   Prepare scaler and animator for including in base frame class:
+        - ensure all constructors availability

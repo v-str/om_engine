@@ -13,6 +13,7 @@ class QPropertyAnimation;
 class QWidget;
 
 namespace om_animation {
+
 class ConditionAnimator : public QObject {
   Q_OBJECT
  public:
