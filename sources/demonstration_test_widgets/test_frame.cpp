@@ -25,7 +25,7 @@ TestFrame::TestFrame(QWidget* parent)
 TestFrame::~TestFrame() { delete text_animator1_; }
 
 void TestFrame::DisplayText() {
-  text_animator1_->SetAnimationText("Ordinary Mind is greeting you . . .");
+  text_animator1_->ResetAnimation();
   text_animator1_->RunAnimation(test_label_);
 }
 
@@ -57,6 +57,7 @@ void TestFrame::SetLabel() {
 void TestFrame::SetAnimation() {
   animator_->SetAnimation(QEasingCurve::OutCirc, 500, kRight, kLeft);
   animator_->SetCurrentGeometry(test_label_->geometry());
+  text_animator1_->SetAnimationText("Ordinary Mind is greeting you . . .");
 }
 
 void TestFrame::SetConnections() {

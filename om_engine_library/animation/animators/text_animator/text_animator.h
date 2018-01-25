@@ -25,6 +25,7 @@ class TextAnimator : public QObject {
 
   template <typename Widget>
   void RunAnimation(Widget* widget);
+  void ResetAnimation();
 
  private slots:
   void AnimateText();
@@ -33,7 +34,6 @@ class TextAnimator : public QObject {
   void TextAnimationComplete();
 
  private:
-  void Reset();
   bool IsStringEnd() const;
 
   QTimer* timer_ = nullptr;

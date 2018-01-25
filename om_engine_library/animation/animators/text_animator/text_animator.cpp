@@ -19,20 +19,20 @@ void TextAnimator::SetAnimationText(const QString& animation_text) {
   animation_text_ = animation_text;
 }
 
+void TextAnimator::ResetAnimation() {
+  timer_->stop();
+  current_text_.clear();
+  symbol_count_ = 0;
+}
+
 void TextAnimator::AnimateText() {
   current_text_ += animation_text_[symbol_count_];
   writable_widget_->SetText(current_text_);
   ++symbol_count_;
   if (IsStringEnd()) {
     emit TextAnimationComplete();
-    Reset();
+    ResetAnimation();
   }
-}
-
-void TextAnimator::Reset() {
-  timer_->stop();
-  current_text_.clear();
-  symbol_count_ = 0;
 }
 
 bool TextAnimator::IsStringEnd() const {
