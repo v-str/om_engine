@@ -30,6 +30,8 @@ widgets - they'll be change time and date.
 
 
                         2. ANIMATION
-fill the description, tell about action when widget open/closed from
+- fill the description, tell about action when widget open/closed from
 constructor, and what to do for perfom animation properly
+
+- tell about WidgetConditionAnimator, how to use, about ctors of this class
 

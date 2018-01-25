@@ -37,7 +37,7 @@ class WidgetConditionAnimator : public QObject {
   void AnimationComplete();
   void AnimationIncomplete();
 
- protected slots:
+ private slots:
   void StartAnimationProcess();
   void EndAnimationProcess();
 
