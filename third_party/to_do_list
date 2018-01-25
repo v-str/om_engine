@@ -49,3 +49,5 @@
         1) SetOffsetSide
         2) SetOffsetDistance
         into one SetOffsetParameters(side, distance_px)
+
+- 19.   Replace all unique pointer on scoped pointers
