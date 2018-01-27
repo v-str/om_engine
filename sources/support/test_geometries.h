@@ -6,7 +6,7 @@
 namespace demo_code {
 
 QRect MainWidgetGeometry();
-QRect TestFrameGeometry();
+QRect InheritorFrameGeometry();
 QRect OpenButtonGeometry();
 QRect CloseButtonGeometry();
 QRect TimeLabelGeometry();

@@ -26,7 +26,10 @@ MainTestWidget::MainTestWidget(QWidget* parent)
 
 MainTestWidget::~MainTestWidget() {}
 
-void MainTestWidget::resizeEvent(QResizeEvent*) {}
+void MainTestWidget::resizeEvent(QResizeEvent*) {
+  inheritor_->SetDeltaSize(GetDeltaSize());
+  inheritor_->Modify(InheritorFrameGeometry());
+}
 
 void MainTestWidget::MultipleClickCathed() {
   TestMessage::WriteTestMessage(
@@ -39,14 +42,20 @@ void MainTestWidget::SetAppearance() {
   palette.setBrush(QPalette::Background, background);
   this->setPalette(palette);
 
-  TestWidgetSetter::CustomizeFrame(inheritor_, TestFrameGeometry());
+  TestWidgetSetter::CustomizeFrame(inheritor_, InheritorFrameGeometry());
   TestWidgetSetter::CustomizeButton(button_open_, OpenButtonGeometry());
   TestWidgetSetter::CustomizeButton(button_close_, CloseButtonGeometry());
   TestWidgetSetter::CustomizeLabel(time_label_, TimeLabelGeometry());
   TestWidgetSetter::CustomizeLabel(date_label_, DateLabelGeometry());
 }
 
-void MainTestWidget::SetWidgets() { setGeometry(MainWidgetGeometry()); }
+void MainTestWidget::SetWidgets() {
+  setGeometry(MainWidgetGeometry());
+  inheritor_->SetStretchFactor(
+      geometry_modification::ModificationFactor(1.0, 1.0));
+  inheritor_->StretchTo(geometry_modification::kRight |
+                        geometry_modification::kDown);
+}
 
 void MainTestWidget::SetAnimation() {
   inheritor_->SetAnimation(QEasingCurve::OutCirc);

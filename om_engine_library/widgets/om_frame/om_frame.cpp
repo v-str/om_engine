@@ -10,6 +10,11 @@ OmFrame::OmFrame(QWidget *parent, bool is_widget_open)
 
 OmFrame::~OmFrame() {}
 
+void OmFrame::Modify(const QRect &initial_geometry) {
+  ComputeModification(initial_geometry);
+  SetCurrentGeometry(Scaler::GetModifiedRect());
+}
+
 void OmFrame::SetAnimation(const QEasingCurve &curve,
                            unsigned int animation_duration_msec,
                            unsigned int open_to, unsigned int close_in_to) {
@@ -18,6 +23,7 @@ void OmFrame::SetAnimation(const QEasingCurve &curve,
 }
 
 void OmFrame::SetCurrentGeometry(const QRect &widget_geometry) {
+  setGeometry(widget_geometry);
   state_animator_->SetCurrentGeometry(widget_geometry);
 }
 

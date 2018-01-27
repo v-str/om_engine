@@ -4,7 +4,7 @@ using namespace demo_code;
 
 QRect demo_code::MainWidgetGeometry() { return QRect(100, 100, 600, 400); }
 
-QRect demo_code::TestFrameGeometry() { return QRect(20, 70, 560, 320); }
+QRect demo_code::InheritorFrameGeometry() { return QRect(20, 70, 560, 320); }
 
 QRect demo_code::OpenButtonGeometry() { return QRect(20, 10, 70, 30); }
 

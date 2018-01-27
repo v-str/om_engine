@@ -7,6 +7,7 @@
 #include <memory>
 
 #include <QEasingCurve>
+#include <QRect>
 
 #include <state_animator.h>
 
@@ -21,6 +22,8 @@ class OmFrame : public QFrame, public Scaler {
  public:
   OmFrame(QWidget* parent = nullptr, bool is_widget_open = true);
   ~OmFrame();
+
+  void Modify(const QRect& initial_geometry);
 
   void SetAnimation(const QEasingCurve& curve = QEasingCurve::OutCirc,
                     unsigned int animation_duration_msec = 500,
