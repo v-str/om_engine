@@ -10,18 +10,19 @@ using namespace om_animation;
 StateAnimator::StateAnimator(QWidget* widget, bool is_widget_open)
     : QObject(),
       animation_(new QPropertyAnimation(widget, "geometry", this)),
+      control_widget_(widget),
       is_widget_open_(is_widget_open) {
   if (!is_widget_open_) {
-    widget->close();
+    control_widget_->close();
   }
 }
 
 StateAnimator::~StateAnimator() {}
 
 void StateAnimator::SetAnimation(const QEasingCurve& curve,
-                                  unsigned int animation_duration_msec,
-                                  unsigned int open_to,
-                                  unsigned int close_in_to) {
+                                 unsigned int animation_duration_msec,
+                                 unsigned int open_to,
+                                 unsigned int close_in_to) {
   animation_->setEasingCurve(curve);
   animation_->setDuration(animation_duration_msec);
   direction_open_to_ = open_to;
@@ -46,6 +47,7 @@ void StateAnimator::Open() {
   if (!is_widget_open_) {
     RunAnimation(kOpen, direction_open_to_, animation_duration_msec_,
                  animation_duration_msec_);
+    control_widget_->show();
   } else {
     emit AnimationIncomplete();
   }
@@ -53,19 +55,25 @@ void StateAnimator::Open() {
 
 void StateAnimator::StartAnimationProcess() { animation_->start(); }
 
-void StateAnimator::EndAnimationProcess() { emit AnimationComplete(); }
+void StateAnimator::EndAnimationProcess() {
+  if (is_widget_open_) {
+    emit OpenAnimationComplete();
+  } else {
+    emit CloseAnimationComplete();
+  }
+}
 
 void StateAnimator::RunAnimation(WidgetAnimationType type,
-                                  unsigned int animation_direction,
-                                  unsigned int duration_start_msec,
-                                  unsigned int duration_end_msec) {
+                                 unsigned int animation_direction,
+                                 unsigned int duration_start_msec,
+                                 unsigned int duration_end_msec) {
+  ChangeWidgetState();
   animation_geometry_ = AnimationGeometrySetter::GetGeometryFor(
       widget_geometry_, type, animation_direction);
   animation_->setStartValue(animation_geometry_.first);
   animation_->setEndValue(animation_geometry_.second);
   QTimer::singleShot(duration_start_msec, this, SLOT(StartAnimationProcess()));
   QTimer::singleShot(duration_end_msec, this, SLOT(EndAnimationProcess()));
-  ChangeWidgetState();
 }
 
 void StateAnimator::ChangeWidgetState() {

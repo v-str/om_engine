@@ -34,6 +34,8 @@ class StateAnimator : public QObject {
   void Open();
 
  signals:
+  void OpenAnimationComplete();
+  void CloseAnimationComplete();
   void AnimationComplete();
   void AnimationIncomplete();
 
@@ -55,6 +57,7 @@ class StateAnimator : public QObject {
   void ChangeWidgetState();
 
   QPropertyAnimation* animation_ = nullptr;
+  QWidget* control_widget_ = nullptr;
 
   QPair<QRect, QRect> animation_geometry_;
   QRect widget_geometry_;

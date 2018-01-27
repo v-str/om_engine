@@ -13,8 +13,7 @@ using namespace demo_code;
 
 MainTestWidget::MainTestWidget(QWidget* parent)
     : QWidget(parent),
-      test_frame_(new TestFrame(this)),
-      animator_(new StateAnimator(test_frame_, false)),
+      inheritor_(new OmFrameInheritor(this, false)),
       button_open_(new ClickButton("Open", this)),
       button_close_(new ClickButton("Close", this)),
       time_label_(new TimeLabel(this)),
@@ -34,18 +33,13 @@ void MainTestWidget::MultipleClickCathed() {
       "Repetitive click on the same button was caught");
 }
 
-void MainTestWidget::ResetAnimationForTestGeometry(
-    const QRect& current_geometry) {
-  animator_->SetCurrentGeometry(current_geometry);
-}
-
 void MainTestWidget::SetAppearance() {
   QPixmap background("://resources/abstract_technology_background.jpg");
   QPalette palette;
   palette.setBrush(QPalette::Background, background);
   this->setPalette(palette);
 
-  TestWidgetSetter::CustomizeFrame(test_frame_, TestFrameGeometry());
+  TestWidgetSetter::CustomizeFrame(inheritor_, TestFrameGeometry());
   TestWidgetSetter::CustomizeButton(button_open_, OpenButtonGeometry());
   TestWidgetSetter::CustomizeButton(button_close_, CloseButtonGeometry());
   TestWidgetSetter::CustomizeLabel(time_label_, TimeLabelGeometry());
@@ -55,16 +49,13 @@ void MainTestWidget::SetAppearance() {
 void MainTestWidget::SetWidgets() { setGeometry(MainWidgetGeometry()); }
 
 void MainTestWidget::SetAnimation() {
-  animator_->SetAnimation(QEasingCurve::OutCirc);
-  animator_->SetCurrentGeometry(test_frame_->geometry());
+  inheritor_->SetAnimation(QEasingCurve::OutCirc);
+  inheritor_->SetCurrentGeometry(inheritor_->geometry());
 }
 
 void MainTestWidget::SetConnections() {
-  connect(button_close_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
-  connect(button_open_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
-  connect(animator_, SIGNAL(AnimationComplete()), test_frame_, SLOT(show()));
-  connect(animator_, SIGNAL(AnimationIncomplete()),
-          SLOT(MultipleClickCathed()));
+  connect(button_close_, SIGNAL(clicked(bool)), inheritor_, SLOT(Close()));
+  connect(button_open_, SIGNAL(clicked(bool)), inheritor_, SLOT(Open()));
 }
 
 DeltaSize MainTestWidget::GetDeltaSize() {
