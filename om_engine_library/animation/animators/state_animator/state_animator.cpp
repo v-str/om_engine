@@ -1,4 +1,4 @@
-﻿#include <widget_condition_animator.h>
+﻿#include <state_animator.h>
 
 #include <QPropertyAnimation>
 #include <QTimer>
@@ -7,7 +7,7 @@
 
 using namespace om_animation;
 
-WidgetConditionAnimator::WidgetConditionAnimator(QWidget* widget, bool is_widget_open)
+StateAnimator::StateAnimator(QWidget* widget, bool is_widget_open)
     : QObject(),
       animation_(new QPropertyAnimation(widget, "geometry", this)),
       is_widget_open_(is_widget_open) {
@@ -16,9 +16,9 @@ WidgetConditionAnimator::WidgetConditionAnimator(QWidget* widget, bool is_widget
   }
 }
 
-WidgetConditionAnimator::~WidgetConditionAnimator() {}
+StateAnimator::~StateAnimator() {}
 
-void WidgetConditionAnimator::SetAnimation(const QEasingCurve& curve,
+void StateAnimator::SetAnimation(const QEasingCurve& curve,
                                   unsigned int animation_duration_msec,
                                   unsigned int open_to,
                                   unsigned int close_in_to) {
@@ -28,13 +28,13 @@ void WidgetConditionAnimator::SetAnimation(const QEasingCurve& curve,
   direction_close_in_to_ = close_in_to;
 }
 
-void WidgetConditionAnimator::SetCurrentGeometry(const QRect& widget_geometry) {
+void StateAnimator::SetCurrentGeometry(const QRect& widget_geometry) {
   widget_geometry_ = widget_geometry;
 }
 
-bool WidgetConditionAnimator::IsWidgetOpen() const { return is_widget_open_; }
+bool StateAnimator::IsWidgetOpen() const { return is_widget_open_; }
 
-void WidgetConditionAnimator::Close() {
+void StateAnimator::Close() {
   if (is_widget_open_) {
     RunAnimation(kClose, direction_close_in_to_, 0, animation_duration_msec_);
   } else {
@@ -42,7 +42,7 @@ void WidgetConditionAnimator::Close() {
   }
 }
 
-void WidgetConditionAnimator::Open() {
+void StateAnimator::Open() {
   if (!is_widget_open_) {
     RunAnimation(kOpen, direction_open_to_, animation_duration_msec_,
                  animation_duration_msec_);
@@ -51,11 +51,11 @@ void WidgetConditionAnimator::Open() {
   }
 }
 
-void WidgetConditionAnimator::StartAnimationProcess() { animation_->start(); }
+void StateAnimator::StartAnimationProcess() { animation_->start(); }
 
-void WidgetConditionAnimator::EndAnimationProcess() { emit AnimationComplete(); }
+void StateAnimator::EndAnimationProcess() { emit AnimationComplete(); }
 
-void WidgetConditionAnimator::RunAnimation(WidgetAnimationType type,
+void StateAnimator::RunAnimation(WidgetAnimationType type,
                                   unsigned int animation_direction,
                                   unsigned int duration_start_msec,
                                   unsigned int duration_end_msec) {
@@ -68,6 +68,6 @@ void WidgetConditionAnimator::RunAnimation(WidgetAnimationType type,
   ChangeWidgetState();
 }
 
-void WidgetConditionAnimator::ChangeWidgetState() {
+void StateAnimator::ChangeWidgetState() {
   is_widget_open_ ? is_widget_open_ = false : is_widget_open_ = true;
 }

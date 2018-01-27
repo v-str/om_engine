@@ -6,7 +6,7 @@
 
 #include <click_button.h>
 #include <text_animator.h>
-#include <widget_condition_animator.h>
+#include <state_animator.h>
 
 namespace demo_code {
 
@@ -34,7 +34,7 @@ class TestFrame : public QFrame {
   ClickButton* close_button_ = nullptr;
   ClickButton* display_text_button_ = nullptr;
   QLabel* test_label_ = nullptr;
-  WidgetConditionAnimator* animator_ = nullptr;
+  StateAnimator* animator_ = nullptr;
   TextAnimator* text_animator1_ = nullptr;
 };
 }

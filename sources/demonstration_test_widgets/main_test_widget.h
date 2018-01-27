@@ -6,7 +6,7 @@
 
 #include <abstract_clock.h>
 #include <click_button.h>
-#include <widget_condition_animator.h>
+#include <state_animator.h>
 #include <delta_size.h>
 #include <test_frame.h>
 
@@ -42,7 +42,7 @@ class MainTestWidget : public QWidget {
   TestFrame* test_frame_ = nullptr;
   ClickButton* button_open_ = nullptr;
   ClickButton* button_close_ = nullptr;
-  WidgetConditionAnimator* animator_ = nullptr;
+  StateAnimator* animator_ = nullptr;
   AbstractClock* time_label_ = nullptr;
   AbstractClock* date_label_ = nullptr;
 

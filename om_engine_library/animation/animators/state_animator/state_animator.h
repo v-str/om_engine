@@ -1,5 +1,5 @@
-﻿#ifndef WIDGET_CONDITION_ANIMATOR_H
-#define WIDGET_CONDITION_ANIMATOR_H
+﻿#ifndef STATE_ANIMATOR_H
+#define STATE_ANIMATOR_H
 
 #include <QEasingCurve>
 #include <QObject>
@@ -14,12 +14,11 @@ class QWidget;
 
 namespace om_animation {
 
-class WidgetConditionAnimator : public QObject {
+class StateAnimator : public QObject {
   Q_OBJECT
  public:
-  WidgetConditionAnimator(QWidget* widget = nullptr,
-                          bool is_widget_open = true);
-  ~WidgetConditionAnimator();
+  StateAnimator(QWidget* widget = nullptr, bool is_widget_open = true);
+  ~StateAnimator();
 
   void SetAnimation(const QEasingCurve& curve = QEasingCurve::OutCirc,
                     unsigned int animation_duration_msec = 500,
@@ -43,11 +42,11 @@ class WidgetConditionAnimator : public QObject {
   void EndAnimationProcess();
 
  private:
-  WidgetConditionAnimator() = delete;
-  WidgetConditionAnimator(const WidgetConditionAnimator&) = delete;
-  WidgetConditionAnimator(WidgetConditionAnimator&&) = delete;
-  WidgetConditionAnimator& operator=(const WidgetConditionAnimator&) = delete;
-  WidgetConditionAnimator& operator=(WidgetConditionAnimator&&) = delete;
+  StateAnimator() = delete;
+  StateAnimator(const StateAnimator&) = delete;
+  StateAnimator(StateAnimator&&) = delete;
+  StateAnimator& operator=(const StateAnimator&) = delete;
+  StateAnimator& operator=(StateAnimator&&) = delete;
 
   void RunAnimation(WidgetAnimationType type, unsigned int animation_direction,
                     unsigned int duration_start_msec,
@@ -67,4 +66,4 @@ class WidgetConditionAnimator : public QObject {
 };
 }
 
-#endif  // WIDGET_CONDITION_ANIMATOR_H
+#endif  // STATE_ANIMATOR_H
