@@ -1,4 +1,8 @@
-﻿+ 1.    Initiate repo
+﻿R - removed
++ - done
+- - not ready
+
++ 1.    Initiate repo
 
 + 2.    Create OmButton
 
@@ -24,17 +28,17 @@
 
 + 9.    Develop time and date classes
 
-- 10.   Develop GeometryComposer class
+R 10.   Develop GeometryComposer class
 
 - 11.   Notify users about C++11/14 standard usage
 
 + 12.   Run GeometryComposer, modify is needed
 
-- 13.   Add scaling transformation type to GeometryComposer
+R 13.   Add scaling transformation type to GeometryComposer
 
-- 14.   Develop base class for all widgets in OmEngine
++ 14.   Develop base class for all widgets in OmEngine
 
-- 15.   Compose all existing widgets via GeometryController
+R 15.   Compose all existing widgets via GeometryController
 
 + 16.   Solve problem related with animation and composing
 
@@ -54,3 +58,5 @@
         - ensure all constructors availability
 
 - 20.   Include FontSizeGenerator library into OmEngine
+
+- 21.   Add set of animation blocks for any Qt widgets
