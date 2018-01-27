@@ -6,11 +6,11 @@
 
 #include <memory>
 
-class QWidget;
+#include <QEasingCurve>
 
-namespace om_animation {
-class StateAnimator;
-}
+#include <state_animator.h>
+
+class QWidget;
 
 namespace om_widgets {
 using namespace om_animation;
@@ -21,6 +21,23 @@ class OmFrame : public QFrame, public Scaler {
  public:
   OmFrame(QWidget* parent = nullptr, bool is_widget_open = true);
   ~OmFrame();
+
+  void SetAnimation(const QEasingCurve& curve = QEasingCurve::OutCirc,
+                    unsigned int animation_duration_msec = 500,
+                    unsigned int open_to = om_animation::Side::kUp,
+                    unsigned int close_in_to = om_animation::Side::kDown);
+
+  void SetCurrentGeometry(const QRect& widget_geometry);
+
+  bool IsWidgetOpen() const;
+
+ public slots:
+  void Close();
+  void Open();
+
+ signals:
+  void AnimationComplete();
+  void AnimationIncomplete();
 
  private:
   std::unique_ptr<StateAnimator> state_animator_;
