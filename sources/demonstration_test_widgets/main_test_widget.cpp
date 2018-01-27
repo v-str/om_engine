@@ -34,7 +34,7 @@ void MainTestWidget::MultipleClickCathed() {
 }
 
 void MainTestWidget::SetAppearance() {
-  QPixmap background("://resources/abstract_technology_background.jpg");
+  QPixmap background("://resources/the_monster.jpg");
   QPalette palette;
   palette.setBrush(QPalette::Background, background);
   this->setPalette(palette);

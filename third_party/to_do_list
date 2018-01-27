@@ -50,7 +50,7 @@
         2) SetOffsetDistance
         into one SetOffsetParameters(side, distance_px)
 
-- 19.   Prepare scaler and animator for including in base frame class:
++ 19.   Prepare scaler and animator for including in base frame class:
         - ensure all constructors availability
 
 - 20.   Include FontSizeGenerator library into OmEngine

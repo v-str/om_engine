@@ -1,5 +1,6 @@
 ﻿<RCC>
     <qresource prefix="/">
-            <file>resources/abstract_technology_background.jpg</file>
+        <file>resources/abstract_technology_background.jpg</file>
+        <file>resources/the_monster.jpg</file>
     </qresource>
 </RCC>

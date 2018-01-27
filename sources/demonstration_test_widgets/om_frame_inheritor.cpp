@@ -60,7 +60,7 @@ void om_widgets::OmFrameInheritor::SetLabelAnimation() {
   animator_->SetAnimation(QEasingCurve::OutCirc, 500, om_animation::kRight,
                           om_animation::kLeft);
   animator_->SetCurrentGeometry(test_label_->geometry());
-  text_animator1_->SetAnimationText("Ordinary Mind is greeting you . . .");
+  text_animator1_->SetAnimationText("Run so fast as you can . . .");
 }
 
 void om_widgets::OmFrameInheritor::SetConnections() {
