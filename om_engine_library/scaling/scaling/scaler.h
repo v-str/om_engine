@@ -9,15 +9,14 @@
 #include <geometry_utility.h>
 
 namespace scaling {
-class ModificationFactor;
+class AxesRatio;
 class DeltaSize;
 
 class Scaler {
  public:
   Scaler();
-  Scaler(const ModificationFactor &modification_shift_factor,
-         const ModificationFactor &modification_stretch_factor, Side shift_to,
-         Side stretch_to);
+  Scaler(const AxesRatio &shift_ratio, const AxesRatio &stretch_ratio,
+         Side shift_to, Side stretch_to);
 
   Scaler(Scaler &&scaler);
   Scaler &operator=(Scaler &&scaler);
@@ -27,10 +26,10 @@ class Scaler {
   void SetDeltaSize(const DeltaSize &delta_size);
   void SetDeltaSize(DeltaSize &&delta_size);
 
-  void SetScalingFactor(const ModificationFactor &factor_for_shift,
-                        const ModificationFactor &factor_for_stretch);
-  void SetShiftFactor(const ModificationFactor &factor_for_shift);
-  void SetStretchFactor(const ModificationFactor &factor_for_stretch);
+  void SetScalingFactor(const AxesRatio &shift_ratio,
+                        const AxesRatio &stretch_ratio);
+  void SetShiftFactor(const AxesRatio &shift_ratio);
+  void SetStretchFactor(const AxesRatio &stretch_ratio);
 
   void ScaleTo(unsigned int shift_to, unsigned int stretch_to);
   void ShiftTo(unsigned int shift_to);

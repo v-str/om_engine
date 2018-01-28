@@ -13,18 +13,18 @@ void Stretcher::ComputeModification(const QRect &initial_position) {
   int height = initial_position.height();
 
   if (modified_side_ & Side::kLeft) {
-    width += (modification_factor_.X() * delta_size_.Width());
-    x_pos -= (modification_factor_.X() * delta_size_.Width());
+    width += (axes_ratio_.X() * delta_size_.Width());
+    x_pos -= (axes_ratio_.X() * delta_size_.Width());
   }
   if (modified_side_ & Side::kRight) {
-    width += (modification_factor_.X() * delta_size_.Width());
+    width += (axes_ratio_.X() * delta_size_.Width());
   }
   if (modified_side_ & Side::kDown) {
-    height += (modification_factor_.Y() * delta_size_.Height());
+    height += (axes_ratio_.Y() * delta_size_.Height());
   }
   if (modified_side_ & Side::kUp) {
-    height += (modification_factor_.Y() * delta_size_.Height());
-    y_pos -= (modification_factor_.Y() * delta_size_.Height());
+    height += (axes_ratio_.Y() * delta_size_.Height());
+    y_pos -= (axes_ratio_.Y() * delta_size_.Height());
   }
 
   stretched_rect_ = QRect(x_pos, y_pos, width, height);

@@ -4,7 +4,7 @@
 #include <QRect>
 
 #include <delta_size.h>
-#include <modification_factor.h>
+#include <axes_ratio.h>
 
 namespace scaling {
 
@@ -19,12 +19,11 @@ class GeometryModifier {
   virtual void SetDeltaSize(const DeltaSize& delta_size);
   virtual void SetDeltaSize(DeltaSize&& delta_size);
 
-  virtual void SetModificationFactor(
-      const ModificationFactor& modification_factor);
+  virtual void SetAxesRatio(const AxesRatio& axes_ratio);
   virtual void ModifyTo(unsigned int modified_side);
 
  protected:
-  ModificationFactor modification_factor_;
+  AxesRatio axes_ratio_;
   DeltaSize delta_size_;
 
   unsigned int modified_side_ = 0;

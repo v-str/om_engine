@@ -50,7 +50,7 @@ void MainTestWidget::SetAppearance() {
 
 void MainTestWidget::SetWidgets() {
   setGeometry(MainWidgetGeometry());
-  inheritor_->SetStretchFactor(scaling::ModificationFactor(1.0, 1.0));
+  inheritor_->SetStretchFactor(scaling::AxesRatio(1.0, 1.0));
   inheritor_->StretchTo(scaling::kRight | scaling::kDown);
 }
 

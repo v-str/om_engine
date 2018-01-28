@@ -7,19 +7,18 @@
 using namespace scaling;
 
 Scaler::Scaler() : shifter_(new Shifter), stretcher_(new Stretcher) {
-  shifter_->SetModificationFactor(ModificationFactor(0.0, 0.0));
+  shifter_->SetAxesRatio(AxesRatio(0.0, 0.0));
   shifter_->ModifyTo(kLeft);
-  stretcher_->SetModificationFactor(ModificationFactor(0.0, 0.0));
+  stretcher_->SetAxesRatio(AxesRatio(0.0, 0.0));
   stretcher_->ModifyTo(kLeft);
 }
 
-Scaler::Scaler(const ModificationFactor &modification_shift_factor,
-               const ModificationFactor &modification_stretch_factor,
+Scaler::Scaler(const AxesRatio &shift_ratio, const AxesRatio &stretch_ratio,
                Side shift_to, Side stretch_to)
     : shifter_(new Shifter), stretcher_(new Stretcher) {
-  shifter_->SetModificationFactor(modification_shift_factor);
+  shifter_->SetAxesRatio(shift_ratio);
   shifter_->ModifyTo(shift_to);
-  stretcher_->SetModificationFactor(modification_stretch_factor);
+  stretcher_->SetAxesRatio(stretch_ratio);
   stretcher_->ModifyTo(stretch_to);
 }
 
@@ -55,20 +54,20 @@ void Scaler::SetDeltaSize(DeltaSize &&delta_size) {
   stretcher_->SetDeltaSize(std::move(delta_size));
 }
 
-void Scaler::SetScalingFactor(const ModificationFactor &factor_for_shift,
-                              const ModificationFactor &factor_for_stretch) {
-  shifter_->SetModificationFactor(factor_for_shift);
-  stretcher_->SetModificationFactor(factor_for_stretch);
+void Scaler::SetScalingFactor(const AxesRatio &shift_ratio,
+                              const AxesRatio &stretch_ratio) {
+  shifter_->SetAxesRatio(shift_ratio);
+  stretcher_->SetAxesRatio(stretch_ratio);
 }
 
-void Scaler::SetShiftFactor(const ModificationFactor &factor_for_shift) {
-  stretcher_->SetModificationFactor(ModificationFactor(0.0, 0.0));
-  shifter_->SetModificationFactor(factor_for_shift);
+void Scaler::SetShiftFactor(const AxesRatio &shift_ratio) {
+  stretcher_->SetAxesRatio(AxesRatio(0.0, 0.0));
+  shifter_->SetAxesRatio(shift_ratio);
 }
 
-void Scaler::SetStretchFactor(const ModificationFactor &factor_for_stretch) {
-  shifter_->SetModificationFactor(ModificationFactor(0.0, 0.0));
-  stretcher_->SetModificationFactor(factor_for_stretch);
+void Scaler::SetStretchFactor(const AxesRatio &stretch_ratio) {
+  shifter_->SetAxesRatio(AxesRatio(0.0, 0.0));
+  stretcher_->SetAxesRatio(stretch_ratio);
 }
 
 void Scaler::ScaleTo(unsigned int shift_to, unsigned int stretch_to) {

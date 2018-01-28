@@ -1,12 +1,12 @@
-﻿#ifndef MODIFICATION_FACTOR_H
-#define MODIFICATION_FACTOR_H
+﻿#ifndef AXES_RATIO_H
+#define AXES_RATIO_H
 
 namespace scaling {
 
-class ModificationFactor {
+class AxesRatio {
  public:
-  ModificationFactor();
-  ModificationFactor(float x_axis_value, float y_axis_value);
+  AxesRatio();
+  AxesRatio(float x_axis_value, float y_axis_value);
 
   void SetConversionByX(float x_axis_value);
   void SetConversionByY(float y_axis_value);
@@ -25,4 +25,4 @@ class ModificationFactor {
 };
 }
 
-#endif  // MODIFICATION_FACTOR_H
+#endif  // AXES_RATIO_H

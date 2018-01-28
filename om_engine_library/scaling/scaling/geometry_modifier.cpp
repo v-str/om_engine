@@ -10,9 +10,8 @@ void GeometryModifier::SetDeltaSize(DeltaSize &&delta_size) {
   delta_size_ = std::move(delta_size);
 }
 
-void GeometryModifier::SetModificationFactor(
-    const ModificationFactor &modification_factor) {
-  modification_factor_ = modification_factor;
+void GeometryModifier::SetAxesRatio(const AxesRatio &axes_ratio) {
+  axes_ratio_ = axes_ratio;
 }
 
 void GeometryModifier::ModifyTo(unsigned int modified_side) {
