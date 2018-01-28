@@ -1,7 +1,5 @@
 ﻿cmake_minimum_required(VERSION 3.0)
 
-enable_testing ()
-
 set (PROJECT_NAME om_engine)
 project(${PROJECT_NAME})
 
@@ -37,5 +35,3 @@ set (TXT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/third_party/to_do_list"
 
 add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES} ${RESOURCES} ${TXT_FILES})
 target_link_libraries (${PROJECT_NAME} om_engine_library)
-
-add_test (${PROJECT_NAME} ${PROJECT_NAME})
