@@ -39,6 +39,8 @@ class OmFrameInheritor : public OmFrame {
   QLabel* test_label_ = nullptr;
   StateAnimator* animator_ = nullptr;
   TextAnimator* text_animator1_ = nullptr;
+
+  static const unsigned int text_animation_delay_msec_ = 30;
 };
 }
 

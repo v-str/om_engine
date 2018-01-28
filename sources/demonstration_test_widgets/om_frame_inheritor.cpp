@@ -17,7 +17,7 @@ om_widgets::OmFrameInheritor::OmFrameInheritor(QWidget *parent,
       open_button_(new ClickButton("Open frame", this)),
       close_button_(new ClickButton("Close frame", this)),
       display_text_button_(new ClickButton("Display text", this)),
-      text_animator1_(new TextAnimator(this, 30)) {
+      text_animator1_(new TextAnimator(this, text_animation_delay_msec_)) {
   SetFrame();
   SetWidgets();
   SetLabel();
