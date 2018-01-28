@@ -1,6 +1,6 @@
 ﻿#include <modification_factor.h>
 
-using namespace geometry_modification;
+using namespace scaling;
 
 ModificationFactor::ModificationFactor()
     : x_axis_value_(0.0), y_axis_value_(0.0) {}

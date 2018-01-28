@@ -1,6 +1,6 @@
 ﻿#include <shifter.h>
 
-using namespace geometry_modification;
+using namespace scaling;
 
 Shifter::Shifter() : GeometryModifier() {}
 

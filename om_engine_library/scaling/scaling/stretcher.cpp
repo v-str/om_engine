@@ -1,6 +1,6 @@
 ﻿#include <stretcher.h>
 
-using namespace geometry_modification;
+using namespace scaling;
 
 Stretcher::Stretcher() {}
 

@@ -1,7 +1,7 @@
 ﻿#ifndef DELTA_SIZE_H
 #define DELTA_SIZE_H
 
-namespace geometry_modification {
+namespace scaling {
 
 class DeltaSize {
  public:

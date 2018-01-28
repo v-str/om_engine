@@ -1,7 +1,7 @@
 ﻿#ifndef MODIFICATION_FACTOR_H
 #define MODIFICATION_FACTOR_H
 
-namespace geometry_modification {
+namespace scaling {
 
 class ModificationFactor {
  public:

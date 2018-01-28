@@ -2,7 +2,7 @@
 
 using namespace om_widgets;
 using namespace om_animation;
-using namespace geometry_modification;
+using namespace scaling;
 
 OmFrame::OmFrame(QWidget *parent, bool is_widget_open)
     : QFrame(parent),

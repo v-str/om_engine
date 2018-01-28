@@ -15,7 +15,7 @@ class QWidget;
 
 namespace om_widgets {
 using namespace om_animation;
-using namespace geometry_modification;
+using namespace scaling;
 
 class OmFrame : public QFrame, public Scaler {
   Q_OBJECT

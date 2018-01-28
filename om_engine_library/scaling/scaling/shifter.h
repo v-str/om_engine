@@ -6,7 +6,7 @@
 #include <geometry_modifier.h>
 #include <geometry_utility.h>
 
-namespace geometry_modification {
+namespace scaling {
 
 class Shifter : public GeometryModifier {
  public:

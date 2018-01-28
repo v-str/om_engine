@@ -14,7 +14,7 @@ namespace demo_code {
 
 using namespace om_widgets;
 using namespace om_animation;
-using namespace geometry_modification;
+using namespace scaling;
 
 class MainTestWidget : public QWidget {
   Q_OBJECT

@@ -4,7 +4,7 @@
 #include <shifter.h>
 #include <stretcher.h>
 
-using namespace geometry_modification;
+using namespace scaling;
 
 Scaler::Scaler() : shifter_(new Shifter), stretcher_(new Stretcher) {
   shifter_->SetModificationFactor(ModificationFactor(0.0, 0.0));

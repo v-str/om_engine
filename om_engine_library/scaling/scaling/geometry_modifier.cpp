@@ -1,6 +1,6 @@
 ﻿#include <geometry_modifier.h>
 
-using namespace geometry_modification;
+using namespace scaling;
 
 void GeometryModifier::SetDeltaSize(const DeltaSize &delta_size) {
   delta_size_ = delta_size;

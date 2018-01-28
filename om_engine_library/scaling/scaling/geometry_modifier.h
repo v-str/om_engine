@@ -6,7 +6,7 @@
 #include <delta_size.h>
 #include <modification_factor.h>
 
-namespace geometry_modification {
+namespace scaling {
 
 class GeometryModifier {
  public:

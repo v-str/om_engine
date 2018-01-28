@@ -1,6 +1,6 @@
 ﻿#include <delta_size.h>
 
-using namespace geometry_modification;
+using namespace scaling;
 
 DeltaSize::DeltaSize(int width, int height) : width_(width), height_(height) {}
 
