@@ -10,7 +10,12 @@ OmFrame::OmFrame(QWidget *parent, bool is_widget_open)
 
 OmFrame::~OmFrame() {}
 
-void OmFrame::Modify(const QRect &initial_geometry) {
+void OmFrame::ModifyGeometry(const QRect &initial_geometry,
+                             const DeltaSize &delta_size) {
+  if (!state_animator_->IsWidgetOpen()) {
+    close();
+  }
+  SetDeltaSize(delta_size);
   ComputeModification(initial_geometry);
   SetCurrentGeometry(Scaler::GetModifiedRect());
 }
@@ -26,8 +31,6 @@ void OmFrame::SetCurrentGeometry(const QRect &widget_geometry) {
   setGeometry(widget_geometry);
   state_animator_->SetCurrentGeometry(widget_geometry);
 }
-
-bool OmFrame::IsWidgetOpen() const { return state_animator_->IsWidgetOpen(); }
 
 void OmFrame::Close() { state_animator_->Close(); }
 

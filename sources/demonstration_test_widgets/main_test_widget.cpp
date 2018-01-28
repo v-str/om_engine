@@ -27,8 +27,7 @@ MainTestWidget::MainTestWidget(QWidget* parent)
 MainTestWidget::~MainTestWidget() {}
 
 void MainTestWidget::resizeEvent(QResizeEvent*) {
-  inheritor_->SetDeltaSize(GetDeltaSize());
-  inheritor_->Modify(InheritorFrameGeometry());
+  inheritor_->ModifyGeometry(InheritorFrameGeometry(), GetDeltaSize());
 }
 
 void MainTestWidget::MultipleClickCathed() {

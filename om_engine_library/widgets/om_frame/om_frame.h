@@ -23,7 +23,8 @@ class OmFrame : public QFrame, public Scaler {
   OmFrame(QWidget* parent = nullptr, bool is_widget_open = true);
   ~OmFrame();
 
-  void Modify(const QRect& initial_geometry);
+  void ModifyGeometry(const QRect& initial_geometry,
+                      const DeltaSize& delta_size);
 
   void SetAnimation(const QEasingCurve& curve = QEasingCurve::OutCirc,
                     unsigned int animation_duration_msec = 500,
@@ -31,8 +32,6 @@ class OmFrame : public QFrame, public Scaler {
                     unsigned int close_in_to = om_animation::Side::kDown);
 
   void SetCurrentGeometry(const QRect& widget_geometry);
-
-  bool IsWidgetOpen() const;
 
  public slots:
   void Close();
