@@ -6,7 +6,9 @@ using namespace scaling;
 
 OmFrame::OmFrame(QWidget *parent, bool is_widget_open)
     : QFrame(parent),
-      state_animator_(new StateAnimator(this, is_widget_open)) {}
+      state_animator_(new StateAnimator(this, is_widget_open)) {
+    SetAnimation();
+}
 
 OmFrame::~OmFrame() {}
 
