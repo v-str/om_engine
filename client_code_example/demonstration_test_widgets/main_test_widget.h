@@ -8,7 +8,6 @@
 #include <click_button.h>
 #include <delta_size.h>
 #include <om_frame_inheritor.h>
-#include <state_animator.h>
 
 namespace demo_code {
 
@@ -25,9 +24,6 @@ class MainTestWidget : public QWidget {
  protected:
   void resizeEvent(QResizeEvent*);
 
- private slots:
-  void MultipleClickCathed();
-
  private:
   void SetAppearance();
   void SetWidgets();
@@ -39,9 +35,6 @@ class MainTestWidget : public QWidget {
   ClickButton* button_close_ = nullptr;
   AbstractClock* time_label_ = nullptr;
   AbstractClock* date_label_ = nullptr;
-
-  DeltaSize delta_size_;
-
   OmFrameInheritor* inheritor_ = nullptr;
 };
 }

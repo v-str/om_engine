@@ -5,7 +5,6 @@
 
 #include <date_label.h>
 #include <test_geometries.h>
-#include <test_message.h>
 #include <test_widget_setter.h>
 #include <time_label.h>
 
@@ -28,11 +27,6 @@ MainTestWidget::~MainTestWidget() {}
 
 void MainTestWidget::resizeEvent(QResizeEvent*) {
   inheritor_->ModifyGeometry(InheritorFrameGeometry(), GetDeltaSize());
-}
-
-void MainTestWidget::MultipleClickCathed() {
-  TestMessage::WriteTestMessage(
-      "Repetitive click on the same button was caught");
 }
 
 void MainTestWidget::SetAppearance() {
