@@ -7,6 +7,7 @@
 #include <abstract_clock.h>
 #include <click_button.h>
 #include <delta_size.h>
+#include <geometry_modifier.h>
 #include <om_frame_inheritor.h>
 
 namespace demo_code {
@@ -29,6 +30,7 @@ class MainTestWidget : public QWidget {
   void SetWidgets();
   void SetAnimation();
   void SetConnections();
+  void ShiftClocks();
   DeltaSize GetDeltaSize();
 
   ClickButton* button_open_ = nullptr;
@@ -36,6 +38,7 @@ class MainTestWidget : public QWidget {
   AbstractClock* time_label_ = nullptr;
   AbstractClock* date_label_ = nullptr;
   OmFrameInheritor* inheritor_ = nullptr;
+  GeometryModifier* shifter_ = nullptr;
 };
 }
 
