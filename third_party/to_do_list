@@ -57,7 +57,7 @@ R 15.   Compose all existing widgets via GeometryController
 + 19.   Prepare scaler and animator for including in base frame class:
         - ensure all constructors availability
 
-- 20.   Include FontSizeGenerator library into OmEngine
++ 20.   Include FontSizeGenerator library into OmEngine
 
 - 21.   Add set of animation blocks for any Qt widgets
 
