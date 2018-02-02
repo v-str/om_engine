@@ -28,7 +28,10 @@ om_widgets::OmFrameInheritor::OmFrameInheritor(QWidget *parent,
   SetConnections();
 }
 
-om_widgets::OmFrameInheritor::~OmFrameInheritor() { delete scaler_; }
+om_widgets::OmFrameInheritor::~OmFrameInheritor() {
+  delete scaler_;
+  delete font_size_generator_;
+}
 
 void OmFrameInheritor::ModifyGeometry(const QRect &initial_geometry,
                                       const DeltaSize &delta_size) {
@@ -69,6 +72,7 @@ void om_widgets::OmFrameInheritor::SetLabelAnimation() {
       "Scanning power: 75%\n"
       "Cargo stream speed: 10pt\n"
       "Oxygen independence level: 10 of 13\n");
+  font_size_generator_ = new FontSizeGenerator(0.8, *test_label_);
 }
 
 void om_widgets::OmFrameInheritor::SetConnections() {
@@ -88,4 +92,5 @@ void OmFrameInheritor::ScaleTestLabel(const DeltaSize &delta_size) {
 
   test_label_->setGeometry(scaler_->GetModifiedRect());
   animator_->SetCurrentGeometry(test_label_->geometry());
+  font_size_generator_->GenerateFontSize(test_label_);
 }

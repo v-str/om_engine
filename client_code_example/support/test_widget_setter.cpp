@@ -64,6 +64,6 @@ void TestWidgetSetter::CustomizeTestLabel(QLabel* test_label,
   test_label->setAlignment(Qt::AlignLeft);
   test_label->setWordWrap(true);
   QFont font = test_label->font();
-  font.setPointSize(13);
+  font.setPixelSize(16);
   test_label->setFont(font);
 }

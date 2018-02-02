@@ -6,6 +6,7 @@
 #include <QLabel>
 
 #include <click_button.h>
+#include <font_size_generator.h>
 #include <scaler.h>
 #include <state_animator.h>
 #include <text_animator.h>
@@ -45,6 +46,7 @@ class OmFrameInheritor : public OmFrame {
   StateAnimator* animator_ = nullptr;
   TextAnimator* text_animator1_ = nullptr;
   Scaler* scaler_ = nullptr;
+  FontSizeGenerator* font_size_generator_ = nullptr;
 
   static const unsigned int text_animation_delay_msec_ = 30;
 };
