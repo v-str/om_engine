@@ -2,6 +2,9 @@
 #define MAIN_TEST_WIDGET_H
 
 #include <QFrame>
+#include <QPainter>
+#include <QPalette>
+#include <QPixmap>
 #include <QWidget>
 
 #include <abstract_clock.h>
@@ -24,6 +27,7 @@ class MainTestWidget : public QWidget {
 
  protected:
   void resizeEvent(QResizeEvent*);
+  void paintEvent(QPaintEvent*);
 
  private:
   void SetAppearance();
@@ -39,6 +43,9 @@ class MainTestWidget : public QWidget {
   AbstractClock* date_label_ = nullptr;
   OmFrameInheritor* inheritor_ = nullptr;
   GeometryModifier* shifter_ = nullptr;
+
+  QPalette palette_;
+  QPixmap pixmap_;
 };
 }
 

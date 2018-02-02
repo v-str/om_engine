@@ -1,8 +1,5 @@
 ﻿#include <main_test_widget.h>
 
-#include <QPalette>
-#include <QPixmap>
-
 #include <date_label.h>
 #include <shifter.h>
 #include <test_geometries.h>
@@ -34,11 +31,18 @@ void MainTestWidget::resizeEvent(QResizeEvent*) {
   ShiftClocks();
 }
 
+void MainTestWidget::paintEvent(QPaintEvent*) {
+  QPainter painter_(this);
+  painter_.setRenderHint(QPainter::Antialiasing);
+  painter_.save();
+  painter_.drawPixmap(rect(), pixmap_);
+  painter_.restore();
+}
+
 void MainTestWidget::SetAppearance() {
-  QPixmap background("://resources/the_monster.jpg");
-  QPalette palette;
-  palette.setBrush(QPalette::Background, background);
-  this->setPalette(palette);
+  pixmap_.load("://resources/the_monster.jpg");
+  palette_.setBrush(QPalette::Background, pixmap_);
+  this->setPalette(palette_);
 
   TestWidgetSetter::CustomizeFrame(inheritor_, InheritorFrameGeometry());
   TestWidgetSetter::CustomizeButton(button_open_, OpenButtonGeometry());
