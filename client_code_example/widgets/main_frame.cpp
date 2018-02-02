@@ -55,13 +55,7 @@ void MainFrame::SetLabelAnimation() {
   animator_->SetAnimation(QEasingCurve::OutCirc, 500, om_animation::kRight,
                           om_animation::kLeft);
   animator_->SetCurrentGeometry(main_label_->geometry());
-  text_animator1_->SetAnimationText(
-      "Spaceship cargo terminal A213:<br/><br/>"
-      "Explosive class: A1<br/>"
-      "Scanning power: 75%<br/>"
-      "Cargo stream speed: 10pt<br/>"
-      "Oxygen independence level: 10<br/>"
-      "Main gate status: <font color=\"red\">CHECK</font>");
+  text_animator1_->SetAnimationText(WidgetCustomizer::GetAnimationText());
   font_size_generator_ = new FontSizeGenerator(0.8, *main_label_);
 }
 
@@ -74,7 +68,7 @@ void MainFrame::SetConnections() {
 
 void MainFrame::ScaleTestLabel(const DeltaSize &delta_size) {
   scaler_->SetDeltaSize(delta_size);
-  scaler_->ComputeModification(QRect(30, 100, 500, 190));
+  scaler_->ComputeModification(MainLabel());
 
   if (!animator_->IsWidgetOpen()) {
     main_label_->close();

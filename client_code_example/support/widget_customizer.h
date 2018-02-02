@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QRect>
+#include <QString>
 
 #include <click_button.h>
 
@@ -20,6 +21,7 @@ class WidgetCustomizer {
   static void CustomizeLabel(QLabel* label, const QRect& geometry);
   static void CustomizeTestLabel(QLabel* test_label,
                                  const QRect initial_geometry);
+  static QString GetAnimationText();
 };
 }
 

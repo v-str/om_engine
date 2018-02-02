@@ -63,3 +63,5 @@ R 15.   Compose all existing widgets via GeometryController
 
 - 22.   Notify users that font size generator works fine only when
         font set in pixel size
+
+- 23.   Notify users that text animator do not works with rich text
