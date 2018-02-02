@@ -1,4 +1,4 @@
-﻿#include <test_geometries.h>
+﻿#include <main_test_widget_geometries.h>
 
 using namespace demo_code;
 

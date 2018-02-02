@@ -1,5 +1,5 @@
-﻿#ifndef TEST_GEOMETRIES_H
-#define TEST_GEOMETRIES_H
+﻿#ifndef MAIN_TEST_WIDGET_GEOMETRIES_H
+#define MAIN_TEST_WIDGET_GEOMETRIES_H
 
 #include <QRect>
 
@@ -13,4 +13,4 @@ QRect TimeLabelGeometry();
 QRect DateLabelGeometry();
 }
 
-#endif  // TEST_GEOMETRIES_H
+#endif  // MAIN_TEST_WIDGET_GEOMETRIES_H

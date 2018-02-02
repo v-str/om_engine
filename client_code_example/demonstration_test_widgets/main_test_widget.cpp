@@ -1,8 +1,8 @@
 ﻿#include <main_test_widget.h>
 
 #include <date_label.h>
+#include <main_test_widget_geometries.h>
 #include <shifter.h>
-#include <test_geometries.h>
 #include <test_widget_setter.h>
 #include <time_label.h>
 
