@@ -8,7 +8,7 @@
 
 #include <click_button.h>
 
-namespace demo_code {
+namespace client_code {
 
 using namespace om_widgets;
 

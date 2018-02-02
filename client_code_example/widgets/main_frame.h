@@ -1,5 +1,5 @@
-﻿#ifndef OM_FRAME_INHERITOR_H
-#define OM_FRAME_INHERITOR_H
+﻿#ifndef MAIN_FRAME_H
+#define MAIN_FRAME_H
 
 #include <om_frame.h>
 
@@ -13,16 +13,16 @@
 
 class QWidget;
 
-namespace om_widgets {
+namespace client_code {
 
 using namespace om_widgets;
 using namespace om_animation;
 
-class OmFrameInheritor : public OmFrame {
+class MainFrame : public OmFrame {
   Q_OBJECT
  public:
-  OmFrameInheritor(QWidget* parent = nullptr, bool is_widget_open = true);
-  ~OmFrameInheritor();
+  MainFrame(QWidget* parent = nullptr, bool is_widget_open = true);
+  ~MainFrame();
 
   void ModifyGeometry(const QRect& initial_geometry,
                       const DeltaSize& delta_size) override;
@@ -32,7 +32,6 @@ class OmFrameInheritor : public OmFrame {
   void ClearTestLabel();
 
  private:
-  void SetFrame();
   void SetWidgets();
   void SetLabelAnimation();
   void SetConnections();
@@ -40,9 +39,9 @@ class OmFrameInheritor : public OmFrame {
 
   ClickButton* open_button_ = nullptr;
   ClickButton* close_button_ = nullptr;
-  ClickButton* display_text_button_ = nullptr;
-  ClickButton* clear_text_button_ = nullptr;
-  QLabel* test_label_ = nullptr;
+  ClickButton* info_button_ = nullptr;
+  ClickButton* clear_button_ = nullptr;
+  QLabel* main_label_ = nullptr;
   StateAnimator* animator_ = nullptr;
   TextAnimator* text_animator1_ = nullptr;
   Scaler* scaler_ = nullptr;
@@ -52,4 +51,4 @@ class OmFrameInheritor : public OmFrame {
 };
 }
 
-#endif  // OM_FRAME_INHERITOR_H
+#endif  // MAIN_FRAME_H

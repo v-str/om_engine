@@ -4,7 +4,7 @@
 #include <offset_distance.h>
 #include <widgets_utility.h>
 
-using namespace demo_code;
+using namespace client_code;
 using namespace om_widgets;
 using namespace widgets_utility;
 

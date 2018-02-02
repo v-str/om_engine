@@ -1,5 +1,5 @@
-﻿#ifndef MAIN_TEST_WIDGET_H
-#define MAIN_TEST_WIDGET_H
+﻿#ifndef MAIN_WIDGET_H
+#define MAIN_WIDGET_H
 
 #include <QFrame>
 #include <QPainter>
@@ -11,19 +11,19 @@
 #include <click_button.h>
 #include <delta_size.h>
 #include <geometry_modifier.h>
-#include <om_frame_inheritor.h>
+#include <main_frame.h>
 
-namespace demo_code {
+namespace client_code {
 
 using namespace om_widgets;
 using namespace om_animation;
 using namespace scaling;
 
-class MainTestWidget : public QWidget {
+class MainWidget : public QWidget {
   Q_OBJECT
  public:
-  explicit MainTestWidget(QWidget* parent = nullptr);
-  ~MainTestWidget();
+  explicit MainWidget(QWidget* parent = nullptr);
+  ~MainWidget();
 
  protected:
   void resizeEvent(QResizeEvent*);
@@ -41,7 +41,7 @@ class MainTestWidget : public QWidget {
   ClickButton* button_close_ = nullptr;
   AbstractClock* time_label_ = nullptr;
   AbstractClock* date_label_ = nullptr;
-  OmFrameInheritor* inheritor_ = nullptr;
+  MainFrame* main_frame_ = nullptr;
   GeometryModifier* shifter_ = nullptr;
 
   QPalette palette_;
@@ -49,4 +49,4 @@ class MainTestWidget : public QWidget {
 };
 }
 
-#endif  // MAIN_TEST_WIDGET_H
+#endif  // MAIN_WIDGET_H
