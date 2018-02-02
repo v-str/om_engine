@@ -14,7 +14,7 @@ om_widgets::OmFrameInheritor::OmFrameInheritor(QWidget *parent,
                                                bool is_widget_open)
     : OmFrame(parent, is_widget_open),
       test_label_(new QLabel(this)),
-      animator_(new StateAnimator(test_label_, true)),
+      animator_(new StateAnimator(test_label_, false)),
       open_button_(new ClickButton("Open frame", this)),
       close_button_(new ClickButton("Close frame", this)),
       display_text_button_(new ClickButton("Display text", this)),
@@ -29,6 +29,12 @@ om_widgets::OmFrameInheritor::OmFrameInheritor(QWidget *parent,
 }
 
 om_widgets::OmFrameInheritor::~OmFrameInheritor() { delete scaler_; }
+
+void OmFrameInheritor::ModifyGeometry(const QRect &initial_geometry,
+                                      const DeltaSize &delta_size) {
+  OmFrame::ModifyGeometry(initial_geometry, delta_size);
+  ScaleTestLabel(delta_size);
+}
 
 void om_widgets::OmFrameInheritor::DisplayText() {
   text_animator1_->RunAnimation(test_label_);
@@ -72,4 +78,16 @@ void om_widgets::OmFrameInheritor::SetConnections() {
   connect(display_text_button_, SIGNAL(clicked(bool)), SLOT(DisplayText()));
   connect(text_animator1_, SIGNAL(TextAnimationComplete()),
           SLOT(IsAnimationComplete()));
+}
+
+void OmFrameInheritor::ScaleTestLabel(const DeltaSize &delta_size) {
+  scaler_->SetDeltaSize(delta_size);
+  scaler_->ComputeModification(QRect(30, 100, 500, 190));
+
+  if (!animator_->IsWidgetOpen()) {
+    test_label_->close();
+  }
+
+  test_label_->setGeometry(scaler_->GetModifiedRect());
+  animator_->SetCurrentGeometry(test_label_->geometry());
 }

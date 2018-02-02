@@ -23,8 +23,8 @@ class OmFrame : public QFrame, public Scaler {
   OmFrame(QWidget* parent = nullptr, bool is_widget_open = true);
   ~OmFrame();
 
-  void ModifyGeometry(const QRect& initial_geometry,
-                      const DeltaSize& delta_size);
+  virtual void ModifyGeometry(const QRect& initial_geometry,
+                              const DeltaSize& delta_size);
 
   void SetAnimation(const QEasingCurve& curve = QEasingCurve::OutCirc,
                     unsigned int animation_duration_msec = 500,
