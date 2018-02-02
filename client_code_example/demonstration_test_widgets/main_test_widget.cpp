@@ -40,7 +40,7 @@ void MainTestWidget::paintEvent(QPaintEvent*) {
 }
 
 void MainTestWidget::SetAppearance() {
-  pixmap_.load("://resources/the_monster.jpg");
+  pixmap_.load(":/resources/spaceship_coridor.jpg");
   palette_.setBrush(QPalette::Background, pixmap_);
   this->setPalette(palette_);
 

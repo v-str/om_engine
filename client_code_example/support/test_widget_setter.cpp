@@ -12,9 +12,9 @@ void TestWidgetSetter::CustomizeButton(ClickButton* button,
                                        const QRect& current_geometry) {
   button->setStyleSheet(
       "QPushButton{"
-      "background-color: rgba(0, 0, 0, 50%);"
-      "color: #CC0000;"
-      "border: 2px solid #CC0000;"
+      "background-color: rgba(0, 0, 0, 70%);"
+      "color: #00CC00;"
+      "border: 2px solid #00CC00;"
       "border-radius: 5px;"
       "}"
       "QPushButton:hover:pressed { "
@@ -29,9 +29,9 @@ void TestWidgetSetter::CustomizeFrame(QFrame* frame,
                                       const QRect& current_geometry) {
   frame->setStyleSheet(
       "QFrame{"
-      "background: rgba(0, 0, 0, 50%);"
-      "color: #CC0000;"
-      "border: 2px solid #CC0000;"
+      "background: rgba(0, 0, 0, 60%);"
+      "color: #00CC00;"
+      "border: 2px solid #00CC00;"
       "border-radius: 5px;"
       "}");
   frame->setWindowOpacity(0.5);
@@ -41,10 +41,10 @@ void TestWidgetSetter::CustomizeFrame(QFrame* frame,
 void TestWidgetSetter::CustomizeLabel(QLabel* label, const QRect& geometry) {
   label->setStyleSheet(
       "QLabel{"
-      "background-color: rgba(0, 0, 0, 50%);"
-      "border: 2px solid #CC0000;"
+      "background-color: rgba(0, 0, 0, 60%);"
+      "border: 2px solid #00CC00;"
       "border-radius: 5px;"
-      "color: #CC0000;"
+      "color: #00CC00;"
       "}");
   label->setGeometry(geometry);
   label->setAlignment(Qt::AlignCenter);

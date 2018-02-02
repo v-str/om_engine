@@ -40,12 +40,6 @@ void om_widgets::OmFrameInheritor::DisplayText() {
   text_animator1_->RunAnimation(test_label_);
 }
 
-void om_widgets::OmFrameInheritor::IsAnimationComplete() {
-  TestMessage::WriteTestMessage(
-      "test_label_ text animation test by method "
-      "complete . . . ");
-}
-
 void om_widgets::OmFrameInheritor::SetFrame() {
   TestWidgetSetter::CustomizeFrame(this, QRect(0, 0, 0, 0));
   resize(500, 300);
@@ -76,8 +70,6 @@ void om_widgets::OmFrameInheritor::SetConnections() {
   connect(close_button_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
   connect(open_button_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
   connect(display_text_button_, SIGNAL(clicked(bool)), SLOT(DisplayText()));
-  connect(text_animator1_, SIGNAL(TextAnimationComplete()),
-          SLOT(IsAnimationComplete()));
 }
 
 void OmFrameInheritor::ScaleTestLabel(const DeltaSize &delta_size) {

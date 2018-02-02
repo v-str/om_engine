@@ -28,7 +28,6 @@ class OmFrameInheritor : public OmFrame {
 
  private slots:
   void DisplayText();
-  void IsAnimationComplete();
 
  private:
   void SetFrame();
