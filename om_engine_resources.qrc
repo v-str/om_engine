@@ -3,5 +3,6 @@
         <file>resources/abstract_technology_background.jpg</file>
         <file>resources/the_monster.jpg</file>
         <file>resources/spaceship_coridor.jpg</file>
+        <file>resources/cargo_space_terminal.jpg</file>
     </qresource>
 </RCC>

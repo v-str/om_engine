@@ -18,6 +18,7 @@ om_widgets::OmFrameInheritor::OmFrameInheritor(QWidget *parent,
       open_button_(new ClickButton("Open frame", this)),
       close_button_(new ClickButton("Close frame", this)),
       display_text_button_(new ClickButton("Display text", this)),
+      clear_text_button_(new ClickButton("Clear", this)),
       text_animator1_(new TextAnimator(this, text_animation_delay_msec_)),
       scaler_(new Scaler(AxesRatio(0.0, 0.0), AxesRatio(1.0, 1.0),
                          scaling::kRight, scaling::kRight | scaling::kDown)) {
@@ -39,6 +40,11 @@ void om_widgets::OmFrameInheritor::DisplayText() {
   text_animator1_->RunAnimation(test_label_);
 }
 
+void OmFrameInheritor::ClearTestLabel() {
+  text_animator1_->ResetAnimation();
+  test_label_->clear();
+}
+
 void om_widgets::OmFrameInheritor::SetFrame() {
   TestWidgetSetter::CustomizeFrame(this, QRect(0, 0, 0, 0));
   resize(500, 300);
@@ -49,6 +55,7 @@ void om_widgets::OmFrameInheritor::SetWidgets() {
   TestWidgetSetter::CustomizeButton(close_button_, QRect(135, 10, 95, 30));
   TestWidgetSetter::CustomizeButton(display_text_button_,
                                     QRect(240, 10, 95, 30));
+  TestWidgetSetter::CustomizeButton(clear_text_button_, QRect(345, 10, 95, 30));
   TestWidgetSetter::CustomizeTestLabel(test_label_, QRect(30, 100, 500, 190));
 }
 
@@ -57,21 +64,15 @@ void om_widgets::OmFrameInheritor::SetLabelAnimation() {
                           om_animation::kLeft);
   animator_->SetCurrentGeometry(test_label_->geometry());
   text_animator1_->SetAnimationText(
-      "Transitive spaceship module A213\n"
-      "Internal state data:\n"
-      "Temperature: 19.5\n"
-      "Pressure: 630mm\n"
-      "Delta TA: 12%\n"
-      "External state data:\n"
-      "Temperature: -270,85\n"
-      "Pressure: 0,264mm\n"
-      "Delta TA: 195%");
+      "Transitive spaceship cargo terminal A213\n"
+      "");
 }
 
 void om_widgets::OmFrameInheritor::SetConnections() {
   connect(close_button_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
   connect(open_button_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
   connect(display_text_button_, SIGNAL(clicked(bool)), SLOT(DisplayText()));
+  connect(clear_text_button_, SIGNAL(clicked(bool)), SLOT(ClearTestLabel()));
 }
 
 void OmFrameInheritor::ScaleTestLabel(const DeltaSize &delta_size) {

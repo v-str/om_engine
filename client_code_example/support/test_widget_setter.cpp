@@ -12,7 +12,7 @@ void TestWidgetSetter::CustomizeButton(ClickButton* button,
                                        const QRect& current_geometry) {
   button->setStyleSheet(
       "QPushButton{"
-      "background-color: rgba(0, 0, 0, 70%);"
+      "background-color: rgba(0, 0, 0, 90%);"
       "color: #00CC00;"
       "border: 2px solid #00CC00;"
       "border-radius: 5px;"

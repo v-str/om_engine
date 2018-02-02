@@ -28,6 +28,7 @@ class OmFrameInheritor : public OmFrame {
 
  private slots:
   void DisplayText();
+  void ClearTestLabel();
 
  private:
   void SetFrame();
@@ -39,6 +40,7 @@ class OmFrameInheritor : public OmFrame {
   ClickButton* open_button_ = nullptr;
   ClickButton* close_button_ = nullptr;
   ClickButton* display_text_button_ = nullptr;
+  ClickButton* clear_text_button_ = nullptr;
   QLabel* test_label_ = nullptr;
   StateAnimator* animator_ = nullptr;
   TextAnimator* text_animator1_ = nullptr;
