@@ -14,7 +14,7 @@ Scaler::Scaler() : shifter_(new Shifter), stretcher_(new Stretcher) {
 }
 
 Scaler::Scaler(const AxesRatio &shift_ratio, const AxesRatio &stretch_ratio,
-               Side shift_to, Side stretch_to)
+               unsigned int shift_to, unsigned int stretch_to)
     : shifter_(new Shifter), stretcher_(new Stretcher) {
   shifter_->SetAxesRatio(shift_ratio);
   shifter_->ModifyTo(shift_to);

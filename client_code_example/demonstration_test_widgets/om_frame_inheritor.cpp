@@ -8,6 +8,7 @@
 using namespace om_widgets;
 using namespace om_animation;
 using namespace demo_code;
+using namespace scaling;
 
 om_widgets::OmFrameInheritor::OmFrameInheritor(QWidget *parent,
                                                bool is_widget_open)
@@ -17,7 +18,9 @@ om_widgets::OmFrameInheritor::OmFrameInheritor(QWidget *parent,
       open_button_(new ClickButton("Open frame", this)),
       close_button_(new ClickButton("Close frame", this)),
       display_text_button_(new ClickButton("Display text", this)),
-      text_animator1_(new TextAnimator(this, text_animation_delay_msec_)) {
+      text_animator1_(new TextAnimator(this, text_animation_delay_msec_)),
+      scaler_(new Scaler(AxesRatio(0.0, 0.0), AxesRatio(1.0, 1.0),
+                         scaling::kRight, scaling::kRight | scaling::kDown)) {
   SetFrame();
   SetWidgets();
   SetLabel();
@@ -25,7 +28,7 @@ om_widgets::OmFrameInheritor::OmFrameInheritor(QWidget *parent,
   SetConnections();
 }
 
-om_widgets::OmFrameInheritor::~OmFrameInheritor() {}
+om_widgets::OmFrameInheritor::~OmFrameInheritor() { delete scaler_; }
 
 void om_widgets::OmFrameInheritor::DisplayText() {
   text_animator1_->RunAnimation(test_label_);

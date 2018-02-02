@@ -16,7 +16,7 @@ class Scaler {
  public:
   Scaler();
   Scaler(const AxesRatio &shift_ratio, const AxesRatio &stretch_ratio,
-         Side shift_to, Side stretch_to);
+         unsigned int shift_to, unsigned int stretch_to);
 
   Scaler(Scaler &&scaler);
   Scaler &operator=(Scaler &&scaler);
