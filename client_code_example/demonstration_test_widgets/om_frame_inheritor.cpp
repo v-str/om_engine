@@ -64,8 +64,11 @@ void om_widgets::OmFrameInheritor::SetLabelAnimation() {
                           om_animation::kLeft);
   animator_->SetCurrentGeometry(test_label_->geometry());
   text_animator1_->SetAnimationText(
-      "Transitive spaceship cargo terminal A213\n"
-      "");
+      "Transitive spaceship cargo terminal A213\n\n"
+      "Explosive class: A1\n"
+      "Scanning power: 75%\n"
+      "Cargo stream speed: 10pt\n"
+      "Oxygen independence level: 10 of 13\n");
 }
 
 void om_widgets::OmFrameInheritor::SetConnections() {
