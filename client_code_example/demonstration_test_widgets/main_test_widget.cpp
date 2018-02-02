@@ -3,8 +3,8 @@
 #include <date_label.h>
 #include <main_test_widget_geometries.h>
 #include <shifter.h>
-#include <test_widget_setter.h>
 #include <time_label.h>
+#include <widget_customizer.h>
 
 #include <QDebug>
 
@@ -44,11 +44,11 @@ void MainTestWidget::SetAppearance() {
   palette_.setBrush(QPalette::Background, pixmap_);
   this->setPalette(palette_);
 
-  TestWidgetSetter::CustomizeFrame(inheritor_, InheritorFrameGeometry());
-  TestWidgetSetter::CustomizeButton(button_open_, OpenButtonGeometry());
-  TestWidgetSetter::CustomizeButton(button_close_, CloseButtonGeometry());
-  TestWidgetSetter::CustomizeLabel(time_label_, TimeLabelGeometry());
-  TestWidgetSetter::CustomizeLabel(date_label_, DateLabelGeometry());
+  WidgetCustomizer::CustomizeFrame(inheritor_, InheritorFrameGeometry());
+  WidgetCustomizer::CustomizeButton(button_open_, OpenButtonGeometry());
+  WidgetCustomizer::CustomizeButton(button_close_, CloseButtonGeometry());
+  WidgetCustomizer::CustomizeLabel(time_label_, TimeLabelGeometry());
+  WidgetCustomizer::CustomizeLabel(date_label_, DateLabelGeometry());
 }
 
 void MainTestWidget::SetWidgets() {

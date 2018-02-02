@@ -1,4 +1,4 @@
-﻿#include <test_widget_setter.h>
+﻿#include <widget_customizer.h>
 
 #include <axes_ratio.h>
 #include <offset_distance.h>
@@ -8,7 +8,7 @@ using namespace demo_code;
 using namespace om_widgets;
 using namespace widgets_utility;
 
-void TestWidgetSetter::CustomizeButton(ClickButton* button,
+void WidgetCustomizer::CustomizeButton(ClickButton* button,
                                        const QRect& current_geometry) {
   button->setStyleSheet(
       "QPushButton{"
@@ -25,7 +25,7 @@ void TestWidgetSetter::CustomizeButton(ClickButton* button,
   button->SetOffsetParameters(OffsetDistance(2, 2), Side::kRight | Side::kDown);
 }
 
-void TestWidgetSetter::CustomizeFrame(QFrame* frame,
+void WidgetCustomizer::CustomizeFrame(QFrame* frame,
                                       const QRect& current_geometry) {
   frame->setStyleSheet(
       "QFrame{"
@@ -38,7 +38,7 @@ void TestWidgetSetter::CustomizeFrame(QFrame* frame,
   frame->setGeometry(current_geometry);
 }
 
-void TestWidgetSetter::CustomizeLabel(QLabel* label, const QRect& geometry) {
+void WidgetCustomizer::CustomizeLabel(QLabel* label, const QRect& geometry) {
   label->setStyleSheet(
       "QLabel{"
       "background-color: rgba(0, 0, 0, 60%);"
@@ -51,7 +51,7 @@ void TestWidgetSetter::CustomizeLabel(QLabel* label, const QRect& geometry) {
   label->setWordWrap(true);
 }
 
-void TestWidgetSetter::CustomizeTestLabel(QLabel* test_label,
+void WidgetCustomizer::CustomizeTestLabel(QLabel* test_label,
                                           const QRect initial_geometry) {
   test_label->setStyleSheet(
       "QLabel{"
@@ -62,6 +62,7 @@ void TestWidgetSetter::CustomizeTestLabel(QLabel* test_label,
       "}");
   test_label->setGeometry(initial_geometry);
   test_label->setAlignment(Qt::AlignLeft);
+  test_label->setTextFormat(Qt::RichText);
   test_label->setWordWrap(true);
   QFont font = test_label->font();
   font.setPixelSize(20);

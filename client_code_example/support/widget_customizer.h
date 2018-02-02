@@ -1,5 +1,5 @@
-﻿#ifndef TEST_WIDGET_SETTER_H
-#define TEST_WIDGET_SETTER_H
+﻿#ifndef WIDGET_CUSTOMIZER_H
+#define WIDGET_CUSTOMIZER_H
 
 #include <QFrame>
 #include <QLabel>
@@ -12,7 +12,7 @@ namespace demo_code {
 
 using namespace om_widgets;
 
-class TestWidgetSetter {
+class WidgetCustomizer {
  public:
   static void CustomizeButton(ClickButton* button,
                               const QRect& current_geometry);
@@ -23,4 +23,4 @@ class TestWidgetSetter {
 };
 }
 
-#endif  // TEST_WIDGET_SETTER_H
+#endif  // WIDGET_CUSTOMIZER_H

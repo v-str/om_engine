@@ -3,7 +3,7 @@
 #include <QFont>
 
 #include <test_message.h>
-#include <test_widget_setter.h>
+#include <widget_customizer.h>
 
 using namespace om_widgets;
 using namespace om_animation;
@@ -49,17 +49,17 @@ void OmFrameInheritor::ClearTestLabel() {
 }
 
 void om_widgets::OmFrameInheritor::SetFrame() {
-  TestWidgetSetter::CustomizeFrame(this, QRect(0, 0, 0, 0));
+  WidgetCustomizer::CustomizeFrame(this, QRect(0, 0, 0, 0));
   resize(500, 300);
 }
 
 void om_widgets::OmFrameInheritor::SetWidgets() {
-  TestWidgetSetter::CustomizeButton(open_button_, QRect(30, 10, 95, 30));
-  TestWidgetSetter::CustomizeButton(close_button_, QRect(135, 10, 95, 30));
-  TestWidgetSetter::CustomizeButton(display_text_button_,
+  WidgetCustomizer::CustomizeButton(open_button_, QRect(30, 10, 95, 30));
+  WidgetCustomizer::CustomizeButton(close_button_, QRect(135, 10, 95, 30));
+  WidgetCustomizer::CustomizeButton(display_text_button_,
                                     QRect(240, 10, 95, 30));
-  TestWidgetSetter::CustomizeButton(clear_text_button_, QRect(345, 10, 95, 30));
-  TestWidgetSetter::CustomizeTestLabel(test_label_, QRect(30, 100, 500, 190));
+  WidgetCustomizer::CustomizeButton(clear_text_button_, QRect(345, 10, 95, 30));
+  WidgetCustomizer::CustomizeTestLabel(test_label_, QRect(30, 100, 500, 190));
 }
 
 void om_widgets::OmFrameInheritor::SetLabelAnimation() {
@@ -67,11 +67,12 @@ void om_widgets::OmFrameInheritor::SetLabelAnimation() {
                           om_animation::kLeft);
   animator_->SetCurrentGeometry(test_label_->geometry());
   text_animator1_->SetAnimationText(
-      "Spaceship cargo terminal A213\n\n"
-      "Explosive class: A1\n"
-      "Scanning power: 75%\n"
-      "Cargo stream speed: 10pt\n"
-      "Oxygen independence level: 10 of 13\n");
+      "Spaceship cargo terminal A213:<br/><br/>"
+      "Explosive class: A1<br/>"
+      "Scanning power: 75%<br/>"
+      "Cargo stream speed: 10pt<br/>"
+      "Oxygen independence level: 10<br/>"
+      "Main gate status: <font color=\"red\">CHECK</font>");
   font_size_generator_ = new FontSizeGenerator(0.8, *test_label_);
 }
 

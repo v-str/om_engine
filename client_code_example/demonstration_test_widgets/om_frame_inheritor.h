@@ -48,7 +48,7 @@ class OmFrameInheritor : public OmFrame {
   Scaler* scaler_ = nullptr;
   FontSizeGenerator* font_size_generator_ = nullptr;
 
-  static const unsigned int text_animation_delay_msec_ = 30;
+  static const unsigned int text_animation_delay_msec_ = 10;
 };
 }
 
