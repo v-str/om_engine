@@ -32,7 +32,6 @@ class OmFrameInheritor : public OmFrame {
  private:
   void SetFrame();
   void SetWidgets();
-  void SetLabel();
   void SetLabelAnimation();
   void SetConnections();
   void ScaleTestLabel(const DeltaSize& delta_size);

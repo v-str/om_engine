@@ -23,7 +23,6 @@ om_widgets::OmFrameInheritor::OmFrameInheritor(QWidget *parent,
                          scaling::kRight, scaling::kRight | scaling::kDown)) {
   SetFrame();
   SetWidgets();
-  SetLabel();
   SetLabelAnimation();
   SetConnections();
 }
@@ -50,20 +49,23 @@ void om_widgets::OmFrameInheritor::SetWidgets() {
   TestWidgetSetter::CustomizeButton(close_button_, QRect(135, 10, 95, 30));
   TestWidgetSetter::CustomizeButton(display_text_button_,
                                     QRect(240, 10, 95, 30));
-}
-
-void om_widgets::OmFrameInheritor::SetLabel() {
-  TestWidgetSetter::CustomizeLabel(test_label_, QRect(30, 100, 500, 190));
-  QFont font = test_label_->font();
-  font.setPointSize(20);
-  test_label_->setFont(font);
+  TestWidgetSetter::CustomizeTestLabel(test_label_, QRect(30, 100, 500, 190));
 }
 
 void om_widgets::OmFrameInheritor::SetLabelAnimation() {
   animator_->SetAnimation(QEasingCurve::OutCirc, 500, om_animation::kRight,
                           om_animation::kLeft);
   animator_->SetCurrentGeometry(test_label_->geometry());
-  text_animator1_->SetAnimationText("Run so fast as you can . . .");
+  text_animator1_->SetAnimationText(
+      "Transitive spaceship module A213\n"
+      "Internal state data:\n"
+      "Temperature: 19.5\n"
+      "Pressure: 630mm\n"
+      "Delta TA: 12%\n"
+      "External state data:\n"
+      "Temperature: -270,85\n"
+      "Pressure: 0,264mm\n"
+      "Delta TA: 195%");
 }
 
 void om_widgets::OmFrameInheritor::SetConnections() {

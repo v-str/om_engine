@@ -50,3 +50,20 @@ void TestWidgetSetter::CustomizeLabel(QLabel* label, const QRect& geometry) {
   label->setAlignment(Qt::AlignCenter);
   label->setWordWrap(true);
 }
+
+void TestWidgetSetter::CustomizeTestLabel(QLabel* test_label,
+                                          const QRect initial_geometry) {
+  test_label->setStyleSheet(
+      "QLabel{"
+      "background-color: rgba(0, 0, 0, 60%);"
+      "border: 2px solid #00CC00;"
+      "border-radius: 5px;"
+      "color: #009999;"
+      "}");
+  test_label->setGeometry(initial_geometry);
+  test_label->setAlignment(Qt::AlignLeft);
+  test_label->setWordWrap(true);
+  QFont font = test_label->font();
+  font.setPointSize(13);
+  test_label->setFont(font);
+}
