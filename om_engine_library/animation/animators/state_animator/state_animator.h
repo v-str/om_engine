@@ -36,7 +36,6 @@ class StateAnimator : public QObject {
  signals:
   void OpenAnimationComplete();
   void CloseAnimationComplete();
-  void AnimationComplete();
   void AnimationIncomplete();
 
  private slots:

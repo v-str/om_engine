@@ -7,8 +7,10 @@ Om_engine library consist of several descending dependent modules:
             |                                   |
         2. Animation                      3. Scaling
 
-It is mean that more lower module is not depend from upper and
-you can use it separately.
+It is mean that more lower module (i. e. Animation and Scaling) is not depend
+from upper and you can use it separately.
+
+Description of classes in each module:
 
                         1. WIDGETS
 
@@ -19,19 +21,119 @@ animation and widget composing or scaling.
 
 List of OmEngine library widgets:
 
-1. ClickButton:
-it is a QPushButton but it may offset(or not) when cursor is entry of button
+1. ClickButton
+---------------
+It is a QPushButton but it may offset(or not) when cursor is entry of button
 space. You can configure the side of offset and the size of offset.
 
-2. Time and Date:
-widgets, inherited from QLabel and implement only one thing - demonstration
+2. Clock
+---------
+Widgets, inherited from QLabel and implement only one thing - demonstration
 of time or date after those initialization. It is mean, once you define this
-widgets - they'll be change time and date.
+widgets - they'll be change time and date immediately.
 
 
                         2. ANIMATION
-- fill the description, tell about action when widget open/closed from
-constructor, and what to do for perfom animation properly
 
-- tell about WidgetConditionAnimator, how to use, about ctors of this class
+1. StateAnimator
+-----------------
+
+StateAnimator is animate the widget state. The widget can be open or closed,
+and StateAnimator just animate this process.
+
+Basic correct usage:
+
+1. Declare pointer (smart pointer) to this class in client-class section.
+2. Initialize object in initializer list and pass to StateAnimator 2
+parameters - widget for animation and initial
+state is_widget_opened (true / false):
+
+#include <state_animator.h>
+
+using namespace om_widgets;
+
+class ClientCode {
+
+  public:
+
+    ClientCode() : animator_(new StateAnimator(this, true) {}
+
+  private:
+
+    StateAnimator * animator_ = nullptr;
+
+};
+
+3. In next step you should set the animation parameters e.g. animation curve
+and animation side. Also you need to pass the initial geometry of
+current widget:
+
+void ClientCode::SetAnimation() {
+
+  animator_->SetAnimation(QEasingCurve::OutCirc, 500,
+			om_animation::kRight, om_animation::kLeft);
+
+  animator_->SetCurrentGeometry(main_label_->geometry());
+
+}
+
+In SetAnimation() function we sets:
+
+- animation curve OutCirc
+- animation duration 500 miliseconds
+- open into right side
+- close into left side
+
+Initially, all parameters in SetAnimation() function sets by default and you
+may not to set something special if you do not want to do this.
+
+The next function is SetCurrentGeometry(const QRect & current_geometry).
+It is needed to get the initial geometry of widget.
+
+4. That's all. Remains only implement Open and Close animator signals:
+
+void MainFrame::SetConnections() {
+
+  connect(close_button_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
+  connect(open_button_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
+
+}
+
+When animation complete ( widget is opened or closed ) animator emit 2 signals:
+OpenAnimationComplete() and ClosedAnimationComplete() accordingly.
+An additional StateAnimator have the method to check is widget opened or closed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
