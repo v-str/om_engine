@@ -58,7 +58,7 @@ void WidgetCustomizer::CustomizeTestLabel(QLabel* test_label,
       "background-color: rgba(0, 0, 0, 60%);"
       "border: 2px solid #00CC00;"
       "border-radius: 5px;"
-      "color: #009999;"
+      "color: #00CC00;"
       "}");
   test_label->setGeometry(initial_geometry);
   test_label->setAlignment(Qt::AlignLeft);
@@ -75,7 +75,7 @@ QString WidgetCustomizer::GetAnimationText() {
       "Explosive class:             A1\n"
       "Scanning power:              75%\n"
       "Cargo stream speed:          10pt\n"
-      "Oxygen independence level:   10\n"
+      "Reserve oxygen:              70%\n"
       "Main gate status:            NEED CHECK\n";
 
   return text;
