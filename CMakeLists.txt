@@ -13,9 +13,9 @@ find_package (Qt5Widgets REQUIRED)
 find_package (Qt5Gui)
 find_package (Qt5Core)
 
-include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake/ccache.cmake")
-include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake/compiler_flags.cmake")
-include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake/recursive_directory_function.cmake")
+include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake_scripts/ccache.cmake")
+include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake_scripts/compiler_flags.cmake")
+include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake_scripts/recursive_directory_function.cmake")
 
 add_subdirectory (om_engine_library)
 
