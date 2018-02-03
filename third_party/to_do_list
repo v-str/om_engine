@@ -59,7 +59,7 @@ R 15.   Compose all existing widgets via GeometryController
 
 + 20.   Include FontSizeGenerator library into OmEngine
 
-- 21.   Add set of animation blocks for any Qt widgets
+- 21.   Add set of animation blocks for any Qt widgets ( SlidingBox )
 
 - 22.   Notify users that font size generator works fine only when
         font set in pixel size
