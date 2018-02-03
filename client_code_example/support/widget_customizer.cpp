@@ -64,7 +64,7 @@ void WidgetCustomizer::CustomizeTestLabel(QLabel* test_label,
   test_label->setAlignment(Qt::AlignLeft);
   test_label->setWordWrap(true);
   QFont font = test_label->font();
-  font.setPixelSize(20);
+  font.setPixelSize(18);
   font.setFamily("FreeMono");
   test_label->setFont(font);
 }
@@ -72,11 +72,11 @@ void WidgetCustomizer::CustomizeTestLabel(QLabel* test_label,
 QString WidgetCustomizer::GetAnimationText() {
   QString text =
       "Spaceship cargo terminal A213:\n\n"
-      "Explosive class: A1\n"
-      "Scanning power: 75%\n"
-      "Cargo stream speed: 10pt\n"
-      "Oxygen independence level: 10\n"
-      "Main gate status: NEED CHECK\n";
+      "Explosive class:             A1\n"
+      "Scanning power:              75%\n"
+      "Cargo stream speed:          10pt\n"
+      "Oxygen independence level:   10\n"
+      "Main gate status:            NEED CHECK\n";
 
   return text;
 }
