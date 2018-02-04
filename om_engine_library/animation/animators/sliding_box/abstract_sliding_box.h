@@ -3,6 +3,7 @@
 
 #include <QList>
 #include <QObject>
+#include <QRect>
 
 #include <animation_utility.h>
 
@@ -13,13 +14,23 @@ namespace om_animation {
 class AbstractSlidingBox : public QObject {
   Q_OBJECT
  public:
-  AbstractSlidingBox(QWidget* widget = nullptr, GuideButton button_state = kOn,
-                     GuideButtonPosition button_position = kInTheBeginning);
+  AbstractSlidingBox(QWidget* parent = nullptr);
+
+  AbstractSlidingBox(
+      const QRect& guide_button_geometry, QWidget* parent = nullptr,
+      GuideButtonPosition guide_button_position = kInTheBeginning);
+
+  virtual ~AbstractSlidingBox() = 0;
 
  protected:
-  GuideButton button_state_;
-  GuideButtonPosition button_position_;
+ private:
+  AbstractSlidingBox(const AbstractSlidingBox& sliding_box) = delete;
+  AbstractSlidingBox(AbstractSlidingBox&& sliding_box) = delete;
+  AbstractSlidingBox& operator=(const AbstractSlidingBox& sliding_box) = delete;
+  AbstractSlidingBox& operator=(AbstractSlidingBox&& sliding_box) = delete;
 
+  GuideButtonPosition guide_button_position_;
+  QRect guide_button_geometry_;
   QList<QWidget*> widget_list_;
 };
 }

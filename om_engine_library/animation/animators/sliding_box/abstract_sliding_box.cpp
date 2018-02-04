@@ -4,9 +4,13 @@
 
 using namespace om_animation;
 
-AbstractSlidingBox::AbstractSlidingBox(QWidget *widget,
-                                       GuideButton button_state,
-                                       GuideButtonPosition button_position)
-    : QObject(widget),
-      button_state_(button_state),
-      button_position_(button_position) {}
+AbstractSlidingBox::AbstractSlidingBox(QWidget *parent) : QObject(parent) {}
+
+AbstractSlidingBox::AbstractSlidingBox(
+    const QRect &guide_button_geometry, QWidget *parent,
+    GuideButtonPosition guide_button_position)
+    : guide_button_geometry_(guide_button_geometry),
+      QObject(parent),
+      guide_button_position_(guide_button_position) {}
+
+AbstractSlidingBox::~AbstractSlidingBox() {}
