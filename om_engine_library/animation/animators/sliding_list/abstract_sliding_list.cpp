@@ -39,6 +39,19 @@ void AbstractSlidingList::PopFrontWidget() {
   }
 }
 
+void AbstractSlidingList::SetGuideButtonGeometry(
+    const QRect &guide_button_geometry) {
+  guide_button_geometry_ = guide_button_geometry;
+}
+
+void AbstractSlidingList::SetSlidingCurve(QEasingCurve sliding_curve) {
+  sliding_curve_ = sliding_curve;
+}
+
+void AbstractSlidingList::SetSlidingDirection(unsigned int slide_direction) {
+  sliding_duration_msec_ = slide_direction;
+}
+
 int AbstractSlidingList::SlidingBoxLength() const {
   return widget_list_.length();
 }

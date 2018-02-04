@@ -1,6 +1,7 @@
 ﻿#ifndef ABSTRACT_SLIDING_LIST_H
 #define ABSTRACT_SLIDING_LIST_H
 
+#include <QEasingCurve>
 #include <QList>
 #include <QObject>
 #include <QRect>
@@ -28,6 +29,15 @@ class AbstractSlidingList : public QObject {
   void PopBackWidget();
   void PopFrontWidget();
 
+  void SetGuideButtonGeometry(const QRect& guide_button_geometry);
+  void SetSlidingDuration(unsigned int sliding_duration_msec);
+  void SetSlidingCurve(QEasingCurve sliding_curve);
+
+  // virtual methods, REMOVE IT AFTER COMPLETION
+  virtual void SetSlidingDirection(unsigned int slide_direction) = 0;
+
+  // end of virtual methods
+
   int SlidingBoxLength() const;
 
  private:
@@ -40,6 +50,10 @@ class AbstractSlidingList : public QObject {
   GuideButtonPosition guide_button_position_;
   QRect guide_button_geometry_;
   QList<QWidget*> widget_list_;
+
+  QEasingCurve sliding_curve_;
+
+  unsigned int sliding_duration_msec_ = 0;
 };
 }
 
