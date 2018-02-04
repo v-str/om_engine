@@ -65,3 +65,5 @@ R 15.   Compose all existing widgets via GeometryController
         font set in pixel size
 
 - 23.   Notify users that text animator do not works with rich text
+
+- 24.   SlidingList development. How to realize it properly?
