@@ -1,44 +1,44 @@
-﻿#include <abstract_sliding_box.h>
+﻿#include <abstract_sliding_list.h>
 
 #include <QWidget>
 
 using namespace om_animation;
 
-AbstractSlidingBox::AbstractSlidingBox(QWidget *parent) : QObject(parent) {}
+AbstractSlidingList::AbstractSlidingList(QWidget *parent) : QObject(parent) {}
 
-AbstractSlidingBox::AbstractSlidingBox(
+AbstractSlidingList::AbstractSlidingList(
     const QRect &guide_button_geometry, QWidget *parent,
     GuideButtonPosition guide_button_position)
     : guide_button_geometry_(guide_button_geometry),
       QObject(parent),
       guide_button_position_(guide_button_position) {}
 
-AbstractSlidingBox::~AbstractSlidingBox() {}
+AbstractSlidingList::~AbstractSlidingList() {}
 
-void AbstractSlidingBox::PushBackWidget(QWidget *widget) {
+void AbstractSlidingList::PushBackWidget(QWidget *widget) {
   widget_list_.push_back(widget);
 }
 
-void AbstractSlidingBox::PushFrontWidget(QWidget *widget) {
+void AbstractSlidingList::PushFrontWidget(QWidget *widget) {
   widget_list_.push_front(widget);
 }
 
-void AbstractSlidingBox::InsertWidget(int index, QWidget *widget) {
+void AbstractSlidingList::InsertWidget(int index, QWidget *widget) {
   widget_list_.insert(index, widget);
 }
 
-void AbstractSlidingBox::PopBackWidget() {
+void AbstractSlidingList::PopBackWidget() {
   if (!widget_list_.isEmpty()) {
     widget_list_.pop_back();
   }
 }
 
-void AbstractSlidingBox::PopFrontWidget() {
+void AbstractSlidingList::PopFrontWidget() {
   if (!widget_list_.isEmpty()) {
     widget_list_.pop_front();
   }
 }
 
-int AbstractSlidingBox::SlidingBoxLength() const {
+int AbstractSlidingList::SlidingBoxLength() const {
   return widget_list_.length();
 }

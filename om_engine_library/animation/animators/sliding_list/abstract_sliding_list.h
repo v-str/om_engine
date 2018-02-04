@@ -1,5 +1,5 @@
-﻿#ifndef ABSTRACT_SLIDING_BOX_H
-#define ABSTRACT_SLIDING_BOX_H
+﻿#ifndef ABSTRACT_SLIDING_LIST_H
+#define ABSTRACT_SLIDING_LIST_H
 
 #include <QList>
 #include <QObject>
@@ -11,16 +11,16 @@ class QWidget;
 
 namespace om_animation {
 
-class AbstractSlidingBox : public QObject {
+class AbstractSlidingList : public QObject {
   Q_OBJECT
  public:
-  AbstractSlidingBox(QWidget* parent = nullptr);
+  AbstractSlidingList(QWidget* parent = nullptr);
 
-  AbstractSlidingBox(
+  AbstractSlidingList(
       const QRect& guide_button_geometry, QWidget* parent = nullptr,
       GuideButtonPosition guide_button_position = kInTheBeginning);
 
-  virtual ~AbstractSlidingBox() = 0;
+  virtual ~AbstractSlidingList() = 0;
 
   void PushBackWidget(QWidget* widget);
   void PushFrontWidget(QWidget* widget);
@@ -31,10 +31,11 @@ class AbstractSlidingBox : public QObject {
   int SlidingBoxLength() const;
 
  private:
-  AbstractSlidingBox(const AbstractSlidingBox& sliding_box) = delete;
-  AbstractSlidingBox(AbstractSlidingBox&& sliding_box) = delete;
-  AbstractSlidingBox& operator=(const AbstractSlidingBox& sliding_box) = delete;
-  AbstractSlidingBox& operator=(AbstractSlidingBox&& sliding_box) = delete;
+  AbstractSlidingList(const AbstractSlidingList& sliding_box) = delete;
+  AbstractSlidingList(AbstractSlidingList&& sliding_box) = delete;
+  AbstractSlidingList& operator=(const AbstractSlidingList& sliding_box) =
+      delete;
+  AbstractSlidingList& operator=(AbstractSlidingList&& sliding_box) = delete;
 
   GuideButtonPosition guide_button_position_;
   QRect guide_button_geometry_;
@@ -42,4 +43,4 @@ class AbstractSlidingBox : public QObject {
 };
 }
 
-#endif  // ABSTRACT_SLIDING_BOX_H
+#endif  // ABSTRACT_SLIDING_LIST_H
