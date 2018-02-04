@@ -4,6 +4,8 @@
 #include <QList>
 #include <QObject>
 
+#include <animation_utility.h>
+
 class QWidget;
 
 namespace om_animation {
