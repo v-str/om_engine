@@ -14,3 +14,31 @@ AbstractSlidingBox::AbstractSlidingBox(
       guide_button_position_(guide_button_position) {}
 
 AbstractSlidingBox::~AbstractSlidingBox() {}
+
+void AbstractSlidingBox::PushBackWidget(QWidget *widget) {
+  widget_list_.push_back(widget);
+}
+
+void AbstractSlidingBox::PushFrontWidget(QWidget *widget) {
+  widget_list_.push_front(widget);
+}
+
+void AbstractSlidingBox::InsertWidget(int index, QWidget *widget) {
+  widget_list_.insert(index, widget);
+}
+
+void AbstractSlidingBox::PopBackWidget() {
+  if (!widget_list_.isEmpty()) {
+    widget_list_.pop_back();
+  }
+}
+
+void AbstractSlidingBox::PopFrontWidget() {
+  if (!widget_list_.isEmpty()) {
+    widget_list_.pop_front();
+  }
+}
+
+int AbstractSlidingBox::SlidingBoxLength() const {
+  return widget_list_.length();
+}

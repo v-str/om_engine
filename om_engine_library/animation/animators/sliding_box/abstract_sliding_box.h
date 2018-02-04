@@ -22,7 +22,14 @@ class AbstractSlidingBox : public QObject {
 
   virtual ~AbstractSlidingBox() = 0;
 
- protected:
+  void PushBackWidget(QWidget* widget);
+  void PushFrontWidget(QWidget* widget);
+  void InsertWidget(int index, QWidget* widget);
+  void PopBackWidget();
+  void PopFrontWidget();
+
+  int SlidingBoxLength() const;
+
  private:
   AbstractSlidingBox(const AbstractSlidingBox& sliding_box) = delete;
   AbstractSlidingBox(AbstractSlidingBox&& sliding_box) = delete;
