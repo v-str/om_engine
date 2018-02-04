@@ -1,6 +1,7 @@
 ﻿#ifndef ABSTRACT_SLIDING_BOX_H
 #define ABSTRACT_SLIDING_BOX_H
 
+#include <QList>
 #include <QObject>
 
 class QWidget;
@@ -12,7 +13,8 @@ class AbstractSlidingBox : public QObject {
  public:
   AbstractSlidingBox(QWidget* widget = nullptr);
 
- private:
+ protected:
+  QList<QWidget*> widget_list_;
 };
 }
 
