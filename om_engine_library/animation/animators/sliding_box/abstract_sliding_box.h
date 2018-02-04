@@ -13,9 +13,13 @@ namespace om_animation {
 class AbstractSlidingBox : public QObject {
   Q_OBJECT
  public:
-  AbstractSlidingBox(QWidget* widget = nullptr);
+  AbstractSlidingBox(QWidget* widget = nullptr, GuideButton button_state = kOn,
+                     GuideButtonPosition button_position = kInTheBeginning);
 
  protected:
+  GuideButton button_state_;
+  GuideButtonPosition button_position_;
+
   QList<QWidget*> widget_list_;
 };
 }

@@ -6,6 +6,10 @@ namespace om_animation {
 enum Side { kLeft = 1, kRight = 2, kUp = 4, kDown = 8 };
 
 enum WidgetAnimationType { kOpen, kClose };
+
+enum GuideButton { kOn, kOff };
+
+enum GuideButtonPosition { kNone, kInTheBeginning, kInTheEnd };
 }
 
 #endif  // ANIMATION_UTILITY_H

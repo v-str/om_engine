@@ -5,6 +5,11 @@
 
 namespace om_animation {
 
-class HSliderBox : public AbstractSlidingBox {};
+class HSliderBox : public AbstractSlidingBox {
+ public:
+  enum SliderDirection { kFromLeftToRight, kFromRightToLeft };
+
+ private:
+};
 }
 #endif  // H_SLIDER_BOX_H
