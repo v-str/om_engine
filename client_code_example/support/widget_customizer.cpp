@@ -80,10 +80,11 @@ void WidgetCustomizer::CustomizeButtonFrame(ButtonFrame* button_frame) {
       "}");
   button_frame->setWindowOpacity(0.5);
   button_frame->setGeometry(GetButtonFrame());
-  CustomizeButton(button_frame->OpenButton(), OpenButton());
-  CustomizeButton(button_frame->CloseButton(), CloseButton());
-  CustomizeButton(button_frame->AboutButton(), AboutButton());
-  CustomizeButton(button_frame->ClearButton(), ClearButton());
+  CustomizeButton(button_frame->GuideButton(), GetGuideButton());
+  CustomizeButton(button_frame->OpenButton(), GetOpenButton());
+  CustomizeButton(button_frame->CloseButton(), GetCloseButton());
+  CustomizeButton(button_frame->AboutButton(), GetAboutButton());
+  CustomizeButton(button_frame->ClearButton(), GetClearButton());
 }
 
 QString WidgetCustomizer::GetAnimationText() {

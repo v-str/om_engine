@@ -5,12 +5,13 @@
 
 namespace client_code {
 
-QRect OpenButton();
-QRect CloseButton();
-QRect AboutButton();
-QRect ClearButton();
-QRect MainLabel();
+QRect GetOpenButton();
+QRect GetCloseButton();
+QRect GetAboutButton();
+QRect GetClearButton();
+QRect GetMainLabel();
 QRect GetButtonFrame();
+QRect GetGuideButton();
 }
 
 #endif  // MAIN_FRAME_GEOMETRIES_H

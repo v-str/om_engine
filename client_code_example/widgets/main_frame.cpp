@@ -41,7 +41,7 @@ void MainFrame::ClearTestLabel() {
 
 void MainFrame::SetWidgets() {
   WidgetCustomizer::CustomizeButtonFrame(button_frame_);
-  WidgetCustomizer::CustomizeTestLabel(main_label_, MainLabel());
+  WidgetCustomizer::CustomizeTestLabel(main_label_, GetMainLabel());
   resize(500, 300);
 }
 
@@ -66,7 +66,7 @@ void MainFrame::SetConnections() {
 
 void MainFrame::ScaleTestLabel(const DeltaSize &delta_size) {
   scaler_->SetDeltaSize(delta_size);
-  scaler_->ComputeModification(MainLabel());
+  scaler_->ComputeModification(GetMainLabel());
 
   if (!animator_->IsWidgetOpen()) {
     main_label_->close();

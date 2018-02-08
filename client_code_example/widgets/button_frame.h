@@ -19,8 +19,10 @@ class ButtonFrame : public QFrame {
   ClickButton* CloseButton();
   ClickButton* AboutButton();
   ClickButton* ClearButton();
+  ClickButton* GuideButton();
 
  private:
+  ClickButton* guide_button_ = nullptr;
   ClickButton* open_button_ = nullptr;
   ClickButton* close_button_ = nullptr;
   ClickButton* about_button_ = nullptr;
