@@ -1,6 +1,7 @@
 ﻿#include <widget_customizer.h>
 
 #include <axes_ratio.h>
+#include <main_frame_geometries.h>
 #include <offset_distance.h>
 #include <widgets_utility.h>
 
@@ -68,6 +69,8 @@ void WidgetCustomizer::CustomizeTestLabel(QLabel* test_label,
   font.setFamily("FreeMono");
   test_label->setFont(font);
 }
+
+void WidgetCustomizer::CustomizeButtonFrame(ButtonFrame* button_frame) {}
 
 QString WidgetCustomizer::GetAnimationText() {
   QString text =

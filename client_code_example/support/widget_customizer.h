@@ -7,6 +7,7 @@
 #include <QRect>
 #include <QString>
 
+#include <button_frame.h>
 #include <click_button.h>
 
 namespace client_code {
@@ -21,6 +22,8 @@ class WidgetCustomizer {
   static void CustomizeLabel(QLabel* label, const QRect& geometry);
   static void CustomizeTestLabel(QLabel* test_label,
                                  const QRect initial_geometry);
+  static void CustomizeButtonFrame(ButtonFrame* button_frame);
+
   static QString GetAnimationText();
 };
 }

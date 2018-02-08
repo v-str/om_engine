@@ -3,7 +3,11 @@
 
 #include <QFrame>
 
+#include <click_button.h>
+
 namespace client_code {
+
+using namespace om_widgets;
 
 class ButtonFrame : public QFrame {
   Q_OBJECT
@@ -11,7 +15,16 @@ class ButtonFrame : public QFrame {
   ButtonFrame(QFrame* parent = nullptr);
   ~ButtonFrame();
 
+  ClickButton* OpenButton();
+  ClickButton* CloseButton();
+  ClickButton* AboutButton();
+  ClickButton* ClearButton();
+
  private:
+  ClickButton* open_button_ = nullptr;
+  ClickButton* close_button_ = nullptr;
+  ClickButton* about_button_ = nullptr;
+  ClickButton* clear_button_ = nullptr;
 };
 }
 
