@@ -9,3 +9,5 @@ QRect client_code::AboutButton() { return QRect(240, 10, 95, 30); }
 QRect client_code::ClearButton() { return QRect(345, 10, 95, 30); }
 
 QRect client_code::MainLabel() { return QRect(30, 100, 500, 190); }
+
+QRect client_code::GetButtonFrame() { return QRect(25, 5, 390, 40); }

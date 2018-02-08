@@ -10,6 +10,7 @@ QRect CloseButton();
 QRect AboutButton();
 QRect ClearButton();
 QRect MainLabel();
+QRect GetButtonFrame();
 }
 
 #endif  // MAIN_FRAME_GEOMETRIES_H

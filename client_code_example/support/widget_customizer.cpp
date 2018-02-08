@@ -79,6 +79,7 @@ void WidgetCustomizer::CustomizeButtonFrame(ButtonFrame* button_frame) {
       "border-radius: 5px;"
       "}");
   button_frame->setWindowOpacity(0.5);
+  button_frame->setGeometry(GetButtonFrame());
   CustomizeButton(button_frame->OpenButton(), OpenButton());
   CustomizeButton(button_frame->CloseButton(), CloseButton());
   CustomizeButton(button_frame->AboutButton(), AboutButton());
