@@ -12,10 +12,7 @@ MainFrame::MainFrame(QWidget *parent, bool is_widget_open)
     : OmFrame(parent, is_widget_open),
       main_label_(new QLabel(this)),
       animator_(new StateAnimator(main_label_, false)),
-      open_button_(new ClickButton("Open", this)),
-      close_button_(new ClickButton("Close", this)),
-      info_button_(new ClickButton("About", this)),
-      clear_button_(new ClickButton("Clear", this)),
+      button_frame_(new ButtonFrame(this)),
       text_animator1_(new TextAnimator(this, text_animation_delay_msec_)),
       scaler_(new Scaler(AxesRatio(0.0, 0.0), AxesRatio(1.0, 1.0),
                          scaling::kRight, scaling::kRight | scaling::kDown)) {
@@ -43,10 +40,7 @@ void MainFrame::ClearTestLabel() {
 }
 
 void MainFrame::SetWidgets() {
-  WidgetCustomizer::CustomizeButton(open_button_, OpenButton());
-  WidgetCustomizer::CustomizeButton(close_button_, CloseButton());
-  WidgetCustomizer::CustomizeButton(info_button_, AboutButton());
-  WidgetCustomizer::CustomizeButton(clear_button_, ClearButton());
+  WidgetCustomizer::CustomizeButtonFrame(button_frame_);
   WidgetCustomizer::CustomizeTestLabel(main_label_, MainLabel());
   resize(500, 300);
 }
@@ -60,10 +54,14 @@ void MainFrame::SetLabelAnimation() {
 }
 
 void MainFrame::SetConnections() {
-  connect(close_button_, SIGNAL(clicked(bool)), animator_, SLOT(Close()));
-  connect(open_button_, SIGNAL(clicked(bool)), animator_, SLOT(Open()));
-  connect(info_button_, SIGNAL(clicked(bool)), SLOT(DisplayText()));
-  connect(clear_button_, SIGNAL(clicked(bool)), SLOT(ClearTestLabel()));
+  connect(button_frame_->OpenButton(), SIGNAL(clicked(bool)), animator_,
+          SLOT(Open()));
+  connect(button_frame_->CloseButton(), SIGNAL(clicked(bool)), animator_,
+          SLOT(Close()));
+  connect(button_frame_->AboutButton(), SIGNAL(clicked(bool)),
+          SLOT(DisplayText()));
+  connect(button_frame_->ClearButton(), SIGNAL(clicked(bool)),
+          SLOT(ClearTestLabel()));
 }
 
 void MainFrame::ScaleTestLabel(const DeltaSize &delta_size) {

@@ -15,7 +15,7 @@ void WidgetCustomizer::CustomizeButton(ClickButton* button,
       "QPushButton{"
       "background-color: rgba(0, 0, 0, 90%);"
       "color: #00CC00;"
-      "border: 2px solid #00CC00;"
+      "border: 1px solid #00CC00;"
       "border-radius: 5px;"
       "}"
       "QPushButton:hover:pressed { "
@@ -32,7 +32,7 @@ void WidgetCustomizer::CustomizeFrame(QFrame* frame,
       "QFrame{"
       "background: rgba(0, 0, 0, 60%);"
       "color: #00CC00;"
-      "border: 2px solid #00CC00;"
+      "border: 1px solid #00CC00;"
       "border-radius: 5px;"
       "}");
   frame->setWindowOpacity(0.5);
@@ -43,7 +43,7 @@ void WidgetCustomizer::CustomizeLabel(QLabel* label, const QRect& geometry) {
   label->setStyleSheet(
       "QLabel{"
       "background-color: rgba(0, 0, 0, 60%);"
-      "border: 2px solid #00CC00;"
+      "border: 1px solid #00CC00;"
       "border-radius: 5px;"
       "color: #00CC00;"
       "}");
@@ -57,7 +57,7 @@ void WidgetCustomizer::CustomizeTestLabel(QLabel* test_label,
   test_label->setStyleSheet(
       "QLabel{"
       "background-color: rgba(0, 0, 0, 60%);"
-      "border: 2px solid #00CC00;"
+      "border: 1px solid #00CC00;"
       "border-radius: 5px;"
       "color: #00CC00;"
       "}");
@@ -75,7 +75,7 @@ void WidgetCustomizer::CustomizeButtonFrame(ButtonFrame* button_frame) {
       "QFrame{"
       "background: rgba(0, 0, 0, 60%);"
       "color: #00CC00;"
-      "border: 2px solid #00CC00;"
+      "border: 1px solid #00CC00;"
       "border-radius: 5px;"
       "}");
   button_frame->setWindowOpacity(0.5);
@@ -89,6 +89,7 @@ void WidgetCustomizer::CustomizeButtonFrame(ButtonFrame* button_frame) {
 QString WidgetCustomizer::GetAnimationText() {
   QString text =
       "Spaceship cargo terminal A213:\n\n"
+      "Year of issue:               2039\n"
       "Explosive class:             A1\n"
       "Scanning power:              75%\n"
       "Cargo stream speed:          10pt\n"
