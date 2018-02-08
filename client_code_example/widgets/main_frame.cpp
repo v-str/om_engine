@@ -14,7 +14,7 @@ MainFrame::MainFrame(QWidget *parent, bool is_widget_open)
       animator_(new StateAnimator(main_label_, false)),
       open_button_(new ClickButton("Open", this)),
       close_button_(new ClickButton("Close", this)),
-      info_button_(new ClickButton("Info", this)),
+      info_button_(new ClickButton("About", this)),
       clear_button_(new ClickButton("Clear", this)),
       text_animator1_(new TextAnimator(this, text_animation_delay_msec_)),
       scaler_(new Scaler(AxesRatio(0.0, 0.0), AxesRatio(1.0, 1.0),
@@ -45,7 +45,7 @@ void MainFrame::ClearTestLabel() {
 void MainFrame::SetWidgets() {
   WidgetCustomizer::CustomizeButton(open_button_, OpenButton());
   WidgetCustomizer::CustomizeButton(close_button_, CloseButton());
-  WidgetCustomizer::CustomizeButton(info_button_, InfoButton());
+  WidgetCustomizer::CustomizeButton(info_button_, AboutButton());
   WidgetCustomizer::CustomizeButton(clear_button_, ClearButton());
   WidgetCustomizer::CustomizeTestLabel(main_label_, MainLabel());
   resize(500, 300);

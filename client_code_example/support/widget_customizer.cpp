@@ -70,7 +70,20 @@ void WidgetCustomizer::CustomizeTestLabel(QLabel* test_label,
   test_label->setFont(font);
 }
 
-void WidgetCustomizer::CustomizeButtonFrame(ButtonFrame* button_frame) {}
+void WidgetCustomizer::CustomizeButtonFrame(ButtonFrame* button_frame) {
+  button_frame->setStyleSheet(
+      "QFrame{"
+      "background: rgba(0, 0, 0, 60%);"
+      "color: #00CC00;"
+      "border: 2px solid #00CC00;"
+      "border-radius: 5px;"
+      "}");
+  button_frame->setWindowOpacity(0.5);
+  CustomizeButton(button_frame->OpenButton(), OpenButton());
+  CustomizeButton(button_frame->CloseButton(), CloseButton());
+  CustomizeButton(button_frame->AboutButton(), AboutButton());
+  CustomizeButton(button_frame->ClearButton(), ClearButton());
+}
 
 QString WidgetCustomizer::GetAnimationText() {
   QString text =

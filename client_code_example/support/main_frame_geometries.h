@@ -7,7 +7,7 @@ namespace client_code {
 
 QRect OpenButton();
 QRect CloseButton();
-QRect InfoButton();
+QRect AboutButton();
 QRect ClearButton();
 QRect MainLabel();
 }
