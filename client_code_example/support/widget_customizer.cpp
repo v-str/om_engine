@@ -85,6 +85,8 @@ void WidgetCustomizer::CustomizeButtonFrame(ButtonFrame* button_frame) {
   CustomizeButton(button_frame->CloseButton(), GetCloseButton());
   CustomizeButton(button_frame->AboutButton(), GetAboutButton());
   CustomizeButton(button_frame->ClearButton(), GetClearButton());
+  button_frame->SetStartXPos(button_frame->GuideButton()->x() +
+                             button_frame->GuideButton()->width() + 5);
 }
 
 QString WidgetCustomizer::GetAnimationText() {
