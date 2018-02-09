@@ -12,4 +12,12 @@ AbstractSlidingWidgetSet::AbstractSlidingWidgetSet(QWidget *parent,
 
 AbstractSlidingWidgetSet::~AbstractSlidingWidgetSet() {}
 
+bool AbstractSlidingWidgetSet::Add(QWidget *widget) { CloseAsNeeded(widget); }
+
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_set_open_; }
+
+void AbstractSlidingWidgetSet::CloseAsNeeded(QWidget *widget) {
+  if (!is_set_open_) {
+    widget->close();
+  }
+}
