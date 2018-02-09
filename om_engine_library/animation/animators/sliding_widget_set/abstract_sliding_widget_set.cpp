@@ -24,12 +24,18 @@ void AbstractSlidingWidgetSet::Add(QWidget *widget) {
   animation_group_->addAnimation(widget_animation);
 }
 
+void AbstractSlidingWidgetSet::SetMargin(unsigned int margin) {
+  margin_ = margin;
+}
+
 void AbstractSlidingWidgetSet::UpdateWidgetSet() {
   SetStartAnimationPosition();
   SetEndAnimationPosition();
 }
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_set_open_; }
+
+unsigned int AbstractSlidingWidgetSet::GetMargin() const { return margin_; }
 
 void AbstractSlidingWidgetSet::Open() {
   animation_group_->start();

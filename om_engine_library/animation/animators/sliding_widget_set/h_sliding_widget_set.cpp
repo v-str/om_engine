@@ -35,7 +35,7 @@ void HSlidingWidgetSet::SetEndAnimationPosition() {
       unsigned int x_position = start_x_position_;
       for (auto it = GetAnimationSet()->begin();
            it < GetAnimationSet()->begin() + count; ++it) {
-        x_position += it->first->width() + 5;
+        x_position += it->first->width() + GetMargin();
       }
       pair.second->setEndValue(QRect(x_position, pair.first->y(),
                                      pair.first->width(),
