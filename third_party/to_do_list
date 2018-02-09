@@ -67,3 +67,7 @@ R 15.   Compose all existing widgets via GeometryController
 - 23.   Notify users that text animator do not works with rich text
 
 - 24.   SlidingList development. How to realize it properly?
+
+- 25.   SlidingWidgetSet.
+        1) Add HAnimationValueSetter implementation
+        2) Continue HSlidingWidgetSet coding
