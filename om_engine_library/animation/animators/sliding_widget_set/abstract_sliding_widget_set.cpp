@@ -12,7 +12,7 @@ AbstractSlidingWidgetSet::AbstractSlidingWidgetSet(QWidget *parent,
 
 AbstractSlidingWidgetSet::~AbstractSlidingWidgetSet() {}
 
-bool AbstractSlidingWidgetSet::Add(QWidget *widget) {
+void AbstractSlidingWidgetSet::Add(QWidget *widget) {
   CloseAsNeeded(widget);
   QPropertyAnimation *widget_animation = GetDefaultAnimation(widget);
   animation_set_.push_back(
@@ -22,6 +22,11 @@ bool AbstractSlidingWidgetSet::Add(QWidget *widget) {
   SetEndAnimationPosition();
 
   animation_group_->addAnimation(widget_animation);
+}
+
+void AbstractSlidingWidgetSet::UpdateWidgetSet() {
+  SetStartAnimationPosition();
+  SetEndAnimationPosition();
 }
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_set_open_; }

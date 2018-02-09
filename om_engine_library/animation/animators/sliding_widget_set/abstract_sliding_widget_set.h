@@ -18,7 +18,8 @@ class AbstractSlidingWidgetSet : public QObject {
   AbstractSlidingWidgetSet(QWidget* parent = nullptr, bool is_set_open = false);
   ~AbstractSlidingWidgetSet();
 
-  bool Add(QWidget* widget);
+  void Add(QWidget* widget);
+  void UpdateWidgetSet();
 
   bool IsSetOpen() const;
 

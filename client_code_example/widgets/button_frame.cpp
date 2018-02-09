@@ -1,5 +1,7 @@
 ﻿#include <button_frame.h>
 
+#include <h_sliding_widget_set.h>
+
 using namespace client_code;
 
 ButtonFrame::ButtonFrame(QFrame *parent)
@@ -8,7 +10,8 @@ ButtonFrame::ButtonFrame(QFrame *parent)
       open_button_(new ClickButton("Open", this)),
       close_button_(new ClickButton("Close", this)),
       about_button_(new ClickButton("About", this)),
-      clear_button_(new ClickButton("Clear", this)) {}
+      clear_button_(new ClickButton("Clear", this)),
+      widget_set_(new HSlidingWidgetSet(this)) {}
 
 ButtonFrame::~ButtonFrame() {}
 
