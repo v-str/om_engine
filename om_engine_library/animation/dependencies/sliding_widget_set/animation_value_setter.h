@@ -14,8 +14,6 @@ class AnimationValueSetter {
 
   virtual void SetStartValue(AnimationSet* animation_set) = 0;
   virtual void SetEndValue(AnimationSet* animation_set) = 0;
-
- private:
 };
 }
 
