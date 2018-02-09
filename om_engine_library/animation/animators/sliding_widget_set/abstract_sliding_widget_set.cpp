@@ -17,6 +17,10 @@ bool AbstractSlidingWidgetSet::Add(QWidget *widget) {
   QPropertyAnimation *widget_animation = GetDefaultAnimation(widget);
   animation_set_.push_back(
       QPair<QWidget *, QPropertyAnimation *>(widget, widget_animation));
+
+  SetStartAnimationPosition();
+  SetEndAnimationPosition();
+
   animation_group_->addAnimation(widget_animation);
 }
 
