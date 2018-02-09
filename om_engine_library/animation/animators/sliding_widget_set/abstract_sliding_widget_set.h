@@ -27,6 +27,7 @@ class AbstractSlidingWidgetSet : public QObject {
   virtual void SetEndAnimationPosition() = 0;
 
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
+  QVector<QPair<QWidget*, QPropertyAnimation*>>* GetAnimationSet();
 
  private:
   void CloseAsNeeded(QWidget* widget);

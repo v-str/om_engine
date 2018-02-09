@@ -33,6 +33,11 @@ QPropertyAnimation *AbstractSlidingWidgetSet::GetDefaultAnimation(
   return animation;
 }
 
+QVector<QPair<QWidget *, QPropertyAnimation *> >
+    *AbstractSlidingWidgetSet::GetAnimationSet() {
+  return &animation_set_;
+}
+
 void AbstractSlidingWidgetSet::SetEndAnimationPosition() {}
 
 void AbstractSlidingWidgetSet::SetStartAnimationPosition() {}
