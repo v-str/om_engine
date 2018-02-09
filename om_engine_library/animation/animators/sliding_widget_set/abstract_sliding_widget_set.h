@@ -19,6 +19,7 @@ class AbstractSlidingWidgetSet : public QObject {
   ~AbstractSlidingWidgetSet();
 
   void Add(QWidget* widget);
+  void SetAnimationDuration(unsigned int duration_msec);
   void SetMargin(unsigned int margin);
 
   void UpdateWidgetSet();

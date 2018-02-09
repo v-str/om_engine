@@ -16,6 +16,7 @@ ButtonFrame::ButtonFrame(QFrame *parent)
   widget_set_->Add(close_button_);
   widget_set_->Add(about_button_);
   widget_set_->Add(clear_button_);
+  widget_set_->SetAnimationDuration(200);
 
   connect(guide_button_, SIGNAL(clicked(bool)), widget_set_, SLOT(Open()));
 }

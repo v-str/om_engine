@@ -24,6 +24,13 @@ void AbstractSlidingWidgetSet::Add(QWidget *widget) {
   animation_group_->addAnimation(widget_animation);
 }
 
+void AbstractSlidingWidgetSet::SetAnimationDuration(
+    unsigned int duration_msec) {
+  for (auto &pair : animation_set_) {
+    pair.second->setDuration(duration_msec);
+  }
+}
+
 void AbstractSlidingWidgetSet::SetMargin(unsigned int margin) {
   margin_ = margin;
 }
