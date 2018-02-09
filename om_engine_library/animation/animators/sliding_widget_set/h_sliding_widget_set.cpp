@@ -3,7 +3,7 @@
 #include <QRect>
 #include <QWidget>
 
-using namespace om_animaiton;
+using namespace om_animation;
 
 HSlidingWidgetSet::HSlidingWidgetSet(QWidget *parent, bool is_set_open,
                                      SlideDirection slide_direction)
@@ -23,13 +23,36 @@ void HSlidingWidgetSet::SetStartAnimationPosition() {
   }
 }
 
-void HSlidingWidgetSet::SetEndAnimationPosition() {}
+void HSlidingWidgetSet::SetEndAnimationPosition() {
+  unsigned int count = 0;
+  unsigned int x_position = 0;
+
+  for (auto &pair : *GetAnimationSet()) {
+    if (count == 0) {
+      pair.second->setEndValue(QRect(start_x_position_, pair.first->y(),
+                                     pair.first->width(),
+                                     pair.first->height()));
+    } else {
+      for (auto it = GetAnimationSet()->begin();
+           it <= GetAnimationSet()->begin() + count; ++it) {
+        x_position += start_x_position_ + it->first->width() + 5;
+      }
+      pair.second->setEndValue(QRect(x_position, pair.first->y(),
+                                     pair.first->width(),
+                                     pair.first->height()));
+    }
+
+    ++count;
+  }
+}
 
 void HSlidingWidgetSet::DetermineStartXPosition() {
   if (slide_direction_ == kFromLeftToRight) {
     unsigned int x_of_first_widget = GetAnimationSet()[0].first().first->x();
     start_x_position_ = x_of_first_widget;
   }
+
+  // REMADE?
   if (slide_direction_ == kFromRightToLeft) {
     unsigned int x_of_last_widget = GetAnimationSet()->last().first->x();
     unsigned int width_of_last_widget =

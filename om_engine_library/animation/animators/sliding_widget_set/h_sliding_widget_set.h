@@ -5,7 +5,7 @@
 
 class QWidget;
 
-namespace om_animaiton {
+namespace om_animation {
 
 class HSlidingWidgetSet : public AbstractSlidingWidgetSet {
  public:

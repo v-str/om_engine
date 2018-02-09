@@ -2,7 +2,7 @@
 
 #include <QWidget>
 
-using namespace om_animaiton;
+using namespace om_animation;
 
 AbstractSlidingWidgetSet::AbstractSlidingWidgetSet(QWidget *parent,
                                                    bool is_set_open)

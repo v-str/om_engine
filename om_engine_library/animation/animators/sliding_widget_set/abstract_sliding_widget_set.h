@@ -10,7 +10,7 @@
 
 class QWidget;
 
-namespace om_animaiton {
+namespace om_animation {
 
 class AbstractSlidingWidgetSet : public QObject {
   Q_OBJECT
