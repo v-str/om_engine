@@ -13,7 +13,7 @@ ButtonFrame::ButtonFrame(QFrame *parent)
   sliding_widget_set_.Add(close_button_);
   sliding_widget_set_.Add(about_button_);
   sliding_widget_set_.Add(clear_button_);
-  sliding_widget_set_.SetAnimationDuration(1500);
+  sliding_widget_set_.SetAnimationDuration(1000);
 
   connect(guide_button_, SIGNAL(clicked(bool)), &sliding_widget_set_,
           SLOT(Open()));
