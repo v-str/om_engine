@@ -4,8 +4,8 @@
 
 using namespace om_animaiton;
 
-HSlidingWidgetSet::HSlidingWidgetSet(QWidget *parent)
-    : AbstractSlidingWidgetSet(parent) {}
+HSlidingWidgetSet::HSlidingWidgetSet(QWidget *parent, bool is_set_open)
+    : AbstractSlidingWidgetSet(parent, is_set_open) {}
 
 HSlidingWidgetSet::~HSlidingWidgetSet() {}
 

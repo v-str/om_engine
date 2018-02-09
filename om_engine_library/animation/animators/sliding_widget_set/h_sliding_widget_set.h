@@ -9,7 +9,7 @@ namespace om_animaiton {
 
 class HSlidingWidgetSet : public AbstractSlidingWidgetSet {
  public:
-  HSlidingWidgetSet(QWidget* parent = nullptr);
+  HSlidingWidgetSet(QWidget* parent = nullptr, bool is_set_open = false);
   ~HSlidingWidgetSet();
 
  protected:
