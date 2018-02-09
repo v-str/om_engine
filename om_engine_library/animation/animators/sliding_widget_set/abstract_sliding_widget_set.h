@@ -14,8 +14,14 @@ namespace om_animaiton {
 class AbstractSlidingWidgetSet : public QObject {
   Q_OBJECT
  public:
+  enum SetCondition { kOpen, kClosed };
+
   AbstractSlidingWidgetSet(QWidget* parent = nullptr);
   ~AbstractSlidingWidgetSet();
+
+ protected:
+  virtual void SetStartAnimationPosition() = 0;
+  virtual void SetEndAnimationPosition() = 0;
 
  private:
   QParallelAnimationGroup* animation_group_ = nullptr;
