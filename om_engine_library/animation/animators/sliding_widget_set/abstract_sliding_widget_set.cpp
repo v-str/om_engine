@@ -26,6 +26,16 @@ bool AbstractSlidingWidgetSet::Add(QWidget *widget) {
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_set_open_; }
 
+void AbstractSlidingWidgetSet::Open() {
+  animation_group_->start();
+
+  for (auto &pair : animation_set_) {
+    pair.first->show();
+  }
+
+  emit AnimationComplete();
+}
+
 QPropertyAnimation *AbstractSlidingWidgetSet::GetDefaultAnimation(
     QWidget *widget) {
   QPropertyAnimation *animation =
