@@ -20,7 +20,11 @@ class HSlidingWidgetSet : public AbstractSlidingWidgetSet {
   void SetEndAnimationPosition() override;
 
  private:
+  void DetermineStartXPosition();
+
   SlideDirection slide_direction_;
+
+  unsigned int start_x_position_ = 0;
 };
 }
 
