@@ -12,7 +12,13 @@ AbstractSlidingWidgetSet::AbstractSlidingWidgetSet(QWidget *parent,
 
 AbstractSlidingWidgetSet::~AbstractSlidingWidgetSet() {}
 
-bool AbstractSlidingWidgetSet::Add(QWidget *widget) { CloseAsNeeded(widget); }
+bool AbstractSlidingWidgetSet::Add(QWidget *widget) {
+  CloseAsNeeded(widget);
+  QPropertyAnimation *widget_animation = GetDefaultAnimation(widget);
+  animation_set_.push_back(
+      QPair<QWidget *, QPropertyAnimation *>(widget, widget_animation));
+  animation_group_->addAnimation(widget_animation);
+}
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_set_open_; }
 
