@@ -25,7 +25,6 @@ void HSlidingWidgetSet::SetStartAnimationPosition() {
 
 void HSlidingWidgetSet::SetEndAnimationPosition() {
   unsigned int count = 0;
-  unsigned int x_position = 0;
 
   for (auto &pair : *GetAnimationSet()) {
     if (count == 0) {
@@ -33,13 +32,15 @@ void HSlidingWidgetSet::SetEndAnimationPosition() {
                                      pair.first->width(),
                                      pair.first->height()));
     } else {
+      unsigned int x_position = start_x_position_;
       for (auto it = GetAnimationSet()->begin();
-           it <= GetAnimationSet()->begin() + count; ++it) {
-        x_position += start_x_position_ + it->first->width() + 5;
+           it < GetAnimationSet()->begin() + count; ++it) {
+        x_position += it->first->width() + 5;
       }
       pair.second->setEndValue(QRect(x_position, pair.first->y(),
                                      pair.first->width(),
                                      pair.first->height()));
+      x_position = start_x_position_;
     }
 
     ++count;

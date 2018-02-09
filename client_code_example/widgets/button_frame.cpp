@@ -11,7 +11,14 @@ ButtonFrame::ButtonFrame(QFrame *parent)
       close_button_(new ClickButton("Close", this)),
       about_button_(new ClickButton("About", this)),
       clear_button_(new ClickButton("Clear", this)),
-      widget_set_(new HSlidingWidgetSet(this)) {}
+      widget_set_(new HSlidingWidgetSet(this)) {
+  widget_set_->Add(open_button_);
+  widget_set_->Add(close_button_);
+  widget_set_->Add(about_button_);
+  widget_set_->Add(clear_button_);
+
+  connect(guide_button_, SIGNAL(clicked(bool)), widget_set_, SLOT(Open()));
+}
 
 ButtonFrame::~ButtonFrame() {}
 
@@ -24,3 +31,5 @@ ClickButton *ButtonFrame::AboutButton() { return about_button_; }
 ClickButton *ButtonFrame::ClearButton() { return clear_button_; }
 
 ClickButton *ButtonFrame::GuideButton() { return guide_button_; }
+
+void ButtonFrame::Update() { widget_set_->UpdateWidgetSet(); }
