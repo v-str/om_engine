@@ -9,12 +9,18 @@ namespace om_animaiton {
 
 class HSlidingWidgetSet : public AbstractSlidingWidgetSet {
  public:
-  HSlidingWidgetSet(QWidget* parent = nullptr, bool is_set_open = false);
+  enum SlideDirection { kFromLeftToRight, kFromRightToLeft };
+
+  HSlidingWidgetSet(QWidget* parent = nullptr, bool is_set_open = false,
+                    SlideDirection slide_direction = kFromLeftToRight);
   ~HSlidingWidgetSet();
 
  protected:
   void SetStartAnimationPosition() override;
   void SetEndAnimationPosition() override;
+
+ private:
+  SlideDirection slide_direction_;
 };
 }
 
