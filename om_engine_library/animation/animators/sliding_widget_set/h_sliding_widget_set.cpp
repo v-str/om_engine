@@ -54,13 +54,4 @@ void HSlidingWidgetSet::DetermineStartXPosition() {
     unsigned int x_of_first_widget = GetAnimationSet()[0].first().first->x();
     start_x_position_ = x_of_first_widget;
   }
-
-  // REMADE?
-  if (slide_direction_ == kFromRightToLeft) {
-    unsigned int x_of_last_widget = GetAnimationSet()->last().first->x();
-    unsigned int width_of_last_widget =
-        GetAnimationSet()->last().first->width();
-
-    start_x_position_ = x_of_last_widget + width_of_last_widget;
-  }
 }
