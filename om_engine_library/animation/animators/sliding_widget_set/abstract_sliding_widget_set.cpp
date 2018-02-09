@@ -16,6 +16,21 @@ bool AbstractSlidingWidgetSet::Add(QWidget *widget) { CloseAsNeeded(widget); }
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_set_open_; }
 
+QPropertyAnimation *AbstractSlidingWidgetSet::GetDefaultAnimation(
+    QWidget *widget) {
+  QPropertyAnimation *animation =
+      new QPropertyAnimation(widget, "geometry", this);
+
+  animation->setDuration(kDefaultAnimationDurationMSec);
+  animation->setEasingCurve(QEasingCurve::OutCirc);
+
+  return animation;
+}
+
+void AbstractSlidingWidgetSet::SetEndAnimationPosition() {}
+
+void AbstractSlidingWidgetSet::SetStartAnimationPosition() {}
+
 void AbstractSlidingWidgetSet::CloseAsNeeded(QWidget *widget) {
   if (!is_set_open_) {
     widget->close();

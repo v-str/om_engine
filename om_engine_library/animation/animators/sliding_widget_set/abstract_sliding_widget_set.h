@@ -1,6 +1,7 @@
 ﻿#ifndef ABSTRACT_SLIDING_WIDGET_SET_H
 #define ABSTRACT_SLIDING_WIDGET_SET_H
 
+#include <QEasingCurve>
 #include <QObject>
 #include <QPair>
 #include <QParallelAnimationGroup>
@@ -25,6 +26,8 @@ class AbstractSlidingWidgetSet : public QObject {
   virtual void SetStartAnimationPosition() = 0;
   virtual void SetEndAnimationPosition() = 0;
 
+  QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
+
  private:
   void CloseAsNeeded(QWidget* widget);
 
@@ -33,6 +36,8 @@ class AbstractSlidingWidgetSet : public QObject {
   QVector<QPair<QWidget*, QPropertyAnimation*>> animation_set_;
 
   bool is_set_open_;
+
+  static const unsigned int kDefaultAnimationDurationMSec = 500;
 };
 }
 
