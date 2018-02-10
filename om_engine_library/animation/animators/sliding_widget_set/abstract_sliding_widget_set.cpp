@@ -18,8 +18,7 @@ void AbstractSlidingWidgetSet::Add(QWidget *widget) {
   animation_set_.push_back(
       QPair<QWidget *, QPropertyAnimation *>(widget, widget_animation));
 
-  SetStartAnimationPosition();
-  SetEndAnimationPosition();
+  AppointAnimationParameters();
 
   animation_group_->addAnimation(widget_animation);
 }
@@ -70,10 +69,6 @@ AbstractSlidingWidgetSet::GetAnimationSet() {
 }
 
 void AbstractSlidingWidgetSet::AppointAnimationParameters() {}
-
-void AbstractSlidingWidgetSet::SetEndAnimationPosition() {}
-
-void AbstractSlidingWidgetSet::SetStartAnimationPosition() {}
 
 void AbstractSlidingWidgetSet::CloseAsNeeded(QWidget *widget) {
   if (!is_set_open_) {

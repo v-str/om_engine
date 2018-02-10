@@ -20,16 +20,8 @@ class HSlidingWidgetSet : public AbstractSlidingWidgetSet {
 
  protected:
   void AppointAnimationParameters() override;
-  void SetStartAnimationPosition() override;
-  void SetEndAnimationPosition() override;
 
  private:
-  void DetermineStartXPosition();
-
-  SlideDirection slide_direction_;
-
-  unsigned int start_x_position_ = 0;
-
   std::unique_ptr<AnimationValueSetter> value_setter_;
 };
 }
