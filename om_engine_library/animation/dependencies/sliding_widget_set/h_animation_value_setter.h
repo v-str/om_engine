@@ -5,7 +5,16 @@
 
 namespace om_animation {
 
-class HAnimationValueSetter : public AnimationValueSetter {};
+struct HAnimationValueSetter : public AnimationValueSetter {
+  enum SlideDirection { kFromLeftToRight, kFromRightToLeft };
+
+  HAnimationValueSetter(AnimationSet *animation_set = nullptr,
+                        unsigned int slide_direction = kFromLeftToRight);
+  ~HAnimationValueSetter();
+
+  void SetStartValue() override;
+  void SetEndValue() override;
+};
 }
 
 #endif  // H_ANIMATION_VALUE_SETTER_H

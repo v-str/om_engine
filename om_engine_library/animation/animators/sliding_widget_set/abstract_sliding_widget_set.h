@@ -18,7 +18,7 @@ class AbstractSlidingWidgetSet : public QObject {
   typedef QVector<QPair<QWidget*, QPropertyAnimation*>> AnimationSet;
 
   AbstractSlidingWidgetSet(QWidget* parent = nullptr, bool is_set_open = false);
-  ~AbstractSlidingWidgetSet();
+  virtual ~AbstractSlidingWidgetSet();
 
   void Add(QWidget* widget);
   void SetAnimationDuration(unsigned int duration_msec);

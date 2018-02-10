@@ -8,12 +8,18 @@
 
 namespace om_animation {
 
-class AnimationValueSetter {
- public:
+struct AnimationValueSetter {
   typedef QVector<QPair<QWidget*, QPropertyAnimation*>> AnimationSet;
 
-  virtual void SetStartValue(AnimationSet* animation_set) = 0;
-  virtual void SetEndValue(AnimationSet* animation_set) = 0;
+  AnimationValueSetter(AnimationSet* animation_set,
+                       unsigned int slide_direction);
+  virtual ~AnimationValueSetter();
+
+  virtual void SetStartValue() = 0;
+  virtual void SetEndValue() = 0;
+
+  unsigned int slide_direction_ = 0;
+  AnimationSet* animation_set_ = nullptr;
 };
 }
 
