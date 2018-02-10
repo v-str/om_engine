@@ -71,3 +71,6 @@ R 15.   Compose all existing widgets via GeometryController
 - 25.   SlidingWidgetSet.
         1) Add HAnimationValueSetter implementation
         2) Continue HSlidingWidgetSet coding
+
+- 26.   Emphasize on is_widget_open boolean variable.
+        Involve it to OpenClosed mechanism
