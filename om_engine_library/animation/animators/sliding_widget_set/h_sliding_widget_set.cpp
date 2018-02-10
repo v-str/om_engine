@@ -8,9 +8,9 @@
 using namespace om_animation;
 
 HSlidingWidgetSet::HSlidingWidgetSet(QWidget *parent,
+                                     SlideDirection slide_direction,
                                      unsigned int distance_between_widgets_px,
-                                     bool is_set_open,
-                                     SlideDirection slide_direction)
+                                     bool is_set_open)
     : AbstractSlidingWidgetSet(parent, is_set_open),
 
       value_setter_(new HAnimationValueSetter(

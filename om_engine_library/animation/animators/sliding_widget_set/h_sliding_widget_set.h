@@ -15,9 +15,9 @@ class HSlidingWidgetSet : public AbstractSlidingWidgetSet {
   enum SlideDirection { kFromLeftToRight, kFromRightToLeft };
 
   HSlidingWidgetSet(QWidget* parent = nullptr,
+                    SlideDirection slide_direction = kFromLeftToRight,
                     unsigned int distance_between_widgets_px = 5,
-                    bool is_set_open = false,
-                    SlideDirection slide_direction = kFromLeftToRight);
+                    bool is_set_open = false);
   ~HSlidingWidgetSet();
 
  protected:
