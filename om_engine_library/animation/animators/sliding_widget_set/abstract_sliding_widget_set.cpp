@@ -36,8 +36,7 @@ void AbstractSlidingWidgetSet::SetMargin(unsigned int margin) {
 }
 
 void AbstractSlidingWidgetSet::UpdateWidgetSet() {
-  SetStartAnimationPosition();
-  SetEndAnimationPosition();
+  AppointAnimationParameters();
 }
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_set_open_; }
@@ -54,8 +53,6 @@ void AbstractSlidingWidgetSet::Open() {
   emit AnimationComplete();
 }
 
-void AbstractSlidingWidgetSet::AppointAnimationParameters() {}
-
 QPropertyAnimation *AbstractSlidingWidgetSet::GetDefaultAnimation(
     QWidget *widget) {
   QPropertyAnimation *animation =
@@ -71,6 +68,8 @@ AbstractSlidingWidgetSet::AnimationSet *
 AbstractSlidingWidgetSet::GetAnimationSet() {
   return &animation_set_;
 }
+
+void AbstractSlidingWidgetSet::AppointAnimationParameters() {}
 
 void AbstractSlidingWidgetSet::SetEndAnimationPosition() {}
 
