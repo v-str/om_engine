@@ -1,7 +1,10 @@
 ﻿#ifndef H_SLIDING_WIDGET_SET_H
 #define H_SLIDING_WIDGET_SET_H
 
+#include <memory>
+
 #include <abstract_sliding_widget_set.h>
+#include <animation_value_setter.h>
 
 class QWidget;
 
@@ -25,6 +28,8 @@ class HSlidingWidgetSet : public AbstractSlidingWidgetSet {
   SlideDirection slide_direction_;
 
   unsigned int start_x_position_ = 0;
+
+  std::unique_ptr<AnimationValueSetter> value_setter_;
 };
 }
 

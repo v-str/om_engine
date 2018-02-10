@@ -3,12 +3,16 @@
 #include <QRect>
 #include <QWidget>
 
+#include <h_animation_value_setter.h>
+
 using namespace om_animation;
 
 HSlidingWidgetSet::HSlidingWidgetSet(QWidget *parent, bool is_set_open,
                                      SlideDirection slide_direction)
     : AbstractSlidingWidgetSet(parent, is_set_open),
-      slide_direction_(slide_direction) {}
+      slide_direction_(slide_direction),
+      value_setter_(
+          new HAnimationValueSetter(GetAnimationSet(), slide_direction)) {}
 
 HSlidingWidgetSet::~HSlidingWidgetSet() {}
 
