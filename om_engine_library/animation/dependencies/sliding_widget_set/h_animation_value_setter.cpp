@@ -10,15 +10,17 @@ HAnimationValueSetter::HAnimationValueSetter(
 HAnimationValueSetter::~HAnimationValueSetter() {}
 
 void HAnimationValueSetter::DetermineStartXPosition() {
-  if (!animation_set_->isEmpty()) {
-    if (slide_direction_ == kFromLeftToRight) {
-      unsigned int x_of_first_widget = animation_set_->first().first->x();
-      start_x_pos_ = x_of_first_widget;
-    }
-    // if (slide_direction_ == kFromRightToLeft) {}
+  if (slide_direction_ == kFromLeftToRight) {
+    unsigned int x_of_first_widget = animation_set_->first().first->x();
+    start_x_pos_ = x_of_first_widget;
   }
+  // if (slide_direction_ == kFromRightToLeft) {}
 }
 
-void HAnimationValueSetter::SetStartValue() {}
+void HAnimationValueSetter::SetStartValue() {
+  if (!animation_set_->isEmpty()) {
+    DetermineStartXPosition();
+  }
+}
 
 void HAnimationValueSetter::SetEndValue() {}

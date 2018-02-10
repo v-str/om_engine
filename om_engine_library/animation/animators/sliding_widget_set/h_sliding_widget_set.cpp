@@ -17,7 +17,8 @@ HSlidingWidgetSet::HSlidingWidgetSet(QWidget *parent, bool is_set_open,
 HSlidingWidgetSet::~HSlidingWidgetSet() {}
 
 void HSlidingWidgetSet::AppointAnimationParameters() {
-  value_setter_->DetermineStartXPosition();
+  value_setter_->SetStartValue();
+  value_setter_->SetEndValue();
 }
 
 void HSlidingWidgetSet::SetStartAnimationPosition() {
