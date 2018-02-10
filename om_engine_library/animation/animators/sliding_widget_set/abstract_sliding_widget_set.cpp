@@ -25,17 +25,11 @@ void AbstractSlidingWidgetSet::SetAnimationDuration(
   }
 }
 
-void AbstractSlidingWidgetSet::SetMargin(unsigned int margin) {
-  margin_ = margin;
-}
-
 void AbstractSlidingWidgetSet::UpdateWidgetSet() {
   AppointAnimationParameters();
 }
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_set_open_; }
-
-unsigned int AbstractSlidingWidgetSet::GetMargin() const { return margin_; }
 
 void AbstractSlidingWidgetSet::Open() {
   animation_group_->start();

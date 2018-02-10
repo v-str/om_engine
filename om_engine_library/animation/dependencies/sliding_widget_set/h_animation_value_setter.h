@@ -9,7 +9,8 @@ struct HAnimationValueSetter : public AnimationValueSetter {
   enum SlideDirection { kFromLeftToRight, kFromRightToLeft };
 
   HAnimationValueSetter(AnimationSet *animation_set = nullptr,
-                        unsigned int slide_direction = kFromLeftToRight);
+                        unsigned int slide_direction = kFromLeftToRight,
+                        unsigned int distance_between_widgets_px = 5);
   ~HAnimationValueSetter();
 
   void DetermineStartXPosition() override;

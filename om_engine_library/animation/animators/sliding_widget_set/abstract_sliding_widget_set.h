@@ -22,12 +22,10 @@ class AbstractSlidingWidgetSet : public QObject {
 
   void Add(QWidget* widget);
   void SetAnimationDuration(unsigned int duration_msec);
-  void SetMargin(unsigned int margin);
 
   void UpdateWidgetSet();
 
   bool IsSetOpen() const;
-  unsigned int GetMargin() const;
 
  signals:
   void AnimationComplete();
@@ -46,12 +44,9 @@ class AbstractSlidingWidgetSet : public QObject {
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
 
   QParallelAnimationGroup* animation_group_ = nullptr;
-
   AnimationSet animation_set_;
 
   bool is_set_open_;
-
-  unsigned int margin_ = 5;
 
   static const unsigned int kDefaultAnimationDurationMSec = 500;
 };
