@@ -2,17 +2,13 @@
 
 #include <QRect>
 
-#include <QDebug>
-
 using namespace om_animation;
 
 HAnimationValueSetter::HAnimationValueSetter(
     AnimationValueSetter::AnimationSet *animation_set,
     unsigned int slide_direction, unsigned int distance_between_widgets_px)
     : AnimationValueSetter(animation_set, slide_direction,
-                           distance_between_widgets_px) {
-  qDebug() << "HAnimationValueSetter: " << distance_between_widgets_px;
-}
+                           distance_between_widgets_px) {}
 
 HAnimationValueSetter::~HAnimationValueSetter() {}
 
@@ -38,9 +34,6 @@ void HAnimationValueSetter::SetStartValue() {
 }
 
 void HAnimationValueSetter::SetEndValue() {
-  qDebug() << "HAnimationValueSetter::SetEndValue(): "
-           << distance_between_widgets_px_;
-
   if (!animation_set_->isEmpty()) {
     if (slide_direction_ == kFromLeftToRight) {
       unsigned int count = 0;
