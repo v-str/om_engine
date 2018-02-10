@@ -15,6 +15,8 @@ namespace om_animation {
 class AbstractSlidingWidgetSet : public QObject {
   Q_OBJECT
  public:
+  typedef QVector<QPair<QWidget*, QPropertyAnimation*>> AnimationSet;
+
   AbstractSlidingWidgetSet(QWidget* parent = nullptr, bool is_set_open = false);
   ~AbstractSlidingWidgetSet();
 
@@ -38,14 +40,14 @@ class AbstractSlidingWidgetSet : public QObject {
   virtual void SetEndAnimationPosition() = 0;
 
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
-  QVector<QPair<QWidget*, QPropertyAnimation*>>* GetAnimationSet();
+  AnimationSet* GetAnimationSet();
 
  private:
   void CloseAsNeeded(QWidget* widget);
 
   QParallelAnimationGroup* animation_group_ = nullptr;
 
-  QVector<QPair<QWidget*, QPropertyAnimation*>> animation_set_;
+  AnimationSet animation_set_;
 
   bool is_set_open_;
 

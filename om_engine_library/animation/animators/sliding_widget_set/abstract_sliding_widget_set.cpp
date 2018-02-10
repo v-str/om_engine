@@ -65,8 +65,8 @@ QPropertyAnimation *AbstractSlidingWidgetSet::GetDefaultAnimation(
   return animation;
 }
 
-QVector<QPair<QWidget *, QPropertyAnimation *> >
-    *AbstractSlidingWidgetSet::GetAnimationSet() {
+AbstractSlidingWidgetSet::AnimationSet *
+AbstractSlidingWidgetSet::GetAnimationSet() {
   return &animation_set_;
 }
 
