@@ -14,13 +14,8 @@ AbstractSlidingWidgetSet::~AbstractSlidingWidgetSet() {}
 
 void AbstractSlidingWidgetSet::Add(QWidget *widget) {
   CloseAsNeeded(widget);
-  QPropertyAnimation *widget_animation = GetDefaultAnimation(widget);
-  animation_set_.push_back(
-      QPair<QWidget *, QPropertyAnimation *>(widget, widget_animation));
-
+  ComposeAnimationPair(widget);
   AppointAnimationParameters();
-
-  animation_group_->addAnimation(widget_animation);
 }
 
 void AbstractSlidingWidgetSet::SetAnimationDuration(
@@ -52,17 +47,6 @@ void AbstractSlidingWidgetSet::Open() {
   emit AnimationComplete();
 }
 
-QPropertyAnimation *AbstractSlidingWidgetSet::GetDefaultAnimation(
-    QWidget *widget) {
-  QPropertyAnimation *animation =
-      new QPropertyAnimation(widget, "geometry", this);
-
-  animation->setDuration(kDefaultAnimationDurationMSec);
-  animation->setEasingCurve(QEasingCurve::OutCirc);
-
-  return animation;
-}
-
 AbstractSlidingWidgetSet::AnimationSet *
 AbstractSlidingWidgetSet::GetAnimationSet() {
   return &animation_set_;
@@ -74,4 +58,22 @@ void AbstractSlidingWidgetSet::CloseAsNeeded(QWidget *widget) {
   if (!is_set_open_) {
     widget->close();
   }
+}
+
+void AbstractSlidingWidgetSet::ComposeAnimationPair(QWidget *widget) {
+  QPropertyAnimation *widget_animation = GetDefaultAnimation(widget);
+  animation_set_.push_back(
+      QPair<QWidget *, QPropertyAnimation *>(widget, widget_animation));
+  animation_group_->addAnimation(widget_animation);
+}
+
+QPropertyAnimation *AbstractSlidingWidgetSet::GetDefaultAnimation(
+    QWidget *widget) {
+  QPropertyAnimation *animation =
+      new QPropertyAnimation(widget, "geometry", this);
+
+  animation->setDuration(kDefaultAnimationDurationMSec);
+  animation->setEasingCurve(QEasingCurve::OutCirc);
+
+  return animation;
 }

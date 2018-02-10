@@ -38,11 +38,12 @@ class AbstractSlidingWidgetSet : public QObject {
  protected:
   virtual void AppointAnimationParameters() = 0;
 
-  QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
   AnimationSet* GetAnimationSet();
 
  private:
   void CloseAsNeeded(QWidget* widget);
+  void ComposeAnimationPair(QWidget* widget);
+  QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
 
   QParallelAnimationGroup* animation_group_ = nullptr;
 
