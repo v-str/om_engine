@@ -16,6 +16,10 @@ HSlidingWidgetSet::HSlidingWidgetSet(QWidget *parent, bool is_set_open,
 
 HSlidingWidgetSet::~HSlidingWidgetSet() {}
 
+void HSlidingWidgetSet::AppointAnimationParameters() {
+  value_setter_->DetermineStartXPosition();
+}
+
 void HSlidingWidgetSet::SetStartAnimationPosition() {
   DetermineStartXPosition();
 
@@ -55,7 +59,7 @@ void HSlidingWidgetSet::SetEndAnimationPosition() {
 
 void HSlidingWidgetSet::DetermineStartXPosition() {
   if (slide_direction_ == kFromLeftToRight) {
-    unsigned int x_of_first_widget = GetAnimationSet()[0].first().first->x();
+    unsigned int x_of_first_widget = GetAnimationSet()->first().first->x();
     start_x_position_ = x_of_first_widget;
   }
 }

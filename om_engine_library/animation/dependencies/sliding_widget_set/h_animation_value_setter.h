@@ -12,6 +12,7 @@ struct HAnimationValueSetter : public AnimationValueSetter {
                         unsigned int slide_direction = kFromLeftToRight);
   ~HAnimationValueSetter();
 
+  void DetermineStartXPosition() override;
   void SetStartValue() override;
   void SetEndValue() override;
 };

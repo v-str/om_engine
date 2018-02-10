@@ -19,6 +19,7 @@ class HSlidingWidgetSet : public AbstractSlidingWidgetSet {
   ~HSlidingWidgetSet();
 
  protected:
+  void AppointAnimationParameters() override;
   void SetStartAnimationPosition() override;
   void SetEndAnimationPosition() override;
 

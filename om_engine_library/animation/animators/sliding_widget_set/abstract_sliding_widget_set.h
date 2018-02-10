@@ -36,6 +36,7 @@ class AbstractSlidingWidgetSet : public QObject {
   void Open();
 
  protected:
+  virtual void AppointAnimationParameters() = 0;
   virtual void SetStartAnimationPosition() = 0;
   virtual void SetEndAnimationPosition() = 0;
 

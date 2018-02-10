@@ -54,6 +54,8 @@ void AbstractSlidingWidgetSet::Open() {
   emit AnimationComplete();
 }
 
+void AbstractSlidingWidgetSet::AppointAnimationParameters() {}
+
 QPropertyAnimation *AbstractSlidingWidgetSet::GetDefaultAnimation(
     QWidget *widget) {
   QPropertyAnimation *animation =
