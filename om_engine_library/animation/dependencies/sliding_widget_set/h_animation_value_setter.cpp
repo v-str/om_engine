@@ -2,6 +2,8 @@
 
 #include <QRect>
 
+#include <QDebug>
+
 using namespace om_animation;
 
 HAnimationValueSetter::HAnimationValueSetter(
@@ -62,6 +64,31 @@ void HAnimationValueSetter::SetEndValue() {
       }
     }
     if (slide_direction_ == kFromRightToLeft) {
+      auto set_size = animation_set_->size() - 1;
+
+      qDebug() << "### size: " << set_size;
+      qDebug() << "start x initial value: " << start_x_pos_;
+
+      for (auto i = set_size; i > -1; --i) {
+        if (i == set_size) {
+          start_x_pos_ -= animation_set_->at(i).first->width();
+          animation_set_->at(i).second->setEndValue(
+              QRect(start_x_pos_, animation_set_->at(i).first->y(),
+                    animation_set_->at(i).first->width(),
+                    animation_set_->at(i).first->height()));
+          qDebug() << i << " QRect for first element";
+          qDebug() << "start x: " << start_x_pos_ << "\n";
+        } else {
+          start_x_pos_ -= animation_set_->at(i).first->width() +
+                          distance_between_widgets_px_;
+          animation_set_->at(i).second->setEndValue(
+              QRect(start_x_pos_, animation_set_->at(i).first->y(),
+                    animation_set_->at(i).first->width(),
+                    animation_set_->at(i).first->height()));
+          qDebug() << i << " QRect for others";
+          qDebug() << "start x: " << start_x_pos_ << "\n";
+        }
+      }
     }
   }
 }
