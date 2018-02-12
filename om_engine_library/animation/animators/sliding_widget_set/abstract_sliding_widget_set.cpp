@@ -38,7 +38,17 @@ void AbstractSlidingWidgetSet::Open() {
     pair.first->show();
   }
 
-  emit AnimationComplete();
+  emit OpenAnimationComplete();
+}
+
+void AbstractSlidingWidgetSet::Close() {
+  animation_group_->start();
+
+  for (auto &pair : animation_set_) {
+    pair.first->close();
+  }
+
+  emit CloseAnimationComplete();
 }
 
 AbstractSlidingWidgetSet::AnimationSet *

@@ -28,10 +28,12 @@ class AbstractSlidingWidgetSet : public QObject {
   bool IsSetOpen() const;
 
  signals:
-  void AnimationComplete();
+  void OpenAnimationComplete();
+  void CloseAnimationComplete();
 
  public slots:
   void Open();
+  void Close();
 
  protected:
   virtual void AppointAnimationParameters() = 0;
