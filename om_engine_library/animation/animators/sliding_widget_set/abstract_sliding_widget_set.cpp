@@ -31,22 +31,20 @@ void AbstractSlidingWidgetSet::UpdateWidgetSet() {
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_set_open_; }
 
-void AbstractSlidingWidgetSet::Open() {
+void AbstractSlidingWidgetSet::PerformAnimation() {
   animation_group_->start();
 
-  for (auto &pair : animation_set_) {
-    pair.first->show();
+  if (!is_set_open_) {
+    for (auto &pair : animation_set_) {
+      pair.first->show();
+    }
+    is_set_open_ = true;
+
+    emit OpenAnimationComplete();
+  } else {
+    is_set_open_ = false;
+    emit CloseAnimationComplete();
   }
-
-  is_set_open_ = true;
-
-  emit OpenAnimationComplete();
-}
-
-void AbstractSlidingWidgetSet::Close() {
-  animation_group_->start();
-  is_set_open_ = false;
-  emit CloseAnimationComplete();
 }
 
 AbstractSlidingWidgetSet::AnimationSet *

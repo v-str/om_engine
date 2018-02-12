@@ -11,8 +11,8 @@ ButtonFrame::ButtonFrame(QFrame *parent)
       close_button_(new ClickButton("Close", this)),
       about_button_(new ClickButton("About", this)),
       clear_button_(new ClickButton("Clear", this)),
-      widget_set_(
-          new HSlidingWidgetSet(this, HSlidingWidgetSet::kFromLeftToRight)) {
+      widget_set_(new HSlidingWidgetSet(
+          this, HSlidingWidgetSet::kFromLeftToRight, 5, false)) {
   widget_set_->Add(open_button_);
   widget_set_->Add(close_button_);
   widget_set_->Add(about_button_);
@@ -24,7 +24,9 @@ ButtonFrame::ButtonFrame(QFrame *parent)
   } else {
     guide_button_->setText("->");
   }
-  connect(guide_button_, SIGNAL(clicked(bool)), widget_set_, SLOT(Open()));
+  connect(guide_button_, SIGNAL(clicked(bool)), widget_set_,
+          SLOT(PerformAnimation()));
+
   connect(guide_button_, SIGNAL(clicked(bool)), SLOT(ChangeGuideButtonText()));
 }
 

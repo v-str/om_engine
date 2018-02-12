@@ -32,8 +32,7 @@ class AbstractSlidingWidgetSet : public QObject {
   void CloseAnimationComplete();
 
  public slots:
-  void Open();
-  void Close();
+  void PerformAnimation();
 
  protected:
   virtual void AppointAnimationParameters() = 0;
