@@ -79,3 +79,5 @@ R 15.   Compose all existing widgets via GeometryController
         Notify users about if in AnimationWidgetSet parameter
         is_widget_open set as true, then distance between widget
         will be reset after execution slot Open
+
+- 28.   Develop invertor for animation set
