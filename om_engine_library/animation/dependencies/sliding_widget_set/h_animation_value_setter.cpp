@@ -29,17 +29,9 @@ void HAnimationValueSetter::SetStartValue() {
   if (!animation_set_->isEmpty()) {
     DetermineStartXPosition();
 
-    if (slide_direction_ == kFromLeftToRight) {
-      for (auto &pair : *animation_set_) {
-        pair.second->setStartValue(
-            QRect(start_x_pos_, pair.first->y(), 0, pair.first->height()));
-      }
-    }
-    if (slide_direction_ == kFromRightToLeft) {
-      for (auto &pair : *animation_set_) {
-        pair.second->setStartValue(
-            QRect(start_x_pos_, pair.first->y(), 0, pair.first->height()));
-      }
+    for (auto &pair : *animation_set_) {
+      pair.second->setStartValue(
+          QRect(start_x_pos_, pair.first->y(), 0, pair.first->height()));
     }
   }
 }
@@ -68,6 +60,8 @@ void HAnimationValueSetter::SetEndValue() {
 
         ++count;
       }
+    }
+    if (slide_direction_ == kFromRightToLeft) {
     }
   }
 }
