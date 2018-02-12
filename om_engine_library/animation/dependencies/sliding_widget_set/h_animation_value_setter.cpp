@@ -67,7 +67,7 @@ void HAnimationValueSetter::CalculateLeftToRightEndValue() {
 }
 
 void HAnimationValueSetter::CalculateRightToLeftEndValue() {
-  auto set_size = animation_set_->size() - 1;
+  int set_size = animation_set_->size() - 1;
   for (int index = set_size; index > -1; --index) {
     if (index == set_size) {
       start_x_pos_ -= animation_set_->at(index).first->width();
