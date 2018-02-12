@@ -50,16 +50,16 @@ void HAnimationValueSetter::SetEndValue() {
 void HAnimationValueSetter::CalculateLeftToRightEndValue() {
   unsigned int count = 0;
 
-  for (int i = 0; i < animation_set_->size(); ++i) {
+  for (int index = 0; index < animation_set_->size(); ++index) {
     if (count == 0) {
-      AssignNewEndAnimationValue(i, start_x_pos_);
+      AssignNewEndAnimationValue(index, start_x_pos_);
     } else {
       unsigned int x_position = start_x_pos_;
-      for (int i = 1; i <= count; ++i) {
-        x_position +=
-            animation_set_->at(i).first->width() + distance_between_widgets_px_;
+      for (int inner_index = 1; inner_index <= count; ++inner_index) {
+        x_position += animation_set_->at(inner_index).first->width() +
+                      distance_between_widgets_px_;
       }
-      AssignNewEndAnimationValue(i, x_position);
+      AssignNewEndAnimationValue(index, x_position);
       x_position = start_x_pos_;
     }
     ++count;
@@ -68,14 +68,14 @@ void HAnimationValueSetter::CalculateLeftToRightEndValue() {
 
 void HAnimationValueSetter::CalculateRightToLeftEndValue() {
   auto set_size = animation_set_->size() - 1;
-  for (int i = set_size; i > -1; --i) {
-    if (i == set_size) {
-      start_x_pos_ -= animation_set_->at(i).first->width();
-      AssignNewEndAnimationValue(i, start_x_pos_);
+  for (int index = set_size; index > -1; --index) {
+    if (index == set_size) {
+      start_x_pos_ -= animation_set_->at(index).first->width();
+      AssignNewEndAnimationValue(index, start_x_pos_);
     } else {
-      start_x_pos_ -=
-          animation_set_->at(i).first->width() + distance_between_widgets_px_;
-      AssignNewEndAnimationValue(i, start_x_pos_);
+      start_x_pos_ -= animation_set_->at(index).first->width() +
+                      distance_between_widgets_px_;
+      AssignNewEndAnimationValue(index, start_x_pos_);
     }
   }
 }
