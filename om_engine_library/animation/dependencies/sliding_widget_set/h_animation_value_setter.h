@@ -19,6 +19,8 @@ struct HAnimationValueSetter : public AnimationValueSetter {
 
   void CalculateLeftToRightEndValue();
   void CalculateRightToLeftEndValue();
+
+  void AssignNewEndAnimationValue(int index, unsigned int x_position);
 };
 }
 

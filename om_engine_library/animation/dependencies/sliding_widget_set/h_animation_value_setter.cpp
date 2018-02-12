@@ -50,22 +50,16 @@ void HAnimationValueSetter::SetEndValue() {
 void HAnimationValueSetter::CalculateLeftToRightEndValue() {
   unsigned int count = 0;
 
-  for (auto i = 0; i < animation_set_->size(); ++i) {
+  for (int i = 0; i < animation_set_->size(); ++i) {
     if (count == 0) {
-      animation_set_->at(i).second->setEndValue(
-          QRect(start_x_pos_, animation_set_->at(i).first->y(),
-                animation_set_->at(i).first->width(),
-                animation_set_->at(i).first->height()));
+      AssignNewEndAnimationValue(i, start_x_pos_);
     } else {
       unsigned int x_position = start_x_pos_;
-      for (auto i = 1; i <= count; ++i) {
+      for (int i = 1; i <= count; ++i) {
         x_position +=
             animation_set_->at(i).first->width() + distance_between_widgets_px_;
       }
-      animation_set_->at(i).second->setEndValue(
-          QRect(x_position, animation_set_->at(i).first->y(),
-                animation_set_->at(i).first->width(),
-                animation_set_->at(i).first->height()));
+      AssignNewEndAnimationValue(i, x_position);
       x_position = start_x_pos_;
     }
     ++count;
@@ -74,20 +68,22 @@ void HAnimationValueSetter::CalculateLeftToRightEndValue() {
 
 void HAnimationValueSetter::CalculateRightToLeftEndValue() {
   auto set_size = animation_set_->size() - 1;
-  for (auto i = set_size; i > -1; --i) {
+  for (int i = set_size; i > -1; --i) {
     if (i == set_size) {
       start_x_pos_ -= animation_set_->at(i).first->width();
-      animation_set_->at(i).second->setEndValue(
-          QRect(start_x_pos_, animation_set_->at(i).first->y(),
-                animation_set_->at(i).first->width(),
-                animation_set_->at(i).first->height()));
+      AssignNewEndAnimationValue(i, start_x_pos_);
     } else {
       start_x_pos_ -=
           animation_set_->at(i).first->width() + distance_between_widgets_px_;
-      animation_set_->at(i).second->setEndValue(
-          QRect(start_x_pos_, animation_set_->at(i).first->y(),
-                animation_set_->at(i).first->width(),
-                animation_set_->at(i).first->height()));
+      AssignNewEndAnimationValue(i, start_x_pos_);
     }
   }
+}
+
+void HAnimationValueSetter::AssignNewEndAnimationValue(
+    int index, unsigned int x_position) {
+  animation_set_->at(index).second->setEndValue(
+      QRect(x_position, animation_set_->at(index).first->y(),
+            animation_set_->at(index).first->width(),
+            animation_set_->at(index).first->height()));
 }
