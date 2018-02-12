@@ -58,9 +58,9 @@ void HAnimationValueSetter::CalculateLeftToRightEndValue() {
                 animation_set_->at(i).first->height()));
     } else {
       unsigned int x_position = start_x_pos_;
-      for (auto it = animation_set_->begin();
-           it < animation_set_->begin() + count; ++it) {
-        x_position += it->first->width() + distance_between_widgets_px_;
+      for (auto i = 1; i <= count; ++i) {
+        x_position +=
+            animation_set_->at(i).first->width() + distance_between_widgets_px_;
       }
       animation_set_->at(i).second->setEndValue(
           QRect(x_position, animation_set_->at(i).first->y(),
