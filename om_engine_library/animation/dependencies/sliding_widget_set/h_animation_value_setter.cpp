@@ -17,7 +17,12 @@ void HAnimationValueSetter::DetermineStartXPosition() {
     unsigned int x_of_first_widget = animation_set_->first().first->x();
     start_x_pos_ = x_of_first_widget;
   }
-  // if (slide_direction_ == kFromRightToLeft) {}
+  if (slide_direction_ == kFromRightToLeft) {
+    unsigned int x_of_last_widget = animation_set_->last().first->x();
+    unsigned int width_of_last_widget = animation_set_->last().first->width();
+
+    start_x_pos_ = x_of_last_widget + width_of_last_widget;
+  }
 }
 
 void HAnimationValueSetter::SetStartValue() {
@@ -25,6 +30,12 @@ void HAnimationValueSetter::SetStartValue() {
     DetermineStartXPosition();
 
     if (slide_direction_ == kFromLeftToRight) {
+      for (auto &pair : *animation_set_) {
+        pair.second->setStartValue(
+            QRect(start_x_pos_, pair.first->y(), 0, pair.first->height()));
+      }
+    }
+    if (slide_direction_ == kFromRightToLeft) {
       for (auto &pair : *animation_set_) {
         pair.second->setStartValue(
             QRect(start_x_pos_, pair.first->y(), 0, pair.first->height()));
