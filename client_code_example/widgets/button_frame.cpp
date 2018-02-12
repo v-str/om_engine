@@ -12,7 +12,7 @@ ButtonFrame::ButtonFrame(QFrame *parent)
       about_button_(new ClickButton("About", this)),
       clear_button_(new ClickButton("Clear", this)),
       widget_set_(
-          new HSlidingWidgetSet(this, HSlidingWidgetSet::kFromRightToLeft)) {
+          new HSlidingWidgetSet(this, HSlidingWidgetSet::kFromLeftToRight)) {
   widget_set_->Add(open_button_);
   widget_set_->Add(close_button_);
   widget_set_->Add(about_button_);

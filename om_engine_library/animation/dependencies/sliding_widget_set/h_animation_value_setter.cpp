@@ -39,47 +39,55 @@ void HAnimationValueSetter::SetStartValue() {
 void HAnimationValueSetter::SetEndValue() {
   if (!animation_set_->isEmpty()) {
     if (slide_direction_ == kFromLeftToRight) {
-      unsigned int count = 0;
-
-      for (auto &pair : *animation_set_) {
-        if (count == 0) {
-          pair.second->setEndValue(QRect(start_x_pos_, pair.first->y(),
-                                         pair.first->width(),
-                                         pair.first->height()));
-        } else {
-          unsigned int x_position = start_x_pos_;
-          for (auto it = animation_set_->begin();
-               it < animation_set_->begin() + count; ++it) {
-            x_position += it->first->width() + distance_between_widgets_px_;
-          }
-          pair.second->setEndValue(QRect(x_position, pair.first->y(),
-                                         pair.first->width(),
-                                         pair.first->height()));
-          x_position = start_x_pos_;
-        }
-
-        ++count;
-      }
+      CalculateLeftToRightEndValue();
     }
     if (slide_direction_ == kFromRightToLeft) {
-      auto set_size = animation_set_->size() - 1;
+      CalculateRightToLeftEndValue();
+    }
+  }
+}
 
-      for (auto i = set_size; i > -1; --i) {
-        if (i == set_size) {
-          start_x_pos_ -= animation_set_->at(i).first->width();
-          animation_set_->at(i).second->setEndValue(
-              QRect(start_x_pos_, animation_set_->at(i).first->y(),
-                    animation_set_->at(i).first->width(),
-                    animation_set_->at(i).first->height()));
-        } else {
-          start_x_pos_ -= animation_set_->at(i).first->width() +
-                          distance_between_widgets_px_;
-          animation_set_->at(i).second->setEndValue(
-              QRect(start_x_pos_, animation_set_->at(i).first->y(),
-                    animation_set_->at(i).first->width(),
-                    animation_set_->at(i).first->height()));
-        }
+void HAnimationValueSetter::CalculateLeftToRightEndValue() {
+  unsigned int count = 0;
+
+  for (auto i = 0; i < animation_set_->size(); ++i) {
+    if (count == 0) {
+      animation_set_->at(i).second->setEndValue(
+          QRect(start_x_pos_, animation_set_->at(i).first->y(),
+                animation_set_->at(i).first->width(),
+                animation_set_->at(i).first->height()));
+    } else {
+      unsigned int x_position = start_x_pos_;
+      for (auto it = animation_set_->begin();
+           it < animation_set_->begin() + count; ++it) {
+        x_position += it->first->width() + distance_between_widgets_px_;
       }
+      animation_set_->at(i).second->setEndValue(
+          QRect(x_position, animation_set_->at(i).first->y(),
+                animation_set_->at(i).first->width(),
+                animation_set_->at(i).first->height()));
+      x_position = start_x_pos_;
+    }
+    ++count;
+  }
+}
+
+void HAnimationValueSetter::CalculateRightToLeftEndValue() {
+  auto set_size = animation_set_->size() - 1;
+  for (auto i = set_size; i > -1; --i) {
+    if (i == set_size) {
+      start_x_pos_ -= animation_set_->at(i).first->width();
+      animation_set_->at(i).second->setEndValue(
+          QRect(start_x_pos_, animation_set_->at(i).first->y(),
+                animation_set_->at(i).first->width(),
+                animation_set_->at(i).first->height()));
+    } else {
+      start_x_pos_ -=
+          animation_set_->at(i).first->width() + distance_between_widgets_px_;
+      animation_set_->at(i).second->setEndValue(
+          QRect(start_x_pos_, animation_set_->at(i).first->y(),
+                animation_set_->at(i).first->width(),
+                animation_set_->at(i).first->height()));
     }
   }
 }
