@@ -1,8 +1,7 @@
 ﻿#include <abstract_sliding_widget_set.h>
 
+#include <QVariant>
 #include <QWidget>
-
-#include <QDebug>
 
 using namespace om_animation;
 
@@ -10,7 +9,10 @@ AbstractSlidingWidgetSet::AbstractSlidingWidgetSet(QWidget *parent,
                                                    bool is_set_open)
     : QObject(parent),
       animation_group_(new QParallelAnimationGroup(this)),
-      is_set_open_(is_set_open) {}
+      is_set_open_(is_set_open) {
+  connect(animation_group_, SIGNAL(finished()),
+          SLOT(InvertAnimationParameters()));
+}
 
 AbstractSlidingWidgetSet::~AbstractSlidingWidgetSet() {}
 
@@ -35,24 +37,27 @@ bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_set_open_; }
 
 void AbstractSlidingWidgetSet::PerformAnimation() {
   animation_group_->start();
-
   if (!is_set_open_) {
     for (auto &pair : animation_set_) {
       pair.first->show();
     }
-    is_set_open_ = true;
-    qDebug() << "Opened!";
     emit OpenAnimationComplete();
-  } else {
-    is_set_open_ = false;
-    qDebug() << "Closed!";
+  }
+  if (is_set_open_) {
     emit CloseAnimationComplete();
   }
-
-  InvertAnimationParameters();
 }
 
-void AbstractSlidingWidgetSet::InvertAnimationParameters() {}
+void AbstractSlidingWidgetSet::InvertAnimationParameters() {
+  for (auto &pair : animation_set_) {
+    QVariant start_value = pair.second->endValue();
+    QVariant end_value = pair.second->startValue();
+
+    pair.second->setStartValue(start_value);
+    pair.second->setEndValue(end_value);
+  }
+  is_set_open_ == false ? is_set_open_ = true : is_set_open_ = false;
+}
 
 AbstractSlidingWidgetSet::AnimationSet *
 AbstractSlidingWidgetSet::GetAnimationSet() {

@@ -1,11 +1,10 @@
 ﻿#include <h_sliding_widget_set.h>
 
 #include <QRect>
+#include <QVariant>
 #include <QWidget>
 
 #include <h_animation_value_setter.h>
-
-#include <QDebug>
 
 using namespace om_animation;
 
@@ -25,8 +24,4 @@ HSlidingWidgetSet::~HSlidingWidgetSet() {}
 void HSlidingWidgetSet::AppointAnimationParameters() {
   value_setter_->SetStartValue();
   value_setter_->SetEndValue();
-}
-
-void HSlidingWidgetSet::InvertAnimationParameters() {
-  qDebug() << "Invertion complete!";
 }

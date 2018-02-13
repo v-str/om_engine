@@ -34,9 +34,11 @@ class AbstractSlidingWidgetSet : public QObject {
  public slots:
   void PerformAnimation();
 
+ private slots:
+  void InvertAnimationParameters();
+
  protected:
   virtual void AppointAnimationParameters() = 0;
-  virtual void InvertAnimationParameters() = 0;
 
   AnimationSet* GetAnimationSet();
 

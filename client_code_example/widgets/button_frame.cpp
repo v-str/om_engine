@@ -17,13 +17,14 @@ ButtonFrame::ButtonFrame(QFrame *parent)
   widget_set_->Add(close_button_);
   widget_set_->Add(about_button_);
   widget_set_->Add(clear_button_);
-  widget_set_->SetAnimationDuration(500);
+  widget_set_->SetAnimationDuration(1000);
 
   if (widget_set_->IsSetOpen()) {
     guide_button_->setText("<-");
   } else {
     guide_button_->setText("->");
   }
+
   connect(guide_button_, SIGNAL(clicked(bool)), widget_set_,
           SLOT(PerformAnimation()));
 
