@@ -2,6 +2,8 @@
 
 #include <QWidget>
 
+#include <QDebug>
+
 using namespace om_animation;
 
 AbstractSlidingWidgetSet::AbstractSlidingWidgetSet(QWidget *parent,
@@ -39,13 +41,18 @@ void AbstractSlidingWidgetSet::PerformAnimation() {
       pair.first->show();
     }
     is_set_open_ = true;
-
+    qDebug() << "Opened!";
     emit OpenAnimationComplete();
   } else {
     is_set_open_ = false;
+    qDebug() << "Closed!";
     emit CloseAnimationComplete();
   }
+
+  InvertAnimationParameters();
 }
+
+void AbstractSlidingWidgetSet::InvertAnimationParameters() {}
 
 AbstractSlidingWidgetSet::AnimationSet *
 AbstractSlidingWidgetSet::GetAnimationSet() {

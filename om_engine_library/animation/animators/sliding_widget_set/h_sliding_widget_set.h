@@ -22,6 +22,7 @@ class HSlidingWidgetSet : public AbstractSlidingWidgetSet {
 
  protected:
   void AppointAnimationParameters() override;
+  void InvertAnimationParameters() override;
 
  private:
   std::unique_ptr<AnimationValueSetter> value_setter_;
