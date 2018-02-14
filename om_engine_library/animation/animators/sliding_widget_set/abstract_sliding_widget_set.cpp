@@ -22,7 +22,11 @@ void AbstractSlidingWidgetSet::Add(QWidget *widget) {
 }
 
 void AbstractSlidingWidgetSet::SetAnimationDuration(
-    unsigned int duration_msec) {}
+    unsigned int duration_msec) {
+  for (auto &animation : animation_vector_) {
+    animation->setDuration(duration_msec);
+  }
+}
 
 void AbstractSlidingWidgetSet::UpdateWidgetSet() { ComposeAnimation(); }
 
