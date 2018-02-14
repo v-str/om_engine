@@ -32,9 +32,19 @@ class AbstractSlidingWidgetSet : public QObject {
  protected:
   virtual void ComposeAnimation() = 0;
 
+  QVector<QWidget*>* GetWidgetVector();
+  QVector<QPropertyAnimation*>* GetAnimationVector();
+  QVector<QRect>* GetOpenGeometryVector();
+  QVector<QRect>* GetCloseGeometryVector();
+
  private:
   void CloseAsNeeded(QWidget* widget);
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
+
+  QVector<QWidget*> widget_vector_;
+  QVector<QPropertyAnimation*> animation_vector_;
+  QVector<QRect> open_geometry_vector_;
+  QVector<QRect> close_geometry_vector_;
 
   QParallelAnimationGroup* animation_group_ = nullptr;
 

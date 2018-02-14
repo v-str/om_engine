@@ -29,6 +29,22 @@ bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_widget_set_open_; }
 
 void AbstractSlidingWidgetSet::PerformAnimation() {}
 
+QVector<QWidget *> *AbstractSlidingWidgetSet::GetWidgetVector() {
+  return &widget_vector_;
+}
+
+QVector<QPropertyAnimation *> *AbstractSlidingWidgetSet::GetAnimationVector() {
+  return &animation_vector_;
+}
+
+QVector<QRect> *AbstractSlidingWidgetSet::GetOpenGeometryVector() {
+  return &open_geometry_vector_;
+}
+
+QVector<QRect> *AbstractSlidingWidgetSet::GetCloseGeometryVector() {
+  return &close_geometry_vector_;
+}
+
 void AbstractSlidingWidgetSet::ComposeAnimation() {}
 
 void AbstractSlidingWidgetSet::CloseAsNeeded(QWidget *widget) {
