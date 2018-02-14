@@ -43,8 +43,6 @@ ClickButton *ButtonFrame::ClearButton() { return clear_button_; }
 
 ClickButton *ButtonFrame::GuideButton() { return guide_button_; }
 
-void ButtonFrame::Update() { widget_set_->UpdateWidgetSet(); }
-
 void ButtonFrame::ChangeGuideButtonText() {
   guide_button_->text() == "<-" ? guide_button_->setText("->")
                                 : guide_button_->setText("<-");

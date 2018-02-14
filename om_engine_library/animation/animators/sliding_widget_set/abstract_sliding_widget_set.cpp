@@ -33,11 +33,13 @@ void AbstractSlidingWidgetSet::SetAnimationDuration(
 
 void AbstractSlidingWidgetSet::UpdateWidgetSet() {
   AppointAnimationGeometries();
+  // AppointReverseAnimationGeometries();
 }
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_widget_set_open_; }
 
 void AbstractSlidingWidgetSet::PerformAnimation() {
+  UpdateWidgetSet();
   if (!is_widget_set_open_) {
     emit Open();
   }

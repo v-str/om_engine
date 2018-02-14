@@ -23,8 +23,6 @@ class ButtonFrame : public QFrame {
   ClickButton* ClearButton();
   ClickButton* GuideButton();
 
-  void Update();
-
  private slots:
   void ChangeGuideButtonText();
 
