@@ -17,7 +17,8 @@ class AbstractSlidingWidgetSet : public QObject {
  public:
   typedef QVector<QPair<QWidget*, QPropertyAnimation*>> AnimationSet;
 
-  AbstractSlidingWidgetSet(QWidget* parent = nullptr, bool is_set_open = false);
+  AbstractSlidingWidgetSet(QWidget* parent = nullptr,
+                           bool is_widget_set_open = false);
   virtual ~AbstractSlidingWidgetSet();
 
   void Add(QWidget* widget);
@@ -50,7 +51,7 @@ class AbstractSlidingWidgetSet : public QObject {
   QParallelAnimationGroup* animation_group_ = nullptr;
   AnimationSet animation_set_;
 
-  bool is_set_open_;
+  bool is_widget_set_open_;
 
   static const unsigned int kDefaultAnimationDurationMSec = 500;
 };

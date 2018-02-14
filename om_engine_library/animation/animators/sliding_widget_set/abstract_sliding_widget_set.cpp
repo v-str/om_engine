@@ -6,10 +6,10 @@
 using namespace om_animation;
 
 AbstractSlidingWidgetSet::AbstractSlidingWidgetSet(QWidget *parent,
-                                                   bool is_set_open)
+                                                   bool is_widget_set_open)
     : QObject(parent),
       animation_group_(new QParallelAnimationGroup(this)),
-      is_set_open_(is_set_open) {
+      is_widget_set_open_(is_widget_set_open) {
   connect(animation_group_, SIGNAL(finished()),
           SLOT(InvertAnimationParameters()));
 }
@@ -33,17 +33,17 @@ void AbstractSlidingWidgetSet::UpdateWidgetSet() {
   AppointAnimationParameters();
 }
 
-bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_set_open_; }
+bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_widget_set_open_; }
 
 void AbstractSlidingWidgetSet::PerformAnimation() {
   animation_group_->start();
-  if (!is_set_open_) {
+  if (!is_widget_set_open_) {
     for (auto &pair : animation_set_) {
       pair.first->show();
     }
     emit OpenAnimationComplete();
   }
-  if (is_set_open_) {
+  if (is_widget_set_open_) {
     emit CloseAnimationComplete();
   }
 }
@@ -56,7 +56,8 @@ void AbstractSlidingWidgetSet::InvertAnimationParameters() {
     pair.second->setStartValue(start_value);
     pair.second->setEndValue(end_value);
   }
-  is_set_open_ == false ? is_set_open_ = true : is_set_open_ = false;
+  is_widget_set_open_ == false ? is_widget_set_open_ = true
+                               : is_widget_set_open_ = false;
 }
 
 AbstractSlidingWidgetSet::AnimationSet *
@@ -67,7 +68,7 @@ AbstractSlidingWidgetSet::GetAnimationSet() {
 void AbstractSlidingWidgetSet::AppointAnimationParameters() {}
 
 void AbstractSlidingWidgetSet::CloseAsNeeded(QWidget *widget) {
-  if (!is_set_open_) {
+  if (!is_widget_set_open_) {
     widget->close();
   }
 }
