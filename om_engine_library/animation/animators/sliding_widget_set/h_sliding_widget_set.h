@@ -22,7 +22,6 @@ class HSlidingWidgetSet : public AbstractSlidingWidgetSet {
 
  protected:
   void SetDirectAnimation() override;
-  void SetReverseAnimation() override;
 
  private:
   std::unique_ptr<AnimationValueSetter> value_setter_;

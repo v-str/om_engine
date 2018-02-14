@@ -13,9 +13,9 @@ HSlidingWidgetSet::HSlidingWidgetSet(QWidget *parent,
                                      unsigned int distance_between_widgets_px,
                                      bool is_set_open)
     : AbstractSlidingWidgetSet(parent, is_set_open),
-      value_setter_(new HAnimationValueSetter(
-          GetDirectAnimationSet(), GetReverseAnimationSet(), slide_direction,
-          distance_between_widgets_px))
+      value_setter_(new HAnimationValueSetter(GetDirectAnimationSet(),
+                                              slide_direction,
+                                              distance_between_widgets_px))
 
 {}
 
@@ -25,5 +25,3 @@ void HSlidingWidgetSet::SetDirectAnimation() {
   value_setter_->SetDirectStartValue();
   value_setter_->SetDirectEndValue();
 }
-
-void HSlidingWidgetSet::SetReverseAnimation() {}

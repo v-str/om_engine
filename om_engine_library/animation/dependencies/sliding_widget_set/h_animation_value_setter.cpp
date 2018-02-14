@@ -6,10 +6,9 @@ using namespace om_animation;
 
 HAnimationValueSetter::HAnimationValueSetter(
     AnimationValueSetter::AnimationSet *direct_animation_set,
-    AnimationSet *reverse_animation_set, unsigned int slide_direction,
-    unsigned int distance_between_widgets_px)
-    : AnimationValueSetter(direct_animation_set, reverse_animation_set,
-                           slide_direction, distance_between_widgets_px) {}
+    unsigned int slide_direction, unsigned int distance_between_widgets_px)
+    : AnimationValueSetter(direct_animation_set, slide_direction,
+                           distance_between_widgets_px) {}
 
 HAnimationValueSetter::~HAnimationValueSetter() {}
 

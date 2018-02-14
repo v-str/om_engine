@@ -38,14 +38,11 @@ class AbstractSlidingWidgetSet : public QObject {
  private slots:
   void OpenAnimationSet();
   void CloseAnimationSet();
-  void CloseWidgetsForcibly();
 
  protected:
   virtual void SetDirectAnimation() = 0;
-  virtual void SetReverseAnimation() = 0;
 
   AnimationSet* GetDirectAnimationSet();
-  AnimationSet* GetReverseAnimationSet();
 
  private:
   void CloseAsNeeded(QWidget* widget);
@@ -53,13 +50,10 @@ class AbstractSlidingWidgetSet : public QObject {
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
 
   QParallelAnimationGroup* direct_animation_group_ = nullptr;
-  QParallelAnimationGroup* reverse_animation_group_ = nullptr;
 
   AnimationSet direct_animation_set_;
-  AnimationSet reverse_animation_set_;
 
   bool is_widget_set_open_ = false;
-  bool is_forcibly_closed_ = false;
 
   static const unsigned int kDefaultAnimationDurationMSec = 500;
 };
