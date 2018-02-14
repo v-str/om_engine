@@ -13,16 +13,17 @@ class HSlidingWidgetSet : public AbstractSlidingWidgetSet {
  public:
   enum SlideDirection { kFromLeftToRight, kFromRightToLeft };
 
-  HSlidingWidgetSet(QWidget* parent = nullptr,
+  HSlidingWidgetSet(QWidget* parent = nullptr, bool is_set_open = false,
                     SlideDirection slide_direction = kFromLeftToRight,
-                    unsigned int distance_between_widgets_px = 5,
-                    bool is_set_open = false);
+                    unsigned int distance_btw_widgets_px = 5);
   ~HSlidingWidgetSet();
 
  protected:
   void ComposeAnimation() override;
 
  private:
+  SlideDirection slide_direction_;
+  unsigned int distance_btw_widgets_px_;
 };
 }
 
