@@ -16,8 +16,6 @@ class AbstractSlidingWidgetSet : public QObject {
   Q_OBJECT
  public:
   typedef QVector<QPair<QWidget*, QPropertyAnimation*>> AnimationSet;
-  typedef QVector<QPair<QVariant, QVariant>> ReverseGeometryVector;
-  typedef QVector<QPair<QVariant, QVariant>> DirectGeometryVector;
 
   AbstractSlidingWidgetSet(QWidget* parent = nullptr,
                            bool is_widget_set_open = false);
@@ -40,23 +38,28 @@ class AbstractSlidingWidgetSet : public QObject {
  private slots:
   void OpenAnimationSet();
   void CloseAnimationSet();
+  void CloseWidgetsForcibly();
 
  protected:
-  virtual void SetAnimationGeometries() = 0;
+  virtual void SetDirectAnimation() = 0;
+  virtual void SetReverseAnimation() = 0;
 
-  AnimationSet* GetAnimationSet();
+  AnimationSet* GetDirectAnimationSet();
+  AnimationSet* GetReverseAnimationSet();
 
  private:
   void CloseAsNeeded(QWidget* widget);
   void ComposeAnimationPair(QWidget* widget);
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
 
-  QParallelAnimationGroup* animation_group_ = nullptr;
-  AnimationSet animation_set_;
-  ReverseGeometryVector reverse_geometry_vector_;
-  DirectGeometryVector direct_geometry_vector_;
+  QParallelAnimationGroup* direct_animation_group_ = nullptr;
+  QParallelAnimationGroup* reverse_animation_group_ = nullptr;
 
-  bool is_widget_set_open_;
+  AnimationSet direct_animation_set_;
+  AnimationSet reverse_animation_set_;
+
+  bool is_widget_set_open_ = false;
+  bool is_forcibly_closed_ = false;
 
   static const unsigned int kDefaultAnimationDurationMSec = 500;
 };

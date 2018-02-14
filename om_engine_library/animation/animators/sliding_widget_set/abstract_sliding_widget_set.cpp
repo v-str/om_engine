@@ -8,10 +8,13 @@ using namespace om_animation;
 AbstractSlidingWidgetSet::AbstractSlidingWidgetSet(QWidget *parent,
                                                    bool is_widget_set_open)
     : QObject(parent),
-      animation_group_(new QParallelAnimationGroup(this)),
+      direct_animation_group_(new QParallelAnimationGroup(this)),
+      reverse_animation_group_(new QParallelAnimationGroup(this)),
       is_widget_set_open_(is_widget_set_open) {
   connect(this, SIGNAL(Open()), SLOT(OpenAnimationSet()));
   connect(this, SIGNAL(Close()), SLOT(CloseAnimationSet()));
+  connect(reverse_animation_group_, SIGNAL(finished()),
+          SLOT(CloseWidgetsForcibly()));
 }
 
 AbstractSlidingWidgetSet::~AbstractSlidingWidgetSet() {}
@@ -19,17 +22,23 @@ AbstractSlidingWidgetSet::~AbstractSlidingWidgetSet() {}
 void AbstractSlidingWidgetSet::Add(QWidget *widget) {
   CloseAsNeeded(widget);
   ComposeAnimationPair(widget);
-  SetAnimationGeometries();
+  SetDirectAnimation();
 }
 
 void AbstractSlidingWidgetSet::SetAnimationDuration(
     unsigned int duration_msec) {
-  for (auto &pair : animation_set_) {
+  for (auto &pair : direct_animation_set_) {
+    pair.second->setDuration(duration_msec);
+  }
+  for (auto &pair : reverse_animation_set_) {
     pair.second->setDuration(duration_msec);
   }
 }
 
-void AbstractSlidingWidgetSet::UpdateWidgetSet() { SetAnimationGeometries(); }
+void AbstractSlidingWidgetSet::UpdateWidgetSet() {
+  SetDirectAnimation();
+  SetReverseAnimation();
+}
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_widget_set_open_; }
 
@@ -42,14 +51,36 @@ void AbstractSlidingWidgetSet::PerformAnimation() {
   }
 }
 
-void AbstractSlidingWidgetSet::OpenAnimationSet() {}
+void AbstractSlidingWidgetSet::OpenAnimationSet() {
+  direct_animation_group_->start();
 
-void AbstractSlidingWidgetSet::CloseAnimationSet() {}
+  for (auto &pair : direct_animation_set_) {
+    pair.first->show();
+  }
+
+  is_widget_set_open_ = true;
+}
+
+void AbstractSlidingWidgetSet::CloseAnimationSet() {
+  reverse_animation_group_->start();
+
+  is_widget_set_open_ = false;
+  is_forcibly_closed_ = true;
+}
 
 AbstractSlidingWidgetSet::AnimationSet *
-AbstractSlidingWidgetSet::GetAnimationSet() {
-  return &animation_set_;
+AbstractSlidingWidgetSet::GetDirectAnimationSet() {
+  return &direct_animation_set_;
 }
+
+AbstractSlidingWidgetSet::AnimationSet *
+AbstractSlidingWidgetSet::GetReverseAnimationSet() {
+  return &reverse_animation_set_;
+}
+
+void AbstractSlidingWidgetSet::SetReverseAnimation() {}
+
+void AbstractSlidingWidgetSet::SetDirectAnimation() {}
 
 void AbstractSlidingWidgetSet::CloseAsNeeded(QWidget *widget) {
   if (!is_widget_set_open_) {
@@ -58,10 +89,16 @@ void AbstractSlidingWidgetSet::CloseAsNeeded(QWidget *widget) {
 }
 
 void AbstractSlidingWidgetSet::ComposeAnimationPair(QWidget *widget) {
-  QPropertyAnimation *widget_animation = GetDefaultAnimation(widget);
-  animation_set_.push_back(
-      QPair<QWidget *, QPropertyAnimation *>(widget, widget_animation));
-  animation_group_->addAnimation(widget_animation);
+  QPropertyAnimation *direct_widget_animation = GetDefaultAnimation(widget);
+  QPropertyAnimation *reverse_widget_animation = GetDefaultAnimation(widget);
+
+  direct_animation_set_.push_back(
+      QPair<QWidget *, QPropertyAnimation *>(widget, direct_widget_animation));
+  direct_animation_group_->addAnimation(direct_widget_animation);
+
+  reverse_animation_set_.push_back(
+      QPair<QWidget *, QPropertyAnimation *>(widget, reverse_widget_animation));
+  reverse_animation_group_->addAnimation(reverse_widget_animation);
 }
 
 QPropertyAnimation *AbstractSlidingWidgetSet::GetDefaultAnimation(
@@ -73,4 +110,13 @@ QPropertyAnimation *AbstractSlidingWidgetSet::GetDefaultAnimation(
   animation->setEasingCurve(QEasingCurve::OutCirc);
 
   return animation;
+}
+
+void AbstractSlidingWidgetSet::CloseWidgetsForcibly() {
+  if (is_forcibly_closed_) {
+    for (auto &pair : reverse_animation_set_) {
+      pair.first->close();
+    }
+  }
+  is_forcibly_closed_ = false;
 }

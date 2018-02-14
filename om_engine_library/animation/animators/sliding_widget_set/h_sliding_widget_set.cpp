@@ -14,14 +14,17 @@ HSlidingWidgetSet::HSlidingWidgetSet(QWidget *parent,
                                      bool is_set_open)
     : AbstractSlidingWidgetSet(parent, is_set_open),
 
-      value_setter_(new HAnimationValueSetter(
-          GetAnimationSet(), slide_direction, distance_between_widgets_px))
+      value_setter_(new HAnimationValueSetter(GetDirectAnimationSet(),
+                                              slide_direction,
+                                              distance_between_widgets_px))
 
 {}
 
 HSlidingWidgetSet::~HSlidingWidgetSet() {}
 
-void HSlidingWidgetSet::SetAnimationGeometries() {
+void HSlidingWidgetSet::SetDirectAnimation() {
   value_setter_->SetStartValue();
   value_setter_->SetEndValue();
 }
+
+void HSlidingWidgetSet::SetReverseAnimation() {}
