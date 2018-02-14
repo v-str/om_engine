@@ -17,6 +17,7 @@ AbstractSlidingWidgetSet::~AbstractSlidingWidgetSet() {}
 
 void AbstractSlidingWidgetSet::Add(QWidget *widget) {
   CloseAsNeeded(widget);
+  AddToVectors(widget);
   ComposeAnimation();
 }
 
@@ -51,6 +52,15 @@ void AbstractSlidingWidgetSet::CloseAsNeeded(QWidget *widget) {
   if (!is_widget_set_open_) {
     widget->close();
   }
+}
+
+void AbstractSlidingWidgetSet::AddToVectors(QWidget *widget) {
+  widget_vector_.push_back(widget);
+
+  QPropertyAnimation *animation = GetDefaultAnimation(widget);
+  animation_vector_.push_back(animation);
+
+  animation_group_->addAnimation(animation);
 }
 
 QPropertyAnimation *AbstractSlidingWidgetSet::GetDefaultAnimation(

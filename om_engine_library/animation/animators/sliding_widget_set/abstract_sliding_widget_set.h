@@ -39,6 +39,7 @@ class AbstractSlidingWidgetSet : public QObject {
 
  private:
   void CloseAsNeeded(QWidget* widget);
+  void AddToVectors(QWidget* widget);
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
 
   QVector<QWidget*> widget_vector_;
