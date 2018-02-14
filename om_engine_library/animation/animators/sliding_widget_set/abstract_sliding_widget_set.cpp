@@ -10,6 +10,8 @@ AbstractSlidingWidgetSet::AbstractSlidingWidgetSet(QWidget *parent,
     : QObject(parent),
       animation_group_(new QParallelAnimationGroup(this)),
       is_widget_set_open_(is_widget_set_open) {
+  connect(this, SIGNAL(Open()), SLOT(OpenAnimationSet()));
+  connect(this, SIGNAL(Close()), SLOT(CloseAnimationSet()));
   connect(animation_group_, SIGNAL(finished()),
           SLOT(InvertAnimationParameters()));
 }
@@ -36,15 +38,11 @@ void AbstractSlidingWidgetSet::UpdateWidgetSet() {
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_widget_set_open_; }
 
 void AbstractSlidingWidgetSet::PerformAnimation() {
-  animation_group_->start();
   if (!is_widget_set_open_) {
-    for (auto &pair : animation_set_) {
-      pair.first->show();
-    }
-    emit OpenAnimationComplete();
+    emit Open();
   }
   if (is_widget_set_open_) {
-    emit CloseAnimationComplete();
+    emit Close();
   }
 }
 
@@ -59,6 +57,10 @@ void AbstractSlidingWidgetSet::InvertAnimationParameters() {
   is_widget_set_open_ == false ? is_widget_set_open_ = true
                                : is_widget_set_open_ = false;
 }
+
+void AbstractSlidingWidgetSet::OpenAnimationSet() {}
+
+void AbstractSlidingWidgetSet::CloseAnimationSet() {}
 
 AbstractSlidingWidgetSet::AnimationSet *
 AbstractSlidingWidgetSet::GetAnimationSet() {

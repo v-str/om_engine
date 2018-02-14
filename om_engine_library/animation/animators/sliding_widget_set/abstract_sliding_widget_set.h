@@ -29,14 +29,16 @@ class AbstractSlidingWidgetSet : public QObject {
   bool IsSetOpen() const;
 
  signals:
-  void OpenAnimationComplete();
-  void CloseAnimationComplete();
+  void Open();
+  void Close();
 
  public slots:
   void PerformAnimation();
 
  private slots:
   void InvertAnimationParameters();
+  void OpenAnimationSet();
+  void CloseAnimationSet();
 
  protected:
   virtual void AppointAnimationParameters() = 0;
@@ -47,6 +49,7 @@ class AbstractSlidingWidgetSet : public QObject {
   void CloseAsNeeded(QWidget* widget);
   void ComposeAnimationPair(QWidget* widget);
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
+  void SetAnimationState();
 
   QParallelAnimationGroup* animation_group_ = nullptr;
   AnimationSet animation_set_;
