@@ -15,8 +15,8 @@ ButtonFrame::ButtonFrame(QFrame *parent)
           this, HSlidingWidgetSet::kFromLeftToRight, 5, true)) {
   widget_set_->Add(open_button_);
   widget_set_->Add(close_button_);
-  widget_set_->Add(about_button_);
-  widget_set_->Add(clear_button_);
+  //  widget_set_->Add(about_button_);
+  //  widget_set_->Add(clear_button_);
   widget_set_->SetAnimationDuration(1000);
 
   if (widget_set_->IsSetOpen()) {

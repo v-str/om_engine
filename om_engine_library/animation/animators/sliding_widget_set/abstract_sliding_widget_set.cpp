@@ -21,7 +21,7 @@ AbstractSlidingWidgetSet::~AbstractSlidingWidgetSet() {}
 void AbstractSlidingWidgetSet::Add(QWidget *widget) {
   CloseAsNeeded(widget);
   ComposeAnimationPair(widget);
-  AppointAnimationParameters();
+  AppointAnimationGeometries();
 }
 
 void AbstractSlidingWidgetSet::SetAnimationDuration(
@@ -32,7 +32,7 @@ void AbstractSlidingWidgetSet::SetAnimationDuration(
 }
 
 void AbstractSlidingWidgetSet::UpdateWidgetSet() {
-  AppointAnimationParameters();
+  AppointAnimationGeometries();
 }
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_widget_set_open_; }
@@ -67,7 +67,7 @@ AbstractSlidingWidgetSet::GetAnimationSet() {
   return &animation_set_;
 }
 
-void AbstractSlidingWidgetSet::AppointAnimationParameters() {}
+void AbstractSlidingWidgetSet::AppointAnimationGeometries() {}
 
 void AbstractSlidingWidgetSet::CloseAsNeeded(QWidget *widget) {
   if (!is_widget_set_open_) {
