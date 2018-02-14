@@ -4,7 +4,6 @@
 #include <memory>
 
 #include <abstract_sliding_widget_set.h>
-#include <animation_value_setter.h>
 
 class QWidget;
 
@@ -21,10 +20,9 @@ class HSlidingWidgetSet : public AbstractSlidingWidgetSet {
   ~HSlidingWidgetSet();
 
  protected:
-  void SetDirectAnimation() override;
+  void ComposeAnimation() override;
 
  private:
-  std::unique_ptr<AnimationValueSetter> value_setter_;
 };
 }
 

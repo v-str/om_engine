@@ -15,8 +15,6 @@ namespace om_animation {
 class AbstractSlidingWidgetSet : public QObject {
   Q_OBJECT
  public:
-  typedef QVector<QPair<QWidget*, QPropertyAnimation*>> AnimationSet;
-
   AbstractSlidingWidgetSet(QWidget* parent = nullptr,
                            bool is_widget_set_open = false);
   virtual ~AbstractSlidingWidgetSet();
@@ -28,30 +26,17 @@ class AbstractSlidingWidgetSet : public QObject {
 
   bool IsSetOpen() const;
 
- signals:
-  void Open();
-  void Close();
-
  public slots:
   void PerformAnimation();
 
- private slots:
-  void OpenAnimationSet();
-  void CloseAnimationSet();
-
  protected:
-  virtual void SetDirectAnimation() = 0;
-
-  AnimationSet* GetDirectAnimationSet();
+  virtual void ComposeAnimation() = 0;
 
  private:
   void CloseAsNeeded(QWidget* widget);
-  void ComposeAnimationPair(QWidget* widget);
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
 
-  QParallelAnimationGroup* direct_animation_group_ = nullptr;
-
-  AnimationSet direct_animation_set_;
+  QParallelAnimationGroup* animation_group_ = nullptr;
 
   bool is_widget_set_open_ = false;
 
