@@ -21,7 +21,7 @@ HSlidingWidgetSet::HSlidingWidgetSet(QWidget *parent,
 
 HSlidingWidgetSet::~HSlidingWidgetSet() {}
 
-void HSlidingWidgetSet::AppointAnimationGeometries() {
+void HSlidingWidgetSet::SetAnimationGeometries() {
   value_setter_->SetStartValue();
   value_setter_->SetEndValue();
 }

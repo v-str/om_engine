@@ -19,7 +19,7 @@ AbstractSlidingWidgetSet::~AbstractSlidingWidgetSet() {}
 void AbstractSlidingWidgetSet::Add(QWidget *widget) {
   CloseAsNeeded(widget);
   ComposeAnimationPair(widget);
-  AppointAnimationGeometries();
+  SetAnimationGeometries();
 }
 
 void AbstractSlidingWidgetSet::SetAnimationDuration(
@@ -30,8 +30,8 @@ void AbstractSlidingWidgetSet::SetAnimationDuration(
 }
 
 void AbstractSlidingWidgetSet::UpdateWidgetSet() {
-  AppointAnimationGeometries();
-  // AppointReverseAnimationGeometries();
+  SetAnimationGeometries();
+  // SetReverseAnimationGeometries();
 }
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_widget_set_open_; }

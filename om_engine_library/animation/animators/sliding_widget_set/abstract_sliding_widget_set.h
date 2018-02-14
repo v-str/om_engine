@@ -42,7 +42,7 @@ class AbstractSlidingWidgetSet : public QObject {
   void CloseAnimationSet();
 
  protected:
-  virtual void AppointAnimationGeometries() = 0;
+  virtual void SetAnimationGeometries() = 0;
 
   AnimationSet* GetAnimationSet();
 
