@@ -16,6 +16,8 @@ class AbstractSlidingWidgetSet : public QObject {
   Q_OBJECT
  public:
   typedef QVector<QPair<QWidget*, QPropertyAnimation*>> AnimationSet;
+  typedef QVector<QPair<QVariant, QVariant>> ReverseGeometryVector;
+  typedef QVector<QPair<QVariant, QVariant>> DirectGeometryVector;
 
   AbstractSlidingWidgetSet(QWidget* parent = nullptr,
                            bool is_widget_set_open = false);
@@ -36,7 +38,6 @@ class AbstractSlidingWidgetSet : public QObject {
   void PerformAnimation();
 
  private slots:
-  void InvertAnimationParameters();
   void OpenAnimationSet();
   void CloseAnimationSet();
 
@@ -49,10 +50,11 @@ class AbstractSlidingWidgetSet : public QObject {
   void CloseAsNeeded(QWidget* widget);
   void ComposeAnimationPair(QWidget* widget);
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
-  void SetAnimationState();
 
   QParallelAnimationGroup* animation_group_ = nullptr;
   AnimationSet animation_set_;
+  ReverseGeometryVector reverse_geometry_vector_;
+  DirectGeometryVector direct_geometry_vector_;
 
   bool is_widget_set_open_;
 

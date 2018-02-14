@@ -12,8 +12,6 @@ AbstractSlidingWidgetSet::AbstractSlidingWidgetSet(QWidget *parent,
       is_widget_set_open_(is_widget_set_open) {
   connect(this, SIGNAL(Open()), SLOT(OpenAnimationSet()));
   connect(this, SIGNAL(Close()), SLOT(CloseAnimationSet()));
-  connect(animation_group_, SIGNAL(finished()),
-          SLOT(InvertAnimationParameters()));
 }
 
 AbstractSlidingWidgetSet::~AbstractSlidingWidgetSet() {}
@@ -48,18 +46,6 @@ void AbstractSlidingWidgetSet::PerformAnimation() {
   }
 }
 
-void AbstractSlidingWidgetSet::InvertAnimationParameters() {
-  for (auto &pair : animation_set_) {
-    QVariant start_value = pair.second->endValue();
-    QVariant end_value = pair.second->startValue();
-
-    pair.second->setStartValue(start_value);
-    pair.second->setEndValue(end_value);
-  }
-  is_widget_set_open_ == false ? is_widget_set_open_ = true
-                               : is_widget_set_open_ = false;
-}
-
 void AbstractSlidingWidgetSet::OpenAnimationSet() {}
 
 void AbstractSlidingWidgetSet::CloseAnimationSet() {}
@@ -68,8 +54,6 @@ AbstractSlidingWidgetSet::AnimationSet *
 AbstractSlidingWidgetSet::GetAnimationSet() {
   return &animation_set_;
 }
-
-void AbstractSlidingWidgetSet::AppointAnimationGeometries() {}
 
 void AbstractSlidingWidgetSet::CloseAsNeeded(QWidget *widget) {
   if (!is_widget_set_open_) {
