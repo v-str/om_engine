@@ -11,7 +11,8 @@ namespace om_animation {
 struct AnimationValueSetter {
   typedef QVector<QPair<QWidget*, QPropertyAnimation*>> AnimationSet;
 
-  AnimationValueSetter(AnimationSet* animation_set,
+  AnimationValueSetter(AnimationSet* direct_animation_set,
+                       AnimationSet* reverse_animation_set,
                        unsigned int slide_direction,
                        unsigned int distance_between_widgets_px);
   virtual ~AnimationValueSetter();
@@ -23,7 +24,8 @@ struct AnimationValueSetter {
   unsigned int slide_direction_ = 0;
   unsigned int start_x_pos_ = 0;
   unsigned int distance_between_widgets_px_ = 0;
-  AnimationSet* animation_set_ = nullptr;
+  AnimationSet* direct_animation_set_ = nullptr;
+  AnimationSet* reverse_animation_set_ = nullptr;
 };
 }
 

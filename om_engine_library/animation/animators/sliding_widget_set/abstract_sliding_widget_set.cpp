@@ -23,6 +23,7 @@ void AbstractSlidingWidgetSet::Add(QWidget *widget) {
   CloseAsNeeded(widget);
   ComposeAnimationPair(widget);
   SetDirectAnimation();
+  SetReverseAnimation();
 }
 
 void AbstractSlidingWidgetSet::SetAnimationDuration(
