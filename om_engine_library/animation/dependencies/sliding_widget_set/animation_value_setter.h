@@ -18,8 +18,8 @@ struct AnimationValueSetter {
   virtual ~AnimationValueSetter();
 
   virtual void DetermineStartXPosition() = 0;
-  virtual void SetStartValue() = 0;
-  virtual void SetEndValue() = 0;
+  virtual void SetDirectStartValue() = 0;
+  virtual void SetDirectEndValue() = 0;
 
   unsigned int slide_direction_ = 0;
   unsigned int start_x_pos_ = 0;

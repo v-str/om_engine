@@ -22,8 +22,8 @@ HSlidingWidgetSet::HSlidingWidgetSet(QWidget *parent,
 HSlidingWidgetSet::~HSlidingWidgetSet() {}
 
 void HSlidingWidgetSet::SetDirectAnimation() {
-  value_setter_->SetStartValue();
-  value_setter_->SetEndValue();
+  value_setter_->SetDirectStartValue();
+  value_setter_->SetDirectEndValue();
 }
 
 void HSlidingWidgetSet::SetReverseAnimation() {}

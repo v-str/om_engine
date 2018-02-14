@@ -27,7 +27,7 @@ void HAnimationValueSetter::DetermineStartXPosition() {
   }
 }
 
-void HAnimationValueSetter::SetStartValue() {
+void HAnimationValueSetter::SetDirectStartValue() {
   if (!direct_animation_set_->isEmpty()) {
     DetermineStartXPosition();
 
@@ -38,7 +38,7 @@ void HAnimationValueSetter::SetStartValue() {
   }
 }
 
-void HAnimationValueSetter::SetEndValue() {
+void HAnimationValueSetter::SetDirectEndValue() {
   if (!direct_animation_set_->isEmpty()) {
     if (slide_direction_ == kFromLeftToRight) {
       CalculateLeftToRightEndValue();
