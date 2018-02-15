@@ -21,9 +21,8 @@ class LinearAnimationGroup : public QObject {
   virtual ~LinearAnimationGroup();
 
   void Add(QWidget* widget);
-  void SetAnimationProperties(
-      unsigned int duration_msec = 500,
-      QEasingCurve animation_curve = QEasingCurve::OutCirc);
+  void SetAnimationProperties(unsigned int duration_msec,
+                              QEasingCurve animation_curve);
 
   void UpdateWidgetSet();
 

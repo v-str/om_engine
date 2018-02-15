@@ -20,7 +20,7 @@ ButtonFrame::ButtonFrame(QFrame *parent)
   // widget_set_->Add(close_button_);
   //  widget_set_->Add(about_button_);
   //  widget_set_->Add(clear_button_);
-  widget_set_->SetAnimationProperties(200);
+  widget_set_->SetAnimationProperties(200, QEasingCurve::OutCirc);
 
   if (widget_set_->IsSetOpen()) {
     guide_button_->setText("<-");
