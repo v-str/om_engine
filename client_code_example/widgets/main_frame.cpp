@@ -40,7 +40,6 @@ void MainFrame::ClearTestLabel() {
 }
 
 void MainFrame::SetWidgets() {
-  WidgetCustomizer::CustomizeButtonFrame(button_frame_);
   WidgetCustomizer::CustomizeTestLabel(main_label_, GetMainLabel());
   resize(500, 300);
 }

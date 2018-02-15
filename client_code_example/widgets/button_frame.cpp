@@ -1,6 +1,7 @@
 ﻿#include <button_frame.h>
 
 #include <h_sliding_widget_set.h>
+#include <widget_customizer.h>
 
 using namespace client_code;
 
@@ -13,6 +14,8 @@ ButtonFrame::ButtonFrame(QFrame *parent)
       clear_button_(new ClickButton("Clear", this)),
       widget_set_(new HSlidingWidgetSet(
           this, true, HSlidingWidgetSet::kFromLeftToRight, 5)) {
+  WidgetCustomizer::CustomizeButtonFrame(this);
+
   widget_set_->Add(open_button_);
   // widget_set_->Add(close_button_);
   //  widget_set_->Add(about_button_);
