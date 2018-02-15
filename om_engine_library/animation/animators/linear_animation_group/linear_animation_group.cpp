@@ -9,30 +9,35 @@ using namespace om_animation;
 
 LinearAnimationGroup::LinearAnimationGroup(QWidget *parent,
                                            bool is_widget_set_open)
-    : QObject(parent), is_widget_set_open_(is_widget_set_open) {}
+    : QObject(parent),
+      is_widget_set_open_(is_widget_set_open),
+      animation_group_(new QParallelAnimationGroup(this)) {
+  connect(animation_group_, SIGNAL(finished()), SLOT(CloseAfterAnimation()));
+}
 
-LinearAnimationGroup::~LinearAnimationGroup() {}
+LinearAnimationGroup::~LinearAnimationGroup() {
+  if (!geometries_.isEmpty()) {
+    for (auto &geometry_pair : geometries_) {
+      delete geometry_pair;
+    }
+  }
+}
 
 void LinearAnimationGroup::Add(QWidget *widget) {
   CloseAsNeeded(widget);
-
-  widget_ = widget;
-
-  animation_ = new QPropertyAnimation(widget, "geometry", this);
-  animation_->setEasingCurve(QEasingCurve::OutCirc);
-  animation_->setDuration(kDefaultAnimationDurationMSec);
-
-  connect(animation_, SIGNAL(finished()), SLOT(CloseAfterAnimation()));
+  AddDependencies(widget);
 }
 
 void LinearAnimationGroup::SetAnimationProperties(
     unsigned int duration_msec, QEasingCurve animation_curve) {
-  animation_->setDuration(duration_msec);
-  animation_->setEasingCurve(animation_curve);
+  for (auto &animation : animations_) {
+    animation->setDuration(duration_msec);
+    animation->setEasingCurve(animation_curve);
+  }
 }
 
 void LinearAnimationGroup::UpdateWidgetSet() {
-  geometry_ = widget_->geometry();
+  ResetGeometries();
   ComposeAnimation();
 }
 
@@ -41,27 +46,23 @@ bool LinearAnimationGroup::IsSetOpen() const { return is_widget_set_open_; }
 void LinearAnimationGroup::PerformAnimation() {
   UpdateWidgetSet();
   if (!is_widget_set_open_) {
-    animation_->setStartValue(CloseGeometry());
-    animation_->setEndValue(OpenGeometry());
-    animation_->start();
-    widget_->show();
-    is_widget_set_open_ = true;
   } else {
-    animation_->setStartValue(OpenGeometry());
-    animation_->setEndValue(CloseGeometry());
-    animation_->start();
-    is_need_to_close_ = true;
-    is_widget_set_open_ = false;
   }
 }
 
 void LinearAnimationGroup::CloseAfterAnimation() {
-  if (is_need_to_close_) {
-    widget_->close();
-  }
+  // close
+
   // restore correct geometry
-  widget_->setGeometry(geometry_);
+  // widget_->setGeometry(geometry_);
   is_need_to_close_ = false;
+}
+
+void LinearAnimationGroup::ResetGeometries() {
+  for (size_t i = 0; i < widgets_.size(); ++i) {
+    geometries_.at(i)->first = widgets_.at(i)->geometry();
+    geometries_.at(i)->second = widgets_.at(i)->geometry();
+  }
 }
 
 void LinearAnimationGroup::ComposeAnimation() {}
@@ -72,6 +73,15 @@ void LinearAnimationGroup::CloseAsNeeded(QWidget *widget) {
   }
 }
 
+void LinearAnimationGroup::AddDependencies(QWidget *widget) {
+  widgets_.push_back(widget);
+  geometries_.push_back(
+      new QPair<QRect, QRect>(widget->geometry(), widget->geometry()));
+  QPropertyAnimation *animation = GetDefaultAnimation(widget);
+  animations_.push_back(animation);
+  animation_group_->addAnimation(animation);
+}
+
 QPropertyAnimation *LinearAnimationGroup::GetDefaultAnimation(QWidget *widget) {
   QPropertyAnimation *animation =
       new QPropertyAnimation(widget, "geometry", this);
@@ -80,12 +90,4 @@ QPropertyAnimation *LinearAnimationGroup::GetDefaultAnimation(QWidget *widget) {
   animation->setEasingCurve(QEasingCurve::OutCirc);
 
   return animation;
-}
-
-QRect LinearAnimationGroup::OpenGeometry() { return geometry_; }
-
-QRect LinearAnimationGroup::CloseGeometry() {
-  QRect temp_rect = geometry_;
-  temp_rect.setWidth(0);
-  return temp_rect;
 }

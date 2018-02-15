@@ -39,21 +39,16 @@ class LinearAnimationGroup : public QObject {
   virtual void ComposeAnimation() = 0;
 
  private:
+  void ResetGeometries();
   void CloseAsNeeded(QWidget* widget);
+  void AddDependencies(QWidget* widget);
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
 
-  QRect OpenGeometry();
-  QRect CloseGeometry();
+  QVector<QWidget*> widgets_;
+  QVector<QPair<QRect, QRect>*> geometries_;
+  QVector<QPropertyAnimation*> animations_;
 
-  QPropertyAnimation* animation_ = nullptr;
-
-  QRect geometry_;
-
-  QWidget* widget_ = nullptr;
-
-  //
-  //
-  //
+  QParallelAnimationGroup* animation_group_ = nullptr;
 
   bool is_widget_set_open_ = false;
   bool is_need_to_close_ = false;
