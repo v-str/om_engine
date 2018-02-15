@@ -3,8 +3,8 @@
 
 #include <QFrame>
 
-#include <abstract_sliding_widget_set.h>
 #include <click_button.h>
+#include <linear_animation_group.h>
 
 namespace client_code {
 
@@ -33,7 +33,7 @@ class ButtonFrame : public QFrame {
   ClickButton* about_button_ = nullptr;
   ClickButton* clear_button_ = nullptr;
 
-  AbstractSlidingWidgetSet* widget_set_ = nullptr;
+  LinearAnimationGroup* widget_set_ = nullptr;
 };
 }
 

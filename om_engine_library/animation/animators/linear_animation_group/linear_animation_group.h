@@ -1,5 +1,5 @@
-﻿#ifndef ABSTRACT_SLIDING_WIDGET_SET_H
-#define ABSTRACT_SLIDING_WIDGET_SET_H
+﻿#ifndef LINEAR_ANIMATION_GROUP_H
+#define LINEAR_ANIMATION_GROUP_H
 
 #include <QEasingCurve>
 #include <QObject>
@@ -13,12 +13,12 @@ class QWidget;
 
 namespace om_animation {
 
-class AbstractSlidingWidgetSet : public QObject {
+class LinearAnimationGroup : public QObject {
   Q_OBJECT
  public:
-  AbstractSlidingWidgetSet(QWidget* parent = nullptr,
-                           bool is_widget_set_open = false);
-  virtual ~AbstractSlidingWidgetSet();
+  LinearAnimationGroup(QWidget* parent = nullptr,
+                       bool is_widget_set_open = false);
+  virtual ~LinearAnimationGroup();
 
   void Add(QWidget* widget);
   void SetAnimationProperties(
@@ -62,4 +62,4 @@ class AbstractSlidingWidgetSet : public QObject {
 };
 }
 
-#endif  // ABSTRACT_SLIDING_WIDGET_SET_H
+#endif  // LINEAR_ANIMATION_GROUP_H

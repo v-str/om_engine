@@ -1,6 +1,6 @@
 ﻿#include <button_frame.h>
 
-#include <h_sliding_widget_set.h>
+#include <h_linear_animation_group.h>
 #include <widget_customizer.h>
 
 using namespace client_code;
@@ -12,8 +12,8 @@ ButtonFrame::ButtonFrame(QFrame *parent)
       close_button_(new ClickButton("Close", this)),
       about_button_(new ClickButton("About", this)),
       clear_button_(new ClickButton("Clear", this)),
-      widget_set_(new HSlidingWidgetSet(
-          this, false, HSlidingWidgetSet::kFromLeftToRight, 5)) {
+      widget_set_(new HLinearAnimationGroup(
+          this, false, HLinearAnimationGroup::kFromLeftToRight, 5)) {
   WidgetCustomizer::CustomizeButtonFrame(this);
 
   widget_set_->Add(open_button_);
