@@ -38,7 +38,7 @@ class LinearAnimationGroup : public QObject {
   virtual void ComposeAnimation() = 0;
 
   QVector<QWidget*>* GetWidgets();
-  QVector<QPair<QRect, QRect>*>* GetGeometryPair();
+  QVector<QPair<QRect, QRect>>* GetGeometryPair();
 
  private:
   void ResetGeometries();
@@ -47,7 +47,7 @@ class LinearAnimationGroup : public QObject {
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
 
   QVector<QWidget*> widgets_;
-  QVector<QPair<QRect, QRect>*> geometries_;
+  QVector<QPair<QRect, QRect>> geometries_;
   QVector<QPropertyAnimation*> animations_;
 
   QParallelAnimationGroup* animation_group_ = nullptr;

@@ -24,6 +24,9 @@ class HLinearAnimationGroup : public LinearAnimationGroup {
 
  private:
   void MakeCopy();
+  void CalculateFromLeftToRight();
+  void CalculateFromRightToLeft();
+  void ReassignGeometry();
 
   SlideDirection slide_direction_;
   unsigned int distance_btw_widgets_px_;

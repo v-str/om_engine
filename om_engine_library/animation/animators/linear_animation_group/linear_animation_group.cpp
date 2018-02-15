@@ -15,13 +15,7 @@ LinearAnimationGroup::LinearAnimationGroup(QWidget *parent,
   connect(animation_group_, SIGNAL(finished()), SLOT(CloseAfterAnimation()));
 }
 
-LinearAnimationGroup::~LinearAnimationGroup() {
-  if (!geometries_.isEmpty()) {
-    for (auto &geometry_pair : geometries_) {
-      delete geometry_pair;
-    }
-  }
-}
+LinearAnimationGroup::~LinearAnimationGroup() {}
 
 void LinearAnimationGroup::Add(QWidget *widget) {
   CloseAsNeeded(widget);
@@ -46,7 +40,27 @@ bool LinearAnimationGroup::IsSetOpen() const { return is_widget_set_open_; }
 void LinearAnimationGroup::PerformAnimation() {
   UpdateWidgetSet();
   if (!is_widget_set_open_) {
+    for (size_t i = 0; i < widgets_.size(); ++i) {
+      animations_[i]->setStartValue(geometries_.at(i).second);
+      animations_[i]->setEndValue(geometries_.at(i).first);
+    }
+    animation_group_->start();
+
+    for (auto &widget : widgets_) {
+      widget->show();
+    }
+
+    is_widget_set_open_ = true;
+
   } else {
+    for (size_t i = 0; i < widgets_.size(); ++i) {
+      animations_[i]->setStartValue(geometries_.at(i).first);
+      animations_[i]->setEndValue(geometries_.at(i).second);
+    }
+    animation_group_->start();
+
+    is_widget_set_open_ = false;
+    is_need_to_close_ = true;
   }
 }
 
@@ -55,19 +69,25 @@ void LinearAnimationGroup::CloseAfterAnimation() {
 
   // restore correct geometry
   // widget_->setGeometry(geometry_);
+  if (is_need_to_close_) {
+    for (size_t i = 0; i < widgets_.size(); ++i) {
+      widgets_[i]->close();
+      widgets_[i]->setGeometry(geometries_[i].first);
+    }
+  }
   is_need_to_close_ = false;
 }
 
 QVector<QWidget *> *LinearAnimationGroup::GetWidgets() { return &widgets_; }
 
-QVector<QPair<QRect, QRect> *> *LinearAnimationGroup::GetGeometryPair() {
+QVector<QPair<QRect, QRect> > *LinearAnimationGroup::GetGeometryPair() {
   return &geometries_;
 }
 
 void LinearAnimationGroup::ResetGeometries() {
   for (size_t i = 0; i < widgets_.size(); ++i) {
-    geometries_.at(i)->first = widgets_.at(i)->geometry();
-    geometries_.at(i)->second = widgets_.at(i)->geometry();
+    geometries_[i].first = widgets_.at(i)->geometry();
+    geometries_[i].second = widgets_.at(i)->geometry();
   }
 }
 
@@ -82,7 +102,7 @@ void LinearAnimationGroup::CloseAsNeeded(QWidget *widget) {
 void LinearAnimationGroup::AddDependencies(QWidget *widget) {
   widgets_.push_back(widget);
   geometries_.push_back(
-      new QPair<QRect, QRect>(widget->geometry(), widget->geometry()));
+      QPair<QRect, QRect>(widget->geometry(), widget->geometry()));
   QPropertyAnimation *animation = GetDefaultAnimation(widget);
   animations_.push_back(animation);
   animation_group_->addAnimation(animation);
