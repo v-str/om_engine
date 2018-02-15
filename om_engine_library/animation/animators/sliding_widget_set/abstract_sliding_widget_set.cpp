@@ -48,7 +48,6 @@ void AbstractSlidingWidgetSet::PerformAnimation() {
     widget_->show();
     is_widget_set_open_ = true;
   } else {
-    qDebug() << "before w: " << widget_->width();
     animation_->setStartValue(OpenGeometry());
     animation_->setEndValue(CloseGeometry());
     animation_->start();
@@ -61,15 +60,8 @@ void AbstractSlidingWidgetSet::CloseAfterAnimation() {
   if (is_need_to_close_) {
     widget_->close();
   }
-  qDebug() << "\n\t in startValue() w: "
-           << animation_->startValue().toRect().width();
-  qDebug() << "\t in endValue() w: " << animation_->endValue().toRect().width()
-           << "\n";
-
   // restore correct geometry
   widget_->setGeometry(geometry_);
-
-  qDebug() << "after w: " << widget_->width();
   is_need_to_close_ = false;
 }
 
