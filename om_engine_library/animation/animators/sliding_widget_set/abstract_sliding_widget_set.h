@@ -51,6 +51,10 @@ class AbstractSlidingWidgetSet : public QObject {
 
   QWidget* widget_ = nullptr;
 
+  //
+  //
+  //
+
   bool is_widget_set_open_ = false;
   bool is_need_to_close_ = false;
 

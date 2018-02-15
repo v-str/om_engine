@@ -18,8 +18,6 @@ void AbstractSlidingWidgetSet::Add(QWidget *widget) {
 
   widget_ = widget;
 
-  geometry_ = widget->geometry();
-
   animation_ = new QPropertyAnimation(widget, "geometry", this);
   animation_->setEasingCurve(QEasingCurve::OutCirc);
   animation_->setDuration(kDefaultAnimationDurationMSec);
@@ -35,6 +33,7 @@ void AbstractSlidingWidgetSet::SetAnimationProperties(
 
 void AbstractSlidingWidgetSet::UpdateWidgetSet() {
   geometry_ = widget_->geometry();
+  ComposeAnimation();
 }
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_widget_set_open_; }
