@@ -21,15 +21,16 @@ void AbstractSlidingWidgetSet::Add(QWidget *widget) {
   geometry_ = widget->geometry();
 
   animation_ = new QPropertyAnimation(widget, "geometry", this);
-  animation_->setEasingCurve(QEasingCurve::OutBounce);
+  animation_->setEasingCurve(QEasingCurve::OutCirc);
   animation_->setDuration(kDefaultAnimationDurationMSec);
 
   connect(animation_, SIGNAL(finished()), SLOT(CloseAfterAnimation()));
 }
 
-void AbstractSlidingWidgetSet::SetAnimationDuration(
-    unsigned int duration_msec) {
+void AbstractSlidingWidgetSet::SetAnimationProperties(
+    unsigned int duration_msec, QEasingCurve animation_curve) {
   animation_->setDuration(duration_msec);
+  animation_->setEasingCurve(animation_curve);
 }
 
 void AbstractSlidingWidgetSet::UpdateWidgetSet() {
@@ -65,6 +66,7 @@ void AbstractSlidingWidgetSet::CloseAfterAnimation() {
   qDebug() << "\t in endValue() w: " << animation_->endValue().toRect().width()
            << "\n";
 
+  // restore correct geometry
   widget_->setGeometry(geometry_);
 
   qDebug() << "after w: " << widget_->width();

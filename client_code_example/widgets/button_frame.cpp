@@ -13,14 +13,14 @@ ButtonFrame::ButtonFrame(QFrame *parent)
       about_button_(new ClickButton("About", this)),
       clear_button_(new ClickButton("Clear", this)),
       widget_set_(new HSlidingWidgetSet(
-          this, true, HSlidingWidgetSet::kFromLeftToRight, 5)) {
+          this, false, HSlidingWidgetSet::kFromLeftToRight, 5)) {
   WidgetCustomizer::CustomizeButtonFrame(this);
 
   widget_set_->Add(open_button_);
   // widget_set_->Add(close_button_);
   //  widget_set_->Add(about_button_);
   //  widget_set_->Add(clear_button_);
-  widget_set_->SetAnimationDuration(1000);
+  widget_set_->SetAnimationProperties(200);
 
   if (widget_set_->IsSetOpen()) {
     guide_button_->setText("<-");

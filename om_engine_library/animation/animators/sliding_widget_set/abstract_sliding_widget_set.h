@@ -21,7 +21,9 @@ class AbstractSlidingWidgetSet : public QObject {
   virtual ~AbstractSlidingWidgetSet();
 
   void Add(QWidget* widget);
-  void SetAnimationDuration(unsigned int duration_msec);
+  void SetAnimationProperties(
+      unsigned int duration_msec = 500,
+      QEasingCurve animation_curve = QEasingCurve::OutCirc);
 
   void UpdateWidgetSet();
 
