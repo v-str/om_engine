@@ -4,6 +4,7 @@
 #include <QPushButton>
 
 #include <offset_distance.h>
+#include <widgets_utility.h>
 
 namespace om_widgets {
 
