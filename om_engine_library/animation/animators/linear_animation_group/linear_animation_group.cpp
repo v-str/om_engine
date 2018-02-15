@@ -58,6 +58,12 @@ void LinearAnimationGroup::CloseAfterAnimation() {
   is_need_to_close_ = false;
 }
 
+QVector<QWidget *> *LinearAnimationGroup::GetWidgets() { return &widgets_; }
+
+QVector<QPair<QRect, QRect> *> *LinearAnimationGroup::GetGeometryPair() {
+  return &geometries_;
+}
+
 void LinearAnimationGroup::ResetGeometries() {
   for (size_t i = 0; i < widgets_.size(); ++i) {
     geometries_.at(i)->first = widgets_.at(i)->geometry();

@@ -38,6 +38,9 @@ class LinearAnimationGroup : public QObject {
  protected:
   virtual void ComposeAnimation() = 0;
 
+  QVector<QWidget*>* GetWidgets();
+  QVector<QPair<QRect, QRect>*>* GetGeometryPair();
+
  private:
   void ResetGeometries();
   void CloseAsNeeded(QWidget* widget);
