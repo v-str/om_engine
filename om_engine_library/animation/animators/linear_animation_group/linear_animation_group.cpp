@@ -38,37 +38,36 @@ void LinearAnimationGroup::UpdateWidgetSet() {
 bool LinearAnimationGroup::IsSetOpen() const { return is_widget_set_open_; }
 
 void LinearAnimationGroup::PerformAnimation() {
-  UpdateWidgetSet();
-  if (!is_widget_set_open_) {
-    for (size_t i = 0; i < widgets_.size(); ++i) {
-      animations_[i]->setStartValue(geometries_.at(i).second);
-      animations_[i]->setEndValue(geometries_.at(i).first);
+  if (!is_animation_running_) {
+    is_animation_running_ = true;
+    UpdateWidgetSet();
+    if (!is_widget_set_open_) {
+      for (size_t i = 0; i < widgets_.size(); ++i) {
+        animations_[i]->setStartValue(geometries_.at(i).second);
+        animations_[i]->setEndValue(geometries_.at(i).first);
+      }
+      animation_group_->start();
+
+      for (auto &widget : widgets_) {
+        widget->show();
+      }
+
+      is_widget_set_open_ = true;
+
+    } else {
+      for (size_t i = 0; i < widgets_.size(); ++i) {
+        animations_[i]->setStartValue(geometries_.at(i).first);
+        animations_[i]->setEndValue(geometries_.at(i).second);
+      }
+      animation_group_->start();
+
+      is_widget_set_open_ = false;
+      is_need_to_close_ = true;
     }
-    animation_group_->start();
-
-    for (auto &widget : widgets_) {
-      widget->show();
-    }
-
-    is_widget_set_open_ = true;
-
-  } else {
-    for (size_t i = 0; i < widgets_.size(); ++i) {
-      animations_[i]->setStartValue(geometries_.at(i).first);
-      animations_[i]->setEndValue(geometries_.at(i).second);
-    }
-    animation_group_->start();
-
-    is_widget_set_open_ = false;
-    is_need_to_close_ = true;
   }
 }
 
 void LinearAnimationGroup::CloseAfterAnimation() {
-  // close
-
-  // restore correct geometry
-  // widget_->setGeometry(geometry_);
   if (is_need_to_close_) {
     for (size_t i = 0; i < widgets_.size(); ++i) {
       widgets_[i]->close();
@@ -76,6 +75,7 @@ void LinearAnimationGroup::CloseAfterAnimation() {
     }
   }
   is_need_to_close_ = false;
+  is_animation_running_ = false;
 }
 
 QVector<QWidget *> *LinearAnimationGroup::GetWidgets() { return &widgets_; }

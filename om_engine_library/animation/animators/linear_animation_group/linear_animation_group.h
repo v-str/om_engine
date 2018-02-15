@@ -54,6 +54,7 @@ class LinearAnimationGroup : public QObject {
 
   bool is_widget_set_open_ = false;
   bool is_need_to_close_ = false;
+  bool is_animation_running_ = false;
 
   static const unsigned int kDefaultAnimationDurationMSec = 500;
 };
