@@ -1,7 +1,8 @@
 ﻿#ifndef H_LINEAR_ANIMATION_GROUP_H
 #define H_LINEAR_ANIMATION_GROUP_H
 
-#include <memory>
+#include <QRect>
+#include <QVector>
 
 #include <linear_animation_group.h>
 
@@ -22,8 +23,13 @@ class HLinearAnimationGroup : public LinearAnimationGroup {
   void ComposeAnimation() override;
 
  private:
+  void MakeCopy();
+
   SlideDirection slide_direction_;
   unsigned int distance_btw_widgets_px_;
+
+  QVector<QRect> opening_geometry_;
+  QVector<QRect> closing_geometry_;
 };
 }
 
