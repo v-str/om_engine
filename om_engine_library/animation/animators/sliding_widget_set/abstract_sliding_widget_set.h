@@ -6,6 +6,7 @@
 #include <QPair>
 #include <QParallelAnimationGroup>
 #include <QPropertyAnimation>
+#include <QRect>
 #include <QVector>
 
 class QWidget;
@@ -29,27 +30,27 @@ class AbstractSlidingWidgetSet : public QObject {
  public slots:
   void PerformAnimation();
 
+ private slots:
+  void CloseAfterAnimation();
+
  protected:
   virtual void ComposeAnimation() = 0;
 
-  QVector<QWidget*>* GetWidgetVector();
-  QVector<QPropertyAnimation*>* GetAnimationVector();
-  QVector<QRect*>* GetOpenGeometryVector();
-  QVector<QRect*>* GetCloseGeometryVector();
-
  private:
   void CloseAsNeeded(QWidget* widget);
-  void AddToVectors(QWidget* widget);
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
 
-  QVector<QWidget*> widget_vector_;
-  QVector<QPropertyAnimation*> animation_vector_;
-  QVector<QRect*> open_geometry_vector_;
-  QVector<QRect*> close_geometry_vector_;
+  QRect OpenGeometry();
+  QRect CloseGeometry();
 
-  QParallelAnimationGroup* animation_group_ = nullptr;
+  QPropertyAnimation* animation_ = nullptr;
+
+  QRect geometry_;
+
+  QWidget* widget_ = nullptr;
 
   bool is_widget_set_open_ = false;
+  bool is_need_to_close_ = false;
 
   static const unsigned int kDefaultAnimationDurationMSec = 500;
 };

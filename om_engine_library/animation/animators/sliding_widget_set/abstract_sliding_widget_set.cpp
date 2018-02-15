@@ -9,71 +9,56 @@ using namespace om_animation;
 
 AbstractSlidingWidgetSet::AbstractSlidingWidgetSet(QWidget *parent,
                                                    bool is_widget_set_open)
-    : QObject(parent),
-      animation_group_(new QParallelAnimationGroup(this)),
-      is_widget_set_open_(is_widget_set_open) {}
+    : QObject(parent), is_widget_set_open_(is_widget_set_open) {}
 
-AbstractSlidingWidgetSet::~AbstractSlidingWidgetSet() {
-  if (close_geometry_vector_.size() == open_geometry_vector_.size()) {
-    for (size_t i = 0; i < close_geometry_vector_.size(); ++i) {
-      delete close_geometry_vector_.at(i);
-      delete open_geometry_vector_.at(i);
-    }
-  } else {
-    for (size_t i = 0; i < close_geometry_vector_.size(); ++i) {
-      delete close_geometry_vector_.at(i);
-    }
-    for (size_t i = 0; i < open_geometry_vector_.size(); ++i) {
-      delete open_geometry_vector_.at(i);
-    }
-  }
-}
+AbstractSlidingWidgetSet::~AbstractSlidingWidgetSet() {}
 
 void AbstractSlidingWidgetSet::Add(QWidget *widget) {
   CloseAsNeeded(widget);
-  AddToVectors(widget);
-  ComposeAnimation();
+
+  widget_ = widget;
+
+  geometry_ = widget->geometry();
+
+  animation_ = new QPropertyAnimation(widget, "geometry", this);
+  animation_->setEasingCurve(QEasingCurve::OutBounce);
+  animation_->setDuration(kDefaultAnimationDurationMSec);
+
+  connect(animation_, SIGNAL(finished()), SLOT(CloseAfterAnimation()));
 }
 
 void AbstractSlidingWidgetSet::SetAnimationDuration(
     unsigned int duration_msec) {
-  for (auto &animation : animation_vector_) {
-    animation->setDuration(duration_msec);
-  }
+  animation_->setDuration(duration_msec);
 }
 
-void AbstractSlidingWidgetSet::UpdateWidgetSet() { ComposeAnimation(); }
+void AbstractSlidingWidgetSet::UpdateWidgetSet() {
+  geometry_ = widget_->geometry();
+}
 
 bool AbstractSlidingWidgetSet::IsSetOpen() const { return is_widget_set_open_; }
 
 void AbstractSlidingWidgetSet::PerformAnimation() {
-  UpdateWidgetSet();
   if (!is_widget_set_open_) {
-    for (size_t i = 0; i < animation_vector_.size(); ++i) {
-      animation_vector_.at(i)->setStartValue(*(close_geometry_vector_.at(i)));
-      animation_vector_.at(i)->setEndValue(*(open_geometry_vector_.at(i)));
-    }
-    animation_group_->start();
-    for (auto &elem : widget_vector_) {
-      elem->show();
-    }
+    animation_->setStartValue(CloseGeometry());
+    animation_->setEndValue(OpenGeometry());
+    animation_->start();
+    widget_->show();
+    is_widget_set_open_ = true;
+  } else {
+    animation_->setStartValue(OpenGeometry());
+    animation_->setEndValue(CloseGeometry());
+    animation_->start();
+    is_need_to_close_ = true;
+    is_widget_set_open_ = false;
   }
 }
 
-QVector<QWidget *> *AbstractSlidingWidgetSet::GetWidgetVector() {
-  return &widget_vector_;
-}
-
-QVector<QPropertyAnimation *> *AbstractSlidingWidgetSet::GetAnimationVector() {
-  return &animation_vector_;
-}
-
-QVector<QRect *> *AbstractSlidingWidgetSet::GetOpenGeometryVector() {
-  return &open_geometry_vector_;
-}
-
-QVector<QRect *> *AbstractSlidingWidgetSet::GetCloseGeometryVector() {
-  return &close_geometry_vector_;
+void AbstractSlidingWidgetSet::CloseAfterAnimation() {
+  if (is_need_to_close_) {
+    widget_->close();
+  }
+  is_need_to_close_ = false;
 }
 
 void AbstractSlidingWidgetSet::ComposeAnimation() {}
@@ -82,18 +67,6 @@ void AbstractSlidingWidgetSet::CloseAsNeeded(QWidget *widget) {
   if (!is_widget_set_open_) {
     widget->close();
   }
-}
-
-void AbstractSlidingWidgetSet::AddToVectors(QWidget *widget) {
-  widget_vector_.push_back(widget);
-
-  QPropertyAnimation *animation = GetDefaultAnimation(widget);
-  animation_vector_.push_back(animation);
-
-  open_geometry_vector_.push_back(new QRect());
-  close_geometry_vector_.push_back(new QRect());
-
-  animation_group_->addAnimation(animation);
 }
 
 QPropertyAnimation *AbstractSlidingWidgetSet::GetDefaultAnimation(
@@ -105,4 +78,12 @@ QPropertyAnimation *AbstractSlidingWidgetSet::GetDefaultAnimation(
   animation->setEasingCurve(QEasingCurve::OutCirc);
 
   return animation;
+}
+
+QRect AbstractSlidingWidgetSet::OpenGeometry() { return geometry_; }
+
+QRect AbstractSlidingWidgetSet::CloseGeometry() {
+  QRect temp_rect = geometry_;
+  temp_rect.setWidth(0);
+  return temp_rect;
 }
