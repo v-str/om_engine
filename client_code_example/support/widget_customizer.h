@@ -7,8 +7,8 @@
 #include <QRect>
 #include <QString>
 
-#include <button_frame.h>
 #include <click_button.h>
+#include <title_button_frame.h>
 
 namespace client_code {
 

@@ -1,5 +1,5 @@
-﻿#ifndef BUTTON_FRAME_H
-#define BUTTON_FRAME_H
+﻿#ifndef TITLE_BUTTON_FRAME_H
+#define TITLE_BUTTON_FRAME_H
 
 #include <QFrame>
 
@@ -13,11 +13,11 @@ using namespace om_widgets;
 using namespace om_animation;
 using namespace scaling;
 
-class ButtonFrame : public QFrame {
+class TitleButtonFrame : public QFrame {
   Q_OBJECT
  public:
-  ButtonFrame(QFrame* parent = nullptr);
-  ~ButtonFrame();
+  TitleButtonFrame(QFrame* parent = nullptr);
+  ~TitleButtonFrame();
 
   ClickButton* OpenButton();
   ClickButton* CloseButton();
@@ -46,4 +46,4 @@ class ButtonFrame : public QFrame {
 };
 }
 
-#endif  // BUTTON_FRAME_H
+#endif  // TITLE_BUTTON_FRAME_H

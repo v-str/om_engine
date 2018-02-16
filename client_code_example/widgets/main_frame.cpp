@@ -12,7 +12,7 @@ MainFrame::MainFrame(QWidget *parent, bool is_widget_open)
     : OmFrame(parent, is_widget_open),
       main_label_(new QLabel(this)),
       animator_(new StateAnimator(main_label_, false)),
-      button_frame_(new ButtonFrame(this)),
+      button_frame_(new TitleButtonFrame(this)),
       text_animator1_(new TextAnimator(this, text_animation_delay_msec_)),
       scaler_(new Scaler(AxesRatio(0.0, 0.0), AxesRatio(0.75, 1.0),
                          scaling::kRight, scaling::kRight | scaling::kDown)) {

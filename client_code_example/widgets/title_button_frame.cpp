@@ -1,4 +1,4 @@
-﻿#include <button_frame.h>
+﻿#include <title_button_frame.h>
 
 #include <QVector>
 
@@ -8,7 +8,7 @@
 
 using namespace client_code;
 
-ButtonFrame::ButtonFrame(QFrame *parent)
+TitleButtonFrame::TitleButtonFrame(QFrame *parent)
     : QFrame(parent),
       guide_button_(new ClickButton("#", this)),
       open_button_(new ClickButton("Open", this)),
@@ -27,22 +27,22 @@ ButtonFrame::ButtonFrame(QFrame *parent)
   SetConnections();
 }
 
-ButtonFrame::~ButtonFrame() {
+TitleButtonFrame::~TitleButtonFrame() {
   delete frame_scaler_;
   delete button_scaler_;
 }
 
-ClickButton *ButtonFrame::OpenButton() { return open_button_; }
+ClickButton *TitleButtonFrame::OpenButton() { return open_button_; }
 
-ClickButton *ButtonFrame::CloseButton() { return close_button_; }
+ClickButton *TitleButtonFrame::CloseButton() { return close_button_; }
 
-ClickButton *ButtonFrame::AboutButton() { return about_button_; }
+ClickButton *TitleButtonFrame::AboutButton() { return about_button_; }
 
-ClickButton *ButtonFrame::ClearButton() { return clear_button_; }
+ClickButton *TitleButtonFrame::ClearButton() { return clear_button_; }
 
-ClickButton *ButtonFrame::GuideButton() { return guide_button_; }
+ClickButton *TitleButtonFrame::GuideButton() { return guide_button_; }
 
-void ButtonFrame::ScaleButtonFrame(const DeltaSize &delta_size) {
+void TitleButtonFrame::ScaleButtonFrame(const DeltaSize &delta_size) {
   frame_scaler_->SetDeltaSize(delta_size);
   frame_scaler_->ComputeModification(GetButtonFrame());
   setGeometry(frame_scaler_->GetModifiedRect());
@@ -50,7 +50,7 @@ void ButtonFrame::ScaleButtonFrame(const DeltaSize &delta_size) {
   ScaleButtons(delta_size);
 }
 
-void ButtonFrame::SetButtonParams() {
+void TitleButtonFrame::SetButtonParams() {
   open_button_->SetOffsetParameters(OffsetDistance(0, 0),
                                     widgets_utility::kDown);
   close_button_->SetOffsetParameters(OffsetDistance(0, 0),
@@ -61,7 +61,7 @@ void ButtonFrame::SetButtonParams() {
                                      widgets_utility::kDown);
 }
 
-void ButtonFrame::AddToLinearGroup() {
+void TitleButtonFrame::AddToLinearGroup() {
   linear_group_->Add(open_button_);
   linear_group_->Add(close_button_);
   linear_group_->Add(about_button_);
@@ -69,7 +69,7 @@ void ButtonFrame::AddToLinearGroup() {
   linear_group_->SetAnimationProperties(500, QEasingCurve::OutQuad);
 }
 
-void ButtonFrame::CustomizeButtonFrame() {
+void TitleButtonFrame::CustomizeButtonFrame() {
   setStyleSheet(
       "QFrame{"
       "background: rgba(0, 0, 0, 60%);"
@@ -86,12 +86,12 @@ void ButtonFrame::CustomizeButtonFrame() {
   WidgetCustomizer::CustomizeButton(clear_button_, GetClearButton());
 }
 
-void ButtonFrame::SetConnections() {
+void TitleButtonFrame::SetConnections() {
   connect(guide_button_, SIGNAL(clicked(bool)), linear_group_,
           SLOT(PerformAnimation()));
 }
 
-void ButtonFrame::ScaleButtons(const DeltaSize &delta_size) {
+void TitleButtonFrame::ScaleButtons(const DeltaSize &delta_size) {
   float shift_value = 0.0;
   float stretch_value = 0.25;
 
