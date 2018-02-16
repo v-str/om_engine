@@ -1,5 +1,7 @@
 ﻿#include <button_frame.h>
 
+#include <QVector>
+
 #include <h_linear_animation_group.h>
 #include <main_frame_geometries.h>
 #include <widget_customizer.h>
@@ -15,16 +17,20 @@ ButtonFrame::ButtonFrame(QFrame *parent)
       clear_button_(new ClickButton("Clear", this)),
       linear_group_(new HLinearAnimationGroup(
           this, false, HLinearAnimationGroup::kFromLeftToRight, 5)),
-      scaler_(new Scaler(AxesRatio(0, 0), AxesRatio(1.0, 1.0), scaling::kRight,
-                         scaling::kRight)) {
-  SetButtonParams();
+      frame_scaler_(new Scaler(AxesRatio(0, 0), AxesRatio(1.0, 1.0),
+                               scaling::kRight, scaling::kRight)),
+      button_scaler_(new Scaler(AxesRatio(0, 0), AxesRatio(1.0, 1.0),
+                                scaling::kRight, scaling::kRight)) {
   AddToLinearGroup();
   CustomizeButtonFrame();
-  connect(guide_button_, SIGNAL(clicked(bool)), linear_group_,
-          SLOT(PerformAnimation()));
+  SetButtonParams();
+  SetConnections();
 }
 
-ButtonFrame::~ButtonFrame() {}
+ButtonFrame::~ButtonFrame() {
+  delete frame_scaler_;
+  delete button_scaler_;
+}
 
 ClickButton *ButtonFrame::OpenButton() { return open_button_; }
 
@@ -37,9 +43,11 @@ ClickButton *ButtonFrame::ClearButton() { return clear_button_; }
 ClickButton *ButtonFrame::GuideButton() { return guide_button_; }
 
 void ButtonFrame::ScaleButtonFrame(const DeltaSize &delta_size) {
-  scaler_->SetDeltaSize(delta_size);
-  scaler_->ComputeModification(GetButtonFrame());
-  setGeometry(scaler_->GetModifiedRect());
+  frame_scaler_->SetDeltaSize(delta_size);
+  frame_scaler_->ComputeModification(GetButtonFrame());
+  setGeometry(frame_scaler_->GetModifiedRect());
+
+  ScaleButtons(delta_size);
 }
 
 void ButtonFrame::SetButtonParams() {
@@ -58,7 +66,7 @@ void ButtonFrame::AddToLinearGroup() {
   linear_group_->Add(close_button_);
   linear_group_->Add(about_button_);
   linear_group_->Add(clear_button_);
-  linear_group_->SetAnimationProperties(200, QEasingCurve::OutQuad);
+  linear_group_->SetAnimationProperties(500, QEasingCurve::OutQuad);
 }
 
 void ButtonFrame::CustomizeButtonFrame() {
@@ -76,4 +84,29 @@ void ButtonFrame::CustomizeButtonFrame() {
   WidgetCustomizer::CustomizeButton(close_button_, GetCloseButton());
   WidgetCustomizer::CustomizeButton(about_button_, GetAboutButton());
   WidgetCustomizer::CustomizeButton(clear_button_, GetClearButton());
+}
+
+void ButtonFrame::SetConnections() {
+  connect(guide_button_, SIGNAL(clicked(bool)), linear_group_,
+          SLOT(PerformAnimation()));
+}
+
+void ButtonFrame::ScaleButtons(const DeltaSize &delta_size) {
+  float shift_value = 0.0;
+  float stretch_value = 0.25;
+
+  QVector<ClickButton *> buttons = {open_button_, close_button_, about_button_,
+                                    clear_button_};
+
+  QVector<QRect> geometries = {GetOpenButton(), GetCloseButton(),
+                               GetAboutButton(), GetClearButton()};
+
+  for (size_t i = 0; i < buttons.size(); ++i) {
+    button_scaler_->SetScalingFactor(AxesRatio(shift_value, shift_value),
+                                     AxesRatio(stretch_value, shift_value));
+    button_scaler_->SetDeltaSize(delta_size);
+    button_scaler_->ComputeModification(geometries.at(i));
+    buttons[i]->setGeometry(button_scaler_->GetModifiedRect());
+    shift_value += 0.25;
+  }
 }

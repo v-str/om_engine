@@ -31,6 +31,8 @@ class ButtonFrame : public QFrame {
   void SetButtonParams();
   void AddToLinearGroup();
   void CustomizeButtonFrame();
+  void SetConnections();
+  void ScaleButtons(const DeltaSize& delta_size);
 
   ClickButton* guide_button_ = nullptr;
   ClickButton* open_button_ = nullptr;
@@ -39,7 +41,8 @@ class ButtonFrame : public QFrame {
   ClickButton* clear_button_ = nullptr;
 
   LinearAnimationGroup* linear_group_ = nullptr;
-  Scaler* scaler_ = nullptr;
+  Scaler* frame_scaler_ = nullptr;
+  Scaler* button_scaler_ = nullptr;
 };
 }
 
