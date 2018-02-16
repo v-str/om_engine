@@ -47,6 +47,8 @@ void MainWidget::SetAppearance() {
   WidgetCustomizer::CustomizeButton(button_close_, CloseButtonGeometry());
   WidgetCustomizer::CustomizeLabel(time_label_, TimeLabelGeometry());
   WidgetCustomizer::CustomizeLabel(date_label_, DateLabelGeometry());
+
+  setMinimumSize(MainWidgetGeometry().width(), MainWidgetGeometry().height());
 }
 
 void MainWidget::SetWidgets() {

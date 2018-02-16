@@ -8,9 +8,9 @@
 using namespace om_animation;
 
 LinearAnimationGroup::LinearAnimationGroup(QWidget *parent,
-                                           bool is_widget_set_open)
+                                           bool is_linear_group_open)
     : QObject(parent),
-      is_widget_set_open_(is_widget_set_open),
+      is_linear_group_open_(is_linear_group_open),
       animation_group_(new QParallelAnimationGroup(this)) {
   connect(animation_group_, SIGNAL(finished()), SLOT(CloseAfterAnimation()));
 }
@@ -30,18 +30,18 @@ void LinearAnimationGroup::SetAnimationProperties(
   }
 }
 
-void LinearAnimationGroup::UpdateWidgetSet() {
+void LinearAnimationGroup::UpdateLinearGroup() {
   ResetGeometries();
   ComposeAnimation();
 }
 
-bool LinearAnimationGroup::IsSetOpen() const { return is_widget_set_open_; }
+bool LinearAnimationGroup::IsSetOpen() const { return is_linear_group_open_; }
 
 void LinearAnimationGroup::PerformAnimation() {
   if (!is_animation_running_) {
     is_animation_running_ = true;
-    UpdateWidgetSet();
-    if (!is_widget_set_open_) {
+    UpdateLinearGroup();
+    if (!is_linear_group_open_) {
       PerformOpenAnimation();
     } else {
       PerformCloseAnimation();
@@ -76,7 +76,7 @@ void LinearAnimationGroup::ResetGeometries() {
 void LinearAnimationGroup::ComposeAnimation() {}
 
 void LinearAnimationGroup::CloseAsNeeded(QWidget *widget) {
-  if (!is_widget_set_open_) {
+  if (!is_linear_group_open_) {
     widget->close();
   }
 }
@@ -111,7 +111,7 @@ void LinearAnimationGroup::PerformOpenAnimation() {
     widget->show();
   }
 
-  is_widget_set_open_ = true;
+  is_linear_group_open_ = true;
 }
 
 void LinearAnimationGroup::PerformCloseAnimation() {
@@ -121,6 +121,6 @@ void LinearAnimationGroup::PerformCloseAnimation() {
   }
   animation_group_->start();
 
-  is_widget_set_open_ = false;
+  is_linear_group_open_ = false;
   is_need_to_close_ = true;
 }

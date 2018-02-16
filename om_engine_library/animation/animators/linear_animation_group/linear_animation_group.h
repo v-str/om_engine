@@ -17,14 +17,14 @@ class LinearAnimationGroup : public QObject {
   Q_OBJECT
  public:
   LinearAnimationGroup(QWidget* parent = nullptr,
-                       bool is_widget_set_open = false);
+                       bool is_linear_group_open = false);
   virtual ~LinearAnimationGroup();
 
   void Add(QWidget* widget);
   void SetAnimationProperties(unsigned int duration_msec,
                               QEasingCurve animation_curve);
 
-  void UpdateWidgetSet();
+  void UpdateLinearGroup();
 
   bool IsSetOpen() const;
 
@@ -54,7 +54,7 @@ class LinearAnimationGroup : public QObject {
 
   QParallelAnimationGroup* animation_group_ = nullptr;
 
-  bool is_widget_set_open_ = false;
+  bool is_linear_group_open_ = false;
   bool is_need_to_close_ = false;
   bool is_animation_running_ = false;
 

@@ -30,6 +30,7 @@ void MainFrame::ModifyGeometry(const QRect &initial_geometry,
                                const DeltaSize &delta_size) {
   OmFrame::ModifyGeometry(initial_geometry, delta_size);
   ScaleTestLabel(delta_size);
+  button_frame_->ScaleButtonFrame(delta_size);
 }
 
 void MainFrame::DisplayText() { text_animator1_->RunAnimation(main_label_); }

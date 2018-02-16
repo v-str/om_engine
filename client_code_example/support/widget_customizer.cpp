@@ -23,7 +23,9 @@ void WidgetCustomizer::CustomizeButton(ClickButton* button,
       "color: red; }");
   button->setWindowOpacity(0.5);
   button->setGeometry(current_geometry);
-  button->SetOffsetParameters(OffsetDistance(2, 2), Side::kRight | Side::kDown);
+  button->SetOffsetParameters(
+      OffsetDistance(2, 2),
+      widgets_utility::Side::kRight | widgets_utility::Side::kDown);
 }
 
 void WidgetCustomizer::CustomizeFrame(QFrame* frame,
@@ -68,23 +70,6 @@ void WidgetCustomizer::CustomizeTestLabel(QLabel* test_label,
   font.setPixelSize(18);
   font.setFamily("FreeMono");
   test_label->setFont(font);
-}
-
-void WidgetCustomizer::CustomizeButtonFrame(ButtonFrame* button_frame) {
-  button_frame->setStyleSheet(
-      "QFrame{"
-      "background: rgba(0, 0, 0, 60%);"
-      "color: #00CC00;"
-      "border: 1px solid #00CC00;"
-      "border-radius: 5px;"
-      "}");
-  button_frame->setWindowOpacity(0.5);
-  button_frame->setGeometry(GetButtonFrame());
-  CustomizeButton(button_frame->GuideButton(), GetGuideButton());
-  CustomizeButton(button_frame->OpenButton(), GetOpenButton());
-  CustomizeButton(button_frame->CloseButton(), GetCloseButton());
-  CustomizeButton(button_frame->AboutButton(), GetAboutButton());
-  CustomizeButton(button_frame->ClearButton(), GetClearButton());
 }
 
 QString WidgetCustomizer::GetAnimationText() {
