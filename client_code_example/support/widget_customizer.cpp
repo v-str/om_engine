@@ -74,13 +74,15 @@ void WidgetCustomizer::CustomizeTestLabel(QLabel* test_label,
 
 QString WidgetCustomizer::GetAnimationText() {
   QString text =
-      "Spaceship cargo terminal A213:\n\n"
-      "Year of issue:               2039\n"
-      "Explosive class:             A1\n"
-      "Scanning power:              75%\n"
-      "Cargo stream speed:          10pt\n"
-      "Reserve oxygen:              70%\n"
-      "Main gate status:            NEED CHECK\n";
+      "Spaceship cargo terminal A213:\n"
+      "..............................\n\n"
+      "Year of issue:       2039\n"
+      "Explosive class:     A1\n"
+      "Scanning power:      75%\n"
+      "Cargo stream speed:  10pt\n"
+      "Reserve oxygen:      70%\n"
+      "Main gate status:    NEED CHECK\n"
+      "                     ^^^^^^^^^^";
 
   return text;
 }

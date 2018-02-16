@@ -14,7 +14,7 @@ MainFrame::MainFrame(QWidget *parent, bool is_widget_open)
       animator_(new StateAnimator(main_label_, false)),
       button_frame_(new ButtonFrame(this)),
       text_animator1_(new TextAnimator(this, text_animation_delay_msec_)),
-      scaler_(new Scaler(AxesRatio(0.0, 0.0), AxesRatio(1.0, 1.0),
+      scaler_(new Scaler(AxesRatio(0.0, 0.0), AxesRatio(0.75, 1.0),
                          scaling::kRight, scaling::kRight | scaling::kDown)) {
   SetWidgets();
   SetLabelAnimation();

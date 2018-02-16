@@ -8,7 +8,7 @@ QRect client_code::GetAboutButton() { return QRect(270, 5, 110, 30); }
 
 QRect client_code::GetClearButton() { return QRect(385, 5, 110, 30); }
 
-QRect client_code::GetMainLabel() { return QRect(30, 100, 500, 190); }
+QRect client_code::GetMainLabel() { return QRect(30, 50, 380, 260); }
 
 QRect client_code::GetButtonFrame() { return QRect(30, 5, 500, 40); }
 
