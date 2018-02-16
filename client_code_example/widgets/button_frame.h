@@ -24,13 +24,16 @@ class ButtonFrame : public QFrame {
   ClickButton* GuideButton();
 
  private:
+  void SetButtonParams();
+  void AddToLinearGroup();
+
   ClickButton* guide_button_ = nullptr;
   ClickButton* open_button_ = nullptr;
   ClickButton* close_button_ = nullptr;
   ClickButton* about_button_ = nullptr;
   ClickButton* clear_button_ = nullptr;
 
-  LinearAnimationGroup* widget_set_ = nullptr;
+  LinearAnimationGroup* linear_group_ = nullptr;
 };
 }
 
