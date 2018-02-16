@@ -19,8 +19,12 @@ class EquipmentButtonFrame : public QFrame {
   EquipmentButtonFrame(QFrame* parent = nullptr);
   ~EquipmentButtonFrame();
 
+  void ScaleEquipmentFrame(const DeltaSize& delta_size);
+
  private:
   void CustomizeFrame();
+
+  Scaler* frame_scaler_ = nullptr;
 };
 }
 
