@@ -23,6 +23,7 @@ void HLinearAnimationGroup::ComposeAnimation() {
   }
 
   if (slide_direction_ == kFromRightToLeft) {
+    CalculateFromRightToLeft();
   }
 
   ReassignGeometry();
@@ -50,6 +51,31 @@ void HLinearAnimationGroup::CalculateFromLeftToRight() {
   }
 
   initial_x_pos = opening_geometry_.at(0).x();
+
+  for (size_t i = 0; i < vectors_size; ++i) {
+    closing_geometry_[i].setX(initial_x_pos);
+    closing_geometry_[i].setWidth(0);
+  }
+}
+
+void HLinearAnimationGroup::CalculateFromRightToLeft() {
+  int initial_x_pos =
+      opening_geometry_.last().x() + opening_geometry_.last().width();
+  int vectors_size = opening_geometry_.size();
+
+  for (size_t i = vectors_size - 1; i > -1; --i) {
+    if (i == vectors_size - 1) {
+      initial_x_pos -= opening_geometry_.at(i).width();
+      opening_geometry_[i].setX(initial_x_pos);
+    } else {
+      initial_x_pos -=
+          opening_geometry_.at(i).width() - distance_btw_widgets_px_;
+      opening_geometry_[i].setX(initial_x_pos);
+    }
+  }
+
+  initial_x_pos =
+      opening_geometry_.last().x() + opening_geometry_.last().width();
 
   for (size_t i = 0; i < vectors_size; ++i) {
     closing_geometry_[i].setX(initial_x_pos);

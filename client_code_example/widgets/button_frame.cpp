@@ -13,7 +13,7 @@ ButtonFrame::ButtonFrame(QFrame *parent)
       about_button_(new ClickButton("About", this)),
       clear_button_(new ClickButton("Clear", this)),
       linear_group_(new HLinearAnimationGroup(
-          this, false, HLinearAnimationGroup::kFromLeftToRight, 5)) {
+          this, false, HLinearAnimationGroup::kFromRightToLeft, 5)) {
   WidgetCustomizer::CustomizeButtonFrame(this);
 
   SetButtonParams();
@@ -51,5 +51,5 @@ void ButtonFrame::AddToLinearGroup() {
   linear_group_->Add(close_button_);
   linear_group_->Add(about_button_);
   linear_group_->Add(clear_button_);
-  linear_group_->SetAnimationProperties(600, QEasingCurve::InOutQuad);
+  linear_group_->SetAnimationProperties(200, QEasingCurve::OutQuad);
 }

@@ -42,27 +42,9 @@ void LinearAnimationGroup::PerformAnimation() {
     is_animation_running_ = true;
     UpdateWidgetSet();
     if (!is_widget_set_open_) {
-      for (size_t i = 0; i < widgets_.size(); ++i) {
-        animations_[i]->setStartValue(geometries_.at(i).second);
-        animations_[i]->setEndValue(geometries_.at(i).first);
-      }
-      animation_group_->start();
-
-      for (auto &widget : widgets_) {
-        widget->show();
-      }
-
-      is_widget_set_open_ = true;
-
+      PerformOpenAnimation();
     } else {
-      for (size_t i = 0; i < widgets_.size(); ++i) {
-        animations_[i]->setStartValue(geometries_.at(i).first);
-        animations_[i]->setEndValue(geometries_.at(i).second);
-      }
-      animation_group_->start();
-
-      is_widget_set_open_ = false;
-      is_need_to_close_ = true;
+      PerformCloseAnimation();
     }
   }
 }
@@ -116,4 +98,29 @@ QPropertyAnimation *LinearAnimationGroup::GetDefaultAnimation(QWidget *widget) {
   animation->setEasingCurve(QEasingCurve::OutCirc);
 
   return animation;
+}
+
+void LinearAnimationGroup::PerformOpenAnimation() {
+  for (size_t i = 0; i < widgets_.size(); ++i) {
+    animations_[i]->setStartValue(geometries_.at(i).second);
+    animations_[i]->setEndValue(geometries_.at(i).first);
+  }
+  animation_group_->start();
+
+  for (auto &widget : widgets_) {
+    widget->show();
+  }
+
+  is_widget_set_open_ = true;
+}
+
+void LinearAnimationGroup::PerformCloseAnimation() {
+  for (size_t i = 0; i < widgets_.size(); ++i) {
+    animations_[i]->setStartValue(geometries_.at(i).first);
+    animations_[i]->setEndValue(geometries_.at(i).second);
+  }
+  animation_group_->start();
+
+  is_widget_set_open_ = false;
+  is_need_to_close_ = true;
 }

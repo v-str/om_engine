@@ -45,6 +45,8 @@ class LinearAnimationGroup : public QObject {
   void CloseAsNeeded(QWidget* widget);
   void AddDependencies(QWidget* widget);
   QPropertyAnimation* GetDefaultAnimation(QWidget* widget);
+  void PerformOpenAnimation();
+  void PerformCloseAnimation();
 
   QVector<QWidget*> widgets_;
   QVector<QPair<QRect, QRect>> geometries_;
