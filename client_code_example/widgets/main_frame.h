@@ -5,6 +5,7 @@
 
 #include <QLabel>
 
+#include <equipment_button_frame.h>
 #include <font_size_generator.h>
 #include <scaler.h>
 #include <state_animator.h>
@@ -37,7 +38,8 @@ class MainFrame : public OmFrame {
   void SetConnections();
   void ScaleTestLabel(const DeltaSize& delta_size);
 
-  TitleButtonFrame* button_frame_ = nullptr;
+  TitleButtonFrame* title_frame_ = nullptr;
+  EquipmentButtonFrame* equipment_frame_ = nullptr;
   QLabel* main_label_ = nullptr;
   StateAnimator* animator_ = nullptr;
   TextAnimator* text_animator1_ = nullptr;

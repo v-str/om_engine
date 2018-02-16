@@ -12,7 +12,8 @@ MainFrame::MainFrame(QWidget *parent, bool is_widget_open)
     : OmFrame(parent, is_widget_open),
       main_label_(new QLabel(this)),
       animator_(new StateAnimator(main_label_, false)),
-      button_frame_(new TitleButtonFrame(this)),
+      title_frame_(new TitleButtonFrame(this)),
+      equipment_frame_(new EquipmentButtonFrame(this)),
       text_animator1_(new TextAnimator(this, text_animation_delay_msec_)),
       scaler_(new Scaler(AxesRatio(0.0, 0.0), AxesRatio(0.75, 1.0),
                          scaling::kRight, scaling::kRight | scaling::kDown)) {
@@ -30,7 +31,7 @@ void MainFrame::ModifyGeometry(const QRect &initial_geometry,
                                const DeltaSize &delta_size) {
   OmFrame::ModifyGeometry(initial_geometry, delta_size);
   ScaleTestLabel(delta_size);
-  button_frame_->ScaleButtonFrame(delta_size);
+  title_frame_->ScaleButtonFrame(delta_size);
 }
 
 void MainFrame::DisplayText() { text_animator1_->RunAnimation(main_label_); }
@@ -54,13 +55,13 @@ void MainFrame::SetLabelAnimation() {
 }
 
 void MainFrame::SetConnections() {
-  connect(button_frame_->OpenButton(), SIGNAL(clicked(bool)), animator_,
+  connect(title_frame_->OpenButton(), SIGNAL(clicked(bool)), animator_,
           SLOT(Open()));
-  connect(button_frame_->CloseButton(), SIGNAL(clicked(bool)), animator_,
+  connect(title_frame_->CloseButton(), SIGNAL(clicked(bool)), animator_,
           SLOT(Close()));
-  connect(button_frame_->AboutButton(), SIGNAL(clicked(bool)),
+  connect(title_frame_->AboutButton(), SIGNAL(clicked(bool)),
           SLOT(DisplayText()));
-  connect(button_frame_->ClearButton(), SIGNAL(clicked(bool)),
+  connect(title_frame_->ClearButton(), SIGNAL(clicked(bool)),
           SLOT(ClearTestLabel()));
 }
 
