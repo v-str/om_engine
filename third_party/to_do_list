@@ -86,11 +86,13 @@ R 28.   Develop invertor for animation set
 
 - 30.   Animation equipment frame
 
-- 31.   StateAnimatior - wrap Open and Close methods in
+R 31.   StateAnimatior - wrap Open and Close methods in
         if statement - if ( is_animation_is_running) -
         linear_animation_group
 
             - and remove old code in client classes after
             this
 
-- 32.
+- 32.   Add buttons to WorkFrame
+
+- 33.   Develop VLinearGroup
