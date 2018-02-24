@@ -32,7 +32,7 @@ void MainFrame::ModifyGeometry(const QRect &initial_geometry,
   OmFrame::ModifyGeometry(initial_geometry, delta_size);
   ScaleTestLabel(delta_size);
   title_frame_->ScaleButtonFrame(delta_size);
-  equipment_frame_->ScaleEquipmentFrame(delta_size);
+  equipment_frame_->ScaleWorkFrame(delta_size);
 }
 
 void MainFrame::DisplayText() { text_animator1_->RunAnimation(main_label_); }

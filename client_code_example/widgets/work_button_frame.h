@@ -20,7 +20,7 @@ class WorkButtonFrame : public QFrame {
   WorkButtonFrame(QFrame* parent = nullptr);
   ~WorkButtonFrame();
 
-  void ScaleEquipmentFrame(const DeltaSize& delta_size);
+  void ScaleWorkFrame(const DeltaSize& delta_size);
 
  signals:
   void CatP500Clicked();
@@ -44,8 +44,8 @@ class WorkButtonFrame : public QFrame {
   Scaler* button_scaler_ = nullptr;
   StateAnimator* animator_ = nullptr;
 
-  ClickButton* equipment_guide_button_ = nullptr;
-  ClickButton* cat_5000_button_ = nullptr;
+  ClickButton* work_guide_button_ = nullptr;
+  ClickButton* main_button_ = nullptr;
 };
 }
 

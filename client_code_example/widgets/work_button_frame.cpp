@@ -16,8 +16,8 @@ WorkButtonFrame::WorkButtonFrame(QFrame *parent)
                                 scaling::kRight,
                                 scaling::kRight | scaling::kDown)),
       animator_(new StateAnimator(this, false)),
-      equipment_guide_button_(new ClickButton("Equipment", this)),
-      cat_5000_button_(new ClickButton("Cat P-5000", this)) {
+      work_guide_button_(new ClickButton("Work", this)),
+      main_button_(new ClickButton("Main", this)) {
   CustomizeFrame();
   CustomizeButtons();
   SetAnimation();
@@ -25,7 +25,7 @@ WorkButtonFrame::WorkButtonFrame(QFrame *parent)
 
 WorkButtonFrame::~WorkButtonFrame() {}
 
-void WorkButtonFrame::ScaleEquipmentFrame(const DeltaSize &delta_size) {
+void WorkButtonFrame::ScaleWorkFrame(const DeltaSize &delta_size) {
   ScaleFrame(delta_size);
   ScaleButtons(delta_size);
 }
@@ -49,15 +49,13 @@ void WorkButtonFrame::CustomizeFrame() {
 }
 
 void WorkButtonFrame::CustomizeButtons() {
-  WidgetCustomizer::CustomizeButton(equipment_guide_button_,
-                                    GetWorkGuideButton());
-  WidgetCustomizer::CustomizeButton(cat_5000_button_,
-                                    GetCaterpillarP5000Button());
+  WidgetCustomizer::CustomizeButton(work_guide_button_, GetWorkGuideButton());
+  WidgetCustomizer::CustomizeButton(main_button_, MainButton());
 
-  equipment_guide_button_->SetOffsetParameters(OffsetDistance(0, 0),
-                                               widgets_utility::kDown);
-  cat_5000_button_->SetOffsetParameters(OffsetDistance(0, 0),
-                                        widgets_utility::kDown);
+  work_guide_button_->SetOffsetParameters(OffsetDistance(0, 0),
+                                          widgets_utility::kDown);
+  main_button_->SetOffsetParameters(OffsetDistance(0, 0),
+                                    widgets_utility::kDown);
 }
 
 void WorkButtonFrame::SetAnimation() {
@@ -82,12 +80,12 @@ void WorkButtonFrame::ScaleButtons(const DeltaSize &delta_size) {
   button_scaler_->SetDeltaSize(delta_size);
 
   button_scaler_->ComputeModification(GetWorkGuideButton());
-  equipment_guide_button_->setGeometry(button_scaler_->GetModifiedRect());
+  work_guide_button_->setGeometry(button_scaler_->GetModifiedRect());
 
-  button_scaler_->ComputeModification(GetCaterpillarP5000Button());
-  cat_5000_button_->setGeometry(button_scaler_->GetModifiedRect());
+  button_scaler_->ComputeModification(MainButton());
+  main_button_->setGeometry(button_scaler_->GetModifiedRect());
 }
 
 void WorkButtonFrame::SetInternalConnections() {
-  connect(cat_5000_button_, SIGNAL(clicked(bool)), SLOT(EmitCatP500Click()));
+  connect(main_button_, SIGNAL(clicked(bool)), SLOT(EmitCatP500Click()));
 }
