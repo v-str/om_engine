@@ -51,7 +51,6 @@ void MainFrame::SetLabelAnimation() {
   animator_->SetAnimation(QEasingCurve::OutCirc, 500, om_animation::kRight,
                           om_animation::kLeft);
   animator_->SetCurrentGeometry(main_label_->geometry());
-  text_animator1_->SetAnimationText(WidgetCustomizer::GetAnimationText());
   font_size_generator_ = new FontSizeGenerator(0.8, *main_label_);
 }
 
@@ -68,7 +67,6 @@ void MainFrame::SetConnections() {
           SLOT(DisplayText()));
   connect(title_frame_->ClearButton(), SIGNAL(clicked(bool)),
           SLOT(ClearTestLabel()));
-  // connect(equipment_frame_, SIGNAL(CatP500Clicked()), );
 }
 
 void MainFrame::ScaleTestLabel(const DeltaSize &delta_size) {

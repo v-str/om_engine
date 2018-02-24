@@ -22,8 +22,6 @@ class WidgetCustomizer {
   static void CustomizeLabel(QLabel* label, const QRect& geometry);
   static void CustomizeTestLabel(QLabel* test_label,
                                  const QRect initial_geometry);
-
-  static QString GetAnimationText();
 };
 }
 
