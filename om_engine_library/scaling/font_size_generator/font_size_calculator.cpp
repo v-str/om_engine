@@ -1,5 +1,7 @@
 ﻿#include <font_size_calculator.h>
 
+using namespace scaling;
+
 int FontSizeCalculator::CalculateCurrentFontSize(
     const QSize& current_widget_size,
     const InitialWidgetData& initial_widget_data) {

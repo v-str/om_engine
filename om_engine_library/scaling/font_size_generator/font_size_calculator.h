@@ -5,6 +5,8 @@
 
 #include <initial_widget_data.h>
 
+namespace scaling {
+
 class FontSizeCalculator {
  public:
   int CalculateCurrentFontSize(const QSize& current_widget_size,
@@ -24,5 +26,5 @@ class FontSizeCalculator {
   double font_increment_ = 0.0;
   int current_font_size_ = 0;
 };
-
+}
 #endif  // FONT_SIZE_CALCULATOR_H

@@ -10,7 +10,6 @@
 
 namespace client_code {
 
-// using namespace om_widgets;
 using namespace om_animation;
 using namespace scaling;
 

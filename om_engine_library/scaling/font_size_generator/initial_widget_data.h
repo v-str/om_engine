@@ -3,6 +3,8 @@
 
 #include <QFont>
 
+namespace scaling {
+
 struct InitialWidgetData {
   void SetFontScaleMultiplier(double font_scale_multiplier);
   void SetInitialWidgetWidth(int initial_widget_width);
@@ -22,5 +24,5 @@ struct InitialWidgetData {
   int initial_widget_height_ = 0;
   QFont initial_widget_font_;
 };
-
+}
 #endif  // INITIAL_DATA_H

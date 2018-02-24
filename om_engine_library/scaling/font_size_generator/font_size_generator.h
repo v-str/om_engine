@@ -8,6 +8,8 @@
 #include <font_size_calculator.h>
 #include <initial_widget_data.h>
 
+namespace scaling {
+
 class FontSizeGenerator {
  public:
   FontSizeGenerator(double font_scale_multiplier, const QWidget& widget);
@@ -29,5 +31,5 @@ class FontSizeGenerator {
   InitialWidgetData initial_widget_data_;
   FontSizeCalculator font_size_calculator_;
 };
-
+}
 #endif  // FONT_SIZE_GENERATOR_H

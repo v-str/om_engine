@@ -1,5 +1,7 @@
 ﻿#include <initial_widget_data.h>
 
+using namespace scaling;
+
 void InitialWidgetData::SetFontScaleMultiplier(double font_scale_multiplier) {
   if (IsFontScaleMultiplierNegative(font_scale_multiplier)) {
     font_scale_multiplier_ = 0.0;

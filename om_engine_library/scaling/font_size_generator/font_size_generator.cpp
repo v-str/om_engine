@@ -2,6 +2,8 @@
 
 #include <stdexcept>
 
+using namespace scaling;
+
 FontSizeGenerator::FontSizeGenerator(double font_scale_multiplier,
                                      const QWidget& widget) {
   initial_widget_data_.SetFontScaleMultiplier(font_scale_multiplier);
