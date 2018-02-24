@@ -25,6 +25,8 @@ class MainLabel : public QLabel {
  public slots:
   void Open();
   void Close();
+  void DisplayText();
+  void Clear();
 
  private:
   void SetLabel();

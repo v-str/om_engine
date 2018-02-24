@@ -37,7 +37,19 @@ void MainLabel::Open() { main_label_animator_->Open(); }
 
 void MainLabel::Close() { main_label_animator_->Close(); }
 
+void MainLabel::DisplayText() {
+  text_animator_->SetAnimationText(text());
+  text_animator_->RunAnimation(this);
+}
+
+void MainLabel::Clear() {
+  text_animator_->ResetAnimation();
+  clear();
+}
+
 void MainLabel::SetLabel() {
+  setAlignment(Qt::AlignLeft | Qt::AlignTop);
+  setWordWrap(true);
   WidgetCustomizer::CustomizeMainLabel(this, GetMainLabel());
   main_label_animator_->SetAnimation(QEasingCurve::OutCirc, 500,
                                      om_animation::kRight, om_animation::kLeft);
