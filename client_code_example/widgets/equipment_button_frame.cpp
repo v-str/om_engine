@@ -12,8 +12,10 @@ EquipmentButtonFrame::EquipmentButtonFrame(QFrame *parent)
       frame_scaler_(new Scaler(AxesRatio(0.75, 0.0), AxesRatio(0.25, 1.0),
                                scaling::kRight,
                                scaling::kRight | scaling::kDown)),
-      animator_(new StateAnimator(this, false)) {
+      animator_(new StateAnimator(this, false)),
+      equipment_guide_button_(new ClickButton("Equipment", this)) {
   CustomizeFrame();
+  CustomizeButtons();
   SetAnimation();
 }
 
@@ -45,6 +47,14 @@ void EquipmentButtonFrame::CustomizeFrame() {
       "}");
   setWindowOpacity(0.5);
   setGeometry(GetEquipmentFrame());
+}
+
+void EquipmentButtonFrame::CustomizeButtons() {
+  WidgetCustomizer::CustomizeButton(equipment_guide_button_,
+                                    GetEquipmentGuideButton());
+
+  equipment_guide_button_->SetOffsetParameters(OffsetDistance(0, 0),
+                                               widgets_utility::kDown);
 }
 
 void EquipmentButtonFrame::SetAnimation() {

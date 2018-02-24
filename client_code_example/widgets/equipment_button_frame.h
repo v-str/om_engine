@@ -28,10 +28,13 @@ class EquipmentButtonFrame : public QFrame {
 
  private:
   void CustomizeFrame();
+  void CustomizeButtons();
   void SetAnimation();
 
   Scaler* frame_scaler_ = nullptr;
   StateAnimator* animator_ = nullptr;
+
+  ClickButton* equipment_guide_button_ = nullptr;
 };
 }
 

@@ -79,7 +79,7 @@ void TitleButtonFrame::CustomizeButtonFrame() {
       "}");
   setWindowOpacity(0.5);
   setGeometry(GetButtonFrame());
-  WidgetCustomizer::CustomizeButton(guide_button_, GetGuideButton());
+  WidgetCustomizer::CustomizeButton(guide_button_, GetTitleGuideButton());
   WidgetCustomizer::CustomizeButton(open_button_, GetOpenButton());
   WidgetCustomizer::CustomizeButton(close_button_, GetCloseButton());
   WidgetCustomizer::CustomizeButton(about_button_, GetAboutButton());

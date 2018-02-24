@@ -12,6 +12,8 @@ QRect client_code::GetMainLabel() { return QRect(30, 50, 380, 260); }
 
 QRect client_code::GetButtonFrame() { return QRect(30, 5, 500, 40); }
 
-QRect client_code::GetGuideButton() { return QRect(5, 5, 30, 30); }
+QRect client_code::GetTitleGuideButton() { return QRect(5, 5, 30, 30); }
 
 QRect client_code::GetEquipmentFrame() { return QRect(415, 50, 115, 260); }
+
+QRect client_code::GetEquipmentGuideButton() { return QRect(5, 5, 105, 30); }
