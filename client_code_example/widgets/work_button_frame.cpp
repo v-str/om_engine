@@ -1,4 +1,4 @@
-﻿#include <equipment_button_frame.h>
+﻿#include <work_button_frame.h>
 
 #include <QEasingCurve>
 
@@ -7,7 +7,7 @@
 
 using namespace client_code;
 
-EquipmentButtonFrame::EquipmentButtonFrame(QFrame *parent)
+WorkButtonFrame::WorkButtonFrame(QFrame *parent)
     : QFrame(parent),
       frame_scaler_(new Scaler(AxesRatio(0.75, 0.0), AxesRatio(0.25, 1.0),
                                scaling::kRight,
@@ -23,20 +23,20 @@ EquipmentButtonFrame::EquipmentButtonFrame(QFrame *parent)
   SetAnimation();
 }
 
-EquipmentButtonFrame::~EquipmentButtonFrame() {}
+WorkButtonFrame::~WorkButtonFrame() {}
 
-void EquipmentButtonFrame::ScaleEquipmentFrame(const DeltaSize &delta_size) {
+void WorkButtonFrame::ScaleEquipmentFrame(const DeltaSize &delta_size) {
   ScaleFrame(delta_size);
   ScaleButtons(delta_size);
 }
 
-void EquipmentButtonFrame::Open() { animator_->Open(); }
+void WorkButtonFrame::Open() { animator_->Open(); }
 
-void EquipmentButtonFrame::Close() { animator_->Close(); }
+void WorkButtonFrame::Close() { animator_->Close(); }
 
-void EquipmentButtonFrame::EmitCatP500Click() { emit CatP500Clicked(); }
+void WorkButtonFrame::EmitCatP500Click() { emit CatP500Clicked(); }
 
-void EquipmentButtonFrame::CustomizeFrame() {
+void WorkButtonFrame::CustomizeFrame() {
   setStyleSheet(
       "QFrame{"
       "background: rgba(0, 0, 0, 60%);"
@@ -48,9 +48,9 @@ void EquipmentButtonFrame::CustomizeFrame() {
   setGeometry(GetEquipmentFrame());
 }
 
-void EquipmentButtonFrame::CustomizeButtons() {
+void WorkButtonFrame::CustomizeButtons() {
   WidgetCustomizer::CustomizeButton(equipment_guide_button_,
-                                    GetEquipmentGuideButton());
+                                    GetWorkGuideButton());
   WidgetCustomizer::CustomizeButton(cat_5000_button_,
                                     GetCaterpillarP5000Button());
 
@@ -60,13 +60,13 @@ void EquipmentButtonFrame::CustomizeButtons() {
                                         widgets_utility::kDown);
 }
 
-void EquipmentButtonFrame::SetAnimation() {
+void WorkButtonFrame::SetAnimation() {
   animator_->SetAnimation(QEasingCurve::OutCirc, 500, om_animation::kDown,
                           om_animation::kUp);
   animator_->SetCurrentGeometry(geometry());
 }
 
-void EquipmentButtonFrame::ScaleFrame(const DeltaSize &delta_size) {
+void WorkButtonFrame::ScaleFrame(const DeltaSize &delta_size) {
   frame_scaler_->SetDeltaSize(delta_size);
   frame_scaler_->ComputeModification(GetEquipmentFrame());
 
@@ -78,16 +78,16 @@ void EquipmentButtonFrame::ScaleFrame(const DeltaSize &delta_size) {
   animator_->SetCurrentGeometry(geometry());
 }
 
-void EquipmentButtonFrame::ScaleButtons(const DeltaSize &delta_size) {
+void WorkButtonFrame::ScaleButtons(const DeltaSize &delta_size) {
   button_scaler_->SetDeltaSize(delta_size);
 
-  button_scaler_->ComputeModification(GetEquipmentGuideButton());
+  button_scaler_->ComputeModification(GetWorkGuideButton());
   equipment_guide_button_->setGeometry(button_scaler_->GetModifiedRect());
 
   button_scaler_->ComputeModification(GetCaterpillarP5000Button());
   cat_5000_button_->setGeometry(button_scaler_->GetModifiedRect());
 }
 
-void EquipmentButtonFrame::SetInternalConnections() {
+void WorkButtonFrame::SetInternalConnections() {
   connect(cat_5000_button_, SIGNAL(clicked(bool)), SLOT(EmitCatP500Click()));
 }

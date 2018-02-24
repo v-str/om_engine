@@ -13,7 +13,7 @@ QRect GetMainLabel();
 QRect GetButtonFrame();
 QRect GetTitleGuideButton();
 QRect GetEquipmentFrame();
-QRect GetEquipmentGuideButton();
+QRect GetWorkGuideButton();
 QRect GetCaterpillarP5000Button();
 }
 

@@ -5,12 +5,12 @@
 
 #include <QLabel>
 
-#include <equipment_button_frame.h>
 #include <font_size_generator.h>
 #include <scaler.h>
 #include <state_animator.h>
 #include <text_animator.h>
 #include <title_button_frame.h>
+#include <work_button_frame.h>
 
 class QWidget;
 
@@ -39,7 +39,7 @@ class MainFrame : public OmFrame {
   void ScaleTestLabel(const DeltaSize& delta_size);
 
   TitleButtonFrame* title_frame_ = nullptr;
-  EquipmentButtonFrame* equipment_frame_ = nullptr;
+  WorkButtonFrame* equipment_frame_ = nullptr;
   QLabel* main_label_ = nullptr;
   StateAnimator* animator_ = nullptr;
   TextAnimator* text_animator1_ = nullptr;

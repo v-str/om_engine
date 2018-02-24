@@ -13,7 +13,7 @@ MainFrame::MainFrame(QWidget *parent, bool is_widget_open)
       main_label_(new QLabel(this)),
       animator_(new StateAnimator(main_label_, false)),
       title_frame_(new TitleButtonFrame(this)),
-      equipment_frame_(new EquipmentButtonFrame(this)),
+      equipment_frame_(new WorkButtonFrame(this)),
       text_animator1_(new TextAnimator(this, text_animation_delay_msec_)),
       scaler_(new Scaler(AxesRatio(0.0, 0.0), AxesRatio(0.75, 1.0),
                          scaling::kRight, scaling::kRight | scaling::kDown)) {

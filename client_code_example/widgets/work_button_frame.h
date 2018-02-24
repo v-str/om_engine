@@ -1,5 +1,5 @@
-﻿#ifndef EQUIPMENT_BUTTON_FRAME_H
-#define EQUIPMENT_BUTTON_FRAME_H
+﻿#ifndef WORK_BUTTON_FRAME_H
+#define WORK_BUTTON_FRAME_H
 
 #include <QFrame>
 
@@ -14,11 +14,11 @@ using namespace om_widgets;
 using namespace om_animation;
 using namespace scaling;
 
-class EquipmentButtonFrame : public QFrame {
+class WorkButtonFrame : public QFrame {
   Q_OBJECT
  public:
-  EquipmentButtonFrame(QFrame* parent = nullptr);
-  ~EquipmentButtonFrame();
+  WorkButtonFrame(QFrame* parent = nullptr);
+  ~WorkButtonFrame();
 
   void ScaleEquipmentFrame(const DeltaSize& delta_size);
 
@@ -49,4 +49,4 @@ class EquipmentButtonFrame : public QFrame {
 };
 }
 
-#endif  // EQUIPMENT_BUTTON_FRAME_H
+#endif  // WORK_BUTTON_FRAME_H
