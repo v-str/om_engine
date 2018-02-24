@@ -17,3 +17,5 @@ QRect client_code::GetTitleGuideButton() { return QRect(5, 5, 30, 30); }
 QRect client_code::GetEquipmentFrame() { return QRect(415, 50, 115, 260); }
 
 QRect client_code::GetEquipmentGuideButton() { return QRect(5, 5, 105, 30); }
+
+QRect client_code::GetCaterpillarP5000Button() { return QRect(5, 40, 105, 30); }

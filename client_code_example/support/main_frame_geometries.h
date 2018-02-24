@@ -14,6 +14,7 @@ QRect GetButtonFrame();
 QRect GetTitleGuideButton();
 QRect GetEquipmentFrame();
 QRect GetEquipmentGuideButton();
+QRect GetCaterpillarP5000Button();
 }
 
 #endif  // MAIN_FRAME_GEOMETRIES_H

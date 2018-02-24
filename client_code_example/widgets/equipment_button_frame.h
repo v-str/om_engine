@@ -38,6 +38,7 @@ class EquipmentButtonFrame : public QFrame {
   StateAnimator* animator_ = nullptr;
 
   ClickButton* equipment_guide_button_ = nullptr;
+  ClickButton* cat_5000_button_ = nullptr;
 };
 }
 
