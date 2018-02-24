@@ -68,6 +68,7 @@ void MainFrame::SetConnections() {
           SLOT(DisplayText()));
   connect(title_frame_->ClearButton(), SIGNAL(clicked(bool)),
           SLOT(ClearTestLabel()));
+  // connect(equipment_frame_, SIGNAL(CatP500Clicked()), );
 }
 
 void MainFrame::ScaleTestLabel(const DeltaSize &delta_size) {
