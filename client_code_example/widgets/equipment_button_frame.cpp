@@ -22,15 +22,7 @@ EquipmentButtonFrame::EquipmentButtonFrame(QFrame *parent)
 EquipmentButtonFrame::~EquipmentButtonFrame() {}
 
 void EquipmentButtonFrame::ScaleEquipmentFrame(const DeltaSize &delta_size) {
-  frame_scaler_->SetDeltaSize(delta_size);
-  frame_scaler_->ComputeModification(GetEquipmentFrame());
-
-  if (!animator_->IsWidgetOpen()) {
-    close();
-  }
-
-  setGeometry(frame_scaler_->GetModifiedRect());
-  animator_->SetCurrentGeometry(geometry());
+  ScaleFrame(delta_size);
 }
 
 void EquipmentButtonFrame::Open() { animator_->Open(); }
@@ -60,5 +52,17 @@ void EquipmentButtonFrame::CustomizeButtons() {
 void EquipmentButtonFrame::SetAnimation() {
   animator_->SetAnimation(QEasingCurve::OutCirc, 500, om_animation::kDown,
                           om_animation::kUp);
+  animator_->SetCurrentGeometry(geometry());
+}
+
+void EquipmentButtonFrame::ScaleFrame(const DeltaSize &delta_size) {
+  frame_scaler_->SetDeltaSize(delta_size);
+  frame_scaler_->ComputeModification(GetEquipmentFrame());
+
+  if (!animator_->IsWidgetOpen()) {
+    close();
+  }
+
+  setGeometry(frame_scaler_->GetModifiedRect());
   animator_->SetCurrentGeometry(geometry());
 }
