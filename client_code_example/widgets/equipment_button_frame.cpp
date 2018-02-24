@@ -12,6 +12,9 @@ EquipmentButtonFrame::EquipmentButtonFrame(QFrame *parent)
       frame_scaler_(new Scaler(AxesRatio(0.75, 0.0), AxesRatio(0.25, 1.0),
                                scaling::kRight,
                                scaling::kRight | scaling::kDown)),
+      button_scaler_(new Scaler(AxesRatio(0.0, 0.0), AxesRatio(0.25, 0.0),
+                                scaling::kRight,
+                                scaling::kRight | scaling::kDown)),
       animator_(new StateAnimator(this, false)),
       equipment_guide_button_(new ClickButton("Equipment", this)) {
   CustomizeFrame();
@@ -23,6 +26,7 @@ EquipmentButtonFrame::~EquipmentButtonFrame() {}
 
 void EquipmentButtonFrame::ScaleEquipmentFrame(const DeltaSize &delta_size) {
   ScaleFrame(delta_size);
+  ScaleButtons(delta_size);
 }
 
 void EquipmentButtonFrame::Open() { animator_->Open(); }
@@ -65,4 +69,11 @@ void EquipmentButtonFrame::ScaleFrame(const DeltaSize &delta_size) {
 
   setGeometry(frame_scaler_->GetModifiedRect());
   animator_->SetCurrentGeometry(geometry());
+}
+
+void EquipmentButtonFrame::ScaleButtons(const DeltaSize &delta_size) {
+  button_scaler_->SetDeltaSize(delta_size);
+
+  button_scaler_->ComputeModification(GetEquipmentGuideButton());
+  equipment_guide_button_->setGeometry(button_scaler_->GetModifiedRect());
 }

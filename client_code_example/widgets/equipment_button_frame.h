@@ -31,8 +31,10 @@ class EquipmentButtonFrame : public QFrame {
   void CustomizeButtons();
   void SetAnimation();
   void ScaleFrame(const DeltaSize& delta_size);
+  void ScaleButtons(const DeltaSize& delta_size);
 
   Scaler* frame_scaler_ = nullptr;
+  Scaler* button_scaler_ = nullptr;
   StateAnimator* animator_ = nullptr;
 
   ClickButton* equipment_guide_button_ = nullptr;
