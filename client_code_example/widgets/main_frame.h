@@ -3,12 +3,7 @@
 
 #include <om_frame.h>
 
-#include <QLabel>
-
-#include <font_size_generator.h>
-#include <scaler.h>
-#include <state_animator.h>
-#include <text_animator.h>
+#include <main_label.h>
 #include <title_button_frame.h>
 #include <work_button_frame.h>
 
@@ -28,25 +23,13 @@ class MainFrame : public OmFrame {
   void ModifyGeometry(const QRect& initial_geometry,
                       const DeltaSize& delta_size) override;
 
- private slots:
-  void DisplayText();
-  void ClearTestLabel();
-
  private:
   void SetWidgets();
-  void SetLabelAnimation();
   void SetConnections();
-  void ScaleTestLabel(const DeltaSize& delta_size);
 
   TitleButtonFrame* title_frame_ = nullptr;
   WorkButtonFrame* equipment_frame_ = nullptr;
-  QLabel* main_label_ = nullptr;
-  StateAnimator* animator_ = nullptr;
-  TextAnimator* text_animator1_ = nullptr;
-  Scaler* scaler_ = nullptr;
-  FontSizeGenerator* font_size_generator_ = nullptr;
-
-  static const unsigned int text_animation_delay_msec_ = 10;
+  MainLabel* main_label_ = nullptr;
 };
 }
 

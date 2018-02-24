@@ -54,7 +54,7 @@ void WidgetCustomizer::CustomizeLabel(QLabel* label, const QRect& geometry) {
   label->setWordWrap(true);
 }
 
-void WidgetCustomizer::CustomizeTestLabel(QLabel* test_label,
+void WidgetCustomizer::CustomizeMainLabel(QLabel* test_label,
                                           const QRect initial_geometry) {
   test_label->setStyleSheet(
       "QLabel{"

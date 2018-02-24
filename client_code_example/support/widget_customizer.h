@@ -20,7 +20,7 @@ class WidgetCustomizer {
                               const QRect& current_geometry);
   static void CustomizeFrame(QFrame* frame, const QRect& current_geometry);
   static void CustomizeLabel(QLabel* label, const QRect& geometry);
-  static void CustomizeTestLabel(QLabel* test_label,
+  static void CustomizeMainLabel(QLabel* test_label,
                                  const QRect initial_geometry);
 };
 }

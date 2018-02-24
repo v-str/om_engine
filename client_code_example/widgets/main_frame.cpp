@@ -10,74 +10,36 @@ using namespace om_widgets;
 
 MainFrame::MainFrame(QWidget *parent, bool is_widget_open)
     : OmFrame(parent, is_widget_open),
-      main_label_(new QLabel(this)),
-      animator_(new StateAnimator(main_label_, false)),
       title_frame_(new TitleButtonFrame(this)),
       equipment_frame_(new WorkButtonFrame(this)),
-      text_animator1_(new TextAnimator(this, text_animation_delay_msec_)),
-      scaler_(new Scaler(AxesRatio(0.0, 0.0), AxesRatio(0.75, 1.0),
-                         scaling::kRight, scaling::kRight | scaling::kDown)) {
+      main_label_(new MainLabel(this)) {
   SetWidgets();
-  SetLabelAnimation();
   SetConnections();
 }
 
-MainFrame::~MainFrame() {
-  delete scaler_;
-  delete font_size_generator_;
-}
+MainFrame::~MainFrame() {}
 
 void MainFrame::ModifyGeometry(const QRect &initial_geometry,
                                const DeltaSize &delta_size) {
   OmFrame::ModifyGeometry(initial_geometry, delta_size);
-  ScaleTestLabel(delta_size);
   title_frame_->ScaleButtonFrame(delta_size);
   equipment_frame_->ScaleWorkFrame(delta_size);
+  main_label_->ScaleMainLabel(delta_size);
 }
 
-void MainFrame::DisplayText() { text_animator1_->RunAnimation(main_label_); }
-
-void MainFrame::ClearTestLabel() {
-  text_animator1_->ResetAnimation();
-  main_label_->clear();
-}
-
-void MainFrame::SetWidgets() {
-  WidgetCustomizer::CustomizeTestLabel(main_label_, GetMainLabel());
-  resize(500, 300);
-}
-
-void MainFrame::SetLabelAnimation() {
-  animator_->SetAnimation(QEasingCurve::OutCirc, 500, om_animation::kRight,
-                          om_animation::kLeft);
-  animator_->SetCurrentGeometry(main_label_->geometry());
-  font_size_generator_ = new FontSizeGenerator(0.8, *main_label_);
-}
+void MainFrame::SetWidgets() { resize(500, 300); }
 
 void MainFrame::SetConnections() {
-  connect(title_frame_->OpenButton(), SIGNAL(clicked(bool)), animator_,
+  connect(title_frame_->OpenButton(), SIGNAL(clicked(bool)), main_label_,
           SLOT(Open()));
-  connect(title_frame_->CloseButton(), SIGNAL(clicked(bool)), animator_,
+  connect(title_frame_->CloseButton(), SIGNAL(clicked(bool)), main_label_,
           SLOT(Close()));
   connect(title_frame_->OpenButton(), SIGNAL(clicked(bool)), equipment_frame_,
           SLOT(Open()));
   connect(title_frame_->CloseButton(), SIGNAL(clicked(bool)), equipment_frame_,
           SLOT(Close()));
-  connect(title_frame_->AboutButton(), SIGNAL(clicked(bool)),
-          SLOT(DisplayText()));
-  connect(title_frame_->ClearButton(), SIGNAL(clicked(bool)),
-          SLOT(ClearTestLabel()));
-}
-
-void MainFrame::ScaleTestLabel(const DeltaSize &delta_size) {
-  scaler_->SetDeltaSize(delta_size);
-  scaler_->ComputeModification(GetMainLabel());
-
-  if (!animator_->IsWidgetOpen()) {
-    main_label_->close();
-  }
-
-  main_label_->setGeometry(scaler_->GetModifiedRect());
-  animator_->SetCurrentGeometry(main_label_->geometry());
-  font_size_generator_->GenerateFontSize(main_label_);
+  //  connect(title_frame_->AboutButton(), SIGNAL(clicked(bool)),
+  //          SLOT(DisplayText()));
+  //  connect(title_frame_->ClearButton(), SIGNAL(clicked(bool)),
+  //          SLOT(ClearTestLabel()));
 }
