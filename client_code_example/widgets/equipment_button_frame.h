@@ -22,9 +22,15 @@ class EquipmentButtonFrame : public QFrame {
 
   void ScaleEquipmentFrame(const DeltaSize& delta_size);
 
+ signals:
+  void CatP500Clicked();
+
  public slots:
   void Open();
   void Close();
+
+ private slots:
+  void EmitCatP500Click();
 
  private:
   void CustomizeFrame();
@@ -32,6 +38,7 @@ class EquipmentButtonFrame : public QFrame {
   void SetAnimation();
   void ScaleFrame(const DeltaSize& delta_size);
   void ScaleButtons(const DeltaSize& delta_size);
+  void SetInternalConnections();
 
   Scaler* frame_scaler_ = nullptr;
   Scaler* button_scaler_ = nullptr;

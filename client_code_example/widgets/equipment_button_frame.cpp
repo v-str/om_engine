@@ -34,6 +34,8 @@ void EquipmentButtonFrame::Open() { animator_->Open(); }
 
 void EquipmentButtonFrame::Close() { animator_->Close(); }
 
+void EquipmentButtonFrame::EmitCatP500Click() { emit CatP500Clicked(); }
+
 void EquipmentButtonFrame::CustomizeFrame() {
   setStyleSheet(
       "QFrame{"
@@ -84,4 +86,8 @@ void EquipmentButtonFrame::ScaleButtons(const DeltaSize &delta_size) {
 
   button_scaler_->ComputeModification(GetCaterpillarP5000Button());
   cat_5000_button_->setGeometry(button_scaler_->GetModifiedRect());
+}
+
+void EquipmentButtonFrame::SetInternalConnections() {
+  connect(cat_5000_button_, SIGNAL(clicked(bool)), SLOT(EmitCatP500Click()));
 }

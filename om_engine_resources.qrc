@@ -4,5 +4,6 @@
         <file>resources/the_monster.jpg</file>
         <file>resources/spaceship_coridor.jpg</file>
         <file>resources/cargo_space_terminal.jpg</file>
+        <file>resources/cat_p_5000.png</file>
     </qresource>
 </RCC>
