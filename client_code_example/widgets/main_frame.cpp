@@ -60,6 +60,10 @@ void MainFrame::SetConnections() {
           SLOT(Open()));
   connect(title_frame_->CloseButton(), SIGNAL(clicked(bool)), animator_,
           SLOT(Close()));
+  connect(title_frame_->OpenButton(), SIGNAL(clicked(bool)), equipment_frame_,
+          SLOT(Open()));
+  connect(title_frame_->CloseButton(), SIGNAL(clicked(bool)), equipment_frame_,
+          SLOT(Close()));
   connect(title_frame_->AboutButton(), SIGNAL(clicked(bool)),
           SLOT(DisplayText()));
   connect(title_frame_->ClearButton(), SIGNAL(clicked(bool)),

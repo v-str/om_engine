@@ -6,6 +6,7 @@
 #include <click_button.h>
 #include <linear_animation_group.h>
 #include <scaler.h>
+#include <state_animator.h>
 
 namespace client_code {
 
@@ -21,10 +22,16 @@ class EquipmentButtonFrame : public QFrame {
 
   void ScaleEquipmentFrame(const DeltaSize& delta_size);
 
+ public slots:
+  void Open();
+  void Close();
+
  private:
   void CustomizeFrame();
+  void SetAnimation();
 
   Scaler* frame_scaler_ = nullptr;
+  StateAnimator* animator_ = nullptr;
 };
 }
 
