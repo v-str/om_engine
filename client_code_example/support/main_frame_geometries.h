@@ -14,7 +14,7 @@ QRect GetButtonFrame();
 QRect GetTitleGuideButton();
 QRect GetEquipmentFrame();
 QRect GetWorkGuideButton();
-QRect MainButton();
+QRect GetStatusButton();
 }
 
 #endif  // MAIN_FRAME_GEOMETRIES_H

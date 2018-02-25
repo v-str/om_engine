@@ -17,7 +17,7 @@ WorkButtonFrame::WorkButtonFrame(QFrame *parent)
                                 scaling::kRight | scaling::kDown)),
       animator_(new StateAnimator(this, false)),
       work_guide_button_(new ClickButton("Work", this)),
-      main_button_(new ClickButton("Main", this)) {
+      status_button_(new ClickButton("Status", this)) {
   CustomizeFrame();
   CustomizeButtons();
   SetAnimation();
@@ -34,7 +34,7 @@ void WorkButtonFrame::Open() { animator_->Open(); }
 
 void WorkButtonFrame::Close() { animator_->Close(); }
 
-void WorkButtonFrame::EmitCatP500Click() { emit CatP500Clicked(); }
+void WorkButtonFrame::EmitStatusButtonClick() { emit StatusButtonClicked(); }
 
 void WorkButtonFrame::CustomizeFrame() {
   setStyleSheet(
@@ -50,12 +50,12 @@ void WorkButtonFrame::CustomizeFrame() {
 
 void WorkButtonFrame::CustomizeButtons() {
   WidgetCustomizer::CustomizeButton(work_guide_button_, GetWorkGuideButton());
-  WidgetCustomizer::CustomizeButton(main_button_, MainButton());
+  WidgetCustomizer::CustomizeButton(status_button_, GetStatusButton());
 
   work_guide_button_->SetOffsetParameters(OffsetDistance(0, 0),
                                           widgets_utility::kDown);
-  main_button_->SetOffsetParameters(OffsetDistance(0, 0),
-                                    widgets_utility::kDown);
+  status_button_->SetOffsetParameters(OffsetDistance(0, 0),
+                                      widgets_utility::kDown);
 }
 
 void WorkButtonFrame::SetAnimation() {
@@ -82,10 +82,10 @@ void WorkButtonFrame::ScaleButtons(const DeltaSize &delta_size) {
   button_scaler_->ComputeModification(GetWorkGuideButton());
   work_guide_button_->setGeometry(button_scaler_->GetModifiedRect());
 
-  button_scaler_->ComputeModification(MainButton());
-  main_button_->setGeometry(button_scaler_->GetModifiedRect());
+  button_scaler_->ComputeModification(GetStatusButton());
+  status_button_->setGeometry(button_scaler_->GetModifiedRect());
 }
 
 void WorkButtonFrame::SetInternalConnections() {
-  connect(main_button_, SIGNAL(clicked(bool)), SLOT(EmitCatP500Click()));
+  connect(status_button_, SIGNAL(clicked(bool)), SLOT(EmitStatusButtonClick()));
 }

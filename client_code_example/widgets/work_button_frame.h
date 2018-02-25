@@ -23,14 +23,14 @@ class WorkButtonFrame : public QFrame {
   void ScaleWorkFrame(const DeltaSize& delta_size);
 
  signals:
-  void CatP500Clicked();
+  void StatusButtonClicked();
 
  public slots:
   void Open();
   void Close();
 
  private slots:
-  void EmitCatP500Click();
+  void EmitStatusButtonClick();
 
  private:
   void CustomizeFrame();
@@ -45,7 +45,7 @@ class WorkButtonFrame : public QFrame {
   StateAnimator* animator_ = nullptr;
 
   ClickButton* work_guide_button_ = nullptr;
-  ClickButton* main_button_ = nullptr;
+  ClickButton* status_button_ = nullptr;
 };
 }
 

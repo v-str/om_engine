@@ -18,4 +18,4 @@ QRect client_code::GetEquipmentFrame() { return QRect(415, 50, 115, 260); }
 
 QRect client_code::GetWorkGuideButton() { return QRect(5, 5, 105, 30); }
 
-QRect client_code::MainButton() { return QRect(5, 40, 105, 30); }
+QRect client_code::GetStatusButton() { return QRect(5, 40, 105, 30); }
