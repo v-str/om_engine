@@ -40,6 +40,7 @@ void MainLabel::Close() { main_label_animator_->Close(); }
 void MainLabel::DisplayText() {
   text_animator_->SetAnimationText(text());
   text_animator_->RunAnimation(this);
+  clear();
 }
 
 void MainLabel::Clear() {
