@@ -17,7 +17,7 @@ MainFrame::MainFrame(QWidget *parent, bool is_widget_open)
       title_frame_(new TitleButtonFrame(this)),
       work_frame_(new WorkButtonFrame(this)),
       main_label_(new MainLabel(this)),
-      main_label_text_setter_(new MainLabelTextSetter(main_label_, this)) {
+      main_label_text_setter_(new MainLabelTextDisplay(main_label_, this)) {
   SetWidgets();
   SetConnections();
 }

@@ -4,7 +4,7 @@
 #include <om_frame.h>
 
 #include <main_label.h>
-#include <main_label_text_setter.h>
+#include <main_label_text_display.h>
 #include <title_button_frame.h>
 #include <work_button_frame.h>
 
@@ -31,7 +31,7 @@ class MainFrame : public OmFrame {
   TitleButtonFrame* title_frame_ = nullptr;
   WorkButtonFrame* work_frame_ = nullptr;
   MainLabel* main_label_ = nullptr;
-  MainLabelTextSetter* main_label_text_setter_ = nullptr;
+  MainLabelTextDisplay* main_label_text_setter_ = nullptr;
 };
 }
 
