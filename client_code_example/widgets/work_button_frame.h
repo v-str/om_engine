@@ -24,6 +24,7 @@ class WorkButtonFrame : public QFrame {
 
   ClickButton* GetStatusButton();
   ClickButton* GetEquipmentButton();
+  ClickButton* GetStuffButton();
 
  signals:
   void StatusButtonClicked();
@@ -50,6 +51,7 @@ class WorkButtonFrame : public QFrame {
   ClickButton* work_guide_button_ = nullptr;
   ClickButton* status_button_ = nullptr;
   ClickButton* equipment_button_ = nullptr;
+  ClickButton* stuff_button_ = nullptr;
 };
 }
 

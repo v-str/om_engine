@@ -18,7 +18,8 @@ WorkButtonFrame::WorkButtonFrame(QFrame *parent)
       animator_(new StateAnimator(this, false)),
       work_guide_button_(new ClickButton("Work", this)),
       status_button_(new ClickButton("Status", this)),
-      equipment_button_(new ClickButton("Equipment", this)) {
+      equipment_button_(new ClickButton("Equipment", this)),
+      stuff_button_(new ClickButton("Stuff", this)) {
   CustomizeFrame();
   CustomizeButtons();
   SetAnimation();
@@ -34,6 +35,8 @@ void WorkButtonFrame::ScaleWorkFrame(const DeltaSize &delta_size) {
 ClickButton *WorkButtonFrame::GetStatusButton() { return status_button_; }
 
 ClickButton *WorkButtonFrame::GetEquipmentButton() { return equipment_button_; }
+
+ClickButton *WorkButtonFrame::GetStuffButton() { return stuff_button_; }
 
 void WorkButtonFrame::Open() { animator_->Open(); }
 
@@ -59,6 +62,7 @@ void WorkButtonFrame::CustomizeButtons() {
   WidgetCustomizer::CustomizeButton(status_button_, GetStatusButtonRect());
   WidgetCustomizer::CustomizeButton(equipment_button_,
                                     GetEquipmentButtonRect());
+  WidgetCustomizer::CustomizeButton(stuff_button_, GetStuffButtonRect());
 
   work_guide_button_->SetOffsetParameters(OffsetDistance(0, 0),
                                           widgets_utility::kDown);
@@ -66,6 +70,8 @@ void WorkButtonFrame::CustomizeButtons() {
                                       widgets_utility::kDown);
   equipment_button_->SetOffsetParameters(OffsetDistance(0, 0),
                                          widgets_utility::kDown);
+  stuff_button_->SetOffsetParameters(OffsetDistance(0, 0),
+                                     widgets_utility::kDown);
 }
 
 void WorkButtonFrame::SetAnimation() {
@@ -97,6 +103,9 @@ void WorkButtonFrame::ScaleButtons(const DeltaSize &delta_size) {
 
   button_scaler_->ComputeModification(GetEquipmentButtonRect());
   equipment_button_->setGeometry(button_scaler_->GetModifiedRect());
+
+  button_scaler_->ComputeModification(GetStuffButtonRect());
+  stuff_button_->setGeometry(button_scaler_->GetModifiedRect());
 }
 
 void WorkButtonFrame::SetInternalConnections() {

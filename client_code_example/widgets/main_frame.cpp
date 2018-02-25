@@ -59,4 +59,6 @@ void MainFrame::SetConnections() {
           main_label_text_setter_, SLOT(DisplayStatus()));
   connect(work_frame_->GetEquipmentButton(), SIGNAL(clicked(bool)),
           main_label_text_setter_, SLOT(DisplayEquipmentButton()));
+  connect(work_frame_->GetStuffButton(), SIGNAL(clicked(bool)),
+          main_label_text_setter_, SLOT(DisplayStuff()));
 }

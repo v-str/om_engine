@@ -21,7 +21,7 @@ void MainLabelTextDisplay::DisplayAbout() {
 void MainLabelTextDisplay::DisplayStatus() {
   main_label_->Clear();
   main_label_->setText(
-      "Cargo terminal status:\n"
+      "Cargo terminal status:\n\n"
       "Power supply...............On\n"
       "Reserve power supply.......Active\n"
       "Depressurization sensor....Active\n"
@@ -36,12 +36,24 @@ void MainLabelTextDisplay::DisplayStatus() {
 void MainLabelTextDisplay::DisplayEquipmentButton() {
   main_label_->Clear();
   main_label_->setText(
-      "Cargo terminal equipment:\n"
+      "Cargo terminal equipment:\n\n"
       "Plasma cutter..............3\n"
       "Ion cutter.................2\n"
       "Assembly bay...............1\n"
       "Spacesuit..................6\n"
       "Android-repairer...........5\n"
       "Power loader...............2\n");
+  main_label_->DisplayText();
+}
+
+void MainLabelTextDisplay::DisplayStuff() {
+  main_label_->Clear();
+  main_label_->setText(
+      "Cargo terminal stuff:\n\n"
+      "Sergeant A. Wasko\n\n"
+      "private G. Stivenson\n"
+      "private M. Lourens\n\n"
+      "android SFP-25B/2-1\n"
+      "android SFP-25B/2-2\n");
   main_label_->DisplayText();
 }
