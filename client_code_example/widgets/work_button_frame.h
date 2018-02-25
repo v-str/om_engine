@@ -3,6 +3,8 @@
 
 #include <QFrame>
 
+#include <QVector>
+
 #include <click_button.h>
 #include <linear_animation_group.h>
 #include <scaler.h>
@@ -43,6 +45,7 @@ class WorkButtonFrame : public QFrame {
   void ScaleFrame(const DeltaSize& delta_size);
   void ScaleButtons(const DeltaSize& delta_size);
   void SetInternalConnections();
+  void SetVector();
 
   Scaler* frame_scaler_ = nullptr;
   Scaler* button_scaler_ = nullptr;
@@ -52,6 +55,8 @@ class WorkButtonFrame : public QFrame {
   ClickButton* status_button_ = nullptr;
   ClickButton* equipment_button_ = nullptr;
   ClickButton* stuff_button_ = nullptr;
+
+  QVector<QPair<ClickButton*, QRect>> button_vector_;
 };
 }
 
