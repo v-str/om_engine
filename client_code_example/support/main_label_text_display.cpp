@@ -21,6 +21,7 @@ void MainLabelTextDisplay::DisplayAbout() {
 void MainLabelTextDisplay::DisplayStatus() {
   main_label_->Clear();
   main_label_->setText(
+      "Cargo terminal status:\n"
       "Power supply...............On\n"
       "Reserve power supply.......Active\n"
       "Depressurization sensor....Active\n"
@@ -29,5 +30,18 @@ void MainLabelTextDisplay::DisplayStatus() {
       "spacesuits.................5\n"
       "Number of operating\n"
       "androids...................2");
+  main_label_->DisplayText();
+}
+
+void MainLabelTextDisplay::DisplayEquipmentButton() {
+  main_label_->Clear();
+  main_label_->setText(
+      "Cargo terminal equipment:\n"
+      "Plasma cutter..............3\n"
+      "Ion cutter.................2\n"
+      "Assembly bay...............1\n"
+      "Spacesuit..................6\n"
+      "Android-repairer...........5\n"
+      "Power loader...............2\n");
   main_label_->DisplayText();
 }

@@ -17,7 +17,8 @@ WorkButtonFrame::WorkButtonFrame(QFrame *parent)
                                 scaling::kRight | scaling::kDown)),
       animator_(new StateAnimator(this, false)),
       work_guide_button_(new ClickButton("Work", this)),
-      status_button_(new ClickButton("Status", this)) {
+      status_button_(new ClickButton("Status", this)),
+      equipment_button_(new ClickButton("Equipment", this)) {
   CustomizeFrame();
   CustomizeButtons();
   SetAnimation();
@@ -30,7 +31,9 @@ void WorkButtonFrame::ScaleWorkFrame(const DeltaSize &delta_size) {
   ScaleButtons(delta_size);
 }
 
-ClickButton *WorkButtonFrame::StatusButton() { return status_button_; }
+ClickButton *WorkButtonFrame::GetStatusButton() { return status_button_; }
+
+ClickButton *WorkButtonFrame::GetEquipmentButton() { return equipment_button_; }
 
 void WorkButtonFrame::Open() { animator_->Open(); }
 
@@ -47,17 +50,22 @@ void WorkButtonFrame::CustomizeFrame() {
       "border-radius: 5px;"
       "}");
   setWindowOpacity(0.5);
-  setGeometry(GetEquipmentFrame());
+  setGeometry(GetWorkFrameRect());
 }
 
 void WorkButtonFrame::CustomizeButtons() {
-  WidgetCustomizer::CustomizeButton(work_guide_button_, GetWorkGuideButton());
-  WidgetCustomizer::CustomizeButton(status_button_, GetStatusButton());
+  WidgetCustomizer::CustomizeButton(work_guide_button_,
+                                    GetWorkGuideButtonRect());
+  WidgetCustomizer::CustomizeButton(status_button_, GetStatusButtonRect());
+  WidgetCustomizer::CustomizeButton(equipment_button_,
+                                    GetEquipmentButtonRect());
 
   work_guide_button_->SetOffsetParameters(OffsetDistance(0, 0),
                                           widgets_utility::kDown);
   status_button_->SetOffsetParameters(OffsetDistance(0, 0),
                                       widgets_utility::kDown);
+  equipment_button_->SetOffsetParameters(OffsetDistance(0, 0),
+                                         widgets_utility::kDown);
 }
 
 void WorkButtonFrame::SetAnimation() {
@@ -68,7 +76,7 @@ void WorkButtonFrame::SetAnimation() {
 
 void WorkButtonFrame::ScaleFrame(const DeltaSize &delta_size) {
   frame_scaler_->SetDeltaSize(delta_size);
-  frame_scaler_->ComputeModification(GetEquipmentFrame());
+  frame_scaler_->ComputeModification(GetWorkFrameRect());
 
   if (!animator_->IsWidgetOpen()) {
     close();
@@ -81,11 +89,14 @@ void WorkButtonFrame::ScaleFrame(const DeltaSize &delta_size) {
 void WorkButtonFrame::ScaleButtons(const DeltaSize &delta_size) {
   button_scaler_->SetDeltaSize(delta_size);
 
-  button_scaler_->ComputeModification(GetWorkGuideButton());
+  button_scaler_->ComputeModification(GetWorkGuideButtonRect());
   work_guide_button_->setGeometry(button_scaler_->GetModifiedRect());
 
-  button_scaler_->ComputeModification(GetStatusButton());
+  button_scaler_->ComputeModification(GetStatusButtonRect());
   status_button_->setGeometry(button_scaler_->GetModifiedRect());
+
+  button_scaler_->ComputeModification(GetEquipmentButtonRect());
+  equipment_button_->setGeometry(button_scaler_->GetModifiedRect());
 }
 
 void WorkButtonFrame::SetInternalConnections() {

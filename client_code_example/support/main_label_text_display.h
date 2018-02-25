@@ -16,6 +16,7 @@ class MainLabelTextDisplay : public QObject {
  public slots:
   void DisplayAbout();
   void DisplayStatus();
+  void DisplayEquipmentButton();
 
  private:
   MainLabel* main_label_ = nullptr;

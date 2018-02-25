@@ -22,7 +22,8 @@ class WorkButtonFrame : public QFrame {
 
   void ScaleWorkFrame(const DeltaSize& delta_size);
 
-  ClickButton* StatusButton();
+  ClickButton* GetStatusButton();
+  ClickButton* GetEquipmentButton();
 
  signals:
   void StatusButtonClicked();
@@ -48,6 +49,7 @@ class WorkButtonFrame : public QFrame {
 
   ClickButton* work_guide_button_ = nullptr;
   ClickButton* status_button_ = nullptr;
+  ClickButton* equipment_button_ = nullptr;
 };
 }
 

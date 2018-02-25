@@ -44,7 +44,7 @@ ClickButton *TitleButtonFrame::GuideButton() { return guide_button_; }
 
 void TitleButtonFrame::ScaleButtonFrame(const DeltaSize &delta_size) {
   frame_scaler_->SetDeltaSize(delta_size);
-  frame_scaler_->ComputeModification(GetButtonFrame());
+  frame_scaler_->ComputeModification(GetButtonFrameRect());
   setGeometry(frame_scaler_->GetModifiedRect());
 
   ScaleButtons(delta_size);
@@ -78,12 +78,12 @@ void TitleButtonFrame::CustomizeButtonFrame() {
       "border-radius: 5px;"
       "}");
   setWindowOpacity(0.5);
-  setGeometry(GetButtonFrame());
-  WidgetCustomizer::CustomizeButton(guide_button_, GetTitleGuideButton());
-  WidgetCustomizer::CustomizeButton(open_button_, GetOpenButton());
-  WidgetCustomizer::CustomizeButton(close_button_, GetCloseButton());
-  WidgetCustomizer::CustomizeButton(about_button_, GetAboutButton());
-  WidgetCustomizer::CustomizeButton(clear_button_, GetClearButton());
+  setGeometry(GetButtonFrameRect());
+  WidgetCustomizer::CustomizeButton(guide_button_, GetTitleGuideButtonRect());
+  WidgetCustomizer::CustomizeButton(open_button_, GetOpenButtonRect());
+  WidgetCustomizer::CustomizeButton(close_button_, GetCloseButtonRect());
+  WidgetCustomizer::CustomizeButton(about_button_, GetAboutButtonRect());
+  WidgetCustomizer::CustomizeButton(clear_button_, GetClearButtonRect());
 }
 
 void TitleButtonFrame::SetConnections() {
@@ -98,8 +98,8 @@ void TitleButtonFrame::ScaleButtons(const DeltaSize &delta_size) {
   QVector<ClickButton *> buttons = {open_button_, close_button_, about_button_,
                                     clear_button_};
 
-  QVector<QRect> geometries = {GetOpenButton(), GetCloseButton(),
-                               GetAboutButton(), GetClearButton()};
+  QVector<QRect> geometries = {GetOpenButtonRect(), GetCloseButtonRect(),
+                               GetAboutButtonRect(), GetClearButtonRect()};
 
   for (size_t i = 0; i < buttons.size(); ++i) {
     button_scaler_->SetScalingFactor(AxesRatio(shift_value, shift_value),

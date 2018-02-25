@@ -22,7 +22,7 @@ MainLabel::~MainLabel() {
 
 void MainLabel::ScaleMainLabel(const DeltaSize &delta_size) {
   main_label_scaler_->SetDeltaSize(delta_size);
-  main_label_scaler_->ComputeModification(GetMainLabel());
+  main_label_scaler_->ComputeModification(GetMainLabelRect());
 
   if (!main_label_animator_->IsWidgetOpen()) {
     close();
@@ -50,7 +50,7 @@ void MainLabel::Clear() {
 void MainLabel::SetLabel() {
   setAlignment(Qt::AlignLeft | Qt::AlignTop);
   setWordWrap(true);
-  WidgetCustomizer::CustomizeMainLabel(this, GetMainLabel());
+  WidgetCustomizer::CustomizeMainLabel(this, GetMainLabelRect());
   main_label_animator_->SetAnimation(QEasingCurve::OutCirc, 500,
                                      om_animation::kRight, om_animation::kLeft);
   main_label_animator_->SetCurrentGeometry(this->geometry());

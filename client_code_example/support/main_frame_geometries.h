@@ -5,16 +5,17 @@
 
 namespace client_code {
 
-QRect GetOpenButton();
-QRect GetCloseButton();
-QRect GetAboutButton();
-QRect GetClearButton();
-QRect GetMainLabel();
-QRect GetButtonFrame();
-QRect GetTitleGuideButton();
-QRect GetEquipmentFrame();
-QRect GetWorkGuideButton();
-QRect GetStatusButton();
+QRect GetOpenButtonRect();
+QRect GetCloseButtonRect();
+QRect GetAboutButtonRect();
+QRect GetClearButtonRect();
+QRect GetMainLabelRect();
+QRect GetButtonFrameRect();
+QRect GetTitleGuideButtonRect();
+QRect GetWorkFrameRect();
+QRect GetWorkGuideButtonRect();
+QRect GetStatusButtonRect();
+QRect GetEquipmentButtonRect();
 }
 
 #endif  // MAIN_FRAME_GEOMETRIES_H
