@@ -29,7 +29,7 @@ class MainFrame : public OmFrame {
   void SetConnections();
 
   TitleButtonFrame* title_frame_ = nullptr;
-  WorkButtonFrame* equipment_frame_ = nullptr;
+  WorkButtonFrame* work_frame_ = nullptr;
   MainLabel* main_label_ = nullptr;
   MainLabelTextSetter* main_label_text_setter_ = nullptr;
 };

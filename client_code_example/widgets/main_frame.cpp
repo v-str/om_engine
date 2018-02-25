@@ -15,7 +15,7 @@ using namespace om_widgets;
 MainFrame::MainFrame(QWidget *parent, bool is_widget_open)
     : OmFrame(parent, is_widget_open),
       title_frame_(new TitleButtonFrame(this)),
-      equipment_frame_(new WorkButtonFrame(this)),
+      work_frame_(new WorkButtonFrame(this)),
       main_label_(new MainLabel(this)),
       main_label_text_setter_(new MainLabelTextSetter(main_label_, this)) {
   SetWidgets();
@@ -28,7 +28,7 @@ void MainFrame::ModifyGeometry(const QRect &initial_geometry,
                                const DeltaSize &delta_size) {
   OmFrame::ModifyGeometry(initial_geometry, delta_size);
   title_frame_->ScaleButtonFrame(delta_size);
-  equipment_frame_->ScaleWorkFrame(delta_size);
+  work_frame_->ScaleWorkFrame(delta_size);
   main_label_->ScaleMainLabel(delta_size);
 }
 
@@ -47,9 +47,9 @@ void MainFrame::SetConnections() {
           SLOT(Open()));
   connect(title_frame_->CloseButton(), SIGNAL(clicked(bool)), main_label_,
           SLOT(Close()));
-  connect(title_frame_->OpenButton(), SIGNAL(clicked(bool)), equipment_frame_,
+  connect(title_frame_->OpenButton(), SIGNAL(clicked(bool)), work_frame_,
           SLOT(Open()));
-  connect(title_frame_->CloseButton(), SIGNAL(clicked(bool)), equipment_frame_,
+  connect(title_frame_->CloseButton(), SIGNAL(clicked(bool)), work_frame_,
           SLOT(Close()));
   connect(title_frame_->AboutButton(), SIGNAL(clicked(bool)),
           main_label_text_setter_, SLOT(SetAbout()));
