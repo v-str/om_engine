@@ -30,6 +30,8 @@ void WorkButtonFrame::ScaleWorkFrame(const DeltaSize &delta_size) {
   ScaleButtons(delta_size);
 }
 
+ClickButton *WorkButtonFrame::StatusButton() { return status_button_; }
+
 void WorkButtonFrame::Open() { animator_->Open(); }
 
 void WorkButtonFrame::Close() { animator_->Close(); }

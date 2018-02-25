@@ -52,7 +52,9 @@ void MainFrame::SetConnections() {
   connect(title_frame_->CloseButton(), SIGNAL(clicked(bool)), work_frame_,
           SLOT(Close()));
   connect(title_frame_->AboutButton(), SIGNAL(clicked(bool)),
-          main_label_text_setter_, SLOT(SetAbout()));
+          main_label_text_setter_, SLOT(DisplayAbout()));
   connect(title_frame_->ClearButton(), SIGNAL(clicked(bool)), main_label_,
           SLOT(Clear()));
+  connect(work_frame_->StatusButton(), SIGNAL(clicked(bool)),
+          main_label_text_setter_, SLOT(DisplayStatus()));
 }

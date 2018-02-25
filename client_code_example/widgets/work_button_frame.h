@@ -22,6 +22,8 @@ class WorkButtonFrame : public QFrame {
 
   void ScaleWorkFrame(const DeltaSize& delta_size);
 
+  ClickButton* StatusButton();
+
  signals:
   void StatusButtonClicked();
 
