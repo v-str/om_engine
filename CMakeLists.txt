@@ -1,7 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.0)
-
-set (PROJECT_NAME om_engine)
-project(${PROJECT_NAME})
+﻿cmake_minimum_required (VERSION 3.0)
 
 set (CMAKE_INCLUDE_CURRENT_DIR ON)
 set (CMAKE_CXX_STANDARD 14)
@@ -17,20 +14,10 @@ include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake_scripts/ccache.cmake")
 include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake_scripts/compiler_flags.cmake")
 include ("${CMAKE_CURRENT_SOURCE_DIR}/cmake_scripts/recursive_directory_function.cmake")
 
-add_subdirectory (om_engine_library)
+header_directories (LIB_HEADERS)
+include_directories ("${LIB_HEADERS}")
 
-header_directories (OM_ENGINE_HEADERS)
-include_directories ("${OM_ENGINE_HEADERS}")
-
-include_directories ("${CMAKE_CURRENT_SOURCE_DIR}/third_party")
-
-file (GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/*.h")
 file (GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
 
-qt5_add_resources (RESOURCES om_engine_resources.qrc)
-
-set (TXT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/third_party/to_do_list"
-               "${CMAKE_CURRENT_SOURCE_DIR}/third_party/documentation")
-
-add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES} ${RESOURCES} ${TXT_FILES})
-target_link_libraries (${PROJECT_NAME} om_engine_library)
+add_library (om_engine_library STATIC ${SOURCES} ${RESOURCES})
+qt5_use_modules (om_engine_library Widgets)
