@@ -9,8 +9,8 @@ from upper and you can use it separately.
 
 Let's consider this modules:
 
-[Widgets](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/animation.md)
+[Widgets](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/widgets.md)
 
 [Animation](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/animation.md)
 
-[Scaling](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/animation.md)
+[Scaling](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/scaling.md).md)
