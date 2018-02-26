@@ -4,6 +4,7 @@
 #include <QPair>
 
 #include <main_frame_geometries.h>
+#include <v_linear_animation_group.h>
 #include <widget_customizer.h>
 
 using namespace client_code;
@@ -20,14 +21,21 @@ WorkButtonFrame::WorkButtonFrame(QFrame *parent)
       work_guide_button_(new ClickButton("Work", this)),
       status_button_(new ClickButton("Status", this)),
       equipment_button_(new ClickButton("Equipment", this)),
-      stuff_button_(new ClickButton("Stuff", this)) {
+      stuff_button_(new ClickButton("Stuff", this)),
+      linear_group_(new VLinearAnimationGroup(
+          this, false, VLinearAnimationGroup::kFromUpToDown, 5)) {
   SetVector();
+  AddToLinearGroup();
   CustomizeFrame();
   CustomizeButtons();
   SetAnimation();
+  SetConnections();
 }
 
-WorkButtonFrame::~WorkButtonFrame() {}
+WorkButtonFrame::~WorkButtonFrame() {
+  delete frame_scaler_;
+  delete button_scaler_;
+}
 
 void WorkButtonFrame::ScaleWorkFrame(const DeltaSize &delta_size) {
   ScaleFrame(delta_size);
@@ -119,4 +127,15 @@ void WorkButtonFrame::SetVector() {
       QPair<ClickButton *, QRect>(equipment_button_, GetEquipmentButtonRect()));
   button_vector_.push_back(
       QPair<ClickButton *, QRect>(stuff_button_, GetStuffButtonRect()));
+}
+
+void WorkButtonFrame::AddToLinearGroup() {
+  linear_group_->Add(status_button_);
+  linear_group_->Add(equipment_button_);
+  linear_group_->Add(stuff_button_);
+}
+
+void WorkButtonFrame::SetConnections() {
+  connect(work_guide_button_, SIGNAL(clicked(bool)), linear_group_,
+          SLOT(PerformAnimation()));
 }

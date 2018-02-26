@@ -12,6 +12,8 @@ VLinearAnimationGroup::VLinearAnimationGroup(
 VLinearAnimationGroup::~VLinearAnimationGroup() {}
 
 void VLinearAnimationGroup::ComposeAnimation() {
+  MakeCopy();
+
   if (slide_direction_ == kFromUpToDown) {
     CalculateFromUpToDown();
   }
@@ -33,9 +35,49 @@ void VLinearAnimationGroup::MakeCopy() {
   }
 }
 
-void VLinearAnimationGroup::CalculateFromUpToDown() {}
+void VLinearAnimationGroup::CalculateFromUpToDown() {
+  int initial_y_pos = opening_geometry_.at(0).y();
+  int vectors_size = opening_geometry_.size();
 
-void VLinearAnimationGroup::CalculateFromDownToUp() {}
+  for (size_t i = 1; i < vectors_size; ++i) {
+    initial_y_pos +=
+        opening_geometry_.at(i - 1).height() + distance_btw_widgets_px_;
+
+    opening_geometry_[i].setY(initial_y_pos);
+  }
+
+  initial_y_pos = opening_geometry_.at(0).y();
+
+  for (size_t i = 0; i < vectors_size; ++i) {
+    closing_geometry_[i].setY(initial_y_pos);
+    closing_geometry_[i].setHeight(0);
+  }
+}
+
+void VLinearAnimationGroup::CalculateFromDownToUp() {
+  int initial_y_pos =
+      opening_geometry_.last().y() + opening_geometry_.last().height();
+  int vectors_size = opening_geometry_.size();
+
+  for (size_t i = vectors_size - 1; i > -1; --i) {
+    if (i == vectors_size - 1) {
+      initial_y_pos -= opening_geometry_.at(i).height();
+      opening_geometry_[i].setY(initial_y_pos);
+    } else {
+      initial_y_pos -=
+          opening_geometry_.at(i).height() - distance_btw_widgets_px_;
+      opening_geometry_[i].setY(initial_y_pos);
+    }
+  }
+
+  initial_y_pos =
+      opening_geometry_.last().y() + opening_geometry_.last().height();
+
+  for (size_t i = 0; i < vectors_size; ++i) {
+    closing_geometry_[i].setY(initial_y_pos);
+    closing_geometry_[i].setHeight(0);
+  }
+}
 
 void VLinearAnimationGroup::ReassignGeometry() {
   GetGeometryPair()->clear();
