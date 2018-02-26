@@ -7,3 +7,5 @@ Set of classes for dynamic widget geometric composing, widget animated opening/c
 <img src= 'https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/om_engine_v_1_0.gif'>
 
 Library is available in  [om_engine_v_1_0 branch](https://github.com/OrdinaryMind/om_engine)
+
+[Read documentation](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/documentation.md)
