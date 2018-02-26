@@ -14,7 +14,7 @@ WorkButtonFrame::WorkButtonFrame(QFrame *parent)
                                scaling::kRight,
                                scaling::kRight | scaling::kDown)),
       button_scaler_(new Scaler(AxesRatio(0.0, 0.0), AxesRatio(0.25, 0.0),
-                                scaling::kRight,
+                                scaling::kRight | scaling::kDown,
                                 scaling::kRight | scaling::kDown)),
       animator_(new StateAnimator(this, false)),
       work_guide_button_(new ClickButton("Work", this)),
@@ -64,17 +64,6 @@ void WorkButtonFrame::CustomizeButtons() {
   work_guide_button_->SetOffsetParameters(OffsetDistance(0, 0),
                                           widgets_utility::kDown);
 
-  WidgetCustomizer::CustomizeButton(status_button_, GetStatusButtonRect());
-  WidgetCustomizer::CustomizeButton(equipment_button_,
-                                    GetEquipmentButtonRect());
-  WidgetCustomizer::CustomizeButton(stuff_button_, GetStuffButtonRect());
-
-  //  status_button_->SetOffsetParameters(OffsetDistance(0, 0),
-  //                                      widgets_utility::kDown);
-  //  equipment_button_->SetOffsetParameters(OffsetDistance(0, 0),
-  //                                         widgets_utility::kDown);
-  //  stuff_button_->SetOffsetParameters(OffsetDistance(0, 0),
-  //                                     widgets_utility::kDown);
   for (auto &button : button_vector_) {
     WidgetCustomizer::CustomizeButton(button.first, button.second);
     button.first->SetOffsetParameters(OffsetDistance(0, 0),
@@ -101,14 +90,21 @@ void WorkButtonFrame::ScaleFrame(const DeltaSize &delta_size) {
 }
 
 void WorkButtonFrame::ScaleButtons(const DeltaSize &delta_size) {
+  button_scaler_->SetScalingFactor(AxesRatio(0.0, 0.0), AxesRatio(0.25, 0.0));
   button_scaler_->SetDeltaSize(delta_size);
 
   button_scaler_->ComputeModification(GetWorkGuideButtonRect());
   work_guide_button_->setGeometry(button_scaler_->GetModifiedRect());
 
+  float y_shift = 0.0;
+  float y_stretch = 0.333;
+
   for (auto &button : button_vector_) {
+    button_scaler_->SetScalingFactor(AxesRatio(0.0, y_shift),
+                                     AxesRatio(0.25, y_stretch));
     button_scaler_->ComputeModification(button.second);
     button.first->setGeometry(button_scaler_->GetModifiedRect());
+    y_shift += 0.333;
   }
 }
 

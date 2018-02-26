@@ -25,7 +25,7 @@ void MainLabelTextDisplay::DisplayStatus() {
       "Power supply...............On\n"
       "Reserve power supply.......Active\n"
       "Depressurization sensor....Active\n"
-      "Main Gate shutter..........CHECK\n"
+      "Main Gate shutter.........[CHECK]\n"
       "Number of operating\n"
       "spacesuits.................5\n"
       "Number of operating\n"
