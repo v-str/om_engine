@@ -93,6 +93,8 @@ R 31.   StateAnimatior - wrap Open and Close methods in
             - and remove old code in client classes after
             this
 
-- 32.   Add buttons to WorkFrame
++ 32.   Add buttons to WorkFrame
 
-- 33.   Develop VLinearGroup
++ 33.   Develop VLinearGroup
+
+- 34.   Issue the documentation
