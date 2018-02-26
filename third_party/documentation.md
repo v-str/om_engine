@@ -13,4 +13,4 @@ Let's consider this modules:
 
 [Animation](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/animation.md)
 
-[Scaling](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/scaling.md).md)
+[Scaling](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/scaling.md)
