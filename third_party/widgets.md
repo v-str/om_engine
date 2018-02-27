@@ -26,4 +26,6 @@ using namespace widgets_utility;
 }
 
 ```
+Result (colorized for convenience):
 
+<img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/click_button_example.gif'>
