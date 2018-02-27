@@ -8,7 +8,7 @@ modified a little.
 Also it include more lower modules of OmEngine library for correct
 animation and widget composing or scaling.
 
-### - ClickButton
+### ClickButton
 
 It is a QPushButton but it may offset(or not) when cursor is entry of button
 space. You can configure the side of offset and the size of offset.
@@ -32,7 +32,7 @@ Result (colorized for convenience):
 
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/click_button_example.gif'>
 
-### -Clocks
+### Clocks
 
 Widgets, inherited from QLabel and implement only one thing - demonstration
 of time or date after those initialization. It is mean, once you define this
@@ -56,6 +56,9 @@ using namespace om_widgets;
 Result (colorized for convenience):
 
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/time_and_date_example.gif'>
+
+
+
 
 
 
