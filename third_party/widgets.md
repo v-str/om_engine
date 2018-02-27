@@ -17,6 +17,8 @@ Usage:
 
 ```C++
 
+#include <click_button.h>
+
 using namespace om_widgets;
 using namespace widgets_utility;
 
@@ -40,12 +42,19 @@ Usage:
 
 ```C++
 
+#include <date_label.h>
+#include <time_label.h> 
 
+using namespace om_widgets;
+
+{
+TimeLabel* time_label(new TimeLabel(&widget));
+}
 
 ```
+Result (colorized for convenience):
 
-
-
+<img src=''>
 
 
 
