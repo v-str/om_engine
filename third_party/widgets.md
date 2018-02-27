@@ -48,14 +48,14 @@ Usage:
 using namespace om_widgets;
 
 {
-TimeLabel* time_label(new TimeLabel(&widget));
+  TimeLabel* time_label(new TimeLabel(widget));
+  DateLabel* date_label(new DateLabel(widget));
 }
 
 ```
 Result (colorized for convenience):
 
 <img src=''>
-
 
 
 
