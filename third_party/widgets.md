@@ -55,8 +55,7 @@ using namespace om_widgets;
 ```
 Result (colorized for convenience):
 
-<img src=''>
-
+<img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/time_and_date_example.gif'>
 
 
 
