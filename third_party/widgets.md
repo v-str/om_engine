@@ -8,6 +8,11 @@ modified a little.
 Also it include more lower modules of OmEngine library for correct
 animation and widget composing or scaling.
 
+- ClickButton
+
+It is a QPushButton but it may offset(or not) when cursor is entry of button
+space. You can configure the side of offset and the size of offset.
+
 Usage: 
 
 ```C++
