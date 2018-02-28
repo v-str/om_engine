@@ -123,8 +123,9 @@ In line 5 we setting up resizing method of OmFrame that named ModifyGeometry() i
 
 As OmFrame inherited from Scaler class, for more details , please read  [scaling](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/scaling.md)  documentation part.
 
-<img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/om_frame_example.gif'>
+Result (colorized for convenience):
 
+<img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/om_frame_example.gif'>
 
 
 
