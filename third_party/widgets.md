@@ -117,13 +117,20 @@ The next step is setting stretch direction (line 4). By default, you may stretch
 
 or combine several direction.
 
-In line 5 we setting up resizing method of OmFrame that named ModifyGeometry() in which we pass two parameters - initial geometry ( in this example it is method InitialFrameGeometry() ) and object of DeltaSize that storing deltas of parent widget.
+Further we connect buttons with slots that opens and closes our frame.
 
-And in the end we connect buttons with slots that opens and closes our frame.
+In line 5 we setting up resizing method of OmFrame that named ModifyGeometry() in which we pass two parameters - initial geometry ( in this example it is method InitialFrameGeometry() ) and object of DeltaSize that storing deltas of parent widget.
 
 As OmFrame inherited from Scaler class, for more details , please read  [scaling](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/scaling.md)  documentation part.
 
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/om_frame_example.gif'>
+
+
+
+
+
+
+
 
 
 
