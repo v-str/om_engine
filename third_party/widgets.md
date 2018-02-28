@@ -11,7 +11,7 @@ animation and widget composing or scaling.
 ### ClickButton
 
 It is a QPushButton but it may offset(or not) when cursor is entry of button
-space. You can configure the side of offset and the size of offset.
+space. You can configure the side of offset and the size of offset (pixels).
 
 Usage: 
 
@@ -28,6 +28,7 @@ using namespace widgets_utility;
 }
 
 ```
+
 Result (colorized for convenience):
 
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/click_button_example.gif'>
@@ -95,6 +96,35 @@ TestWidget::resizeEvent(QResizeEvent*){
 }
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
