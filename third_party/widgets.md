@@ -63,7 +63,7 @@ Result (colorized for convenience):
 OmFrame is main class of this library. It is include most of library details and perform:
 
 1. Opening-Closing animation
-2. Selfscaling depending of size of parent widget
+2. Selfscaling depending of parent widget size
 
 Usage:
 
@@ -124,6 +124,9 @@ And in the end we connect buttons with slots that opens and closes our frame.
 As OmFrame inherited from Scaler class, for more details , please read  [scaling](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/scaling.md)  documentation part.
 
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/om_frame_example.gif'>
+
+
+
 
 
 
