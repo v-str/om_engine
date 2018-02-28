@@ -83,8 +83,8 @@ om_frame->SetCurrentGeometry(InitialFrameGeometry());						//	2
 om_frame->SetStretchFactor(scaling::AxesRatio(1.0, 1.0));					//	3
 om_frame->StretchTo(scaling::kRight | scaling::kDown);						//	4
 
- connect(open_button_, SIGNAL(clicked(bool)), om_frame_, SLOT(Open()));
- connect(close_button_, SIGNAL(clicked(bool)), om_frame_, SLOT(Close()));
+connect(open_button_, SIGNAL(clicked(bool)), om_frame_, SLOT(Open()));
+connect(close_button_, SIGNAL(clicked(bool)), om_frame_, SLOT(Close()));
 
 }
 
@@ -124,6 +124,8 @@ And in the end we connect buttons with slots that opens and closes our frame.
 As OmFrame inherited from Scaler class, for more details , please read  [scaling](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/scaling.md)  documentation part.
 
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/om_frame_example.gif'>
+
+
 
 
 
