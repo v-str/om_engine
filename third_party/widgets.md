@@ -57,8 +57,44 @@ Result (colorized for convenience):
 
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/time_and_date_example.gif'>
 
+### OmFrame
 
+OmFrame is main class of this library. It is inlude most of library details and perform:
 
+1. Opening-Closing animation
+2. Selfscaling depending of size of parent widget
+
+Usage:
+
+```C++
+
+#include <om_frame>
+
+using namespace om_widgets;
+
+TestWidget::TestWidget(QWidget * parent) : QWidget(parent) 
+{
+
+//... skip another details
+
+om_frame = new OmFrame(this, true);								//	1
+om_frame->SetCurrentGeometry(InitialFrameGeometry());		//	2
+om_frame->SetStretchFactor(scaling::AxesRatio(1.0, 1.0));		//	3
+om_frame->StretchTo(scaling::kRight | scaling::kDown);			//	4
+
+}
+
+TestWidget::resizeEvent(QResizeEvent*){
+
+  int delta_width = width() - 600;
+  int delta_height = height() - 400;
+
+  om_frame->ModifyGeometry(InitialFrameGeometry(), 
+						DeltaSize(delta_width, delta_height));		//	5
+
+}
+
+```
 
 
 
