@@ -107,7 +107,7 @@ Unlike the simple QFrame class you must set geometry using SetCurrentGeometry() 
 
 In the line 3 we set the stretch factor of our OmFrame instance. For example, if parent widget was stretched on 20 pixels by axes X and Y then om_frame will be stretched by the same size.
 
-The next step is setting stretch direction (line 4). By default, you may stretch of shift OmFrame instance to the:
+The next step is setting stretch direction (line 4). By default, you may stretch or shift OmFrame instance to the:
 
 - Left
 - Right
@@ -123,6 +123,7 @@ In line 5 we setting up resizing method of OmFrame that named ModifyGeometry() i
 As OmFrame inherited from Scaler class, for more details , please read  [scaling](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/scaling.md)  documentation part.
 
 Result (colorized for convenience):
+
 
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/om_frame_example.gif'>
 
@@ -171,8 +172,8 @@ Result (colorized for convenience):
 
 
 
-dinaryMind/om_engine/blob/om_engine_v_1_0/examples/om_frame_example.gif'>
 
+dinaryMind/om_engine/blob/om_engine_v_1_0/examples/om_frame_example.gif'>
 
 
 
