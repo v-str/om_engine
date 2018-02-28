@@ -93,6 +93,9 @@ TestWidget::resizeEvent(QResizeEvent*){
   om_frame->ModifyGeometry(InitialFrameGeometry(), 
 						DeltaSize(delta_width, delta_height));		//	5
 
+ connect(open_button_, SIGNAL(clicked(bool)), om_frame_, SLOT(Open()));
+ connect(close_button_, SIGNAL(clicked(bool)), om_frame_, SLOT(Close()));
+
 }
 
 ```
@@ -116,9 +119,11 @@ or combine several direction.
 
 In line 5 we setting up resizing method of OmFrame that named ModifyGeometry() in which we pass two parameters - initial geometry ( in this example it is method InitialFrameGeometry() ) and object of DeltaSize that storing deltas of parent widget.
 
+And in the end we connect buttons with slots that opens and closes our frame.
+
+As OmFrame inherited from Scaler class, for more details , please read  [scaling](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/third_party/scaling.md)  documentation part.
+
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/om_frame_example.gif'>
-
-
 
 
 
