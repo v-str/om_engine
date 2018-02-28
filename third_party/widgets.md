@@ -83,6 +83,9 @@ om_frame->SetCurrentGeometry(InitialFrameGeometry());						//	2
 om_frame->SetStretchFactor(scaling::AxesRatio(1.0, 1.0));					//	3
 om_frame->StretchTo(scaling::kRight | scaling::kDown);						//	4
 
+ connect(open_button_, SIGNAL(clicked(bool)), om_frame_, SLOT(Open()));
+ connect(close_button_, SIGNAL(clicked(bool)), om_frame_, SLOT(Close()));
+
 }
 
 TestWidget::resizeEvent(QResizeEvent*){
@@ -92,9 +95,6 @@ TestWidget::resizeEvent(QResizeEvent*){
 
   om_frame->ModifyGeometry(InitialFrameGeometry(), 
 						DeltaSize(delta_width, delta_height));		//	5
-
- connect(open_button_, SIGNAL(clicked(bool)), om_frame_, SLOT(Open()));
- connect(close_button_, SIGNAL(clicked(bool)), om_frame_, SLOT(Close()));
 
 }
 
