@@ -40,6 +40,7 @@ class TestWidget : public QWidget {
 ```
 
 In translation unit we:
+
 - initializing label
 - set scaler parameters
 
@@ -60,12 +61,24 @@ TestWidget::TestWidget(QWidget *parent)
 TestWidget::~TestWidget() {}
 
 void TestWidget::resizeEvent(QResizeEvent *) {
-  int delta_width = width() - 300;
-  int delta_height = height() - 200;
+  int delta_width = width() - initial_width_;
+  int delta_height = height() - initial_height_;
 
   scaler_.SetDeltaSize(DeltaSize(delta_width, delta_height));
   scaler_.ComputeModification(initial_label_geometry_);
+
   label_->setGeometry(scaler_.GetModifiedRect());
 }
 
 ```
+As you can see,  in method SetScalingFactor we set shift factor by all axes as 0.0, that mean scaling will be only as stretching. The stretching set up as 1.0 for both axes ( X and Y ) will be stretch label as much as parent size. This parameter can be taken as percentage evaluation.
+
+When scaling factor is set, we need to define in which side label will be stretched. The ScaleTo method help us to do this. The first parameter is for geometry shifting and the second for stretching.
+
+In resize event we compute delta parameters as current widget width or height minus the initial size. After that we pass delta size into scaler and compute modified rect.
+
+After computation we may get modified rect.
+And as the result we can do this:
+
+<img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/scaling_example.gif'>
+
