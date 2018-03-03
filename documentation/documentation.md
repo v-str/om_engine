@@ -11,6 +11,6 @@ Let's consider this modules:
 
 [Widgets](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/documentation/widgets.md)
 
-[Animation](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/documentation/documentation.md)
+[Animation](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/documentation/animation.md)
 
-[Scaling](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/documentation/scaling.md)
+[Scaling](https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/documentation/scaling.md).md)
