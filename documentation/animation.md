@@ -73,3 +73,61 @@ That's all. By default animation performed with next parameters:
 But if you want to define another animation behavior you should use SetAnimation method of StateAnimator instance.
 
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/animation_state_example.gif'>
+
+### TextAnimator
+
+Let's add on our frame simple label that showing some text when some button clicked. But this text will be represented through TextAnimator.
+
+Declare the pointer to text animator and 2 pointers to the buttons for text animation (start and stop for example).
+
+Also you need to declare 2 public slots for text animation ( as text animator performed in simple methods style)
+
+```C++
+#include <text_animator.h>
+
+using namespace om_animation;
+
+class TestWidget : public QWidget{
+Q_OBJECT
+pubcic:
+// ctor
+// dtor
+
+public slots:
+void RunTextAnimation();
+void ResetAnimaiton();
+
+private:
+TextAnimator* text_animator_ = nullptr;
+QPushButton* show_text_button_ = nullptr;
+QPushButton* clear_text_button_ = nullptr;
+}
+```
+
+At the translation unit in constructor initialization part ( or body ) you should pass to the text animation constructor a parent class and set animation delay ( by default this parameter set to 10 msec ).
+
+In our case the parent is QFrame instance and delay equal 60 msec.
+
+After that you should set the desired text.
+
+In the end set the desired text and bind TextAnimator instance with buttons using Qt connection.
+
+
+```C++
+TestWidget::TestWidget(QWidget * parent) : QWidget(parent), text_animator(new TextAnimator(frame_, 60)) {
+
+text_animator_->SetAnimationText("Hello world!");
+
+connect(show_text_button_, SIGNAL(clicked(bool)), SLOT(RunTextAnimation()));
+connect(clear_text_button_, SIGNAL(clicked(bool)), SLOT(ResetAnimaiton()));
+}
+
+void TestWidget::RunTextAnimation() { text_animator_->RunAnimation(label_); }
+
+void TestWidget::ResetAnimaiton() {
+text_animator_->ResetAnimation();
+label_->clear();
+}
+```
+
+Note that the TextAnimation method ResetAnimation is not erase text of widget, it is just stop the timer and erase internal buffer. You should clear text of chosen widget manualy.
