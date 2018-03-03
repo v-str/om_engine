@@ -71,3 +71,5 @@ That's all. By default animation performed with next parameters:
 - widget will be open to up(kUp) and closed to down(kDown).
 
 But if you want to define another animation behavior you should use SetAnimation method of StateAnimator instance.
+
+<img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/animation_state_example.gif'>
