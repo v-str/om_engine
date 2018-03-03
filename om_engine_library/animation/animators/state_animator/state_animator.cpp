@@ -15,6 +15,7 @@ StateAnimator::StateAnimator(QWidget* widget, bool is_widget_open)
   if (!is_widget_open_) {
     control_widget_->close();
   }
+  SetAnimation();
 }
 
 StateAnimator::~StateAnimator() {}
