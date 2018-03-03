@@ -46,9 +46,7 @@ In translation unit we:
 
 ```C++
 
-#include <test.h>
-
-#include <QDebug>
+#include <test_widget.h>
 
 TestWidget::TestWidget(QWidget *parent)
     : QWidget(parent), label_(new QLabel("OmEngine", this)) {
@@ -122,7 +120,7 @@ label_->setGeometry(stretcher_.GetModifiedRect()); // Mark this
 }
 
 ```
-In marked line we set geometry of widget like for a example at the top code snippets.
+In marked line we set geometry of widget like for a examples at the top code snippets.
 
 #### Shifter
 
@@ -148,4 +146,78 @@ label_->setGeometry(shifter_.GetModifiedRect());
 }
 
 ```
-By the way if you want that your modified widget was at the center of parent widget you must to set shifter like at this example.
+By the way if you want that your modified widget be at the center of parent widget you must to set shifter like at this example.
+
+### FontSizeGenerator
+
+FontSizeGenerator is class that increase or decrease size of font when widget stretched.
+
+Usage:
+
+```C++
+
+#include <font_size_generator.h>
+#include <scaler.h>
+
+using namespace scaling;
+
+class TestWidget : public QWidget {
+Q_OBJECT
+public:
+TestWidget(QWidget* parent = nullptr);
+~TestWidget();
+
+protected:
+void resizeEvent(QResizeEvent*);
+
+private:
+void CustomizeTestSet();
+
+QLabel* label_ = nullptr;
+FontSizeGenerator* font_generator_ = nullptr;
+  
+Scaler scaler_;
+QRect initial_label_geometry_;
+
+int initial_width_ = 300;
+int initial_height_ = 200;
+};
+
+```
+
+Note that for generate font size properly you should set initial font in pixels.
+
+```C++
+
+#include <test_widget.h>
+
+#include <QFont>
+
+estWidget::TestWidget(QWidget *parent)
+   : QWidget(parent), label_(new QLabel("OmEngine", this)) {
+CustomizeTestSet();
+
+QFont font;
+
+font.setPixelSize(15);
+label_->setFont(font);
+
+font_generator_ = new FontSizeGenerator(1.6, *label_);
+
+scaler_.SetScalingFactor(AxesRatio(0.0, 0.0), AxesRatio(1.0, 1.0));
+scaler_.ScaleTo(kRight | kDown, kRight | kDown);
+}
+
+TestWidget::~TestWidget() { delete font_generator_; }
+
+void TestWidget::resizeEvent(QResizeEvent *) {
+int delta_width = width() - initial_width_;
+int delta_height = height() - initial_height_;
+
+scaler_.SetDeltaSize(DeltaSize(delta_width, delta_height));
+scaler_.ComputeModification(initial_label_geometry_);
+label_->setGeometry(scaler_.GetModifiedRect());
+font_generator_->GenerateFontSize(label_);
+}
+
+```
