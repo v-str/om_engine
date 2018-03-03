@@ -2,7 +2,8 @@
 
 Important part of OmEngine library is scaling. Using this module you can easy scale most widgets of Qt library properly.
 
-### Scaler
+<font color='red'>Scaler</font>
+-------------------------------------
 
 The Scaler combines two simple conception - stretching and shifting of widget. Lets look how to use it.
 
@@ -92,11 +93,13 @@ scaler_.SetScalingFactor(AxesRatio(0.15, 0.15), AxesRatio(0.0, 0.0));
 ```
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/shifting_example.gif'>
 
-### Stretcher and Shifter
+<font color='red'>Stretcher and Shifter</font>
+----------------------------------------------
 
 Scaler is combiner of two classes Stretcher and Shifter, thus if you want to use only stretching or shifting you are able to use one of this classes.
 
-#### Stretcher
+<font color='red'>Stretcher</font>
+----------------------------------
 
 ```C++
 
@@ -122,7 +125,8 @@ label_->setGeometry(stretcher_.GetModifiedRect()); // Mark this
 ```
 In marked line we set geometry of widget like for a examples at the top code snippets.
 
-#### Shifter
+<font color='red'>Shifter</font>
+--------------------------------
 
 ```C++
 
@@ -148,7 +152,8 @@ label_->setGeometry(shifter_.GetModifiedRect());
 ```
 By the way if you want that your modified widget be at the center of parent widget you must to set shifter like at this example.
 
-### FontSizeGenerator
+<font color='red'>FontSizeGenerator</font>
+------------------------------------------
 
 FontSizeGenerator is class that increase or decrease size of font when widget stretched.
 

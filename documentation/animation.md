@@ -1,6 +1,7 @@
 # Animation
 
-### StateAnimator
+<font color='red'>StateAnimator</font>
+-------------------------------------
 
 Is a class that can perform animation related with widget opening or closing. 
 
@@ -74,7 +75,8 @@ But if you want to define another animation behavior you should use SetAnimation
 
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/animation_state_example.gif'>
 
-### TextAnimator
+<font color='red'>TextAnimator</font>
+-------------------------------------
 
 Let's add on our frame simple label that showing some text when some button clicked. But this text will be represented through TextAnimator.
 
