@@ -217,7 +217,10 @@ int delta_height = height() - initial_height_;
 scaler_.SetDeltaSize(DeltaSize(delta_width, delta_height));
 scaler_.ComputeModification(initial_label_geometry_);
 label_->setGeometry(scaler_.GetModifiedRect());
+
 font_generator_->GenerateFontSize(label_);
 }
 
 ```
+
+<img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/font_size_generator.gif'>
