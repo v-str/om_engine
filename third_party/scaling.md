@@ -92,6 +92,7 @@ scaler_.SetScalingFactor(AxesRatio(0.0, 0.0), AxesRatio(1.0, 1.0));
 }
 
 ```
+<img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/shifting_example.gif'>
 
 ### Stretcher and Shifter
 
