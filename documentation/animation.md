@@ -135,3 +135,10 @@ label_->clear();
 Note that the TextAnimation method ResetAnimation is not erase text of widget, it is just stop the timer and erase internal buffer. You should clear text of chosen widget manualy.
 
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/text_animator_example.gif'>
+
+<font color='red'>LinearAnimationGroup</font>
+---------------------------------------------
+
+Using LinearAnimationGroup class you can animate groups of widget in horizontal or vertical position. If you want animate widget in custom order you should make class that inherited from LinearAnimationGroup and redefine ComposeAnimation method.
+
+Let's consider 2 cases: vertical group animation (from up to down) and horizontal group animation (from left to right).
