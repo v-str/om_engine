@@ -82,3 +82,19 @@ And as the result we can do this:
 
 <img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/scaling_example.gif'>
 
+Let's change scaling factor and set only shifting:
+
+```C++
+
+// ctor
+{
+scaler_.SetScalingFactor(AxesRatio(0.0, 0.0), AxesRatio(1.0, 1.0));
+}
+
+```
+
+### Stretcher and Shifter
+
+Scaler is combiner of two classes Stretcher and Shifter, thus if you want to use only stretching or shifting you are able to use only this class.
+
+#### Stretcher
