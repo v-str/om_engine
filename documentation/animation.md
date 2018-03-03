@@ -132,4 +132,4 @@ label_->clear();
 
 Note that the TextAnimation method ResetAnimation is not erase text of widget, it is just stop the timer and erase internal buffer. You should clear text of chosen widget manualy.
 
-<img srd='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/text_animator_example.gif'>
+<img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/text_animator_example.gif'>
