@@ -88,7 +88,7 @@ Let's change scaling factor and set only shifting:
 
 // ctor
 {
-scaler_.SetScalingFactor(AxesRatio(0.0, 0.0), AxesRatio(1.0, 1.0));
+scaler_.SetScalingFactor(AxesRatio(0.15, 0.15), AxesRatio(0.0, 0.0));
 }
 
 ```
@@ -96,6 +96,56 @@ scaler_.SetScalingFactor(AxesRatio(0.0, 0.0), AxesRatio(1.0, 1.0));
 
 ### Stretcher and Shifter
 
-Scaler is combiner of two classes Stretcher and Shifter, thus if you want to use only stretching or shifting you are able to use only this class.
+Scaler is combiner of two classes Stretcher and Shifter, thus if you want to use only stretching or shifting you are able to use one of this classes.
 
 #### Stretcher
+
+```C++
+
+#include <stretcher.h>
+
+// ctor
+}
+stretcher_.SetAxesRatio(AxesRatio(1.0, 1.0));
+stretcher_.ModifyTo(kRight | kDown);
+}
+
+// resize event
+{
+int delta_width = width() - initial_width_;
+int delta_height = height() - initial_height_;
+
+stretcher_.SetDeltaSize(DeltaSize(delta_width, delta_height));
+stretcher_.ComputeModification(initial_label_geometry_);
+
+label_->setGeometry(stretcher_.GetModifiedRect()); // Mark this
+}
+
+```
+In marked line we set geometry of widget like for a example at the top code snippets.
+
+#### Shifter
+
+```C++
+
+#include <shifter.h>
+
+// ctor
+}
+shifter_.SetAxesRatio(AxesRatio(0.5, 0.5));
+shifter_.ModifyTo(kRight | kDown);
+}
+
+// resize event
+{
+int delta_width = width() - initial_width_;
+int delta_height = height() - initial_height_;
+
+shifter_.SetDeltaSize(DeltaSize(delta_width, delta_height));
+shifter_.ComputeModification(initial_label_geometry_);
+
+label_->setGeometry(shifter_.GetModifiedRect());
+}
+
+```
+By the way if you want that your modified widget was at the center of parent widget you must to set shifter like at this example.
