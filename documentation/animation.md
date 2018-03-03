@@ -211,10 +211,14 @@ void TestWidget::FillAnimaitonGroup(QVector<QPushButton *> *vector,
 ```
 
 While initialization we pass into animation group constructor the next params:
-1) parent
-2) group state ( widgets can be opened ( true ) or closed ( false )
-3) enumeration variable that describes how widgets will be animated
-4) distance between widgets in pixels
+
+1) Parent
+
+2) Group state ( widgets can be opened ( true ) or closed ( false )
+
+3) Enumeration variable that describes how widgets will be animated
+
+4) Distance between widgets in pixels
 
 In constructor body we add every widget that we want to animate in V/HLinearAnimation group instance. For this task we use FillAnimaitonGroup method that simply iterate the vector and adds each of them.
 
@@ -222,5 +226,5 @@ After that we set animation properties. First parameter - animation time and sec
 
 That's all. And do not forget connect animation groups with buttons for opening widget group using PerfromAnimation slot.
 
-<img src=''>
+<img src='https://github.com/OrdinaryMind/om_engine/blob/om_engine_v_1_0/examples/animation_group_example.gif'>
 
