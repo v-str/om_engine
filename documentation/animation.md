@@ -139,6 +139,88 @@ Note that the TextAnimation method ResetAnimation is not erase text of widget, i
 <font color='red'>LinearAnimationGroup</font>
 ---------------------------------------------
 
-Using LinearAnimationGroup class you can animate groups of widget in horizontal or vertical position. If you want animate widget in custom order you should make class that inherited from LinearAnimationGroup and redefine ComposeAnimation method.
+Using LinearAnimationGroup class you can animate groups of widget in horizontal or vertical position. If you want animate widget in custom order you should make class that inherited from LinearAnimationGroup with redefined ComposeAnimation() method.
 
 Let's consider 2 cases: vertical group animation (from up to down) and horizontal group animation (from left to right).
+
+For convenience let's create a two vectors that stores a set of buttons. After that we add each button to LinearGroupAnimation instance.
+
+```C++
+#include <linear_animation_group.h>
+
+using namespace om_animation;
+
+class TestWidget : public QWidget {
+Q_OBJECT
+public:
+TestWidget(QWidget* parent = nullptr);
+~TestWidget();
+
+private:
+void CustomizeTestSet();
+void SetVectors();
+void CustomizeButton(QPushButton* button);
+void FillAnimaitonGroup(QVector<QPushButton*>* vector,
+                          LinearAnimationGroup* group);
+
+QPushButton* section_1_ = nullptr;
+QPushButton* section_2_ = nullptr;
+
+LinearAnimationGroup* v_group_ = nullptr;
+LinearAnimationGroup* h_group_ = nullptr;
+
+QVector<QPushButton*> v_animation_vector_;
+QVector<QPushButton*> h_animation_vector_;
+};
+```
+I am omit buttons initialization procedure and vectors filling so you should do it yourself.
+In constructor of main widget we perform buttons ( that will be open out button groups ) and linear groups initialization. Note that for initialization linear groups we use different classes - H and VLinearAnimationGroup accorgdingly.
+
+```C++
+TestWidget::TestWidget(QWidget *parent)
+    : QWidget(parent),
+      section_1_(new QPushButton("Section 1", this)),
+      section_2_(new QPushButton("Section 2", this)),
+      h_group_(new HLinearAnimationGroup(
+          this, false, HLinearAnimationGroup::kFromLeftToRight, 10)),
+      v_group_(new VLinearAnimationGroup(
+          this, false, VLinearAnimationGroup::kFromDownToUp, 10)) {
+  CustomizeTestSet();
+
+  SetVectors();
+
+  FillAnimaitonGroup(&h_animation_vector_, h_group_);
+  h_group_->SetAnimationProperties(500, QEasingCurve::OutQuad);
+
+  FillAnimaitonGroup(&v_animation_vector_, v_group_);
+  v_group_->SetAnimationProperties(500, QEasingCurve::OutQuad);
+
+  connect(section_1_, SIGNAL(clicked(bool)), h_group_,
+          SLOT(PerformAnimation()));
+  connect(section_2_, SIGNAL(clicked(bool)), v_group_,
+          SLOT(PerformAnimation()));
+}
+```
+```C++
+void TestWidget::FillAnimaitonGroup(QVector<QPushButton *> *vector,
+                                    LinearAnimationGroup *group) {
+  for (size_t i = 0; i < vector->size(); ++i) {
+    group->Add(vector->at(i));
+  }
+}
+```
+
+While initialization we pass into animation group constructor the next params:
+1) parent
+2) group state ( widgets can be opened ( true ) or closed ( false )
+3) enumeration variable that describes how widgets will be animated
+4) distance between widgets in pixels
+
+In constructor body we add every widget that we want to animate in V/HLinearAnimation group instance. For this task we use FillAnimaitonGroup method that simply iterate the vector and adds each of them.
+
+After that we set animation properties. First parameter - animation time and second - animation curve.
+
+That's all. And do not forget connect animation groups with buttons for opening widget group using PerfromAnimation slot.
+
+<img src=''>
+
