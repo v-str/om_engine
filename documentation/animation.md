@@ -89,7 +89,7 @@ using namespace om_animation;
 
 class TestWidget : public QWidget{
 Q_OBJECT
-pubcic:
+public:
 // ctor
 // dtor
 
