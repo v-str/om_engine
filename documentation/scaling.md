@@ -5,7 +5,7 @@ Important part of OmEngine library is scaling. Using this module you can easy sc
 <font color='red'>Scaler</font>
 -------------------------------------
 
-The Scaler combines two simple conception - stretching and shifting of widget. Lets look how to use it.
+The Scaler combines two simple conceptions - stretching and shifting of widget. Lets look how to use it.
 
 Let's suppose that we want to stretch some label when parent widget is resizing.
 We need a label instance, scaler instance and parent class.
