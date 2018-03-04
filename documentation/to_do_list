@@ -1,0 +1,100 @@
+﻿R - removed
++ - done
+- - not ready
+
++ 1.    Initiate repo
+
++ 2.    Create OmButton
+
++ 3.    Add variable for widget animation state determination:
+        3.1 Is widget closed?
+        3.2 Is widget opened?
+        Exclude repeated animation of opening/closing (static variable?)
+
++ 4.    Refactor WidgetAnimator and AnimationGeometrySetter
+
++ 5.    Perform multiple widget animation test in separate class
+
++ 6.    Add text animation (aka running string)
+        6.1 Develop api of text animation class:
+        6.1.1 Maybe need some boolean methods for animated/not animated
+        text state, like:
+        bool IsTextAnimated() const;
+        6.2 Embrace text animator in namespace
+
++ 7.    How to make animation properly while widget is closed?
+
++ 8.    Remove non-forward declaration includes in headers
+
++ 9.    Develop time and date classes
+
+R 10.   Develop GeometryComposer class
+
+- 11.   Notify users about C++11/14 standard usage
+
++ 12.   Run GeometryComposer, modify is needed
+
+R 13.   Add scaling transformation type to GeometryComposer
+
++ 14.   Develop base class for all widgets in OmEngine
+
+R 15.   Compose all existing widgets via GeometryController
+
++ 16.   Solve problem related with animation and composing
+
++ 17.   Remade all composers, or re-develop them again
+        1) using abstract factory pattern
+        2) add methods as set modification factors for
+        further usage
+
+        Decision: refuse from factory idea, use scaler class
+
++ 18.   Merge two method in ClickButton
+        1) SetOffsetSide
+        2) SetOffsetDistance
+        into one SetOffsetParameters(side, distance_px)
+
++ 19.   Prepare scaler and animator for including in base frame class:
+        - ensure all constructors availability
+
++ 20.   Include FontSizeGenerator library into OmEngine
+
+- 21.   Add set of animation blocks for any Qt widgets ( SlidingBox )
+
+- 22.   Notify users that font size generator works fine only when
+        font set in pixel size
+
+- 23.   Notify users that text animator do not works with rich text
+
+- 24.   SlidingList development. How to realize it properly?
+
+- 25.   SlidingWidgetSet.
+        1) Add HAnimationValueSetter implementation
+        2) Continue HSlidingWidgetSet coding
+
+- 26.   Emphasize on is_widget_open boolean variable.
+        Involve it to OpenClosed mechanism
+
+- 27.   For SlidingWidgetSet documentary:
+        Notify users about if in AnimationWidgetSet parameter
+        is_widget_open set as true, then distance between widget
+        will be reset after execution slot Open
+
+R 28.   Develop invertor for animation set
+
++ 29.   Absolutely remade and rename sliding widget set
+
+- 30.   Animation equipment frame
+
+R 31.   StateAnimatior - wrap Open and Close methods in
+        if statement - if ( is_animation_is_running) -
+        linear_animation_group
+
+            - and remove old code in client classes after
+            this
+
++ 32.   Add buttons to WorkFrame
+
++ 33.   Develop VLinearGroup
+
+- 34.   Issue the documentation
